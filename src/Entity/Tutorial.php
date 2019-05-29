@@ -42,18 +42,6 @@ class Tutorial
         return $this->id;
     }
 
-    public function getIdAuthor(): ?User
-    {
-        return $this->id_author;
-    }
-
-    public function setIdAuthor(?User $id_author): self
-    {
-        $this->id_author = $id_author;
-
-        return $this;
-    }
-
     public function getAuthor(): ?User
     {
         return $this->author;
