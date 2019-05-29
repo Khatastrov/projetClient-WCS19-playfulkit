@@ -20,8 +20,7 @@ class UserSignUpType extends AbstractType
             ->add('nickname')
             ->add('email')
             ->add('password')
-            ->add('validPassword')
-            ->add('birthday');
+            ->add('birth_date');
     }
 
     /**
@@ -33,5 +32,4 @@ class UserSignUpType extends AbstractType
             'data_class' => User::class
         ]);
     }
-
 }
