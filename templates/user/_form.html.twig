@@ -1,4 +1,25 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-<button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div>
+    {{ form_start(form) }}
+    <div>
+        <label>Pseudo :</label>
+        <p>{{ form_widget(form.nickname) }}</p>
+    </div>
+    <div>
+        <label>{{ form_label(form.email) }} :</label>
+        <p>{{ form_widget(form.email) }}</p>
+    </div>
+    <div>
+        <label>Mot de passe :</label>
+        <p>{{ form_widget(form.password) }}</p>
+    </div>
+    <div>
+        <label>confirmation du mot de passe :</label>
+        <p>{{ form_widget(form.password) }}</p>
+    </div>
+    <div>
+        <label>Date de naissance :</label>
+        <p>{{ form_widget(form.birth_date) }}</p>
+    </div>
+    <button class="btn">{{ button_label|default('Sign Up') }}</button>
+    {{ form_end(form) }}
+</div>
