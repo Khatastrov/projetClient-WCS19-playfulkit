@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Salut {{ user.nickname }} ! ✅</h1>
+
+    <p>Tu te trouves sur ta page profil.</p>
+    <p>Tu peux voir tes informations ici :</p>
+    <ul>
+        <li><strong>Ton pseudo :</strong> {{ user.nickname }}</li>
+        <li><strong>Ton adresse mail :</strong> {{ user.email }}</li>
+        <li><strong>Ta date de naissance :</strong> {{ user.birthdate|date("d/m/Y") }}</li>
+    </ul>
+
+    <a href="{{ path('user_edit', {'id': user.id}) }}">Modifier mon profil</a>
+</div>
+{% endblock %}
