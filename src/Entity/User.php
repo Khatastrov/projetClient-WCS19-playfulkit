@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -40,6 +42,16 @@ class User
      * @ORM\Column(type="datetimetz")
      */
     private $created_at;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Tutorial", mappedBy="author")
+     */
+    private $tutorials;
+
+    public function __construct()
+    {
+        $this->tutorials = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -102,6 +114,37 @@ class User
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Tutorial[]
+     */
+    public function getTutorials(): Collection
+    {
+        return $this->tutorials;
+    }
+
+    public function addTutorial(Tutorial $tutorial): self
+    {
+        if (!$this->tutorials->contains($tutorial)) {
+            $this->tutorials[] = $tutorial;
+            $tutorial->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTutorial(Tutorial $tutorial): self
+    {
+        if ($this->tutorials->contains($tutorial)) {
+            $this->tutorials->removeElement($tutorial);
+            // set the owning side to null (unless already changed)
+            if ($tutorial->getAuthor() === $this) {
+                $tutorial->setAuthor(null);
+            }
+        }
 
         return $this;
     }
