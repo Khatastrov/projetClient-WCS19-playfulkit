@@ -23,7 +23,7 @@ class UserSignUpType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nickname',TextType::class, [
+            ->add('nickname', TextType::class, [
                 'attr' => ['placeholder' => 'jean59'],
                 'constraints' => [new NotBlank(["message" => "Veuillez rentrer un pseudo "]),]
             ])
@@ -40,7 +40,7 @@ class UserSignUpType extends AbstractType
                 'first_options'  => ['label' => 'Password'],
                 'second_options' => ['label' => 'Repeat Password'],
             ])
-            ->add('birth_date', BirthdayType::class,[
+            ->add('birth_date', BirthdayType::class, [
                 'placeholder' => ['year' => 'année', 'month' => 'mois','day' => 'jour',]
 
             ]);
