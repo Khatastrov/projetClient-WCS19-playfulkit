@@ -10,11 +10,11 @@
     </div>
     <div>
         <label>Mot de passe :</label>
-        <p>{{ form_widget(form.password) }}</p>
+        <p>{{ form_widget(form.password.first) }}</p>
     </div>
     <div>
-        <label>confirmation du mot de passe :</label>
-        <p>{{ form_widget(form.password) }}</p>
+        <label>Confirmation du mot de passe :</label>
+        <p>{{ form_widget(form.password.second) }}</p>
     </div>
     <div>
         <label>Date de naissance :</label>
