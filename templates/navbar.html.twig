@@ -1,19 +1,24 @@
 <header class="container-fluid row mx-auto title-police">
     <div class="d-inline-flex w-100 align-items-center bg-dark mb-0">
-        <img class="img-fluid" src="https://via.placeholder.com/150x50" alt="playful_kit_logo">
+        <img class="d-none d-md-block img-fluid" src="https://via.placeholder.com/150x50" alt="playful_kit_logo">
 
         {# Delete form part after create the real search form with symfony #}
         <form class="mx-auto">
             <input type="text" name="searchField" placeholder="search" id="search">
         </form>
     </div>
-    <nav class="navbar d-flex justify-content-around bg-color-teal navbar-dark w-100">
-        <a class="navbar-brand" href="#">Contest</a>
-        <a class="navbar-brand" href="#">Lessons</a>
-        <a class="navbar-brand" href="#">Tutorials</a>
-        <a class="navbar-brand" href="#">Shop</a>
-        <a class="navbar-brand" href="#">Educators</a>
-        <a class="navbar-brand" href="#">Contact</a>
-        <a class="navbar-brand" href="#">Blog</a>
+    <nav class="navbar navbar-expand-md bg-color-teal navbar-dark w-100">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navbar-nav justify-content-around" id="navbarSupportedContent">
+            <h4><a class="nav-link active" href="#">Contest</a></h4>
+            <h4><a class="nav-link active" href="#">Lessons</a></h4>
+            <h4><a class="nav-link active" href="#">Tutorials</a></h4>
+            <h4><a class="nav-link active" href="#">Shop</a></h4>
+            <h4><a class="nav-link active" href="#">Educators</a></h4>
+            <h4><a class="nav-link active" href="#">Contact</a></h4>
+            <h4><a class="nav-link active" href="#">Blog</a></h4>
+        </div>
     </nav>
 </header>
