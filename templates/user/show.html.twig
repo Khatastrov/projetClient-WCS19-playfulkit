@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {% endblock %}
+{% block title %}Ton profil{% endblock %}
 
 {% block body %}
-
+{{ dump (user) }}
 <div class="example-wrapper">
     <h1>Salut {{ user.nickname }} ! ✅</h1>
 
@@ -15,6 +15,6 @@
         <li><strong>Ta date de naissance :</strong> {{ user.birthdate|date("d/m/Y") }}</li>
     </ul>
 
-    <a href="{{ path('user_edit', {'id': user.id}) }}">Modifier mon profil</a>
+    <a href="{{ path('user_edit', {'id': user.id}) }}">Modifie ton profil</a>
 </div>
 {% endblock %}
