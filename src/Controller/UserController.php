@@ -37,12 +37,9 @@ class UserController extends AbstractController
         return $this->render('user/formSignUp.html.twig', [
             'user' => $userSignUp,
             'form' => $form->createView()
-           ]);
+        ]);
     }
-
-
-    class UserController extends AbstractController
-    {
+    
       /**
        * @Route("/{id}", name="user_show")
        */
