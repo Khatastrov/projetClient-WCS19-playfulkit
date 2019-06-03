@@ -33,7 +33,7 @@ class UserController extends AbstractController
             $entityManager->flush();
             $id = $userSignUp->getId();
             return $this->redirectToRoute('user_show', ['id' => $id,
-        ]);
+            ]);
         }
 
         return $this->render('user/new.html.twig', [
