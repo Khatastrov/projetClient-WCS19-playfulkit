@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Tuto{% endblock %}
+
+{% block body %}
+
+    <section class="tutorial">
+
+        {% for tutorial in tutorials %}
+            <article>
+                <h2>{{ tutorial.title }}</h2>
+                <div class="metadata">Ecrit le {{ tutorial.dateCreation | date('d/m/Y') }} à {{ tutorial.dateCreation | date('H:i') }} </div>
+                <div class="content">
+                    {{ tutorial.content | raw }}
+                    <a href="{{ path('tutorial_show', {'id': tutorial.id}) }}" class="btn btn-primary">Lire la suite</a>
+                </div>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}

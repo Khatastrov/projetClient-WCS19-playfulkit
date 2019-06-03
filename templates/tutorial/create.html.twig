@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formTutorial 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Tutorial{% endblock %}
+
+{% block body %}
+
+    <h1>Création d'un Tuto !</h1>
+
+    {{ form_start(formTutorial) }}
+
+    {{ form_row(formTutorial.title, {'attr': {'placeholder': "Titre du Tuto"}}) }}
+    {{ form_row(formTutorial.content, {'attr': {'placeholder': "Contenu du Tuto"}}) }}
+
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+            Enregistrer les modifications
+        {% else %}
+            Ajouter un Tuto
+        {% endif %}
+    </button>
+
+    {{ form_end(formTutorial) }}
+
+{% endblock %}
