@@ -4,8 +4,35 @@
 
 {% block body %}
     <h1>Sign up</h1>
-
-    {{ include('user/_form.html.twig') }}
-
+    <div>
+        {{ form_start(form) }}
+        <div>
+            <label>Ton pseudo :</label>
+            <p>{{ form_widget(form.nickname) }}</p>
+            <small>{{ form_errors(form.nickname) }}</small>
+        </div>
+        <div>
+            <label>Ton adresse email :</label>
+            <p>{{ form_widget(form.email) }}</p>
+            <small>{{ form_errors(form.email) }}</small>
+        </div>
+        <div>
+            <label>Ton mot de passe :</label>
+            <p>{{ form_widget(form.password.first) }}</p>
+            <small>{{ form_errors(form.password) }}</small>
+        </div>
+        <div>
+            <label>Confirme ton mot de passe :</label>
+            <p>{{ form_widget(form.password.second) }}</p>
+            <small>{{ form_errors(form.password) }}</small>
+        </div>
+        <div>
+            <label>Ta date de naissance :</label>
+            <p>{{ form_widget(form.birth_date) }}</p>
+            <small>{{ form_errors(form.birth_date) }}</small>
+        </div>
+        <button class="btn">{{ button_label|default('Inscription') }}</button>
+        {{ form_end(form) }}
+    </div>
     <a href="{{ path('app_index') }}">retour</a>
 {% endblock %}
