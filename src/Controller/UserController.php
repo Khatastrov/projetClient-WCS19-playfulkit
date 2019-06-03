@@ -3,10 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserProfileType;
+use App\Form\UserSignUpType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -15,34 +15,63 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/{id}", name="user_show")
+     * @Route("/new", name="user_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
-    public function show(User $user)
+    public function new(Request $request) : Response
     {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, User $user): Response
-    {
-        $form = $this->createForm(UserProfileType::class, $user);
+        $userSignUp = new User();
+        $form = $this->createForm(UserSignUpType::class, $userSignUp);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $userSignUp->setPassword(password_hash($userSignUp->getPassword(), PASSWORD_DEFAULT));
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($userSignUp);
+            $entityManager->flush();
 
-            return $this->redirectToRoute('user_show', [
-                'id' => $user->getId(),
-            ]);
+            return $this->redirectToRoute('user_show');
         }
 
-        return $this->render('user/edit.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('user/formSignUp.html.twig', [
+            'user' => $userSignUp,
+            'form' => $form->createView()
+           ]);
     }
+
+
+    class UserController extends AbstractController
+    {
+      /**
+       * @Route("/{id}", name="user_show")
+       */
+      public function show(User $user)
+      {
+          return $this->render('user/show.html.twig', [
+              'user' => $user,
+          ]);
+      }
+
+      /**
+       * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+       */
+      public function edit(Request $request, User $user): Response
+      {
+          $form = $this->createForm(UserProfileType::class, $user);
+          $form->handleRequest($request);
+
+          if ($form->isSubmitted() && $form->isValid()) {
+              $this->getDoctrine()->getManager()->flush();
+
+              return $this->redirectToRoute('user_show', [
+                  'id' => $user->getId(),
+              ]);
+          }
+
+          return $this->render('user/edit.html.twig', [
+              'user' => $user,
+              'form' => $form->createView(),
+          ]);
+      }
 }
