@@ -30,7 +30,7 @@ class UserSignUpType extends AbstractType
             ])
             ->add('email', EmailType::class, [
                 'attr' => ['placeholder' => 'exemple@mail.fr'],
-                'constraints' => [new NotBlank(["message" => "u n'as pas renseigné ton adresse mail "]),]
+                'constraints' => [new NotBlank(["message" => "Tu n'as pas renseigné ton adresse mail "]),]
             ])
             ->add('password', RepeatedType::class, [
                 'constraints' => [
