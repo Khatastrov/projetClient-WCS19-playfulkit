@@ -13,7 +13,17 @@
         <li><strong>Ton pseudo :</strong> {{ user.nickname }}</li>
         <li><strong>Ton adresse mail :</strong> {{ user.email }}</li>
         <li><strong>Ta date de naissance :</strong> {{ user.birthdate|date("d/m/Y") }}</li>
+        <li><strong>La liste des tutoriels que tu as publié :</strong>
+            <ul>
+                {% for tutorial in user.tutorials %}
+                    <li>{{ tutorial.title }}</li>
+                {% else %}
+                    <li>Tu n'as publié aucun tutotiel pour l'instant !</li>
+                {% endfor %}
+            </ul>
+        </li>
     </ul>
+
 
     <a href="{{ path('user_edit', {'id': user.id}) }}">Modifie ton profil</a>
 </div>
