@@ -20,11 +20,11 @@ class UserController extends AbstractController
     public function new(Request $request) : Response
     {
         $userSignUp = new User();
-        $form = $this->createForm(UserSignUpType::class,$userSignUp);
+        $form = $this->createForm(UserSignUpType::class, $userSignUp);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
-            $userSignUp = $form->getData();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($userSignUp);
             $entityManager->flush();
@@ -36,6 +36,5 @@ class UserController extends AbstractController
             'user' => $userSignUp,
             'form' => $form->createView()
         ]);
-
     }
 }

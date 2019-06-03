@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class UserSignUpType extends AbstractType
@@ -32,9 +33,18 @@ class UserSignUpType extends AbstractType
                 'constraints' => [new NotBlank(["message" => "Veuillez indiquer votre adresse mail"]),]
             ])
             ->add('password', RepeatedType::class, [
-                'constraints' => [new NotBlank(["message" => 'Veuillez entrer un mot de passe']),],
+                'constraints' => [
+                    new NotBlank([
+                        "message" => 'Veuillez entrer un mot de passe'
+                    ]),
+                    new Length([
+                        'min' => 6,
+                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'max' => 4096,
+                    ])
+                    ],
                 'type' => PasswordType::class,
-                'invalid_message' => 'Le mot de passe ne correspond pas',
+                'invalid_message' => 'Les mot de passes ne correspondent pas',
                 'options' => ['attr' => ['placeholder' => 'votre mot de passe']],
                 'required' => true,
                 'first_options'  => ['label' => 'Password'],
