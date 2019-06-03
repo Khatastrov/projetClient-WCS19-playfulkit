@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TutorialController!{% endblock %}
+{% block title %}Liste des Tuto{% endblock %}
 
 {% block body %}
 
     <section class="tutorial">
 
-        {% for tuto in tutorial %}
+        {% for tutorial in tutorials %}
             <article>
-                <h2>{{ tuto.title }}</h2>
-                <div class="metadata">Ecrit le {{ tuto.dateCreation | date('d/m/Y') }} à {{ tuto.dateCreation | date('H:i') }} par <strong>{{ tuto.author }}</strong></div>
+                <h2>{{ tutorial.title }}</h2>
+                <div class="metadata">Ecrit le {{ tutorial.dateCreation | date('d/m/Y') }} à {{ tutorial.dateCreation | date('H:i') }} </div>
                 <div class="content">
-                    {{ tuto.content | raw }}
-                    <a href="{{ path('tutorial_show', {'id': tuto.id}) }}" class="btn btn-primary">Lire la suite</a>
+                    {{ tutorial.content | raw }}
+                    <a href="{{ path('tutorial_show', {'id': tutorial.id}) }}" class="btn btn-primary">Lire la suite</a>
                 </div>
             </article>
         {% endfor %}

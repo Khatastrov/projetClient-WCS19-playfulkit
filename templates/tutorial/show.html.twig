@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ tuto.title }}{% endblock %}
+
 {% block body %}
     <article>
         <h2>{{ tuto.title }}</h2>
-        <div class="metadata">Ecrit le {{ tuto.dateCreation | date('d/m/Y') }} à {{ tuto.dateCreation | date('H:i') }} par <strong>{{ tuto.author }}</strong></div>
+        <div class="metadata">Ecrit le {{ tuto.dateCreation | date('d/m/Y') }} à {{ tuto.dateCreation | date('H:i') }} </div>
         <div class="content">
             {{ tuto.content | raw }}
         </div>

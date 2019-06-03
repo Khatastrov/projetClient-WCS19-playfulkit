@@ -22,7 +22,7 @@ class TutorialController extends AbstractController
         $tuto = $repo->findAll();
 
         return $this->render('tutorial/index.html.twig', [
-            'tutorial' => $tuto
+            'tutorials' => $tuto
         ]);
     }
 
