@@ -14,7 +14,10 @@ class UserType extends AbstractType
     {
         $builder
             ->add('nickname')
-            ->add('email');
+            ->add('email')
+            ->add('lastname', null, ['attr' => ['placeholder' => 'Dupont',]])
+            ->add('firstname', null, ['attr' => ['placeholder' => 'Jean',]])
+            ->add('address', null, ['attr' => ['placeholder' => '1 rue du moulin, 59000 Lille',]]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

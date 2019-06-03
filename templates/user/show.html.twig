@@ -3,7 +3,6 @@
 {% block title %}Ton profil{% endblock %}
 
 {% block body %}
-{{ dump (user) }}
 <div class="example-wrapper">
     <h1>Salut {{ user.nickname }} ! ✅</h1>
 
@@ -12,6 +11,18 @@
     <ul>
         <li><strong>Ton pseudo :</strong> {{ user.nickname }}</li>
         <li><strong>Ton adresse mail :</strong> {{ user.email }}</li>
+        <li><strong>Tes nom et prénom :</strong>
+            {% if user.lastname is not null and user.firstname is not null %}
+                {{ user.lastname }} {{ user.firstname }}</li>
+            {% else %}
+                Tu n'as pas renseigné ces informations. (Tu peux le faire en modifiant ton profil !)
+            {% endif %}
+        <li><strong>Ton adresse :</strong>
+            {% if user.address is not null %}
+                {{ user.address }}</li>
+            {% else %}
+            Tu n'as pas renseigné ton adresse. (Tu peux le faire en modifiant ton profil !)
+            {% endif %}
         <li><strong>Ta date de naissance :</strong> {{ user.birthdate|date("d/m/Y") }}</li>
         <li><strong>La liste des tutoriels que tu as publié :</strong>
             <ul>
