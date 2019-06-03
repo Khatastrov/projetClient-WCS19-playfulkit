@@ -29,7 +29,7 @@
                 {% for tutorial in user.tutorials %}
                     <li>{{ tutorial.title }}</li>
                 {% else %}
-                    <li>Tu n'as publié aucun tutotiel pour l'instant ! (tu peux le faire en cliquant <a href="{{ path('tutorial_create') }}">sur ce lien</a> !</li>
+                    <li>Tu n'as publié aucun tutoriel pour l'instant ! (tu peux le faire en cliquant <a href="{{ path('tutorial_create') }}">sur ce lien</a> !</li>
                 {% endfor %}
             </ul>
         </li>

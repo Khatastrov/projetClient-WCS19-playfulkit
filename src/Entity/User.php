@@ -44,6 +44,20 @@ class User
     private $created_at;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $firstname;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $lastname;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $address;
+
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Tutorial", mappedBy="author")
      */
     private $tutorials;
@@ -147,6 +161,39 @@ class User
             }
         }
 
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(?string $firstname): self
+    {
+        $this->firstname = $firstname;
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(?string $lastname): self
+    {
+        $this->lastname = $lastname;
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?string $address): self
+    {
+        $this->address = $address;
         return $this;
     }
 }
