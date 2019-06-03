@@ -1,9 +1,19 @@
 @import "vars";
+@import "~bootstrap/scss/bootstrap";
 
-body {
-    background-color: $secondary-color;
+.title-police {
+  font-family: 'Nunito', sans-serif;
 }
 
-a {
-    color: $warm-color;
+.content-police {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.bg-color-teal {
+  background-color: $teal-color;
+}
+
+.link-deco-none {
+  text-decoration: none;
+  color: white;
 }
