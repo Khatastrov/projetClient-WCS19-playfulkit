@@ -26,26 +26,26 @@ class UserSignUpType extends AbstractType
         $builder
             ->add('nickname', TextType::class, [
                 'attr' => ['placeholder' => 'jean59'],
-                'constraints' => [new NotBlank(["message" => "Veuillez rentrer un pseudo "]),]
+                'constraints' => [new NotBlank(["message" => "Tu dois choisir un pseudo"]),]
             ])
             ->add('email', EmailType::class, [
                 'attr' => ['placeholder' => 'exemple@mail.fr'],
-                'constraints' => [new NotBlank(["message" => "Veuillez indiquer votre adresse mail"]),]
+                'constraints' => [new NotBlank(["message" => "u n'as pas renseigné ton adresse mail "]),]
             ])
             ->add('password', RepeatedType::class, [
                 'constraints' => [
                     new NotBlank([
-                        "message" => 'Veuillez entrer un mot de passe'
+                        "message" => 'Tu dois entrer un mot de passe'
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'ton mot de passe doit contenir plus de {{ limit }} caractères',
                         'max' => 4096,
                     ])
                     ],
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mot de passes ne correspondent pas',
-                'options' => ['attr' => ['placeholder' => 'votre mot de passe']],
+                'options' => ['attr' => ['placeholder' => 'Ton mot de passe']],
                 'required' => true,
                 'first_options'  => ['label' => 'Password'],
                 'second_options' => ['label' => 'Repeat Password'],
