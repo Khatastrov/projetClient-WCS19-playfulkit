@@ -31,11 +31,12 @@ class UserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($userSignUp);
             $entityManager->flush();
-
-            return $this->redirectToRoute('user_show');
+            $id = $userSignUp->getId();
+            return $this->redirectToRoute('user_show', ['id' => $id,
+        ]);
         }
 
-        return $this->render('user/formSignUp.html.twig', [
+        return $this->render('user/new.html.twig', [
             'user' => $userSignUp,
             'form' => $form->createView()
         ]);

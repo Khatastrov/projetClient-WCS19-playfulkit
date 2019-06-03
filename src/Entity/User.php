@@ -51,6 +51,7 @@ class User
     public function __construct()
     {
         $this->tutorials = new ArrayCollection();
+        $this->created_at = new \DateTime();
     }
 
     public function getId(): ?int
