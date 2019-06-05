@@ -30,7 +30,7 @@ class Tutorial
     private $Title;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $content;
 
@@ -55,26 +55,14 @@ class Tutorial
     private $steps;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Software", inversedBy="tutorials")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tool", inversedBy="tutorials")
      */
-    private $softwares;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Handtool", inversedBy="tutorials")
-     */
-    private $handtools;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Hardware", inversedBy="tutorials")
-     */
-    private $hardwares;
+    private $tools;
 
     public function __construct()
     {
         $this->steps = new ArrayCollection();
-        $this->softwares = new ArrayCollection();
-        $this->handtools = new ArrayCollection();
-        $this->hardwares = new ArrayCollection();
+        $this->tools = new ArrayCollection();
     }
     
     public function getId(): ?int
@@ -186,78 +174,26 @@ class Tutorial
     }
 
     /**
-     * @return Collection|Software[]
+     * @return Collection|Tool[]
      */
-    public function getSoftwares(): Collection
+    public function getTools(): Collection
     {
-        return $this->softwares;
+        return $this->tools;
     }
 
-    public function addSoftware(Software $software): self
+    public function addTool(Tool $tool): self
     {
-        if (!$this->softwares->contains($software)) {
-            $this->softwares[] = $software;
+        if (!$this->tools->contains($tool)) {
+            $this->tools[] = $tool;
         }
 
         return $this;
     }
 
-    public function removeSoftware(Software $software): self
+    public function removeTool(Tool $tool): self
     {
-        if ($this->softwares->contains($software)) {
-            $this->softwares->removeElement($software);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Handtool[]
-     */
-    public function getHandtools(): Collection
-    {
-        return $this->handtools;
-    }
-
-    public function addHandtool(Handtool $handtool): self
-    {
-        if (!$this->handtools->contains($handtool)) {
-            $this->handtools[] = $handtool;
-        }
-
-        return $this;
-    }
-
-    public function removeHandtool(Handtool $handtool): self
-    {
-        if ($this->handtools->contains($handtool)) {
-            $this->handtools->removeElement($handtool);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Hardware[]
-     */
-    public function getHardwares(): Collection
-    {
-        return $this->hardwares;
-    }
-
-    public function addHardware(Hardware $hardware): self
-    {
-        if (!$this->hardwares->contains($hardware)) {
-            $this->hardwares[] = $hardware;
-        }
-
-        return $this;
-    }
-
-    public function removeHardware(Hardware $hardware): self
-    {
-        if ($this->hardwares->contains($hardware)) {
-            $this->hardwares->removeElement($hardware);
+        if ($this->tools->contains($tool)) {
+            $this->tools->removeElement($tool);
         }
 
         return $this;

@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\HardwareRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ToolRepository")
  */
-class Hardware
+class Tool
 {
     /**
      * @ORM\Id()
@@ -29,7 +29,12 @@ class Hardware
     private $icon;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tutorial", mappedBy="hardwares")
+     * @ORM\Column(type="string", length=255)
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tutorial", mappedBy="tools")
      */
     private $tutorials;
 
@@ -67,6 +72,18 @@ class Hardware
         return $this;
     }
 
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(string $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Tutorial[]
      */
@@ -79,7 +96,7 @@ class Hardware
     {
         if (!$this->tutorials->contains($tutorial)) {
             $this->tutorials[] = $tutorial;
-            $tutorial->addHardware($this);
+            $tutorial->addTool($this);
         }
 
         return $this;
@@ -89,7 +106,7 @@ class Hardware
     {
         if ($this->tutorials->contains($tutorial)) {
             $this->tutorials->removeElement($tutorial);
-            $tutorial->removeHardware($this);
+            $tutorial->removeTool($this);
         }
 
         return $this;
