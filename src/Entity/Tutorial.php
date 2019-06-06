@@ -55,7 +55,7 @@ class Tutorial
     private $steps;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tool", inversedBy="tutorials")
+     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tutorials")
      */
     private $tools;
 
