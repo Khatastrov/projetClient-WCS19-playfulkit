@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,10 +27,10 @@ class Tutorial
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Title;
+    private $title;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $content;
 
@@ -36,6 +38,32 @@ class Tutorial
      * @ORM\Column(type="datetimetz")
      */
     private $date_creation;
+
+    /**
+     * @ORM\Column(type="string", length=500, nullable=true)
+     */
+    private $illustration;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isPublished;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\TutorialStep", mappedBy="tutorial", orphanRemoval=true)
+     */
+    private $steps;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tool", inversedBy="tutorials")
+     */
+    private $tools;
+
+    public function __construct()
+    {
+        $this->steps = new ArrayCollection();
+        $this->tools = new ArrayCollection();
+    }
     
     public function getId(): ?int
     {
@@ -56,12 +84,12 @@ class Tutorial
 
     public function getTitle(): ?string
     {
-        return $this->Title;
+        return $this->title;
     }
 
-    public function setTitle(string $Title): self
+    public function setTitle(string $title): self
     {
-        $this->Title = $Title;
+        $this->title = $title;
 
         return $this;
     }
@@ -86,6 +114,87 @@ class Tutorial
     public function setDateCreation(\DateTimeInterface $date_creation): self
     {
         $this->date_creation = $date_creation;
+
+        return $this;
+    }
+
+    public function getIllustration(): ?string
+    {
+        return $this->illustration;
+    }
+
+    public function setIllustration(?string $illustration): self
+    {
+        $this->illustration = $illustration;
+
+        return $this;
+    }
+
+    public function getIsPublished(): ?bool
+    {
+        return $this->isPublished;
+    }
+
+    public function setIsPublished(bool $isPublished): self
+    {
+        $this->isPublished = $isPublished;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TutorialStep[]
+     */
+    public function getSteps(): Collection
+    {
+        return $this->steps;
+    }
+
+    public function addStep(TutorialStep $step): self
+    {
+        if (!$this->steps->contains($step)) {
+            $this->steps[] = $step;
+            $step->setTutorial($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStep(TutorialStep $step): self
+    {
+        if ($this->steps->contains($step)) {
+            $this->steps->removeElement($step);
+            // set the owning side to null (unless already changed)
+            if ($step->getTutorial() === $this) {
+                $step->setTutorial(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Tool[]
+     */
+    public function getTools(): Collection
+    {
+        return $this->tools;
+    }
+
+    public function addTool(Tool $tool): self
+    {
+        if (!$this->tools->contains($tool)) {
+            $this->tools[] = $tool;
+        }
+
+        return $this;
+    }
+
+    public function removeTool(Tool $tool): self
+    {
+        if ($this->tools->contains($tool)) {
+            $this->tools->removeElement($tool);
+        }
 
         return $this;
     }
