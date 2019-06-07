@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Tutorial;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class TutorialType extends AbstractType
@@ -14,6 +15,7 @@ class TutorialType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
+            ->add('illustration', FileType::class, ['required'=> false])
         ;
     }
 

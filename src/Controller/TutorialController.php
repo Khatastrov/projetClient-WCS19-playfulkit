@@ -7,6 +7,7 @@ use App\Form\TutorialType;
 use App\Repository\TutorialRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -44,6 +45,8 @@ class TutorialController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid())
         {
+
+
             if(!$tuto->getId())
             {
                 $tuto->setDateCreation(new \DateTime());
