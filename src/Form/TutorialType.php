@@ -14,6 +14,7 @@ class TutorialType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
+            ->add('illustration')
         ;
     }
 
