@@ -8,13 +8,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TutorialType extends AbstractType
+class TutorialImageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('content')
+
+            ->add('imageFile', FileType::class, ['required'=> false])
         ;
     }
 
