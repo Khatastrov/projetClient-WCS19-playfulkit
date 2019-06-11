@@ -47,7 +47,7 @@ class Tutorial
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isPublished;
+    private $isPublished=0;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\TutorialStep", mappedBy="tutorial", orphanRemoval=true)
