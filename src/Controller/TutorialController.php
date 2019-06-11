@@ -79,5 +79,4 @@ class TutorialController extends AbstractController
             'tuto' => $tuto
         ]);
     }
-
 }
