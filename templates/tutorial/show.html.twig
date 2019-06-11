@@ -6,7 +6,7 @@
     <article>
         <h2>{{ tuto.title }}</h2>
         {% if tuto.illustration %}
-            <img src="{{ tuto.illustration }}" >
+            <img src="/images/tutorial/{{ tuto.illustration }}" >
         {% endif %}
         <div class="metadata">Ecrit le {{ tuto.dateCreation | date('d/m/Y') }} à {{ tuto.dateCreation | date('H:i') }} </div>
         <div class="content">
