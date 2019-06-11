@@ -15,7 +15,7 @@ class TutorialType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
-            ->add('illustration', FileType::class, ['required'=> false])
+            ->add('imageFile', FileType::class, ['required'=> false])
         ;
     }
 
