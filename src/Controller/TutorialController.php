@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Tutorial;
 use App\Form\TutorialType;
 use App\Repository\TutorialRepository;
-use App\Service\FileUploader;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,8 +15,10 @@ class TutorialController extends AbstractController
 {
     /**
      * @Route("/tutorial", name="tutorial")
+     * @param TutorialRepository $repo
+     * @return Response
      */
-    public function index(TutorialRepository $repo)
+    public function index(TutorialRepository $repo) : Response
     {
         $tuto = $repo->findAll();
 
@@ -33,12 +34,10 @@ class TutorialController extends AbstractController
      * @param Tutorial|null $tuto
      * @param Request $request
      * @param ObjectManager $manager
-     * @param FileUploader $fileUploader
      * @return Response
      * @throws \Exception
      */
-    public function form(Tutorial $tuto = null, Request $request, ObjectManager $manager, FileUploader $fileUploader)
-    : Response
+    public function form(Tutorial $tuto = null, Request $request, ObjectManager $manager) : Response
     {
         if (!$tuto) {
             $tuto = new Tutorial();
@@ -53,11 +52,6 @@ class TutorialController extends AbstractController
                 $tuto->setDateCreation(new \DateTime());
             }
 
-            $file = new FileUploader($tuto->getIllustration());
-            $fileName= $fileUploader->upload($file);
-
-
-            $tuto->setIllustration($fileName);
 
             $manager->persist($tuto);
             $manager->flush();
@@ -76,8 +70,10 @@ class TutorialController extends AbstractController
 
     /**
      * @Route("/tutorial/{id}", name="tutorial_show")
+     * @param Tutorial $tuto
+     * @return Response
      */
-    public function show(Tutorial $tuto)
+    public function show(Tutorial $tuto) : Response
     {
         return $this->render('tutorial/show.html.twig', [
             'tuto' => $tuto
