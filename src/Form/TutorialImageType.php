@@ -13,7 +13,6 @@ class TutorialImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
             ->add('imageFile', FileType::class, ['required'=> false])
         ;
     }
@@ -23,5 +22,10 @@ class TutorialImageType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Tutorial::class,
         ]);
+    }
+
+    public function getParent()
+    {
+        return TutorialType::class;
     }
 }
