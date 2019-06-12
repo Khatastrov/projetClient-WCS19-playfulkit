@@ -12,15 +12,12 @@
 
     {{ form_row(formTutorial.title, {'attr': {'placeholder': "Titre du Tuto"}}) }}
     {{ form_row(formTutorial.content, {'attr': {'placeholder': "Contenu du Tuto"}}) }}
+    {{ form_row(formTutorial.is_published) }}
+
 
     <button type="submit" class="btn btn-success">
-        {% if editMode %}
-            Enregistrer les modifications
-        {% else %}
+
             Ajouter un Tuto
-        {% endif %}
+
     </button>
-
-    {{ form_end(formTutorial) }}
-
 {% endblock %}
