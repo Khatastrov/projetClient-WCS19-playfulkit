@@ -10,7 +10,6 @@ require('../scss/app.scss');
 require('bootstrap');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-require('jquery-ui');
 const $ = require('jquery');
 
 console.log('Ok App !');
