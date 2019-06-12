@@ -44,7 +44,7 @@ class TutorialController extends AbstractController
             $tuto = new Tutorial();
         }
 
-        $form = $this->createForm(TutorialImageType::gclass, $tuto);
+        $form = $this->createForm(TutorialImageType::class, $tuto);
 
         $form->handleRequest($request);
 
