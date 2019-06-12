@@ -9,7 +9,7 @@
         {% endblock %}
     </head>
     <body>
-        <header class="container-fluid row mx-auto title-police">
+        <header id="baseHeader" class="title-police">
             <div class="d-inline-flex w-100 align-items-center bg-dark mb-0">
                 <a href="{{ path('app_index') }}"><img class="d-none d-md-block img-fluid" src="https://via.placeholder.com/150x50" alt="playful_kit_logo"></a>
 
@@ -36,7 +36,7 @@
             </nav>
         </header>
         {% block body %}{% endblock %}
-        <footer class="container-fluid row mx-auto title-police">
+        <footer id="baseFooter" class="title-police">
             <div class="d-inline-flex bg-dark w-100 text-white align-items-center">
                 <img class="d-none d-md-block" src="https://via.placeholder.com/150" alt="playful_kit_logo">
                 <ul class="list-unstyled col-3 text-center">
