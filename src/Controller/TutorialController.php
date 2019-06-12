@@ -3,19 +3,20 @@
 namespace App\Controller;
 
 use App\Entity\Tutorial;
-use App\Form\TutorialType;
+use App\Form\TutorialVideoType;
 use App\Repository\TutorialRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-
 
 class TutorialController extends AbstractController
 {
     /**
      * @Route("/tutorial", name="tutorial")
+     * @param TutorialRepository $repo
+     * @return Response
      */
     public function index(TutorialRepository $repo)
     {
@@ -30,22 +31,23 @@ class TutorialController extends AbstractController
     /**
      * @Route("/tutorial/new", name="tutorial_create")
      * @Route("/tutorial/{id}/edit", name="tutorial_edit")
+     * @param Tutorial|null $tuto
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @return Response
+     * @throws \Exception
      */
-    public function form(Tutorial $tuto = null ,Request $request, ObjectManager $manager)
+    public function form(Tutorial $tuto = null, Request $request, ObjectManager $manager) : Response
     {
-        if(!$tuto)
-        {
+        if (!$tuto) {
             $tuto = new Tutorial();
         }
 
-        $form = $this->createForm(TutorialType::class, $tuto);
-
+        $form = $this->createForm(TutorialVideoType::class, $tuto);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
-        {
-            if(!$tuto->getId())
-            {
+        if ($form->isSubmitted() && $form->isValid()) {
+            if (!$tuto->getId()) {
                 $tuto->setDateCreation(new \DateTime());
             }
 
@@ -66,12 +68,13 @@ class TutorialController extends AbstractController
 
     /**
      * @Route("/tutorial/{id}", name="tutorial_show")
+     * @param Tutorial $tuto
+     * @return Response
      */
-    public function show(Tutorial $tuto)
+    public function show(Tutorial $tuto) : Response
     {
         return $this->render('tutorial/show.html.twig', [
             'tuto' => $tuto
         ]);
     }
-
 }
