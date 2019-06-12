@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\Choice;
 
-
 class TutorialController extends AbstractController
 {
     /**
@@ -34,8 +33,7 @@ class TutorialController extends AbstractController
      */
     public function form(Tutorial $tuto = null, Request $request)
     {
-        if (!$tuto)
-        {
+        if (!$tuto) {
             $tuto = new Tutorial();
         }
 
@@ -44,10 +42,7 @@ class TutorialController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
-
-
+        if ($form->isSubmitted() && $form->isValid()) {
                 $tuto->setDateCreation(new \DateTime());
 
 
@@ -59,7 +54,6 @@ class TutorialController extends AbstractController
         return $this->render('tutorial/create.html.twig', [
             'formTutorial' => $form->createView()
         ]);
-
     }
 
 
@@ -72,5 +66,4 @@ class TutorialController extends AbstractController
             'tuto' => $tuto
         ]);
     }
-
 }
