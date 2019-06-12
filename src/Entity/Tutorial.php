@@ -5,9 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TutorialRepository")
+ * @Vich\Uploadable()
  */
 class Tutorial
 {
@@ -40,14 +44,20 @@ class Tutorial
     private $date_creation;
 
     /**
+     * @var File|null
+     * @Vich\UploadableField(mapping="tutorial_image", fileNameProperty="illustration")
+     */
+    private $imageFile;
+    /**
      * @ORM\Column(type="string", length=500, nullable=true)
      */
+
     private $illustration;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isPublished;
+    private $isPublished=0;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\TutorialStep", mappedBy="tutorial", orphanRemoval=true)
@@ -58,6 +68,7 @@ class Tutorial
      * @ORM\ManyToMany(targetEntity="App\Entity\Tool", inversedBy="tutorials")
      */
     private $tools;
+
 
     public function __construct()
     {
@@ -196,6 +207,30 @@ class Tutorial
             $this->tools->removeElement($tool);
         }
 
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile() : ?File
+    {
+        return $this->imageFile;
+    }
+
+
+    /**
+     * @param File|null $imageFile
+     * @return $this
+     * @throws \Exception
+     */
+    public function setImageFile(?File $imageFile = null)
+    {
+        $this->imageFile = $imageFile;
+
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->date_creation = new \DateTime('now');
+        }
         return $this;
     }
 }
