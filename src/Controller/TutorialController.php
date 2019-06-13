@@ -50,6 +50,8 @@ class TutorialController extends AbstractController
             if (!$tuto->getId()) {
                 $tuto->setDateCreation(new \DateTime());
             }
+            parse_str(parse_url($tuto->getIllustration(), PHP_URL_QUERY), $link);
+            $tuto->setIllustration($link['v']);
 
             $manager->persist($tuto);
             $manager->flush();
