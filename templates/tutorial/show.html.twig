@@ -3,12 +3,26 @@
 {% block title %}{{ tuto.title }}{% endblock %}
 
 {% block body %}
+    {{ dump (tuto) }}
     <article>
         <h2>{{ tuto.title }}</h2>
         <div class="metadata">Ecrit le {{ tuto.dateCreation | date('d/m/Y') }} à {{ tuto.dateCreation | date('H:i') }} </div>
         <div class="content">
             {{ tuto.content | raw }}
         </div>
+        {% if tuto.steps is not empty %}
+            <ol>
+            {% for step in tuto.steps %}
+                <li>
+                <p>{{ step.title }}<br>
+                {{ step.content }}</p>
+                {% if step.image is not null %}
+                    {{ step.image }}
+                {% endif %}
+                </li>
+            {% endfor %}
+            </ol>
+        {% endif %}
     </article>
 {% endblock %}
 

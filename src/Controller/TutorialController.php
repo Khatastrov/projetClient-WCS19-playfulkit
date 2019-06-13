@@ -3,14 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Tutorial;
+use App\Entity\TutorialStep;
 use App\Form\TutorialType;
 use App\Repository\TutorialRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-
-
 
 class TutorialController extends AbstractController
 {
@@ -27,14 +26,14 @@ class TutorialController extends AbstractController
     }
 
 
+
     /**
      * @Route("/tutorial/new", name="tutorial_create")
      * @Route("/tutorial/{id}/edit", name="tutorial_edit")
      */
-    public function form(Tutorial $tuto = null ,Request $request, ObjectManager $manager)
+    public function form(Tutorial $tuto = null, Request $request, ObjectManager $manager)
     {
-        if(!$tuto)
-        {
+        if (!$tuto) {
             $tuto = new Tutorial();
         }
 
@@ -42,15 +41,14 @@ class TutorialController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
-        {
-            if(!$tuto->getId())
-            {
+        if ($form->isSubmitted() && $form->isValid()) {
+            if (!$tuto->getId()) {
                 $tuto->setDateCreation(new \DateTime());
             }
 
             $manager->persist($tuto);
             $manager->flush();
+
 
             return $this->redirectToRoute('tutorial_show', [
                 'id' => $tuto->getId()
@@ -73,5 +71,4 @@ class TutorialController extends AbstractController
             'tuto' => $tuto
         ]);
     }
-
 }
