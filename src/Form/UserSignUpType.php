@@ -24,7 +24,7 @@ class UserSignUpType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nickname', TextType::class, [
+            ->add('username', TextType::class, [
                 'attr' => ['placeholder' => 'jean59'],
                 'constraints' => [new NotBlank(["message" => "Tu dois choisir un pseudo"]),]
             ])
