@@ -5,7 +5,7 @@
 {% block body %}
     <article>
         <h2>{{ tuto.title }}</h2>
-        <iframe width="560" height="315" src="{{ tuto.illustration | replace({ 'watch?v=' : 'embed/' }) }}"></iframe>
+        <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tuto.illustration }}"></iframe>
         <div class="metadata">Ecrit le {{ tuto.dateCreation | date('d/m/Y') }} à {{ tuto.dateCreation | date('H:i') }} </div>
         <div class="content">
             {{ tuto.content | raw }}
