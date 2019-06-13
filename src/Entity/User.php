@@ -5,11 +5,21 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(
+ *     fields={"username"},
+ *     message="Le pseudo que tu as indiqué est déjà utilisé !"
+ * )
+ * * @UniqueEntity(
+ *     fields={"email"},
+ *     message="L'email que tu as indiqué est déjà utilisé !"
+ * )
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -21,7 +31,7 @@ class User
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nickname;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -73,14 +83,14 @@ class User
         return $this->id;
     }
 
-    public function getNickname(): ?string
+    public function getUsername(): ?string
     {
-        return $this->nickname;
+        return $this->username;
     }
 
-    public function setNickname(string $nickname): self
+    public function setUsername(string $username): self
     {
-        $this->nickname = $nickname;
+        $this->username = $username;
 
         return $this;
     }
@@ -195,5 +205,13 @@ class User
     {
         $this->address = $address;
         return $this;
+    }
+
+    public function eraseCredentials(){}
+    public function getSalt(){}
+
+    public function getRoles()
+    {
+        return['ROLE_USER'];
     }
 }

@@ -6,7 +6,9 @@
 
         <h1>Modifie ton profil</h1>
 
-        {{ include('user/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+        <div class="container">
+                {{ include('user/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+        </div>
 
         <a href="{{ path('user_show', {'id': user.id}) }}">Retour à ton profil</a>
 
