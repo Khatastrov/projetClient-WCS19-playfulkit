@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Tutorial;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,9 @@ class TutorialType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
-        ;
+            ->add('illustration', TutorialVideoType::class, [
+                'label' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

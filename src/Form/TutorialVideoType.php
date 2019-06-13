@@ -21,9 +21,4 @@ class TutorialVideoType extends AbstractType
             'data_class' => Tutorial::class,
         ]);
     }
-
-    public function getParent()
-    {
-        return TutorialType::class;
-    }
 }

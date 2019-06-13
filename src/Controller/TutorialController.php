@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Tutorial;
+use App\Form\TutorialType;
 use App\Form\TutorialVideoType;
 use App\Repository\TutorialRepository;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -43,7 +44,7 @@ class TutorialController extends AbstractController
             $tuto = new Tutorial();
         }
 
-        $form = $this->createForm(TutorialVideoType::class, $tuto);
+        $form = $this->createForm(TutorialType::class, $tuto);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
