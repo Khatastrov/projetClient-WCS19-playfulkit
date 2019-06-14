@@ -21,7 +21,7 @@ class User
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nickname;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -73,14 +73,14 @@ class User
         return $this->id;
     }
 
-    public function getNickname(): ?string
+    public function getUsername(): ?string
     {
-        return $this->nickname;
+        return $this->username;
     }
 
-    public function setNickname(string $nickname): self
+    public function setUsername(string $username): self
     {
-        $this->nickname = $nickname;
+        $this->username = $username;
 
         return $this;
     }
