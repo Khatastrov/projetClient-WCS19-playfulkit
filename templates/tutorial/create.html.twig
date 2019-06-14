@@ -8,8 +8,8 @@
     <h1>Création d'un Tuto !</h1>
 
     {{ form_start(formTutorial) }}
-    {{ form_row(formTutorial.title) }}
-    {{ form_row(formTutorial.content) }}
+    {{ form_row(formTutorial.title, {'attr': {'placeholder': "Titre du Tutoriel"}}) }}
+    {{ form_row(formTutorial.content, {'attr': {'placeholder': "Présentation"}}) }}
 
     <ol class="steps" data-prototype="{{ form_widget(formTutorial.steps.vars.prototype)|e('html_attr') }}">
         {% for step in formTutorial.steps %}
@@ -22,12 +22,13 @@
             </li>
         {% endfor %}
     </ol>
+    {{ form_row(formTutorial.is_published) }}
 
     <button type="submit" class="btn btn-success">
         {% if editMode %}
             Enregistrer les modifications
         {% else %}
-            Ajouter un Tuto
+            Ajouter un nouveau turotiel
         {% endif %}
     </button>
 
