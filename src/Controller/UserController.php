@@ -28,7 +28,6 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $hash = $encoder->encodePassword($userSignUp, $userSignUp->getPassword());
             $userSignUp->setPassword($hash);
 
@@ -48,14 +47,17 @@ class UserController extends AbstractController
       /**
        * @Route("/connexion", name="user_login")
        */
-      public function login(){
-          return $this->render('user/login.html.twig');
-      }
+    public function login()
+    {
+        return $this->render('user/login.html.twig');
+    }
 
       /**
        * @route("/deconnexion", name="user_logout")
        */
-        public function logout(){}
+    public function logout()
+    {
+    }
 
 
       /**
