@@ -8,6 +8,7 @@ use App\Form\TutorialVideoType;
 use App\Repository\TutorialRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -44,6 +45,7 @@ class TutorialController extends AbstractController
             $tuto = new Tutorial();
         }
 
+
         $form = $this->createForm(TutorialType::class, $tuto);
         $form->handleRequest($request);
 
@@ -54,17 +56,14 @@ class TutorialController extends AbstractController
             parse_str(parse_url($tuto->getIllustration(), PHP_URL_QUERY), $link);
             $tuto->setIllustration($link['v']);
 
+
+            $manager = $this->getDoctrine()->getManager();
             $manager->persist($tuto);
             $manager->flush();
-
-            return $this->redirectToRoute('tutorial_show', [
-                'id' => $tuto->getId()
-            ]);
         }
 
         return $this->render('tutorial/create.html.twig', [
-            'formTutorial' =>$form->createView(),
-            'editMode' => $tuto->getId() !== null,
+            'formTutorial' => $form->createView()
         ]);
     }
 
