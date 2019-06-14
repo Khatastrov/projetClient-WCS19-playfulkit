@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Tutorial;
-use App\Entity\TutorialStep;
 use App\Form\TutorialType;
 use App\Repository\TutorialRepository;
 use Doctrine\Common\Persistence\ObjectManager;
