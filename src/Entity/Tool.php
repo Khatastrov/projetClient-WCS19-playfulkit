@@ -34,7 +34,7 @@ class Tool
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tutorial", mappedBy="tools")
+     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tool")
      */
     private $tutorials;
 
