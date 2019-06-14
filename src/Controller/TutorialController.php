@@ -54,7 +54,8 @@ class TutorialController extends AbstractController
         }
 
         return $this->render('tutorial/create.html.twig', [
-            'formTutorial' => $form->createView()
+            'formTutorial' => $form->createView(),
+            'editMode' => $tuto->getId() !== null,
         ]);
     }
 
