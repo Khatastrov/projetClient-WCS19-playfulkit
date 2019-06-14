@@ -3,7 +3,6 @@
 {% block title %}{{ tuto.title }}{% endblock %}
 
 {% block body %}
-    {{ dump (tuto) }}
     <article>
         <h2>{{ tuto.title }}</h2>
         <div class="metadata">Ecrit le {{ tuto.dateCreation | date('d/m/Y') }} à {{ tuto.dateCreation | date('H:i') }} </div>
