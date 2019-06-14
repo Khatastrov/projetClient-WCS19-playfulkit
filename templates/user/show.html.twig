@@ -4,12 +4,12 @@
 
 {% block body %}
 <div class="example-wrapper">
-    <h1>Salut {{ user.nickname }} ! ✅</h1>
+    <h1>Salut {{ user.username }} ! ✅</h1>
 
     <p>Tu te trouves sur ta page profil.</p>
     <p>Tu peux voir tes informations ici :</p>
     <ul>
-        <li><strong>Ton pseudo :</strong> {{ user.nickname }}</li>
+        <li><strong>Ton pseudo :</strong> {{ user.username }}</li>
         <li><strong>Ton adresse mail :</strong> {{ user.email }}</li>
         <li><strong>Tes nom et prénom :</strong>
             {% if user.lastname is not null and user.firstname is not null %}
