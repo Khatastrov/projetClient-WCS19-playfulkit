@@ -55,7 +55,7 @@ class Tutorial
     private $steps;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tutorials")
+     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tutorial")
      */
     private $tools;
 

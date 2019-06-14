@@ -18,13 +18,13 @@ class TutorialTool
      */
     private $id;
     /**
-     * @ORM\ManyToOne(targetEntity="Tool", inversedBy="tutorialTools")
+     * @ORM\ManyToOne(targetEntity="Tool", inversedBy="tutorials")
      * @ORM\JoinColumn(nullable=false)
      */
     private $tool;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Tutorial", inversedBy="tutorialTools")
+     * @ORM\ManyToOne(targetEntity="Tutorial", inversedBy="tools")
      * @ORM\JoinColumn(nullable=false)
      */
     private $tutorial;
@@ -33,6 +33,11 @@ class TutorialTool
      * @ORM\Column(type="integer")
      */
     private $quantity;
+
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function getTool()
     {

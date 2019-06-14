@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Tutorial;
 use App\Form\TutorialType;
-use App\Form\TutorialVideoType;
 use App\Repository\TutorialRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -54,17 +53,13 @@ class TutorialController extends AbstractController
             parse_str(parse_url($tuto->getIllustration(), PHP_URL_QUERY), $link);
             $tuto->setIllustration($link['v']);
 
+            $manager = $this->getDoctrine()->getManager();
             $manager->persist($tuto);
             $manager->flush();
-
-            return $this->redirectToRoute('tutorial_show', [
-                'id' => $tuto->getId()
-            ]);
         }
 
         return $this->render('tutorial/create.html.twig', [
-            'formTutorial' =>$form->createView(),
-            'editMode' => $tuto->getId() !== null,
+            'formTutorial' => $form->createView()
         ]);
     }
 
