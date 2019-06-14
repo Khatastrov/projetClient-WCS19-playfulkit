@@ -1,23 +1,23 @@
-var $addTagLink = $('<a href="#" class="add_tag_link btn btn-primary">Ajouter une étape</a>');
-var $newLinkLi = $('<p></p>').append($addTagLink);
+var $addStepLink = $('<a href="#" class="add_step_link btn btn-primary">Ajouter une étape</a>');
+var $newLinkLi = $('<p></p>').append($addStepLink);
 
 jQuery(document).ready(function () {
     // Get the ul that holds the collection of tags
-    var $collectionHolder = $('ol.tags');
+    var $collectionHolder = $('ol.steps');
 
-    // add the "add a tag" anchor and li to the tags ul
+    // add the "add a step" anchor and <li> to the .steps <ul>
     $collectionHolder.append($newLinkLi);
 
-    // count the current form inputs we have (e.g. 2), use that as the new
-    // index when inserting a new item (e.g. 2)
+    // count the current form inputs, use that as the new
+    // index when inserting a new item
     $collectionHolder.data('index', $collectionHolder.find(':input').length);
 
-    $addTagLink.on('click', function (e) {
+    $addStepLink.on('click', function (e) {
         // prevent the link from creating a "#" on the URL
         e.preventDefault();
 
-        // add a new tag form (see code block below)
-        addTagForm($collectionHolder, $newLinkLi);
+        // add a new Step form (see code block below)
+        addStepForm($collectionHolder, $newLinkLi);
     });
 
 
@@ -31,7 +31,7 @@ $('a.remove-existing-step').click(function () {
     return false;
 });
 
-function addTagForm($collectionHolder, $newLinkLi) {
+function addStepForm($collectionHolder, $newLinkLi) {
     // Get the data-prototype explained earlier
     var prototype = $collectionHolder.data('prototype');
 
@@ -45,15 +45,15 @@ function addTagForm($collectionHolder, $newLinkLi) {
     // increase the index with one for the next item
     $collectionHolder.data('index', index + 1);
 
-    // Display the form in the page in an li, before the "Add a tag" link li
+    // Display the form in the page in an <li>, before the "Ajouter une étape" link <li>
     var $newFormLi = $('<li></li>').append(newForm);
 
-    // also add a remove button, just for this example
-    $newFormLi.append('<a href="#" class="remove-tag btn btn-danger">supprimer cette étape</a>');
+    // Add a remove link <li>
+    $newFormLi.append('<a href="#" class="remove-tag btn btn-danger">Supprimer cette étape</a>');
 
     $newLinkLi.before($newFormLi);
 
-    // handle the removal, just for this example
+    // handles the removal
     $('.remove-tag').click(function (e) {
         e.preventDefault();
 
