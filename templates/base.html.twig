@@ -24,7 +24,7 @@
             <h4><a class="active nav-link link-deco-none" href="{{ path('user_new') }}">Inscription</a></h4>
             <h4><a class="active nav-link link-deco-none" href="{{ path('user_login') }}">Connexion</a></h4>
         {% else %}
-            <h4><a class="active nav-link link-deco-none" href="{{ path('user_logout') }}">Deconnexion</a></h4>
+            <h4><a class="active nav-link link-deco-none" href="{{ path('user_logout') }}">Déconnexion</a></h4>
         {% endif %}</div>
     <nav class="navbar navbar-expand-md bg-color-teal navbar-dark w-100">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -42,6 +42,9 @@
         </div>
     </nav>
 </header>
+
+{{ dump (app.user) }}
+
 {% block body %}{% endblock %}
 <footer class="container-fluid row mx-auto title-police">
     <div class="d-inline-flex bg-dark w-100 text-white align-items-center">

@@ -9,7 +9,7 @@ security:
         app_user_provider:
             entity:
                 class: App\Entity\User
-                property: username
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -26,6 +26,12 @@ security:
             logout:
                 path: user_logout
                 target: app_index
+
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
+
+
             # activate different ways to authenticate
 
             # http_basic: true
@@ -34,8 +40,10 @@ security:
             # form_login: true
             # https://symfony.com/doc/current/security/form_login_setup.html
 
+
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        - { path: ^/connexion$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
