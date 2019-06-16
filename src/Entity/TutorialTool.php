@@ -34,6 +34,11 @@ class TutorialTool
      */
     private $quantity;
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     public function getTool()
     {
         return $this->tool;

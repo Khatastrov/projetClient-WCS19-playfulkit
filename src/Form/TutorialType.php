@@ -24,6 +24,9 @@ class TutorialType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true,
             ])
+            ->add('illustration', TutorialVideoType::class, [
+                'label' => false
+            ])
             ->add('is_published', ChoiceType::class, [
             'choices' => [
                 'Yes' => true,

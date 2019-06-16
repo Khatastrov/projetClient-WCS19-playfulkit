@@ -5,14 +5,18 @@ namespace App\Controller;
 use App\Entity\Tutorial;
 use App\Form\TutorialType;
 use App\Repository\TutorialRepository;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TutorialController extends AbstractController
 {
     /**
      * @Route("/tutorial", name="tutorial")
+     * @param TutorialRepository $repo
+     * @return Response
      */
     public function index(TutorialRepository $repo)
     {
@@ -27,8 +31,13 @@ class TutorialController extends AbstractController
     /**
      * @Route("/tutorial/new", name="tutorial_create")
      * @Route("/tutorial/{id}/edit", name="tutorial_edit")
+     * @param Tutorial|null $tuto
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @return Response
+     * @throws \Exception
      */
-    public function form(Tutorial $tuto = null, Request $request)
+    public function form(Tutorial $tuto = null, Request $request, ObjectManager $manager) : Response
     {
         if (!$tuto) {
             $tuto = new Tutorial();
@@ -41,6 +50,9 @@ class TutorialController extends AbstractController
             if (!$tuto->getId()) {
                 $tuto->setDateCreation(new \DateTime());
             }
+
+            parse_str(parse_url($tuto->getIllustration(), PHP_URL_QUERY), $link);
+            $tuto->setIllustration($link['v']);
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($tuto);
@@ -60,8 +72,10 @@ class TutorialController extends AbstractController
 
     /**
      * @Route("/tutorial/{id}", name="tutorial_show")
+     * @param Tutorial $tuto
+     * @return Response
      */
-    public function show(Tutorial $tuto)
+    public function show(Tutorial $tuto) : Response
     {
         return $this->render('tutorial/show.html.twig', [
             'tuto' => $tuto
