@@ -49,8 +49,13 @@ class TutorialController extends AbstractController
                 $tuto->setDateCreation(new \DateTime());
             }
 
-            parse_str(parse_url($tuto->getIllustration(), PHP_URL_QUERY), $link);
-            $tuto->setIllustration($link['v']);
+            if ($tuto->getIllustration()) {
+                $ext = explode(".", $tuto->getIllustration());
+                if (!$ext[1]) {
+                    parse_str(parse_url($tuto->getIllustration(), PHP_URL_QUERY), $link);
+                    $tuto->setIllustration($link['v']);
+                }
+            }
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($tuto);
