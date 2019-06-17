@@ -16,8 +16,7 @@ class TutorialType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('content', TextareaType::class)
-
-        ;
+            ->add('imageFile', TutorialImageType::class, ['label' => false]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

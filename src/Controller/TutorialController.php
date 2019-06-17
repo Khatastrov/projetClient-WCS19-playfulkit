@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Tutorial;
 use App\Form\TutorialType;
-use App\Form\TutorialImageType;
 use App\Repository\TutorialRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -44,15 +43,13 @@ class TutorialController extends AbstractController
             $tuto = new Tutorial();
         }
 
-        $form = $this->createForm(TutorialImageType::class, $tuto);
-
+        $form = $this->createForm(TutorialType::class, $tuto);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             if (!$tuto->getId()) {
                 $tuto->setDateCreation(new \DateTime());
             }
-
 
             $manager->persist($tuto);
             $manager->flush();
