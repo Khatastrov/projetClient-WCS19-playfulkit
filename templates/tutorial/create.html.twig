@@ -9,9 +9,9 @@
     <h1>Création d'un Tuto !</h1>
 
     {{ form_start(formTutorial) }}
-        {{ form_row(formTutorial.title, {'attr': {'placeholder': "Titre du Tuto"}}) }}
-        {{ form_row(formTutorial.content, {'attr': {'placeholder': "Contenu du Tuto"}}) }}
-        {{ form_row(formTutorial.illustration, {'attr': {'placeholder': "Illustration de ton Tuto"}}) }}
+        {{ form_row(formTutorial.title, {'attr': {'placeholder': "Titre du Tutoriel"}}) }}
+        {{ form_row(formTutorial.content, {'attr': {'placeholder': "Présentation"}}) }}
+        {{ form_row(formTutorial.illustration, {'attr': {'placeholder': "Ta vidéo"}}) }}
         {{ form_row(formTutorial.is_published) }}
 
         <button type="submit" class="btn btn-success">

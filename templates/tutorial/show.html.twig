@@ -10,9 +10,14 @@
 {% block body %}
     <div class="tutoPresentation">
         <h1>{{ tuto.title }}</h1>
-        {% if tuto.illustration %}
-            <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tuto.illustration }}"></iframe>
-        {%  endif %}
+        {% if tuto.illustration is not null %}
+            {% set ext = tuto.illustration|split('.') %}
+            {% if ext[1] is defined %}
+                <p>Il n'y a pas de vidéo.</p>
+            {% else %}
+                <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tuto.illustration }}"></iframe>
+            {% endif %}
+        {% endif %}
         <div class="metadata">Ecrit le {{ tuto.dateCreation | date('d/m/Y') }} à {{ tuto.dateCreation | date('H:i') }} </div>
         <article class="tutoCcontent">
             <p>
