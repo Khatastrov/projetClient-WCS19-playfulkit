@@ -22,6 +22,7 @@
         <article class="tutoCcontent">
             {% if tuto.illustration is not null %}
                 <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tuto.illustration }}"></iframe>
+                <img src="/images/tutorial/{{ tuto.illustration }}" >
             {% endif %}
 
             <p>

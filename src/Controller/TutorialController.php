@@ -18,7 +18,7 @@ class TutorialController extends AbstractController
      * @param TutorialRepository $repo
      * @return Response
      */
-    public function index(TutorialRepository $repo)
+    public function index(TutorialRepository $repo) : Response
     {
         $tuto = $repo->findAll();
 
