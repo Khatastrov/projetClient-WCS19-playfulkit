@@ -32,11 +32,10 @@ class TutorialController extends AbstractController
      * @Route("/tutorial/{id}/edit", name="tutorial_edit")
      * @param Tutorial|null $tuto
      * @param Request $request
-     * @param ObjectManager $manager
      * @return Response
      * @throws \Exception
      */
-    public function form(Tutorial $tuto = null, Request $request, ObjectManager $manager) : Response
+    public function form(Tutorial $tuto = null, Request $request) : Response
     {
         if (!$tuto) {
             $tuto = new Tutorial();

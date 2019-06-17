@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints\File;
 
 class TutorialType extends AbstractType
 {
@@ -57,9 +58,18 @@ class TutorialType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'class' => 'champImg',
-                    'placeholder' => 'Place ici ta photo !'
+                    'placeholder' => 'Place ici ta photo !',
+                ],
+                'constraints' => [
+                    new File([
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Enregistre une image au format jpeg ou png',
+                    ])
                 ]
-                ]);
+            ]);
     }
 
 
