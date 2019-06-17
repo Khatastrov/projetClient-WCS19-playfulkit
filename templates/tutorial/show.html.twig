@@ -5,7 +5,9 @@
 {% block body %}
     <article>
         <h2>{{ tuto.title }}</h2>
-        <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tuto.illustration }}"></iframe>
+        {% if tuto.illustration %}
+            <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tuto.illustration }}"></iframe>
+        {%  endif %}
         <div class="metadata">Ecrit le {{ tuto.dateCreation | date('d/m/Y') }} à {{ tuto.dateCreation | date('H:i') }} </div>
         <div class="content">
             {{ tuto.content | raw }}
