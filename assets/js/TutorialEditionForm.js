@@ -67,11 +67,12 @@ function addStepForm($collectionHolder, $newLinkLi) {
 $('input.form-check-input').click(function () {
 
     var $vid = $('.champVid'),
-        $img= $('.champImg');
+        $img= $('#invisible');
 
     if($(this).val() == 1) {
         console.log('tu as coché "vidéo" !');
         $img.css('display', 'none');
+        $img.val('');
         $vid.css('display', 'block');
     } else if($(this).val() == 2) {
         console.log('tu as coché "photo" !');
