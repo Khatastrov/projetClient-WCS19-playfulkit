@@ -5,12 +5,9 @@ namespace App\Controller;
 use App\Entity\Tutorial;
 use App\Form\TutorialType;
 use App\Repository\TutorialRepository;
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Constraints\Choice;
 
 class TutorialController extends AbstractController
 {
@@ -37,22 +34,26 @@ class TutorialController extends AbstractController
             $tuto = new Tutorial();
         }
 
-
         $form = $this->createForm(TutorialType::class, $tuto);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if (!$tuto->getId()) {
                 $tuto->setDateCreation(new \DateTime());
-
+            }
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($tuto);
             $manager->flush();
+
+            return $this->redirectToRoute('tutorial_show', [
+                'id' => $tuto->getId()
+            ]);
         }
 
         return $this->render('tutorial/create.html.twig', [
-            'formTutorial' => $form->createView()
+            'formTutorial' => $form->createView(),
+            'editMode' => $tuto->getId() !== null,
         ]);
     }
 

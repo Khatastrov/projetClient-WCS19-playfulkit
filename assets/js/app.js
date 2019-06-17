@@ -13,3 +13,4 @@ require('bootstrap');
 const $ = require('jquery');
 
 console.log('Ok App !');
+
