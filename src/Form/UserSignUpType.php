@@ -25,11 +25,9 @@ class UserSignUpType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, [
-                'attr' => ['placeholder' => 'jean59'],
                 'constraints' => [new NotBlank(["message" => "Tu dois choisir un pseudo"]),]
             ])
             ->add('email', EmailType::class, [
-                'attr' => ['placeholder' => 'exemple@mail.fr'],
                 'constraints' => [new NotBlank(["message" => "Tu n'as pas renseigné ton adresse mail "]),]
             ])
             ->add('password', RepeatedType::class, [
@@ -45,14 +43,10 @@ class UserSignUpType extends AbstractType
                     ],
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mot de passes ne correspondent pas',
-                'options' => ['attr' => ['placeholder' => 'Ton mot de passe']],
                 'required' => true,
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
             ])
             ->add('birth_date', BirthdayType::class, [
                 'placeholder' => ['year' => 'année', 'month' => 'mois','day' => 'jour',]
-
             ]);
     }
 

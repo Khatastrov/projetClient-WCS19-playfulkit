@@ -1,6 +1,6 @@
 security:
     encoders:
-        App\Entity\Users:
+        App\Entity\User:
             algorithm: bcrypt
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
@@ -8,8 +8,8 @@ security:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
-                class: App\Entity\Users
-                property: email
+                class: App\Entity\User
+                property: username
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -17,6 +17,15 @@ security:
         main:
             anonymous: true
 
+            provider: app_user_provider
+
+            form_login:
+                login_path: user_login
+                check_path: user_login
+
+            logout:
+                path: user_logout
+                target: app_index
             # activate different ways to authenticate
 
             # http_basic: true
