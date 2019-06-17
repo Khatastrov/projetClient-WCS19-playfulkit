@@ -1,11 +1,13 @@
 {{ form_start(form) }}
+
     {{ form_errors(form) }}
 
-    {{ form_row(form.nickname, {'label': 'Ton pseudo :'}) }}
-    {{ form_row(form.email, {'label': 'Ton email :'}) }}
-    {{ form_row(form.lastname, {'label': 'Ton nom de famille :'}) }}
-    {{ form_row(form.firstname, {'label': 'Ton prénom :'}) }}
-    {{ form_row(form.address, {'label': 'Ton adresse :'}) }}
+    {{ form_row(form.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
+    {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
+    {{ form_row(form.firstname, {'label': 'Prénom :', 'attr': {'placeholder':'Ton prénom'}}) }}
+    {{ form_row(form.lastname, {'label': 'Nom de famille :' , 'attr': {'placeholder':'Ton nom de famille'}}) }}
+    {{ form_row(form.address, {'label': 'Adresse :', 'attr': {'placeholder':'Où habites tu ?'}}) }}
 
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer mes changements') }}</button>
+
 {{ form_end(form) }}

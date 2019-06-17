@@ -57,15 +57,19 @@ class Tutorial
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isPublished=0;
+    private $isPublished = 0;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\TutorialStep", mappedBy="tutorial", orphanRemoval=true)
+     * @ORM\OneToMany(
+     *     targetEntity="App\Entity\TutorialStep",
+     *     mappedBy="tutorial",
+     *     cascade={"persist", "remove"},
+     *     orphanRemoval=true)
      */
     private $steps;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tool", inversedBy="tutorials")
+     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tutorial")
      */
     private $tools;
 
