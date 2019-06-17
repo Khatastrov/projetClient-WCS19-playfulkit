@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Tutorial;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -45,7 +46,7 @@ class TutorialType extends AbstractType
             ->add('video', null, [
                 'label' => 'Copie le lien vers ta vidéo Youtube :'
                 ])
-            ->add('imageFile', TutorialImageType::class, ['label' => false])
+            ->add('imageFile', FileType::class, ['required'=> false])
             ->add('illustration', null, [
                 'label' => 'Copie le lien vers ta photo :'
             ])
