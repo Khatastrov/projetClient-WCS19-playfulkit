@@ -51,7 +51,7 @@ class TutorialController extends AbstractController
 
             if ($tuto->getIllustration()) {
                 $ext = explode(".", $tuto->getIllustration());
-                if (!$ext[1]) {
+                if ($ext[1] != "jpg" or $ext[1] != "png") {
                     parse_str(parse_url($tuto->getIllustration(), PHP_URL_QUERY), $link);
                     $tuto->setIllustration($link['v']);
                 }
