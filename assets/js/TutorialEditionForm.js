@@ -2,10 +2,10 @@ var $addStepLink = $('<a href="#" class="add_step_link btn btn-primary">Ajouter 
 var $newLinkLi = $('<p></p>').append($addStepLink);
 
 jQuery(document).ready(function () {
-    // Get the ul that holds the collection of tags
+    // Get the <ol> that holds the collection of steps
     var $collectionHolder = $('ol.steps');
 
-    // add the "add a step" anchor and <li> to the .steps <ul>
+    // add the "add a step" anchor and <li> to the .steps <ol>
     $collectionHolder.append($newLinkLi);
 
     // count the current form inputs, use that as the new
@@ -62,3 +62,25 @@ function addStepForm($collectionHolder, $newLinkLi) {
         return false;
     });
 }
+
+// Traitements sur des boutons radio :
+$('input.form-check-input').click(function () {
+
+    var $vid = $('.champVid'),
+        $img= $('.champImg');
+
+    if($(this).val() == 1) {
+        console.log('tu as coché "vidéo" !');
+        $img.css('display', 'none');
+        $vid.css('display', 'block');
+    } else if($(this).val() == 2) {
+        console.log('tu as coché "photo" !');
+        $vid.css('display', 'none');
+        $vid.val('');
+        $img.css('display', 'block');
+    } else if ($(this).val() == 0) {
+        console.log('tu as coché "aucune illustration" !');
+        $vid.css('display', 'none');
+        $img.css('display', 'none');
+    }
+});

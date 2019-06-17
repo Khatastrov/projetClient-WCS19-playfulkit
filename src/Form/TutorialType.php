@@ -14,9 +14,14 @@ class TutorialType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('content')
+            ->add('title', null, [
+                'label' => 'Titre de ton tutoriel :'
+            ])
+            ->add('content', null, [
+                'label' => 'Ajoute une courte description :'
+            ])
             ->add('steps', CollectionType::class, [
+                'label' => false,
                 'entry_type' => TutorialStepType::class,
                 'required' => false,
                 'entry_options' => ['label' => false],
@@ -24,13 +29,24 @@ class TutorialType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true,
             ])
-            ->add('illustration')
-            ->add('is_published', ChoiceType::class, [
-            'choices' => [
-                'Yes' => true,
-                'No' => false,
-             ],
-                ]);
+            ->add('choix', ChoiceType::class, [
+                'label' => 'Choisis le type d\'illustration que tu veux ajouter :',
+                'mapped' => false,
+                'choices' => [
+                    'Aucune illustration' => null,
+                    'Une vidéo' => null,
+                    'Une photo' => null,
+                ],
+                'expanded' => true,
+                'multiple' => false,
+            ])
+            ->add('illustration', null, [
+                'label' => 'Copie le lien vers ta vidéo Youtube :'
+            ])
+            ->add('illustration', null, [
+                'label' => 'Copie le lien vers ta photo :'
+            ])
+            ;
     }
 
 
