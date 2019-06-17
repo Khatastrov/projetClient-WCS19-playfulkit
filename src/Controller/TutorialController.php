@@ -18,7 +18,7 @@ class TutorialController extends AbstractController
      * @param TutorialRepository $repo
      * @return Response
      */
-    public function index(TutorialRepository $repo)
+    public function index(TutorialRepository $repo) : Response
     {
         $tuto = $repo->findAll();
 
@@ -33,11 +33,10 @@ class TutorialController extends AbstractController
      * @Route("/tutorial/{id}/edit", name="tutorial_edit")
      * @param Tutorial|null $tuto
      * @param Request $request
-     * @param ObjectManager $manager
      * @return Response
      * @throws \Exception
      */
-    public function form(Tutorial $tuto = null, Request $request, ObjectManager $manager) : Response
+    public function form(Tutorial $tuto = null, Request $request) : Response
     {
         if (!$tuto) {
             $tuto = new Tutorial();
@@ -50,16 +49,22 @@ class TutorialController extends AbstractController
             if (!$tuto->getId()) {
                 $tuto->setDateCreation(new \DateTime());
             }
+
             parse_str(parse_url($tuto->getIllustration(), PHP_URL_QUERY), $link);
             $tuto->setIllustration($link['v']);
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($tuto);
             $manager->flush();
+
+            return $this->redirectToRoute('tutorial_show', [
+                'id' => $tuto->getId(),
+            ]);
         }
 
         return $this->render('tutorial/create.html.twig', [
-            'formTutorial' => $form->createView()
+            'formTutorial' => $form->createView(),
+            'editMode' => $tuto->getId() !== null,
         ]);
     }
 
@@ -72,7 +77,7 @@ class TutorialController extends AbstractController
     public function show(Tutorial $tuto) : Response
     {
         return $this->render('tutorial/show.html.twig', [
-            'tuto' => $tuto
+            'tuto' => $tuto,
         ]);
     }
 }
