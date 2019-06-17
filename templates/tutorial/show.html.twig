@@ -2,15 +2,70 @@
 
 {% block title %}{{ tuto.title }}{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('tutorial') }}
+{% endblock %}
+
 {% block body %}
-    <article>
-        <h2>{{ tuto.title }}</h2>
+    <div class="tutoPresentation">
+        <h1>{{ tuto.title }}</h1>
         {% if tuto.illustration %}
             <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tuto.illustration }}"></iframe>
         {%  endif %}
         <div class="metadata">Ecrit le {{ tuto.dateCreation | date('d/m/Y') }} à {{ tuto.dateCreation | date('H:i') }} </div>
-        <div class="content">
-            {{ tuto.content | raw }}
-        </div>
-    </article>
+        <article class="tutoCcontent">
+            <p>
+                {{ tuto.content | raw }}
+            </p>
+        </article>
+    </div>
+
+    <div class="customCollapse">
+        <h3>Step 1</h3>
+        <button type="button">+</button>
+        <article class="contentCollapse">
+            <div class="row">
+                <p class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-10">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate deserunt, ex fuga, hic iure molestias non odio quasi tempore totam vero voluptas. Amet doloremque eligendi eveniet fugit nisi porro suscipit!
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto, consequatur dolore ex hic in maiores nisi nobis possimus qui, quia, recusandae reiciendis repellat suscipit vitae! Ipsa nihil ratione sunt.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia obcaecati, repudiandae! Cumque dicta eius laudantium praesentium provident quos repudiandae, sequi tempora velit voluptatibus. Doloremque esse, modi molestiae quidem rerum vero.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores harum inventore magni, nesciunt odit possimus sit voluptates. Aliquid aut consectetur, et fugiat iste nemo nostrum, obcaecati quis recusandae repellendus tempora?
+                </p>
+                <img src="https://via.placeholder.com/150" class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
+            </div>
+        </article>
+    </div>
+
+    <div class="customCollapse">
+        <h3>Step 2</h3>
+        <button type="button">+</button>
+        <article class="contentCollapse">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate deserunt, ex fuga, hic iure molestias non odio quasi tempore totam vero voluptas. Amet doloremque eligendi eveniet fugit nisi porro suscipit!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto, consequatur dolore ex hic in maiores nisi nobis possimus qui, quia, recusandae reiciendis repellat suscipit vitae! Ipsa nihil ratione sunt.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia obcaecati, repudiandae! Cumque dicta eius laudantium praesentium provident quos repudiandae, sequi tempora velit voluptatibus. Doloremque esse, modi molestiae quidem rerum vero.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores harum inventore magni, nesciunt odit possimus sit voluptates. Aliquid aut consectetur, et fugiat iste nemo nostrum, obcaecati quis recusandae repellendus tempora?
+            </p>
+        </article>
+    </div>
+
+    <div class="customCollapse">
+        <h3>Step 3</h3>
+        <button type="button">+</button>
+        <article class="contentCollapse">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate deserunt, ex fuga, hic iure molestias non odio quasi tempore totam vero voluptas. Amet doloremque eligendi eveniet fugit nisi porro suscipit!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto, consequatur dolore ex hic in maiores nisi nobis possimus qui, quia, recusandae reiciendis repellat suscipit vitae! Ipsa nihil ratione sunt.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia obcaecati, repudiandae! Cumque dicta eius laudantium praesentium provident quos repudiandae, sequi tempora velit voluptatibus. Doloremque esse, modi molestiae quidem rerum vero.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores harum inventore magni, nesciunt odit possimus sit voluptates. Aliquid aut consectetur, et fugiat iste nemo nostrum, obcaecati quis recusandae repellendus tempora?
+            </p>
+        </article>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('tutorial') }}
 {% endblock %}
