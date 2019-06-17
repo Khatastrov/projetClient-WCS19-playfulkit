@@ -207,8 +207,13 @@ class User implements UserInterface
         return $this;
     }
 
-    public function eraseCredentials(){}
-    public function getSalt(){}
+    public function eraseCredentials()
+    {
+    }
+
+    public function getSalt()
+    {
+    }
 
     public function getRoles()
     {
