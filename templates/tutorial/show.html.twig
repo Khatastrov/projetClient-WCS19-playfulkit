@@ -2,26 +2,58 @@
 
 {% block title %}{{ tuto.title }}{% endblock %}
 
-{% block body %}
-    <article>
-        <h2>{{ tuto.title }}</h2>
-        <div class="metadata">Ecrit le {{ tuto.dateCreation | date('d/m/Y') }} à {{ tuto.dateCreation | date('H:i') }} </div>
-        <div class="content">
-            {{ tuto.content | raw }}
-        </div>
-        {% if tuto.steps is not empty %}
-            <ol>
-            {% for step in tuto.steps %}
-                <li>
-                <p>{{ step.title }}<br>
-                {{ step.content }}</p>
-                {% if step.image is not null %}
-                    {{ step.image }}
-                {% endif %}
-                </li>
-            {% endfor %}
-            </ol>
-        {% endif %}
-    </article>
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('tutorial') }}
 {% endblock %}
 
+{% block body %}
+
+    <div class="tutoPresentation">
+        <h1>{{ tuto.title }}</h1>
+        <div class="metadata">Publié le
+            {{ tuto.dateCreation | date('d/m/Y') }}
+            par
+            {{ tuto.author ? tuto.author : 'Anonyme' }}</div>
+
+        <article class="tutoCcontent">
+            {% if tuto.illustration is not null %}
+                <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tuto.illustration }}"></iframe>
+            {% endif %}
+
+            <p>
+                {{ tuto.content | raw }}
+            </p>
+        </article>
+    </div>
+
+    {% if tuto.steps is not empty %}
+        <ol>
+            {% for step in tuto.steps %}
+                <li>
+                    <div class="customCollapse" style="border: 1px dotted red">
+                        {{ step.title }}
+                        <button type="button" style="display: inline-flex;">+</button>
+
+                        <br>
+                        <article class="contentCollapse">
+                            <div class="row">
+                                <p class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-10">
+                                    {{ step.content }}
+                                </p>
+                                <img src="{{ step.image ? step.image : 'https://via.placeholder.com/150' }}"
+                                     class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
+                            </div>
+                        </article>
+                </li>
+            {% endfor %}
+        </ol>
+    {% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('tutorial') }}
+
+{% endblock %}
