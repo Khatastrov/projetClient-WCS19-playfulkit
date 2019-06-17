@@ -1,19 +1,174 @@
 @import "vars";
 @import "~bootstrap/scss/bootstrap";
+@import "scss/fontawesome.scss";
+@import "scss/brands.scss";
 
-.title-police {
-  font-family: 'Nunito', sans-serif;
+@font-face {
+  font-family: 'Jaapokki';
+  src: url('../fonts/Jaapokki-Regular.otf') format('otf');
 }
 
-.content-police {
-  font-family: 'Ubuntu', sans-serif;
+.navHeaderBar{
+  width:100%;
+  min-height:80px;
+  display:inline-flex;
+  background-color: $primary;
+  a{
+    right:5vw;
+    font-size:25px;
+    color: $link-color;
+    text-decoration:none;
+    font-family: Jaapokki;
+  }
+  a:hover{
+    color: $link-colorHover;
+  }
 }
-
-.bg-color-teal {
-  background-color: $teal-color;
+.navSubBar{
+  background-color:$secondary;
 }
-
-.link-deco-none {
-  text-decoration: none;
-  color: white;
+.navLinkBar{
+  a{
+    color:$secondary-link-color !important;
+    font-family: Jaapokki;
+    font-size:20px;
+  }
+  a:hover{
+    color:$link-color !important;
+  }
+}
+.logoHeader{
+  max-width:180px;
+}
+#mainFooter{
+  background-color:$primary;
+  width:100%;
+  position:static;
+  bottom:0px;
+  margin-bottom:0px;
+}
+#primMainFooter{
+  text-align: center;
+  span{
+    font-size:25px;
+    font-family: Jaapokki;
+    color:$link-color;
+  }
+  ul{
+    margin-top:10px;
+    list-style-type: none;
+    a{
+      font-family: Jaapokki;
+      position:relative;
+      left:-20px;
+      margin-top:10px;
+      color:$secondary-link-color;
+      text-decoration:none;
+      font-size:20px;
+    }
+    a:hover{
+      color:$link-color;
+    }
+  }
+}
+.mainFooterSection{
+  position:relative;
+  margin-top:15px;
+  margin-bottom:20px;
+}
+#subMainFooter{
+  background-color:$secondary;
+  width:100%;
+  min-height:50px;
+  max-height:200px;
+  margin-bottom:0px;
+  text-align:center;
+  span{
+    margin-top:auto;
+    margin-bottom:auto;
+    font-size:30px;
+    color:$secondary-link-color;
+    font-family: Jaapokki;
+  }
+}
+.fa-facebook-square{
+  margin-top:20px;
+  font-size:40px;
+  color:$secondary-link-color;
+}
+.fa-facebook-square:hover{
+  color:$link-color;
+}
+.fa-instagram{
+  margin-top:20px;
+  font-size:40px;
+  color:$secondary-link-color;
+}
+.fa-instagram:hover{
+  color:$link-color;
+}
+#aboutUs{
+  color:$link-color;
+  text-decoration:none;
+  font-size:25px;
+  font-family:Jaapokki;
+}
+#aboutUs:hover{
+  color:$secondary-link-color;
+}
+@media (max-width: 767.98px) {
+  .subLinkbar{
+    display:block;
+    margin-right: auto;
+    margin-left:auto;
+  }
+  .navbar-toggler{
+    background:$secondary-link-color !important;
+  }
+  .navbar-toggler:hover{
+    background:$primary !important;
+  }
+  .navbar-toggler:focus, .navbar-toggler:active {
+    background:$primary !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .navbar-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(142, 191, 107)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+  .logoMain{
+    max-width:80%;
+    margin-left:10%;
+    margin-right:10%;
+  }
+  .fa-facebook-square{
+    margin-left:170px;
+  }
+  .fa-instagram{
+    margin-right:170px;
+  }
+}
+@media (min-width: 768px) {
+  .subLinkbar{
+    display:inline-flex;
+    margin-right: auto;
+    margin-left:auto;
+  }
+  #body{
+    min-height:60vh;
+  }
+  .logoMain{
+    max-width:300px;
+    margin-left:0px;
+  }
+  #primMainFooter{
+    display:inline-flex;
+    width:100%;
+  }
+  .fa-facebook-square{
+    margin-left:70px;
+  }
+  .fa-instagram{
+    margin-right:70px;
+  }
 }
