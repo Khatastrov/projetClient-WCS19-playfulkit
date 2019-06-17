@@ -24,7 +24,8 @@ class TutorialType extends AbstractType
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/png',
-                            ]
+                            ],
+                        'mimeTypesMessage' => 'Enregistre une image au format jpeg ou png',
                     ])
                 ]
             ]);
