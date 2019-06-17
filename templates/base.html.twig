@@ -10,32 +10,58 @@
     </head>
     <body>
         <header id="baseHeader" class="title-police">
-            <div class="d-inline-flex w-100 align-items-center bg-dark mb-0">
-                <a href="{{ path('app_index') }}"><img class="d-none d-md-block img-fluid" src="https://via.placeholder.com/150x50" alt="playful_kit_logo"></a>
+          <div class="d-inline-flex w-100 align-items-center bg-dark mb-0">
+            <a href="{{ path('app_index') }}">
+              <img class="d-none d-md-block img-fluid" src="https://via.placeholder.com/150x50" alt="playful_kit_logo">
+            </a>
 
                 {# ########## Delete form part after create the real search form with symfony ########## #}
 
                 <form class="mx-auto">
                     <input type="text" name="searchField" id="search">
                 </form>
-                <h4><a class="active nav-link link-deco-none" href="{{ path('user_new') }}">Je m'inscris</a></h4>
+
+                {% if not app.user %}
+                <h4><a class="active nav-link link-deco-none" href="{{ path('user_new') }}">Inscription</a></h4>
+                <h4><a class="active nav-link link-deco-none" href="{{ path('user_login') }}">Connexion</a></h4>
+                {% else %}
+
+                <h4><a class="active nav-link link-deco-none" href="{{ path('user_logout') }}">Deconnexion</a></h4>
+                {% endif %}
             </div>
+
             <nav class="navbar navbar-expand-md bg-color-teal navbar-dark w-100">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse navbar-nav justify-content-around" id="navbarSupportedContent">
-                    <h4><a class="nav-link active" href="#">Contest</a></h4>
-                    <h4><a class="nav-link active" href="#">Lessons</a></h4>
-                    <h4><a class="nav-link active" href="{{ path('tutorial') }}">Les tutos</a></h4>
-                    <h4><a class="nav-link active" href="#">Shop</a></h4>
-                    <h4><a class="nav-link active" href="#">Educators</a></h4>
-                    <h4><a class="nav-link active" href="#">Contact</a></h4>
-                    <h4><a class="nav-link active" href="#">Blog</a></h4>
+                    <h4>
+                      <a class="nav-link active" href="#">Contest</a>
+                    </h4>
+                    <h4>
+                      <a class="nav-link active" href="#">Lessons</a>
+                    </h4>
+                    <h4>
+                      <a class="nav-link active" href="{{ path('tutorial') }}">Les tutos</a>
+                    </h4>
+                    <h4>
+                      <a class="nav-link active" href="#">Shop</a>
+                    </h4>
+                    <h4>
+                      <a class="nav-link active" href="#">Educators</a>
+                    </h4>
+                    <h4>
+                      <a class="nav-link active" href="#">Contact</a>
+                    </h4>
+                    <h4>
+                      <a class="nav-link active" href="#">Blog</a>
+                    </h4>
                 </div>
             </nav>
         </header>
+        
         {% block body %}{% endblock %}
+        
         <footer id="baseFooter" class="title-police">
             <div class="d-inline-flex bg-dark w-100 text-white align-items-center">
                 <img class="d-none d-md-block" src="https://via.placeholder.com/150" alt="playful_kit_logo">
@@ -68,8 +94,10 @@
                 <h4 class="mx-auto mt-2 mb-2">2019 - Playfulkit</h4>
             </div>
         </footer>
+        
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+        
     </body>
 </html>
