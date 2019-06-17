@@ -49,10 +49,12 @@ class TutorialController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             if (!$tuto->getId()) {
                 $tuto->setDateCreation(new \DateTime());
-            }
 
-            parse_str(parse_url($tuto->getIllustration(), PHP_URL_QUERY), $link);
-            $tuto->setIllustration($link['v']);
+                if ($tuto->getIllustration() != null) {
+                    parse_str(parse_url($tuto->getIllustration(), PHP_URL_QUERY), $link);
+                    $tuto->setIllustration($link['v']);
+                }
+            }
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($tuto);

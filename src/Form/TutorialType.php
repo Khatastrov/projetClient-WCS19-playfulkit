@@ -43,14 +43,23 @@ class TutorialType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
             ])
-            ->add('video', null, [
-                'label' => 'Copie le lien vers ta vidéo Youtube :'
-                ])
-            ->add('imageFile', FileType::class, ['required'=> false])
             ->add('illustration', null, [
-                'label' => 'Copie le lien vers ta photo :'
-            ])
-            ;
+                'required' => false,
+                'label' => false,
+                'attr' => [
+                    'class' => 'champVid',
+                    'style' => 'display: none;',
+                    'placeholder' => 'Colle ici le lien vers ta vidéo Youtube !'
+                ]
+                ])
+            ->add('imageFile', FileType::class, [
+                'required'=> false,
+                'label' => false,
+                'attr' => [
+                    'class' => 'champImg',
+                    'placeholder' => 'Place ici ta photo !'
+                ]
+                ]);
     }
 
 
