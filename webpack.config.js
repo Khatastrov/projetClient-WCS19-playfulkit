@@ -18,6 +18,7 @@ Encore
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
+    .addEntry('TutorialEditionForm', './assets/js/TutorialEditionForm.js')
     .addEntry('tutorial', './assets/js/tuto.js')
     //.addEntry('page2', './assets/js/page2.js')
 
