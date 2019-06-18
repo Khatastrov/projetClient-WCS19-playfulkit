@@ -11,6 +11,7 @@ require('bootstrap');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
+
 //images
 require('../images/logo-officiel.png');
 require('../images/logo-header.png');
@@ -19,6 +20,3 @@ require('../images/pfk-ico16.png');
 require('../images/pfk-ico32.png');
 require('../images/pfk-ico64.png');
 require('../images/pfk-ico96.png');
-
-// Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
- const $ = require('jquery');
