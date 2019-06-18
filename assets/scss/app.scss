@@ -30,7 +30,6 @@
   background-color: $primary;
   a{
     right:5vw;
-    font-size:25px;
     color: $link-color;
     text-decoration:none;
     font-family: $font-primary;
@@ -162,6 +161,11 @@
   .fa-instagram{
     margin-right:170px;
   }
+  .navHeaderBar{
+    a{
+      font-size:20px;
+    }
+  }
 }
 @media (min-width: 768px) {
   .subLinkbar{
@@ -185,5 +189,10 @@
   }
   .fa-instagram{
     margin-right:70px;
+  }
+  .navHeaderBar{
+    a{
+      font-size:25px;
+    }
   }
 }
