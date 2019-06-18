@@ -5,9 +5,24 @@
 
 @font-face {
   font-family: 'Jaapokki';
-  src: url('../fonts/Jaapokki-Regular.otf') format('otf');
+  src: url('../fonts/Jaapokki/jaapokki-regular.eot') format('eot');
+  src: url('../fonts/Jaapokki/Jaapokki-Regular.otf') format('otf');
+  src: url('../fonts/Jaapokki/jaapokki-regular.svg') format('svg');
+  src: url('../fonts/Jaapokki/jaapokki-regular.ttf') format('ttf');
+  src: url('../fonts/Jaapokki/jaapokki-regular.woff') format('woff');
 }
-
+@font-face {
+  font-family:'Lato';
+  src: url('../fonts/Lato/Lato-Regular.ttf') format('ttf');
+}
+@font-face {
+  font-family:'LinuxLibertine';
+  src: url('../fonts/LinuxLibertine/LinLibertine_R.ttf') format('ttf');
+}
+@font-face {
+  font-family:'Parmapetit';
+  src: url('../fonts/Parmapetit/ParmaPetit-Normal.ttf') format('ttf');
+}
 .navHeaderBar{
   width:100%;
   min-height:80px;
@@ -18,7 +33,7 @@
     font-size:25px;
     color: $link-color;
     text-decoration:none;
-    font-family: Jaapokki;
+    font-family: $font-primary;
   }
   a:hover{
     color: $link-colorHover;
@@ -30,7 +45,7 @@
 .navLinkBar{
   a{
     color:$secondary-link-color !important;
-    font-family: Jaapokki;
+    font-family: $font-primary;
     font-size:20px;
   }
   a:hover{
@@ -51,14 +66,14 @@
   text-align: center;
   span{
     font-size:25px;
-    font-family: Jaapokki;
+    font-family: $font-primary;
     color:$link-color;
   }
   ul{
     margin-top:10px;
     list-style-type: none;
     a{
-      font-family: Jaapokki;
+      font-family: $font-primary;
       position:relative;
       left:-20px;
       margin-top:10px;
@@ -88,7 +103,7 @@
     margin-bottom:auto;
     font-size:30px;
     color:$secondary-link-color;
-    font-family: Jaapokki;
+    font-family: $font-primary;
   }
 }
 .fa-facebook-square{
@@ -111,7 +126,7 @@
   color:$link-color;
   text-decoration:none;
   font-size:25px;
-  font-family:Jaapokki;
+  font-family:$font-primary;
 }
 #aboutUs:hover{
   color:$secondary-link-color;
