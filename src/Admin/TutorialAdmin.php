@@ -8,21 +8,21 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-final class ToolAdmin extends AbstractAdmin
+final class TutorialAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', TextType::class);
-        $formMapper->add('category', TextType::class);
+        $formMapper
+            ->add('title', TextType::class);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('name');
+        $datagridMapper->add('title');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('name');
+        $listMapper->addIdentifier('title');
     }
 }

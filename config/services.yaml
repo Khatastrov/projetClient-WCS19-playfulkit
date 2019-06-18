@@ -38,3 +38,9 @@ services:
         arguments: [~, App\Entity\Tool, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Tool }
+
+    admin.tutorial:
+        class: App\Admin\TutorialAdmin
+        arguments: [~, App\Entity\Tutorial, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Tutorial }
