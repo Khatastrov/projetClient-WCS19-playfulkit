@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Exception\DatabaseObjectExistsException;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -51,6 +52,11 @@ class TutorialStep
      * @ORM\JoinColumn(nullable=false)
      */
     private $tutorial;
+
+    public function __construct()
+    {
+        $this->date_creation = new \DateTime();
+    }
 
     public function getId(): ?int
     {

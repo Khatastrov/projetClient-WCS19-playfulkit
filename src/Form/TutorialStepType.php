@@ -15,10 +15,7 @@ class TutorialStepType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
-            ->add('image')
-            ->add('dateCreation', HiddenType::class, [
-                'data' => new \DateTime()
-            ]);
+            ->add('image');
     }
 
     public function configureOptions(OptionsResolver $resolver)
