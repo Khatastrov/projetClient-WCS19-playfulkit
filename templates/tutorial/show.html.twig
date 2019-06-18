@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ tuto.title }}{% endblock %}
+{% block title %}
+    {{ tuto.title }}
+{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -8,7 +10,6 @@
 {% endblock %}
 
 {% block body %}
-
     <div class="tutoPresentation">
         <h1>{{ tuto.title }}</h1>
         <div class="metadata">Publié le
@@ -18,7 +19,12 @@
 
         <article class="tutoCcontent">
             {% if tuto.illustration is not null %}
-                <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tuto.illustration }}"></iframe>
+                {% set ext = tuto.illustration|split('.') %}
+                {% if ext[1] is defined %}
+                    <img src="/images/tutorial/{{ tuto.illustration }}" >
+                {% else %}
+                    <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tuto.illustration }}"></iframe>
+                {% endif %}
             {% endif %}
 
             <p>
@@ -31,7 +37,7 @@
         <ol>
             {% for step in tuto.steps %}
                 <li>
-                    <div class="customCollapse" style="border: 1px dotted red">
+                    <div class="customCollapse">
                         {{ step.title }}
                         <button type="button" style="display: inline-flex;">+</button>
 
@@ -52,8 +58,7 @@
 
 {% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('tutorial') }}
-
-{% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('tutorial') }}
+    {% endblock %}
