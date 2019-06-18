@@ -36,6 +36,7 @@ class TutorialType extends AbstractType
                 'Yes' => true,
                 'No' => false,
                 ],
+            ])
             ->add('choix', ChoiceType::class, [
                 'label' => 'Choisis le type d\'illustration que tu veux ajouter :',
                 'mapped' => false,
