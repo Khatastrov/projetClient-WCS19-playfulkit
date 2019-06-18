@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Tutorial;
 use App\Form\TutorialType;
 use App\Repository\TutorialRepository;
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,7 +32,6 @@ class TutorialController extends AbstractController
      * @Route("/tutorial/{id}/edit", name="tutorial_edit")
      * @param Tutorial|null $tuto
      * @param Request $request
-     * @param ObjectManager $manager
      * @return Response
      * @throws \Exception
      */
