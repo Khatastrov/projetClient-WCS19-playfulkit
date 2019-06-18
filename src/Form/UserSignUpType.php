@@ -46,6 +46,7 @@ class UserSignUpType extends AbstractType
                 'required' => true,
             ])
             ->add('birth_date', BirthdayType::class, [
+                'format' => 'dd MM yyyy',
                 'placeholder' => ['year' => 'année', 'month' => 'mois','day' => 'jour',]
             ]);
     }
