@@ -31,7 +31,9 @@
                 </li>
             {% endfor %}
         </ol>
-
+        
+        {{ form_row(formTutorial.is_published) }}
+        
         <button class="btn btn-success" type="submit">
             {% if editMode %}
                 Enregistrer les modifications

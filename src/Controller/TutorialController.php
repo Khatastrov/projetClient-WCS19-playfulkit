@@ -49,12 +49,20 @@ class TutorialController extends AbstractController
                 $tuto->setDateCreation(new \DateTime());
             }
 
+            if ($tuto->getIllustration()) {
+                $ext = explode(".", $tuto->getIllustration());
+                if ($ext[1] != "jpg" or $ext[1] != "png") {
+                    parse_str(parse_url($tuto->getIllustration(), PHP_URL_QUERY), $link);
+                    $tuto->setIllustration($link['v']);
+                }
+            }
+
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($tuto);
             $manager->flush();
 
             return $this->redirectToRoute('tutorial_show', [
-                'id' => $tuto->getId()
+                'id' => $tuto->getId(),
             ]);
         }
 
@@ -73,7 +81,7 @@ class TutorialController extends AbstractController
     public function show(Tutorial $tuto) : Response
     {
         return $this->render('tutorial/show.html.twig', [
-            'tuto' => $tuto
+            'tuto' => $tuto,
         ]);
     }
 }
