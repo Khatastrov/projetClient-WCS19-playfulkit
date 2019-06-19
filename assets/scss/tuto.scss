@@ -35,7 +35,7 @@ ol li::before {
 
 .customCollapse button {
   position: relative;
-  top:-20px;
+  top:-22px;
   background-color:$secondary;
   color:$link-colorHover;
   font-size:20px;
@@ -53,9 +53,13 @@ ol li::before {
 }
 
 .metadata{
-  font-family: $font-primary;
-  font-size:20px;
+  text-align: center;
+  margin-top:10px;
   margin-bottom:20px;
+  span{
+    font-family: $font-primary;
+    font-size:20px;
+  }
 }
 
 .tutoPresentation{
@@ -84,4 +88,8 @@ ol li::before {
   font:$font-primary;
   font-size:20px;
   margin-bottom:10px;
+}
+
+body{
+  overflow-x: hidden;
 }

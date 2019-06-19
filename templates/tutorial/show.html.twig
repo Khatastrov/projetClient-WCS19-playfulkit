@@ -12,11 +12,6 @@
 {% block body %}
     <div class="tutoPresentation container">
         <h1 class="titleShow">{{ tuto.title }}</h1>
-        <div class="metadata">Créé le
-            {{ tuto.dateCreation | date('d/m/Y') }}
-            par
-            {{ tuto.author ? tuto.author : 'Anonyme' }}
-        </div>
         <article class="tutoContent">
             {% if tuto.illustration is not null %}
                 {% set ext = tuto.illustration|split('.') %}
@@ -60,6 +55,13 @@
                 {% endfor %}
             </ol>
         {% endif %}
+        <div class="metadata">
+            <span>Créé le
+            {{ tuto.dateCreation | date('d/m/Y') }}
+            par
+            {{ tuto.author ? tuto.author : 'Anonyme' }}
+            </span>
+        </div>
     </div>
 {% endblock %}
 
