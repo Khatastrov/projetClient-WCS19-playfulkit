@@ -2,22 +2,11 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(
- *     fields={"username"},
- *     message="Le pseudo que tu as indiqué est déjà utilisé !"
- * )
- * * @UniqueEntity(
- *     fields={"email"},
- *     message="L'email que tu as indiqué est déjà utilisé !"
- * )
  */
 class User implements UserInterface
 {
@@ -29,9 +18,20 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=180, unique=true)
      */
     private $username;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+    /**
+     * @var string The hashed password
+     * @ORM\Column(type="string")
+     */
+    private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -39,53 +39,43 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $password;
-
-    /**
      * @ORM\Column(type="date")
      */
-    private $birth_date;
+    private $birthDate;
 
     /**
      * @ORM\Column(type="datetimetz")
      */
-    private $created_at;
+    private $createdAt;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $firstname;
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $lastname;
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $address;
-
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Tutorial", mappedBy="author")
-     */
-    private $tutorials;
-
-    public function __construct()
-    {
-        $this->tutorials = new ArrayCollection();
-        $this->created_at = new \DateTime();
-    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUsername(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
     {
-        return $this->username;
+        return (string) $this->username;
     }
 
     public function setUsername(string $username): self
@@ -93,6 +83,57 @@ class User implements UserInterface
         $this->username = $username;
 
         return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return (string) $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     public function getEmail(): ?string
@@ -107,69 +148,26 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
     public function getBirthDate(): ?\DateTimeInterface
     {
-        return $this->birth_date;
+        return $this->birthDate;
     }
 
-    public function setBirthDate(\DateTimeInterface $birth_date): self
+    public function setBirthDate(\DateTimeInterface $birthDate): self
     {
-        $this->birth_date = $birth_date;
+        $this->birthDate = $birthDate;
 
         return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->created_at = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Tutorial[]
-     */
-    public function getTutorials(): Collection
-    {
-        return $this->tutorials;
-    }
-
-    public function addTutorial(Tutorial $tutorial): self
-    {
-        if (!$this->tutorials->contains($tutorial)) {
-            $this->tutorials[] = $tutorial;
-            $tutorial->setAuthor($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTutorial(Tutorial $tutorial): self
-    {
-        if ($this->tutorials->contains($tutorial)) {
-            $this->tutorials->removeElement($tutorial);
-            // set the owning side to null (unless already changed)
-            if ($tutorial->getAuthor() === $this) {
-                $tutorial->setAuthor(null);
-            }
-        }
+        $this->createdAt = $createdAt;
 
         return $this;
     }
@@ -182,6 +180,7 @@ class User implements UserInterface
     public function setFirstname(?string $firstname): self
     {
         $this->firstname = $firstname;
+
         return $this;
     }
 
@@ -193,6 +192,7 @@ class User implements UserInterface
     public function setLastname(?string $lastname): self
     {
         $this->lastname = $lastname;
+
         return $this;
     }
 
@@ -204,19 +204,7 @@ class User implements UserInterface
     public function setAddress(?string $address): self
     {
         $this->address = $address;
+
         return $this;
-    }
-
-    public function eraseCredentials()
-    {
-    }
-
-    public function getSalt()
-    {
-    }
-
-    public function getRoles()
-    {
-        return['ROLE_USER'];
     }
 }
