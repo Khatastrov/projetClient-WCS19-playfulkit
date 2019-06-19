@@ -37,6 +37,18 @@
   a:hover{
     color: $link-colorHover;
   }
+  .logoutBtn{
+    color:$customRed !important;
+  }
+  .logoutBtn:hover{
+    color:$link-colorHover !important;
+  }
+  .loginBtn{
+    color:$customSkyblue !important;
+  }
+  .loginBtn:hover{
+    color:$link-colorHover !important;
+  }
 }
 .navSubBar{
   background-color:$secondary;
@@ -98,8 +110,8 @@
   margin-bottom:0px;
   text-align:center;
   span{
-    margin-top:auto;
-    margin-bottom:auto;
+    position: relative;
+    bottom:10px;
     font-size:30px;
     color:$secondary-link-color;
     font-family: $font-primary;
@@ -177,7 +189,7 @@
     min-height:60vh;
   }
   .logoMain{
-    max-width:300px;
+    max-width:275px;
     margin-left:0px;
   }
   #primMainFooter{
