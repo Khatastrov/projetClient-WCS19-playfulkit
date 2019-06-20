@@ -39,17 +39,20 @@
                 <li>
                     <div class="customCollapse">
                         {{ step.title }}
-                        <button type="button" style="display: inline-flex;">+</button>
+                        <button type="button">+</button>
                         <br>
                         <article class="contentCollapse">
                             <div class="row">
                                 <p class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-10">
                                     {{ step.content }}
                                 </p>
-                                <img src="{{ step.image ? step.image : 'https://via.placeholder.com/150' }}"
-                                     class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
+                                {% if step.image is not null %}
+                                    <img src="/images/step/{{ step.image }}"
+                                         class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
+                                {% endif %}
                             </div>
                         </article>
+                    </div>
                 </li>
             {% endfor %}
         </ol>
