@@ -72,10 +72,16 @@ class User implements UserInterface
      */
     private $tutorials;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\BlogPost", mappedBy="author")
+     */
+    private $blogPosts;
+
     public function __construct()
     {
         $this->tutorials = new ArrayCollection();
         $this->created_at = new \DateTime();
+        $this->blogPosts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -218,5 +224,36 @@ class User implements UserInterface
     public function getRoles()
     {
         return['ROLE_USER'];
+    }
+
+    /**
+     * @return Collection|BlogPost[]
+     */
+    public function getBlogPosts(): Collection
+    {
+        return $this->blogPosts;
+    }
+
+    public function addBlogPost(BlogPost $blogPost): self
+    {
+        if (!$this->blogPosts->contains($blogPost)) {
+            $this->blogPosts[] = $blogPost;
+            $blogPost->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBlogPost(BlogPost $blogPost): self
+    {
+        if ($this->blogPosts->contains($blogPost)) {
+            $this->blogPosts->removeElement($blogPost);
+            // set the owning side to null (unless already changed)
+            if ($blogPost->getAuthor() === $this) {
+                $blogPost->setAuthor(null);
+            }
+        }
+
+        return $this;
     }
 }
