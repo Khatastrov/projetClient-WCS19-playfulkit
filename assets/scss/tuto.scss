@@ -8,11 +8,11 @@
 .customCollapse {
   margin:5px 2vw;
   p{
-    font:$font-primary;
+    font-family:$font-secondary;
     font-size:15px;
   }
   span{
-    font:$font-primary;
+    font-family:$font-secondary;
     font-size:20px;
   }
 }
@@ -39,7 +39,7 @@ ol li::before {
   background-color:$secondary;
   color:$link-colorHover;
   font-size:20px;
-  font:$font-primary;
+  font-family:$font-secondary;;
 }
 
 .customCollapse button:hover {
@@ -68,28 +68,57 @@ ol li::before {
   text-anchor: middle;
 }
 
-.cardTutorial {
-  max-width:400px;
-  min-width:200px;
-  margin:20px auto;
-}
-
-#tutorial h1{
-  text-align: center;
-  text-anchor: middle;
-}
-
 .titleShow{
   font-size:35px;
   font-family: $font-primary;
 }
 .tutoText{
   margin-top:10px;
-  font:$font-primary;
+  font-family:$font-secondary;
   font-size:20px;
   margin-bottom:10px;
 }
 
-body{
-  overflow-x: hidden;
+.tutorialIndexH1{
+    margin-top:20px;
+    margin-bottom: -5px;
+    font-family:$font-primary;
+    font-size:35px;
+    text-align: center;
+}
+
+.cardTutorial {
+  max-width:300px;
+  min-width:200px;
+  margin:20px auto;
+  h2{
+    font-family:$font-primary;
+    font-size:20px;
+    text-align: center;
+  }
+  .metadata{
+    font-family:$font-secondary;
+    font-size:15px;
+    text-align: center;
+  }
+  .card-text{
+    font-family:$font-secondary;
+    font-size:15px;
+    text-align: center;
+  }
+}
+#tutorialIndex{
+  .row{
+    max-width:94vw;
+    margin-right:3vw;
+    margin-left:3vw;
+  }
+  display:flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+@media (max-width: 767.98px){
+  body{
+    overflow-x: hidden;
+  }
 }
