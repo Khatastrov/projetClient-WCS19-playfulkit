@@ -11,18 +11,37 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 final class UserAdmin extends AbstractAdmin
 {
+    protected static function flattenRoles($rolesHierarchy)
+    {
+        $flatRoles = [];
+        foreach ($rolesHierarchy as $roles) {
+            if (empty($roles)) {
+                continue;
+            }
+
+            foreach ($roles as $role) {
+                if (!isset($flatRoles[$role])) {
+                    $flatRoles[$role] = $role;
+                }
+            }
+        }
+
+        return $flatRoles;
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $container = $this->getConfigurationPool()->getContainer();
+        $roles = $container->getParameter('security.role_hierarchy.roles');
+
+        $rolesChoices = self::flattenRoles($roles);
+
         $formMapper
             ->add('username', TextType::class, [
             ])
             ->add('roles', ChoiceType::class, [
-                    'label' => false,
-                    'required' => false,
-                    'choices' => [
-                        'Admin' => 'ROLE_ADMIN',
-                        'User' => 'ROLE_USER',
-                    ],
+                    'choices'  => $rolesChoices,
+                    'multiple' => true
             ]);
     }
 
