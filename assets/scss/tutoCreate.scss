@@ -1,0 +1,105 @@
+@import "vars";
+
+.container{
+ h1{
+   margin-top:20px;
+   font-family:$font-primary;
+   font-size:35px;
+   text-align: center;
+  }
+  .btnCreateEdit{
+    margin-bottom:20px;
+    background-color:$secondary;
+    color:$link-colorHover;
+    font-size:20px;
+    font:$font-primary;
+  }
+  .btnCreateEdit:hover {
+    background-color: $link-color;
+  }
+
+  .btnCreateEdit:focus, .btnCreateEdit:active {
+    background:$link-color !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  label{
+    font-size:20px;
+    font:$font-primary;
+  }
+  .tutoPresentation{
+    font-size:20px;
+    font:$font-primary;
+  }
+  textarea{
+    min-height:150px;
+  }
+  .form-check{
+    label{
+      font-size:1rem;
+    }
+  }
+  ol{
+    list-style: none;
+    counter-reset: step;
+    li{
+      div{
+        margin-top:30px;
+      .form-group{
+        margin-top:-10px;
+      }
+      }
+    }
+  }
+  ol li {
+    counter-increment: step;
+  }
+  ol li::before {
+    content: counter(step) ") ";
+    color: $secondary;
+    font-family: $font-primary;
+    font-size:20px;
+    position:relative;
+    top:10px;
+    left:-25px;
+  }
+  .btnRemoveStep{
+    margin-bottom:10px;
+    background-color:$customRed;
+    color:$link-colorHover;
+    font-size:20px;
+    font:$font-primary;
+  }
+  .btnRemoveStep:hover {
+    background-color: $link-colorHover;
+    color:$customRed;
+    transition:0.4s ease;
+  }
+
+  .btnRemoveStep:focus, .btnRemoveStep:active {
+    background:$customRed !important;
+    outline: $link-colorHover !important;
+    box-shadow: none !important;
+  }
+  .btnAddStep{
+    position:relative;
+    left:-40px;
+    margin-top:10px;
+    margin-bottom:20px;
+    background-color:$primary;
+    color:$link-colorHover;
+    font-size:20px;
+    font:$font-primary;
+  }
+  .btnAddStep:hover {
+    background-color:$secondary!important;
+    color:$link-colorHover;
+    transition:0.4s ease;
+  }
+
+  .btnAddStep:focus, .btnAddStep:active {
+    background:$secondary !important;
+    outline: $link-colorHover !important;
+    box-shadow: none !important;
+  }
+}

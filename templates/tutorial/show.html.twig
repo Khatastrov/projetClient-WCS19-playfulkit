@@ -10,15 +10,9 @@
 {% endblock %}
 
 {% block body %}
-    <div class="tutoPresentation">
-        <h1>{{ tuto.title }}</h1>
-        <div class="metadata">Créé le
-            {{ tuto.dateCreation | date('d/m/Y') }}
-            par
-            {{ tuto.author ? tuto.author : 'Anonyme' }}
-        </div>
-
-        <article class="tutoCcontent">
+    <div class="tutoPresentation container">
+        <h1 class="titleShow">{{ tuto.title }}</h1>
+        <article class="tutoContent">
             {% if tuto.illustration is not null %}
                 {% set ext = tuto.illustration|split('.') %}
                 {% if ext[1] is defined %}
@@ -27,36 +21,48 @@
                     <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tuto.illustration }}"></iframe>
                 {% endif %}
             {% endif %}
-            <p>
+            <p class="tutoText">
                 {{ tuto.content | raw }}
             </p>
         </article>
     </div>
-
-    {% if tuto.steps is not empty %}
-        <ol>
-            {% for step in tuto.steps %}
-                <li>
-                    <div class="customCollapse">
-                        {{ step.title }}
-                        <button type="button">+</button>
-                        <br>
-                        <article class="contentCollapse">
+    <div class="container">
+        {% if tuto.steps is not empty %}
+            <ol>
+                {% for step in tuto.steps %}
+                    <li>
+                        <div class="customCollapse">
                             <div class="row">
-                                <p class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-10">
-                                    {{ step.content }}
-                                </p>
-                                {% if step.image is not null %}
-                                    <img src="/images/step/{{ step.image }}"
-                                         class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
-                                {% endif %}
+                                <div class="col-6">
+                                    <span>
+                                        {{ step.title }}
+                                    </span>
+                                </div>
+                                <div class="empty btn BtnCollapse col-4 col-sm-4 col-md-4 col-lg-5 col-xl-5"></div>
+                                <button class="btn BtnCollapse col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1" type="button">+</button>
                             </div>
-                        </article>
-                    </div>
-                </li>
-            {% endfor %}
-        </ol>
-    {% endif %}
+                            <article class="contentCollapse">
+                                <div class="row">
+                                    <p class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-10">
+                                        {{ step.content }}
+                                    </p>
+                                    <img src="{{ step.image ? step.image : 'https://via.placeholder.com/150' }}"
+                                         class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
+                                </div>
+                            </article>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+        <div class="metadata">
+            <span>Créé le
+            {{ tuto.dateCreation | date('d/m/Y') }}
+            par
+            {{ tuto.author ? tuto.author : 'Anonyme' }}
+            </span>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}

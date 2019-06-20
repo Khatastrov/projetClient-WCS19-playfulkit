@@ -18,9 +18,10 @@
                 <div class="row">
                     {% if not app.user %}
                         <a class="nav-link" href="{{ path('user_new') }}">Inscription</a>
-                        <a class="nav-link" href="{{ path('user_login') }}">Connexion</a>
+                        <a class="nav-link loginBtn" href="{{ path('user_login') }}">Connexion</a>
                     {% else %}
-                        <a class="nav-link" href="{{ path('user_logout') }}">Deconnexion</a>
+                        <a class="nav-link" href="{{ path('user_show', {'id': app.user.id}) }}">Mon espace</a>
+                        <a class="nav-link logoutBtn" href="{{ path('user_logout') }}">Deconnexion</a>
                     {% endif %}
                 </div>
             </nav>
@@ -33,9 +34,9 @@
                     <div class="subLinkbar">
                         <a class="nav-link" href="#">Concours</a>
                         <a class="nav-link" href="#">Leçons</a>
-                        <a class="nav-link" href="{{ path('tutorial') }}">Les tutos</a>
-                        <a class="nav-link" href="#">La boutique</a>
-                        <a class="nav-link" href="#">Espace éducateurs</a>
+                        <a class="nav-link" href="{{ path('tutorial') }}">Tutos</a>
+                        <a class="nav-link" href="#">Boutique</a>
+                        <a class="nav-link" href="#">Educateurs</a>
                         <a class="nav-link" href="#">Contact</a>
                         <a class="nav-link" href="#">Blog</a>
                     </div>
@@ -82,6 +83,7 @@
                 </div>
             </div>
             <div id="subMainFooter">
+                <br>
                 <span>2019 - Playfulkit</span>
             </div>
         </footer>

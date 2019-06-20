@@ -1,4 +1,4 @@
-var $addStepLink = $('<a href="#" class="add_step_link btn btn-primary">Ajouter une étape</a>');
+var $addStepLink = $('<button class="add_step_link btn btnAddStep">Ajouter une étape</button>');
 var $newLinkLi = $('<p></p>').append($addStepLink);
 
 jQuery(document).ready(function () {
@@ -24,7 +24,7 @@ jQuery(document).ready(function () {
 });
 
 //allow existing steps removal
-$('a.remove-existing-step').click(function () {
+$('button.remove-existing-step').click(function () {
     event.preventDefault();
     $(this).parent().remove();
 
@@ -50,7 +50,7 @@ function addStepForm($collectionHolder, $newLinkLi)
     var $newFormLi = $('<li></li>').append(newForm);
 
     // Add a remove link <li>
-    $newFormLi.append('<a href="#" class="remove-tag btn btn-danger">Supprimer cette étape</a>');
+    $newFormLi.append('<button class="remove-tag btn btnRemoveStep">Supprimer cette étape</button>');
 
     $newLinkLi.before($newFormLi);
 
