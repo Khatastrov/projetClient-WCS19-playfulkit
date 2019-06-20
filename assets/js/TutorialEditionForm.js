@@ -31,7 +31,8 @@ $('button.remove-existing-step').click(function () {
     return false;
 });
 
-function addStepForm($collectionHolder, $newLinkLi) {
+function addStepForm($collectionHolder, $newLinkLi)
+{
     // Get the data-prototype explained earlier
     var prototype = $collectionHolder.data('prototype');
 
@@ -62,3 +63,26 @@ function addStepForm($collectionHolder, $newLinkLi) {
         return false;
     });
 }
+
+// Traitements sur des boutons radio :
+$('input.form-check-input').click(function () {
+
+    var $vid = $('.champVid'),
+        $img= $('#invisible');
+
+    if ($(this).val() == 1) {
+        console.log('tu as coché "vidéo" !');
+        $img.css('display', 'none');
+        $img.val('');
+        $vid.css('display', 'block');
+    } else if ($(this).val() == 2) {
+        console.log('tu as coché "photo" !');
+        $vid.css('display', 'none');
+        $vid.val('');
+        $img.css('display', 'block');
+    } else if ($(this).val() == 0) {
+        console.log('tu as coché "aucune illustration" !');
+        $vid.css('display', 'none');
+        $img.css('display', 'none');
+    }
+});
