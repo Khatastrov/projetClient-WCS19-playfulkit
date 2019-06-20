@@ -1,13 +1,4 @@
 {{ form_start(form) }}
-
-    {{ form_errors(form) }}
-
-    {{ form_row(form.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
-    {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
-    {{ form_row(form.firstname, {'label': 'Prénom :', 'attr': {'placeholder':'Ton prénom'}}) }}
-    {{ form_row(form.lastname, {'label': 'Nom de famille :' , 'attr': {'placeholder':'Ton nom de famille'}}) }}
-    {{ form_row(form.address, {'label': 'Adresse :', 'attr': {'placeholder':'Où habites tu ?'}}) }}
-
-<button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer mes changements') }}</button>
-
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
