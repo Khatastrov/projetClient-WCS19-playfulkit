@@ -12,7 +12,7 @@
     background-color:$secondary;
     color:$link-colorHover;
     font-size:20px;
-    font:$font-primary;
+    font-family:$font-secondary;;
   }
   .btnCreateEdit:hover {
     background-color: $link-color;
@@ -25,11 +25,11 @@
   }
   label{
     font-size:20px;
-    font:$font-primary;
+    font-family:$font-secondary;
   }
   .tutoPresentation{
     font-size:20px;
-    font:$font-primary;
+    font-family:$font-secondary;;
   }
   textarea{
     min-height:150px;
@@ -68,7 +68,7 @@
     background-color:$customRed;
     color:$link-colorHover;
     font-size:20px;
-    font:$font-primary;
+    font-family:$font-secondary;
   }
   .btnRemoveStep:hover {
     background-color: $link-colorHover;
@@ -89,16 +89,16 @@
     background-color:$primary;
     color:$link-colorHover;
     font-size:20px;
-    font:$font-primary;
+    font-family:$font-secondary;
   }
   .btnAddStep:hover {
-    background-color:$secondary!important;
+    background-color:$link-color!important;
     color:$link-colorHover;
     transition:0.4s ease;
   }
 
   .btnAddStep:focus, .btnAddStep:active {
-    background:$secondary !important;
+    background:$link-color !important;
     outline: $link-colorHover !important;
     box-shadow: none !important;
   }
