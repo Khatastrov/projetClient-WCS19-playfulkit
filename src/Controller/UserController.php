@@ -20,9 +20,17 @@ class UserController extends AbstractController
      */
     public function show(User $user): Response
     {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
-        ]);
+        if ($this->getUser() != null) {
+            if ($this->getUser()->getId() == $user->getId()) {
+                return $this->render('user/show.html.twig', [
+                    'user' => $user,
+                ]);
+            } else {
+                return $this->render('/default.html.twig');
+            }
+        } else {
+            return $this->render('/default.html.twig');
+        }
     }
 
     /**
@@ -40,11 +48,18 @@ class UserController extends AbstractController
                 'id' => $user->getId(),
             ]);
         }
-
-        return $this->render('user/edit.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
+        if ($this->getUser() != null) {
+            if ($this->getUser()->getId() == $user->getId()) {
+                return $this->render('user/edit.html.twig', [
+                    'user' => $user,
+                    'form' => $form->createView(),
+                ]);
+            } else {
+                return $this->render('/default.html.twig');
+            }
+        } else {
+            return $this->render('/default.html.twig');
+        }
     }
 
     /**
