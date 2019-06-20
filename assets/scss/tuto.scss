@@ -80,11 +80,11 @@ ol li::before {
 }
 
 .tutorialIndexH1{
-    margin-top:20px;
-    margin-bottom: -5px;
-    font-family:$font-primary;
-    font-size:35px;
-    text-align: center;
+  margin-top:20px;
+  margin-bottom: -5px;
+  font-family:$font-primary;
+  font-size:35px;
+  text-align: center;
 }
 
 .cardTutorial {
@@ -121,4 +121,8 @@ ol li::before {
   body{
     overflow-x: hidden;
   }
+}
+
+#invisible {
+  display: none;
 }
