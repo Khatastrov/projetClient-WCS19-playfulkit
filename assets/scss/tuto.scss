@@ -91,6 +91,8 @@ ol li::before {
   max-width:300px;
   min-width:200px;
   margin:20px auto;
+  border:1px solid $primary;
+  border-radius:0px;
   h2{
     font-family:$font-primary;
     font-size:20px;
@@ -124,5 +126,23 @@ ol li::before {
 }
 
 #invisible {
-  display: none;
+  display: none !important;
+}
+
+.btnCard{
+  border-radius:0px !important;
+  background-color:$customSkyblue;
+  color:$link-colorHover;
+  font-size:20px;
+  font-family:$font-secondary;;
+}
+
+.btnCard:hover {
+  background-color: $link-color;
+}
+
+.btnCard:focus, .btnCard:active {
+  background:$link-color !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
