@@ -5,14 +5,16 @@
 {% block body %}
     <h1>Bienvenu sur le blog !</h1>
     <p>c'est ici que sont présentés les actualités du site, les nouvelles, les évènements... </p>
-
     {% if posts %}
         {% for post in posts %}
             {# Faire ici la MEP des articles de blog #}
-            <p>{{ post.title }}<br>
-                <small>publié le {{ post.creationDate|date('d/m/yy') }} par {{ post.author ? post.author.username : 'Anonyme' }}</small><br>
-                {{ post.content|length > 150 ? post.content|slice(0, 150) ~ '...' : post.content }}
-            </p>
+            <div class="media mx-5 mb-3" style="border: 1px solid gray;">
+                <div class="media-body">
+                    <h5 class="mt-0">{{ post.title }}</h5>
+                    <small>publié le {{ post.creationDate|date('d/m/yy') }} par {{ post.author ? post.author.username : 'Anonyme' }}</small><br>
+                    {{ post.content|length > 150 ? post.content|slice(0, 150) ~ '...' : post.content }}
+                </div>
+            </div>
         {% endfor %}
     {% else %}
         <p>Il n'y a aucun article sur le blog pour le moment... ¯\_(ツ)_/¯ <br>
