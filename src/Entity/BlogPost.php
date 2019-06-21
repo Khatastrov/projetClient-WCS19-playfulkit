@@ -89,13 +89,11 @@ class BlogPost
     }
 
     /**
-     * @param \DateTimeInterface $creationDate
-     * @return BlogPost
-     * @ORM\PrePersist
+     * @ORM\PrePersist()
      */
-    public function setCreationDate(\DateTimeInterface $creationDate): self
+    public function setCreationDate(): self
     {
-        $this->creationDate = $creationDate;
+        $this->creationDate = new \DateTime();
 
         return $this;
     }
@@ -106,13 +104,11 @@ class BlogPost
     }
 
     /**
-     * @param \DateTimeInterface|null $modificationDate
-     * @return BlogPost
-     * @ORM\preUpdate
+     * @ORM\PreUpdate()
      */
-    public function setModificationDate(?\DateTimeInterface $modificationDate): self
+    public function setModificationDate(): self
     {
-        $this->modificationDate = $modificationDate;
+        $this->modificationDate = new \DateTime();
 
         return $this;
     }
