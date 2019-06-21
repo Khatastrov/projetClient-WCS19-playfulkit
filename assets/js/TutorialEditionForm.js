@@ -1,4 +1,4 @@
-var $addStepLink = $('<a href="#" class="add_step_link btn btn-primary">Ajouter une étape</a>');
+var $addStepLink = $('<button class="add_step_link btn btnAddStep">Ajouter une étape</button>');
 var $newLinkLi = $('<p></p>').append($addStepLink);
 
 jQuery(document).ready(function () {
@@ -24,14 +24,15 @@ jQuery(document).ready(function () {
 });
 
 //allow existing steps removal
-$('a.remove-existing-step').click(function () {
+$('button.remove-existing-step').click(function () {
     event.preventDefault();
     $(this).parent().remove();
 
     return false;
 });
 
-function addStepForm($collectionHolder, $newLinkLi) {
+function addStepForm($collectionHolder, $newLinkLi)
+{
     // Get the data-prototype explained earlier
     var prototype = $collectionHolder.data('prototype');
 
@@ -49,7 +50,7 @@ function addStepForm($collectionHolder, $newLinkLi) {
     var $newFormLi = $('<li></li>').append(newForm);
 
     // Add a remove link <li>
-    $newFormLi.append('<a href="#" class="remove-tag btn btn-danger">Supprimer cette étape</a>');
+    $newFormLi.append('<button class="remove-tag btn btnRemoveStep">Supprimer cette étape</button>');
 
     $newLinkLi.before($newFormLi);
 
@@ -62,3 +63,26 @@ function addStepForm($collectionHolder, $newLinkLi) {
         return false;
     });
 }
+
+// Traitements sur des boutons radio :
+$('input.form-check-input').click(function () {
+
+    var $vid = $('.champVid'),
+        $img= $('#invisible');
+
+    if ($(this).val() == 1) {
+        console.log('tu as coché "vidéo" !');
+        $img.css('display', 'none');
+        $img.val('');
+        $vid.css('display', 'block');
+    } else if ($(this).val() == 2) {
+        console.log('tu as coché "photo" !');
+        $vid.css('display', 'none');
+        $vid.val('');
+        $img.css('display', 'block');
+    } else if ($(this).val() == 0) {
+        console.log('tu as coché "aucune illustration" !');
+        $vid.css('display', 'none');
+        $img.css('display', 'none');
+    }
+});
