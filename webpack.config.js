@@ -22,6 +22,7 @@ Encore
     .addEntry('tutorial', './assets/js/tuto.js')
     .addEntry('tutoCreate', './assets/js/tutoCreate.js')
     .addEntry('signIn', './assets/js/signIn.js')
+    .addEntry('logIn', './assets/js/logIn.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
