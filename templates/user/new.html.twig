@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Inscription
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('signIn') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container customSignBlock">
+        <h1>Inscription</h1>
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
+        {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
+        {{ form_row(form.password.first, {'label': 'Mot de passe :', 'attr': {'placeholder':'Minimum de 6 caractères'}}) }}
+        {{ form_row(form.password.second, {'label': 'Confirmation :', 'attr': {'placeholder':'Confirme ton mot de passe'}}) }}
+        {{ form_row(form.birth_date, {'label': 'Date de naissance :'}) }}
+
+        <button type="submit" class="btn btnLogin">{{ button_label|default('Je m\'inscris !') }}</button>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
