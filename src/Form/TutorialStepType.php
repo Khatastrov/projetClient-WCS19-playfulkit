@@ -15,12 +15,13 @@ class TutorialStepType extends AbstractType
     {
         $builder
             ->add('title', null, [
-                'label' => 'Titre de l\'étape'
+                'label' => 'Donne un titre à ton étape'
             ])
             ->add('content', null, [
-                'label' => 'Le contenu de ton étape'
+                'label' => 'Ensuite, décris ton étape'
             ])
             ->add('imageFile', FileType::class, [
+                'label' => 'Tu peux aussi ajouter une image (optionnel)',
                 'required' => false,
             ]);
     }
