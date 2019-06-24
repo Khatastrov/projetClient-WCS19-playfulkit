@@ -10,11 +10,24 @@
 {% endblock %}
 
 {% block body %}
-    <div id="map"></div>
+    <div id="map">
+        toto
+        <script>
+            require('../scss/map.scss');
+            let map;
+            function initMap()
+            {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: -34.397, lng: 150.644},
+                    zoom: 8
+                });
+            }
+        </script>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    {{ encore_entry_script_tags('map') }}
-    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
+    {# encore_entry_script_tags('map') #}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg_4m9qwgn596ZR6xJsTUVbAe_jg5i67M&callback=initMap" async defer></script>
 {% endblock %}
