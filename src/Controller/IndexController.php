@@ -4,7 +4,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserSignUpType;
+use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,24 +18,24 @@ class IndexController extends AbstractController
      */
     public function index(Request $request, UserPasswordEncoderInterface $encoder) : Response
     {
-        $userSignUp = new User();
-        $form = $this->createForm(UserSignUpType::class, $userSignUp);
+        $registrationForm = new User();
+        $form = $this->createForm(RegistrationFormType::class, $registrationForm);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $hash = $encoder->encodePassword($userSignUp, $userSignUp->getPassword());
-            $userSignUp->setPassword($hash);
+            $hash = $encoder->encodePassword($registrationForm, $registrationForm->getPassword());
+            $registrationForm->setPassword($hash);
 
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($userSignUp);
+            $entityManager->persist($registrationForm);
             $entityManager->flush();
 
             return $this->redirectToRoute('user_login');
         }
 
         return $this->render('default.html.twig', [
-            'user' => $userSignUp,
-            'form' => $form->createView()
+            'user' => $registrationForm,
+            'registrationForm' => $form->createView()
         ]);
     }
 }
