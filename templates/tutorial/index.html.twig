@@ -10,7 +10,11 @@
 {% block body %}
     <h1 class="tutorialIndexH1">Voici les tutos !</h1>
     <p class="container tutorialIndexDescription">
-        Tu te trouves actuellement sur l'espace tuto, c'est ici que tu peux découvrir les derniéres créations de la communauté, tu peux également créer ton propre tuto en te rendant sur ton espace lorsque tu es connecté(e) !
+        {% if not app.user %}
+            Tu te trouves actuellement sur l'espace tuto, c'est ici que tu peux découvrir les derniéres créations de la communauté, tu souhaites créer un tuto et le partager ? Inscrit toi ou connecte toi pour y avoir accès !
+        {% else %}
+            Tu te trouves actuellement sur l'espace tuto, c'est ici que tu peux découvrir les derniéres créations de la communauté, tu peux également créer ton propre tuto en te rendant sur ton espace lorsque tu es connecté(e) !
+        {% endif %}
     </p>
     <section id="tutorialIndex">
         <div class="customFlex">

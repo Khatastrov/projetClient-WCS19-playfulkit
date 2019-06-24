@@ -17,6 +17,7 @@ require('../images/logo-officiel.png');
 require('../images/logo-header.png');
 require('../images/logo-officielR.png');
 require('../images/robotDefault.png');
+require('../images/board.jpg');
 
 //logos
 require('../images/pfk-ico16.png');
