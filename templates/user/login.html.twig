@@ -10,19 +10,20 @@
 {% endblock %}
 
 {% block body %}
+    <div class="opacity"></div>
     <div class="container logInDiv">
-        <h1>Connexion :</h1>
+        <h1>C'est ici que tu peux te connecter !</h1>
 
         <form action="{{ path('user_login') }}" method="post">
             <div class="form-group">
-                <input placeholder="Nom d'utilisateur" required name="_username" type="text" class="form-control"></input>
+                <label>Nom d'utilisateur :</label>
+                <input placeholder="Pseudo" required name="_username" type="text" class="form-control"></input>
             </div>
             <div class="form-group">
-                <input placeholder="Mot de passe" required name="_password" type="password" class="form-control"></input>
+                <label>Mot de passe :</label>
+                <input placeholder="*******" required name="_password" type="password" class="form-control"></input>
             </div>
-            <div class="form-group">
-                <button type="submit" class="btn btnLogin">Connexion !</button>
-            </div>
+            <button type="submit" class="btn btnLogin">Connexion !</button>
         </form>
     </div>
 

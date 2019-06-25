@@ -57,7 +57,7 @@ body{
   height:100%;
   width:100%;
   z-index:-1;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 @media (max-width: 767.98px){
@@ -86,7 +86,7 @@ body{
   .customSignBlock{
     margin-top:5vh;
     margin-bottom:5vh;
-    max-width:50%;
+    max-width:45%;
   }
   form{
     display:flex;
