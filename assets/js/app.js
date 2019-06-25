@@ -16,6 +16,9 @@ const $ = require('jquery');
 require('../images/logo-officiel.png');
 require('../images/logo-header.png');
 require('../images/logo-officielR.png');
+require('../images/robotDefault.png');
+
+//logos
 require('../images/pfk-ico16.png');
 require('../images/pfk-ico32.png');
 require('../images/pfk-ico64.png');

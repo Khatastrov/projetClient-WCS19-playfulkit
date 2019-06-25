@@ -1,40 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Tutorial
+    Nouveau Tuto !
 {% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('tutorial') }}
+    {{ encore_entry_link_tags('tutoCreate') }}
 {% endblock %}
 
 {% block body %}
     <div class="container">
-        <h1 class="tutoPresentation">Création d'un Tuto !</h1>
+        <h1>Création d'un Tuto !</h1>
 
         {{ form_start(formTutorial) }}
         {{ form_row(formTutorial.title, {'attr': {'placeholder': "Titre du Tutoriel"}}) }}
         {{ form_row(formTutorial.content, {'attr': {'placeholder': "Présentation"}}) }}
         <div class="tutoPresentation">{{ form_row(formTutorial.choix, {'attr': {'placeholder': "Choisis ton illustration :"}}) }}</div>
         {{ form_row(formTutorial.illustration) }}
-        <div id="invisible">{{ form_row(formTutorial.imageFile) }}</div>
+        <div id="invisible">{{ form_row(formTutorial.imageFile, {'attr':{'data-browse':"Titre"}}) }}</div>
 
         <ol class="steps" data-prototype="{{ form_widget(formTutorial.steps.vars.prototype)|e('html_attr') }}">
             {% for step in formTutorial.steps %}
                 <hr>
                 <li>
-                    {{ form_row(step.title) }}
-                    {{ form_row(step.content) }}
-                    {{ form_row(step.imageFile) }}
-                    <a class="remove-existing-step btn btn-danger" href="#">supprimer cette étape</a>
+                    {{ form_row(step.title, {'label': 'Titre de l\'étape'}) }}
+                    {{ form_row(step.content, {'label': 'Description'}) }}
+                    {{ form_row(step.imageFile, {'label': 'Ajoute une image'}) }}
+                    <button class="remove-existing-step btn btnRemoveStep">supprimer cette étape</button>
                 </li>
             {% endfor %}
         </ol>
+
+        {{ form_row(formTutorial.is_published, {'label': 'Souhaites tu publier ton tuto ?'} ) }}
         
-        {{ form_row(formTutorial.is_published) }}
-        
-        <button class="btn btn-success" type="submit">
+        <button class="btn btnCreateEdit" type="submit">
             {% if editMode %}
                 Enregistrer les modifications
             {% else %}

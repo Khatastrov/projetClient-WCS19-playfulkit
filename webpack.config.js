@@ -20,7 +20,9 @@ Encore
     .addEntry('app', './assets/js/app.js')
     .addEntry('TutorialEditionForm', './assets/js/TutorialEditionForm.js')
     .addEntry('tutorial', './assets/js/tuto.js')
-    //.addEntry('page2', './assets/js/page2.js')
+    .addEntry('tutoCreate', './assets/js/tutoCreate.js')
+    .addEntry('signIn', './assets/js/signIn.js')
+    .addEntry('logIn', './assets/js/logIn.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
