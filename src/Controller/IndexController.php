@@ -25,12 +25,12 @@ class IndexController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $hash = $encoder->encodePassword($registrationForm, $registrationForm->getPassword());
             $registrationForm->setPassword($hash);
-
+            $registrationForm->setCreatedAt(new \DateTime());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($registrationForm);
             $entityManager->flush();
 
-            return $this->redirectToRoute('user_login');
+            return $this->redirectToRoute('app_index');
         }
 
         return $this->render('default.html.twig', [
