@@ -10,13 +10,13 @@
 {% endblock %}
 
 {% block body %}
-    <div id="map">
-
-    </div>
+    <div id="map"></div>
+    <div id="fablab"></div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+    {{  encore_entry_script_tags('fablab') }}
     {# encore_entry_script_tags('map') #}
     <script type="text/javascript">
         let map, infoWindow;
