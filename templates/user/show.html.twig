@@ -1,41 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ton profil{% endblock %}
+{% block title %}User{% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
-    <h1>Salut {{ user.username }} ! ✅</h1>
+    <h1>User</h1>
 
-    <p>Tu te trouves sur ta page profil.</p>
-    <p>Tu peux voir tes informations ici :</p>
-    <ul>
-        <li><strong>Ton pseudo :</strong> {{ user.username }}</li>
-        <li><strong>Ton adresse mail :</strong> {{ user.email }}</li>
-        <li><strong>Tes nom et prénom :</strong>
-            {% if user.lastname is not null and user.firstname is not null %}
-                {{ user.lastname }} {{ user.firstname }}</li>
-            {% else %}
-                Tu n'as pas renseigné ces informations. (Tu peux le faire en modifiant ton profil !)
-            {% endif %}
-        <li><strong>Ton adresse :</strong>
-            {% if user.address is not null %}
-                {{ user.address }}</li>
-            {% else %}
-            Tu n'as pas renseigné ton adresse. (Tu peux le faire en modifiant ton profil !)
-            {% endif %}
-        <li><strong>Ta date de naissance :</strong> {{ user.birthdate|date("d/m/Y") }}</li>
-        <li><strong>La liste des tutoriels que tu as publié :</strong>
-            <ul>
-                {% for tutorial in user.tutorials %}
-                    <li>{{ tutorial.title }}</li>
-                {% else %}
-                    <li>Tu n'as publié aucun tutoriel pour l'instant ! (tu peux le faire en cliquant <a href="{{ path('tutorial_create') }}">sur ce lien</a>) !</li>
-                {% endfor %}
-            </ul>
-        </li>
-    </ul>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>BirthDate</th>
+                <td>{{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ user.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ user.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ user.address }}</td>
+            </tr>
+        </tbody>
+    </table>
 
+    <a href="{{ path('app_index') }}">Retour</a>
 
-    <a href="{{ path('user_edit', {'id': user.id}) }}">Modifie ton profil</a>
-</div>
+    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+
+    {{ include('user/_delete_form.html.twig') }}
 {% endblock %}

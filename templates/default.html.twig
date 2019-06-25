@@ -20,17 +20,17 @@
 
                 <section class="w-50">
 
-                    {{ form_start(form) }}
+                    {{ form_start(registrationForm) }}
 
-                    {{ form_row(form.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
-                    {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
-                    {{ form_row(form.password.first, {'label': 'Mot de passe :', 'attr': {'placeholder':'Minimum de 6 caractères'}}) }}
-                    {{ form_row(form.password.second, {'label': 'Confirmation :', 'attr': {'placeholder':'Confirme ton mot de passe'}}) }}
-                    {{ form_row(form.birth_date, {'label': 'Date de naissance :'}) }}
+                    {{ form_row(registrationForm.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
+                    {{ form_row(registrationForm.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
+                    {{ form_row(registrationForm.password.first, {'label': 'Mot de passe :', 'attr': {'placeholder':'Minimum de 6 caractères'}}) }}
+                    {{ form_row(registrationForm.password.second, {'label': 'Confirmation :', 'attr': {'placeholder':'Confirme ton mot de passe'}}) }}
+                    {{ form_row(registrationForm.birth_date, {'label': 'Date de naissance :'}) }}
 
                     <button type="submit" class="btn btn-primary">{{ button_label|default('Je m\'inscris !') }}</button>
 
-                    {{ form_end(form) }}
+                    {{ form_end(registrationForm) }}
                 </section>
             </div>
         {% else %}
