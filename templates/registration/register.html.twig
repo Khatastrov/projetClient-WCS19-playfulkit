@@ -2,20 +2,26 @@
 
 {% block title %}Inscription{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('signIn') }}
+{% endblock %}
+
 {% block body %}
-    <h1>Inscription</h1>
-    <div class="container">
-        {{ form_start(registrationForm) }}
+    <div class="opacity"></div>
+    <div class="container customSignBlock">
+        <h1>Tu souhaites nous rejoindre ? Allons-y !</h1>
 
-        {{ form_row(registrationForm.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
-        {{ form_row(registrationForm.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
-        {{ form_row(registrationForm.password.first, {'label': 'Mot de passe :', 'attr': {'placeholder':'Minimum de 6 caractères'}}) }}
-        {{ form_row(registrationForm.password.second, {'label': 'Confirmation :', 'attr': {'placeholder':'Confirme ton mot de passe'}}) }}
-        {{ form_row(registrationForm.birth_date, {'label': 'Date de naissance :'}) }}
+        {{ form_start(form) }}
 
-        <button type="submit" class="btn btn-primary">{{ button_label|default('Je m\'inscris !') }}</button>
+        {{ form_row(form.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
+        {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
+        {{ form_row(form.password.first, {'label': 'Mot de passe :', 'attr': {'placeholder':'Minimum de 6 caractères'}}) }}
+        {{ form_row(form.password.second, {'label': 'Confirmation :', 'attr': {'placeholder':'Confirme ton mot de passe'}}) }}
+        {{ form_row(form.birth_date, {'label': 'Date de naissance :'}) }}
 
-        {{ form_end(registrationForm) }}
+        <button type="submit" class="btn btnLogin">{{ button_label|default('Je m\'inscris !') }}</button>
+
+        {{ form_end(form) }}
     </div>
-    <a href="{{ path('app_index') }}">retour</a>
 {% endblock %}
