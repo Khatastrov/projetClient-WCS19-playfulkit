@@ -16,7 +16,7 @@ class TutorialType extends AbstractType
     {
         $builder
             ->add('title', null, [
-                'label' => 'Titre de ton tutoriel :'
+                'label' => 'Commence par donner un titre à ton tuto :'
             ])
             ->add('content', null, [
                 'label' => 'Ajoute une courte description :'
@@ -40,9 +40,9 @@ class TutorialType extends AbstractType
                 'label' => 'Choisis le type d\'illustration que tu veux ajouter :',
                 'mapped' => false,
                 'choices' => [
-                    'Pas d\'illustration' => null,
-                    'Une vidéo' => null,
                     'Une photo' => null,
+                    'Une vidéo' => null,
+                    'Pas d\'illustration' => null,
                 ],
                 'expanded' => true,
                 'multiple' => false,
