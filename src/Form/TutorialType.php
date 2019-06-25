@@ -72,7 +72,8 @@ class TutorialType extends AbstractType
                         'mimeTypesMessage' => 'Enregistre une image au format jpeg ou png',
                     ])
                 ]
-            ]);
+            ])
+        ->add('tools');
     }
 
     public function configureOptions(OptionsResolver $resolver)
