@@ -4,18 +4,18 @@
 
 {% block body %}
 
-    <aside class="float-lg-right mr-2">
+    <aside class="float-lg-right m-4">
         <strong>Les articles les plus récents :</strong>
         <ul>
             {% for recent in latest %}
                 <li>
-                    <a href="{{ path('lesson_show', {'id': lesson.id}) }}">{{ recent.title }}</a>
+                    <a href="{{ path('lesson_show', {'id': recent.id}) }}">{{ recent.title }}</a>
                 </li>
             {% endfor %}
         </ul>
     </aside>
 
-    <small>
+    <small class="m-4">
         {% if lesson.author  %}
             Publé par {{ lesson.author.username }}
         {% endif %}
@@ -34,13 +34,25 @@
                         <img src="{{ lesson.illustration }}" alt="illustration de la leçon">
                     </div>
                 {% endif %}
+                {% if lesson.tool is not empty %}
+                    <div class="w-75 tool-box">
+                        <p>Pour réaliser ce qui est décrit dans cette leçon, nous avons utilisé :</p>
+                        <ul>
+                        {% for tool in lesson.tool %}
+                            <li>
+                                {{ tool.name }}, {{ tool.category }}
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
                 <div class="single-post-content-wrapper p-3">
                     {{ lesson.content }}
                 </div>
             </div>
         </article>
         <div class="d-flex justify-content-center">
-            <a href="{{ path('lesson_index') }}" class="btn btn-info mx-auto">Retour à la liste des leçons &rarr;</a>
+            <a href="{{ path('lesson_index') }}" class="btn btn-info mx-auto my-4">Retour à la liste des leçons &rarr;</a>
         </div>
     </div>
 

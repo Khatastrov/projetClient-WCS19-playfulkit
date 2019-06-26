@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Lesson;
+use App\Entity\Tool;
 use App\Form\LessonType;
 use App\Repository\LessonRepository;
+use App\Repository\ToolRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +25,10 @@ class LessonController extends AbstractController
     public function index(LessonRepository $lessonRepository): Response
     {
         return $this->render('lesson/index.html.twig', [
-            'lessons' => $lessonRepository->findAll(),
+            'lessons' => $lessonRepository->findBy(
+                [],
+                ['publicationDate' => 'DESC']
+            ),
         ]);
     }
 
@@ -47,11 +52,11 @@ class LessonController extends AbstractController
      * @param Lesson $lesson
      * @return Response
      */
-    public function show(LessonRepository $lessonRepository, Lesson $lesson): Response
+    public function show(LessonRepository $lessonRepository, Lesson $lesson, ToolRepository $tools): Response
     {
         $latest = $lessonRepository->findBy(
             [],
-            ['id' => 'DESC',],
+            ['publicationDate' => 'DESC',],
             3
         );
 
