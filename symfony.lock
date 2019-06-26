@@ -132,6 +132,9 @@
     "justinrainbow/json-schema": {
         "version": "5.2.8"
     },
+    "kenwheeler/slick": {
+        "version": "1.6.1"
+    },
     "monolog/monolog": {
         "version": "1.24.0"
     },

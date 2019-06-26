@@ -1,0 +1,29 @@
+@import "vars";
+
+#Lessons{
+  margin-top: 1em;
+  background-image: url(../images/lesson.jpg);
+  background-size: cover;
+  width:96%;
+  height:46%;
+  background-repeat:no-repeat;
+}
+#Tutorial{
+  margin-top: 1em;
+  background-image: url(../images/tuto.jpg);
+  background-size: cover;
+  width:96%;
+  height:46%;
+  background-repeat:no-repeat;
+}
+.form{
+  margin-top: 1em;
+  background-image: url(../images/form.jpg);
+  background-size: cover;
+}
+#date{
+  left: 33%;
+}
+#boutton{
+  width: 100%;
+}
