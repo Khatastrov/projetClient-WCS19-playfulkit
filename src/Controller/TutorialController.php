@@ -37,8 +37,10 @@ class TutorialController extends AbstractController
      */
     public function form(Tutorial $tuto = null, Request $request) : Response
     {
+        $user = $this->getUser();
         if (!$tuto) {
             $tuto = new Tutorial();
+            $tuto->setAuthor($user);
         }
 
         $form = $this->createForm(TutorialType::class, $tuto);
