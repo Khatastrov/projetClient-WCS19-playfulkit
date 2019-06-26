@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Form;
 
 use App\Entity\Tutorial;
@@ -17,7 +16,7 @@ class TutorialType extends AbstractType
     {
         $builder
             ->add('title', null, [
-                'label' => 'Titre de ton tutoriel :'
+                'label' => 'Commence par donner un titre à ton tuto :'
             ])
             ->add('content', null, [
                 'label' => 'Ajoute une courte description :'
@@ -33,17 +32,17 @@ class TutorialType extends AbstractType
             ])
             ->add('is_published', ChoiceType::class, [
             'choices' => [
-                'Yes' => true,
-                'No' => false,
+                'Oui' => true,
+                'Non' => false,
                 ],
             ])
             ->add('choix', ChoiceType::class, [
                 'label' => 'Choisis le type d\'illustration que tu veux ajouter :',
                 'mapped' => false,
                 'choices' => [
-                    'Aucune illustration' => null,
-                    'Une vidéo' => null,
                     'Une photo' => null,
+                    'Une vidéo' => null,
+                    'Pas d\'illustration' => null,
                 ],
                 'expanded' => true,
                 'multiple' => false,
@@ -62,7 +61,7 @@ class TutorialType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'class' => 'champImg',
-                    'placeholder' => 'Place ici ta photo !',
+                    'placeholder' => 'Ajoute ta photo !',
                 ],
                 'constraints' => [
                     new File([

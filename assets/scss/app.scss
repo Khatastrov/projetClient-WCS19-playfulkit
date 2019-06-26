@@ -11,18 +11,7 @@
   src: url('../fonts/Jaapokki/jaapokki-regular.ttf') format('ttf');
   src: url('../fonts/Jaapokki/jaapokki-regular.woff') format('woff');
 }
-@font-face {
-  font-family:'Lato';
-  src: url('../fonts/Lato/Lato-Regular.ttf') format('ttf');
-}
-@font-face {
-  font-family:'LinuxLibertine';
-  src: url('../fonts/LinuxLibertine/LinLibertine_R.ttf') format('ttf');
-}
-@font-face {
-  font-family:'Parmapetit';
-  src: url('../fonts/Parmapetit/ParmaPetit-Normal.ttf') format('ttf');
-}
+
 .navHeaderBar{
   width:100%;
   min-height:80px;
@@ -30,13 +19,24 @@
   background-color: $primary;
   a{
     right:5vw;
-    font-size:25px;
     color: $link-color;
     text-decoration:none;
     font-family: $font-primary;
   }
   a:hover{
     color: $link-colorHover;
+  }
+  .logoutBtn{
+    color:$customRed !important;
+  }
+  .logoutBtn:hover{
+    color:$link-colorHover !important;
+  }
+  .loginBtn{
+    color:$customSkyblue !important;
+  }
+  .loginBtn:hover{
+    color:$link-colorHover !important;
   }
 }
 .navSubBar{
@@ -99,8 +99,8 @@
   margin-bottom:0px;
   text-align:center;
   span{
-    margin-top:auto;
-    margin-bottom:auto;
+    position: relative;
+    bottom:10px;
     font-size:30px;
     color:$secondary-link-color;
     font-family: $font-primary;
@@ -152,15 +152,20 @@
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(142, 191, 107)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
   }
   .logoMain{
-    max-width:80%;
-    margin-left:10%;
-    margin-right:10%;
+    max-width:50%;
+    margin-left:25%;
+    margin-right:25%;
   }
   .fa-facebook-square{
     margin-left:170px;
   }
   .fa-instagram{
     margin-right:170px;
+  }
+  .navHeaderBar{
+    a{
+      font-size:20px;
+    }
   }
 }
 @media (min-width: 768px) {
@@ -170,10 +175,10 @@
     margin-left:auto;
   }
   #body{
-    min-height:60vh;
+    min-height:70vh;
   }
   .logoMain{
-    max-width:300px;
+    max-width:275px;
     margin-left:0px;
   }
   #primMainFooter{
@@ -185,5 +190,10 @@
   }
   .fa-instagram{
     margin-right:70px;
+  }
+  .navHeaderBar{
+    a{
+      font-size:25px;
+    }
   }
 }
