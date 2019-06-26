@@ -3,49 +3,52 @@
 {% block title %}Accueil{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('homePage') }}
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.9.0/slick/slick.css"/>
+    {{ encore_entry_link_tags('homePage') }}row mx-auto justify-content-around mb-5 mt-5"
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.nerow mx-auto justify-content-around mb-5 mt-5"t/gh/kenwheeler/slick@1.9.0/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.9.0/slick/slick-theme.css"/>
 {% endblock %}
 
 {% block body %}
     <main class="container-fluid">
         {% if not app.user %}
-            <div class="row mx-auto justify-content-around mb-5 mt-5">
-                <section class="w-50 text-center">
-                    <div class="border border-dark my-3 mx-3" id="Lessons">
+            <div class="row mx-auto justify-content-around md-12">
+                <section class="w-50 text-center col-md-6 col-sm-12 col-12">
+                    <div class="border border-dark my-3  mx-3" id="Lessons">
                         <h3 class="my-5">Lessons</h3>
                     </div>
                     <div class="border border-dark my-3 mx-3" id="Tutorial">
                         <h3 class="my-5">Tutorials</h3>
                     </div>
                 </section>
-                 <section class="w-50 formContainer">
+                 <section class="w-50 formContainer col-md-6 col-sm-12 col-12">
                          <div class="opacity"></div>
                         {{ form_start(form) }}
 
+                        <div class="form-group">
                              {{ form_row(form.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
+                        </div>
+                        <div class="form-group">
                             {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
-                            <div class="row">
-                                <div class="form-group col-sm-6">
+                        </div>
+                            <div class="form-group">
+                                <div class="form-group col-sm-12">
                             {{ form_row(form.password.first, {'label': 'Mot de passe :', 'attr': {'placeholder':'Minimum de 6 caractères'}}) }}
                                 </div>
 
-                                <div class="form-group col-sm-6">
+                                <div class="form-group col-sm-12">
                             {{ form_row(form.password.second, {'label': 'Confirmation :', 'attr': {'placeholder':'Confirme ton mot de passe'}}) }}
                                 </div>
-                                <div class="form-group col-sm-6" id="date">
+                                <div class="form-group col-sm-12" id="date">
                             {{ form_row(form.birth_date, {'label': 'Date de naissance :'}) }}
                                 </div>
+                                <button type="submit" class="btn btn-primary" id="boutton" >{{ button_label|default('Je m\'inscris !') }}</button>
                             </div>
 
-                            <button type="submit" class="btn btn-primary" id="boutton" >{{ button_label|default('Je m\'inscris !') }}</button>
-                         </div>
 
 
                         {{ form_end(form) }}
                     </section>
-                </div>
+            </div>
         {% else %}
             <div class="row mx-auto justify-content-around mb-5 mt-5 col-12">
                 <section class="w-50 text-center">
@@ -60,6 +63,7 @@
                     </div>
                 </section>
             </div>
+
         {% endif %}
 
         <section>
