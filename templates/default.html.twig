@@ -20,29 +20,30 @@
                         <h3 class="my-5">Tutorials</h3>
                     </div>
                 </section>
-                 <section class="w-50" >
-                     <div class="form">
-
+                 <section class="w-50 formContainer">
+                         <div class="opacity"></div>
                         {{ form_start(form) }}
 
-                        {{ form_row(form.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
-                        {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
-                        <div class="row">
-                            <div class="form-group col-sm-6">
-                        {{ form_row(form.password.first, {'label': 'Mot de passe :', 'attr': {'placeholder':'Minimum de 6 caractères'}}) }}
-                            </div>
-                            <div class="form-group col-sm-6">
-                        {{ form_row(form.password.second, {'label': 'Confirmation :', 'attr': {'placeholder':'Confirme ton mot de passe'}}) }}
-                            </div>
-                            <div class="form-group col-sm-6" id="date">
-                        {{ form_row(form.birth_date, {'label': 'Date de naissance :'}) }}
-                            </div>
-                        </div>
+                             {{ form_row(form.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
+                            {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                            {{ form_row(form.password.first, {'label': 'Mot de passe :', 'attr': {'placeholder':'Minimum de 6 caractères'}}) }}
+                                </div>
 
-                        <button type="submit" class="btn btn-primary" id="boutton" >{{ button_label|default('Je m\'inscris !') }}</button>
+                                <div class="form-group col-sm-6">
+                            {{ form_row(form.password.second, {'label': 'Confirmation :', 'attr': {'placeholder':'Confirme ton mot de passe'}}) }}
+                                </div>
+                                <div class="form-group col-sm-6" id="date">
+                            {{ form_row(form.birth_date, {'label': 'Date de naissance :'}) }}
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="boutton" >{{ button_label|default('Je m\'inscris !') }}</button>
+                         </div>
+
 
                         {{ form_end(form) }}
-                     </div>
                     </section>
                 </div>
         {% else %}
@@ -127,6 +128,5 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent () }}
-}
     {{ encore_entry_script_tags('homePage') }}
 {% endblock %}
