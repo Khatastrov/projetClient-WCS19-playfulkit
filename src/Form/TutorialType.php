@@ -73,7 +73,15 @@ class TutorialType extends AbstractType
                     ])
                 ]
             ])
-        ->add('tools');
+            ->add('tools', CollectionType::class, [
+                'label' => false,
+                'entry_type' => TutorialToolType::class,
+                'required' => false,
+                'entry_options' => ['label' => false],
+                'by_reference' => false,
+                'allow_add' => true,
+                'allow_delete' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
