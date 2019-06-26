@@ -21,16 +21,10 @@ require('../images/board.jpg');
 require('../images/electricity.jpg');
 
 //avatars
-require('../images/avatars/avatar1.png');
-require('../images/avatars/avatar2.png');
-require('../images/avatars/avatar3.png');
-require('../images/avatars/avatar4.png');
-require('../images/avatars/avatar5.png');
-require('../images/avatars/avatar6.png');
-require('../images/avatars/avatar7.png');
-require('../images/avatars/avatar8.png');
-require('../images/avatars/avatar9.png');
-require('../images/avatars/avatar10.png');
+function importAll(r){
+    r.keys().forEach(r);
+}
+importAll(require.context('../images/avatars', true,/\.png$/));
 
 //logos
 require('../images/pfk-ico16.png');

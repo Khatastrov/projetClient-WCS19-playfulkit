@@ -115,6 +115,10 @@ ol li::before {
     font-size:15px;
     text-align: center;
   }
+  .card-img-top{
+    max-height:300px;
+    max-width: 300px;
+  }
 }
 #tutorialIndex{
   .row{
