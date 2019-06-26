@@ -5,9 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LessonRepository")
+ * @Vich\Uploadable()
  */
 class Lesson
 {
@@ -38,6 +42,12 @@ class Lesson
      * @ORM\Column(type="datetimetz", nullable=true)
      */
     private $publicationDate;
+
+    /**
+     * @var File|null
+     * @Vich\UploadableField(mapping="lesson_image", fileNameProperty="illustration")
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=500, nullable=true)
@@ -86,29 +96,6 @@ class Lesson
     public function setContent(string $content): self
     {
         $this->content = $content;
-
-        return $this;
-    }
-
-    public function addTool(Tool $tool): self
-    {
-        if (!$this->tool->contains($tool)) {
-            $this->tool[] = $tool;
-            $tool->setLesson($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTool(Tool $tool): self
-    {
-        if ($this->tool->contains($tool)) {
-            $this->tool->removeElement($tool);
-            // set the owning side to null (unless already changed)
-            if ($tool->getLesson() === $this) {
-                $tool->setLesson(null);
-            }
-        }
 
         return $this;
     }
@@ -167,5 +154,28 @@ class Lesson
     public function getTool(): Collection
     {
         return $this->Tool;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile() : ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File|null $imageFile
+     * @return $this
+     * @throws \Exception
+     */
+    public function setImageFile(?File $imageFile = null)
+    {
+        $this->imageFile = $imageFile;
+
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->publicationDate = new \DateTime('now');
+        }
+        return $this;
     }
 }
