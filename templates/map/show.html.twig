@@ -16,14 +16,13 @@
 
 {% block javascripts %}
     {{ parent() }}
-    {{  encore_entry_script_tags('fablab') }}
-    {# encore_entry_script_tags('map') #}
     <script type="text/javascript">
         let map, infoWindow;
         function initMap()
         {
+            let myLocation = {lat: 50.6307, lng:3.0709};
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 50.6307, lng:3.0709},
+                center: myLocation,
                 zoom: 16
             });
             infoWindow = new google.maps.InfoWindow;
@@ -55,6 +54,46 @@
                 'Error: Votre navigateur ne supporte pas la géocalisation.');
             infoWindow.open(map);
         }
+
+        const request = new XMLHttpRequest();
+        request.open('GET', 'http://www.makery.info/api/labs/');
+        request.responseType = 'json';
+        request.send();
+        request.onload = function() {
+            const fablabs = request.response.features.filter((feature)=>{
+                return feature.properties.type_lab === 'fablab';
+            });
+            const markers = fablabs.map((fablab)=>{
+                let fablabMarkers = {
+                    fablabName : fablab.properties.name,
+                    fablabAdrress : fablab.properties.adress,
+                    fablabSite : fablab.properties.url_makery,
+                    fablabCordinate : {
+                        lat : fablab.geometry.coordinates[1],
+                        lng : fablab.geometry.coordinates[0]
+                    }
+                };
+                return fablabMarkers;
+            });
+            console.log(markers);
+            markers.forEach(function (marker) {
+                let content = "<h2>" + marker.fablabName + "</h2>"
+                    + "<p> l'adresse est :" + marker.fablabAdrress + "</p>"
+                    + "<p> Le site de ce fablab est " + "<a href='"+ marker.fablabSite +"' target='_blank'>juste ici</a></p>";
+                let infowindow = new google.maps.InfoWindow({
+                    content : content
+                });
+                marker = new google.maps.Marker({
+                    position : marker.fablabCordinate,
+                    map : map,
+                    title : marker.fablabName
+                });
+                marker.addListener('click', function () {
+                    infowindow.open(map,marker);
+                });
+            })
+        };
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg_4m9qwgn596ZR6xJsTUVbAe_jg5i67M&callback=initMap" async defer></script>
 {% endblock %}
