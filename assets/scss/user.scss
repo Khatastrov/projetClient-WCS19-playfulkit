@@ -1,0 +1,45 @@
+@import "vars";
+.welcomeUser{
+  text-align: center;
+  h1{
+    margin-top: 20px;
+    font-family: $font-primary;
+    font-size: 35px;
+  }
+  p{
+    font-size:20px;
+    font-family:$font-secondary;
+  }
+}
+
+.userSection{
+  display:flex;
+}
+
+.userTab{
+  background:$customSkyblue;
+  .nav-tabs{
+    border:none;
+    margin-bottom: 10px;
+  }
+  .tab-content{
+    height: 300px !important;
+    article{
+      background:orange;
+    }
+  }
+}
+
+.avatar{
+  max-width:30%;
+  background: $customRed;
+  img{
+    max-width:80%;
+    margin:5% 10%;
+  }
+  p{
+    text-align: center;
+    font-size:20px;
+    font-family:$font-secondary;
+  }
+}

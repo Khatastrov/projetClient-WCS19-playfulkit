@@ -1,44 +1,86 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}Mon espace{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('user') }}
+{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
+    <div class="container welcomeUser">
+        <h1>Salut {{ user.username }} !</h1>
+        <p>Bienvenue dans ton espace membre. Ici, tu peux voir et modifier tes informations mais aussi créer de nouveaux tutos ! 😉</p>
+    </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Username</th>
-                <td>{{ user.username }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>BirthDate</th>
-                <td>{{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Firstname</th>
-                <td>{{ user.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Lastname</th>
-                <td>{{ user.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ user.address }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="userSection container">
+        <div class="col-4 avatar">
+            <img class="avatarImg" src="{{ asset('build/images/avatar1.png') }}">
+            <p>{{ user.username }} ({{ date('now').diff((user.birthdate)).format('%y ans') }})</p>
+        </div>
 
-    <a href="{{ path('app_index') }}">Retour</a>
-    <br>
-    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-    <br>
-    <a href="{{ path('tutorial_create') }}">Pour créer ton tuto c'est ici !</a>
+        <!-- Nav tabs -->
+        <div class="col-8 userTab">
+            <div class="nav nav-tabs" role="tablist">
+                <button class="btn" href="#userInfo" aria-controls="userInfo" role="tab" data-toggle="tab">Mes infos</button>
+                <button class="btn" href="#userTutoInfo" aria-controls="userTutoInfo" role="tab" data-toggle="tab">Mes tutos</button>
+                <button class="btn" href="#userKitInfo" aria-controls="userKitInfo" role="tab" data-toggle="tab">Mes kits</button>
+            </div>
 
-    {{ include('user/_delete_form.html.twig') }}
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="userInfo">
+                    <article>
+                        <p>Nom d'utilisateur : {{ user.username }}</p>
+                        <p>Adresse  mail : {{ user.email }}</p>
+                        <p>Date d'anniversaire : {{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}</p>
+
+                        {% if firstName is null %}
+                            <p>Prénom : Tu n'as pas encore renseigner cette information</p>
+                        {% else %}
+                            <p>{{ user.firstname }}</p>
+                        {% endif %}
+
+                        {% if lastName is null %}
+                            <p>Nom : Tu n'as pas encore renseigner cette information</p>
+                        {% else %}
+                            <p>{{ user.lastname }}</p>
+                        {% endif %}
+
+                        {% if address is null %}
+                            <p>Adresse : Tu n'as pas encore renseigner cette information</p>
+                        {% else %}
+                            <p>{{ user.address }}</p>
+                        {% endif %}
+                        <div class="btn-group">
+                            <a class="btn btn-primary" href="{{ path('user_edit', {'id': user.id}) }}">Modifier mes informations</a>
+                            {{ include('user/_delete_form.html.twig') }}
+                        </div>
+                    </article>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="userTutoInfo">
+                    <article>
+                        <p>La liste des tutoriels que tu as publié :</p>
+                        {% for tutorial in user.tutorials %}
+                            <p>{{ tutorial.title }}</p>
+                        {% else %}
+                            <p>Tu n'as rien publié pour l'instant ! 😜</p>
+                        {% endfor %}
+                        <a class="btn btn-primary" href="{{ path('tutorial_create') }}">Créer un nouveau tutorial</a>
+                    </article>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="userKitInfo">
+                    <article>
+                        <p>La liste des kits que tu as obtenu :</p>
+                        <p>Tu n'as aucun kits pour l'instant ! 😜</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent () }}
+    {{ encore_entry_script_tags('user') }}
 {% endblock %}
