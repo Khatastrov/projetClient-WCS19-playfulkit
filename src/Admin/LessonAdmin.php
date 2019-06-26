@@ -11,6 +11,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Sonata\FormatterBundle\Form\Type\SimpleFormatterType;
 
 class LessonAdmin extends AbstractAdmin
 {
@@ -26,7 +27,9 @@ class LessonAdmin extends AbstractAdmin
             'property' => 'name',
             'multiple' => true
         ]);
-        $formMapper->add('content', TextType::class);
+        $formMapper->add('content', SimpleFormatterType::class, [
+                'format' => 'text',
+            ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

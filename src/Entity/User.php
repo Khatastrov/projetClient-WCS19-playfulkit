@@ -86,6 +86,8 @@ class User implements UserInterface
     public function __construct()
     {
         $this->lessons = new ArrayCollection();
+        $this->tutorials = new ArrayCollection();
+        $this->blogPosts = new ArrayCollection();
     }
 
 

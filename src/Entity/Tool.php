@@ -39,13 +39,14 @@ class Tool
     private $tutorials;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Lesson", inversedBy="tool")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Lesson", mappedBy="Tool")
      */
-    private $lesson;
+    private $lessons;
 
     public function __construct()
     {
         $this->tutorials = new ArrayCollection();
+        $this->lessons = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -125,6 +126,34 @@ class Tool
     public function setLesson(?Lesson $lesson): self
     {
         $this->lesson = $lesson;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Lesson[]
+     */
+    public function getLessons(): Collection
+    {
+        return $this->lessons;
+    }
+
+    public function addLesson(Lesson $lesson): self
+    {
+        if (!$this->lessons->contains($lesson)) {
+            $this->lessons[] = $lesson;
+            $lesson->addTool($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLesson(Lesson $lesson): self
+    {
+        if ($this->lessons->contains($lesson)) {
+            $this->lessons->removeElement($lesson);
+            $lesson->removeTool($this);
+        }
 
         return $this;
     }

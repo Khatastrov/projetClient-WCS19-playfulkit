@@ -29,23 +29,18 @@ class Lesson
     private $content;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Tool", mappedBy="lesson")
-     */
-    private $tool;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="lessons")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $author;
 
     /**
-     * @ORM\Column(type="datetimetz")
+     * @ORM\Column(type="datetimetz", nullable=true)
      */
     private $publicationDate;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=500, nullable=true)
      */
     private $illustration;
 
@@ -54,9 +49,16 @@ class Lesson
      */
     private $category;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tool", inversedBy="lessons")
+     * @ORM\JoinColumn(name="tool_id", referencedColumnName="id")
+     */
+    private $Tool;
+
     public function __construct()
     {
-        $this->tool = new ArrayCollection();
+        $this->publicationDate = new \DateTime();
+        $this->Tool = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -86,14 +88,6 @@ class Lesson
         $this->content = $content;
 
         return $this;
-    }
-
-    /**
-     * @return Collection|Tool[]
-     */
-    public function getTool(): Collection
-    {
-        return $this->tool;
     }
 
     public function addTool(Tool $tool): self
@@ -165,5 +159,13 @@ class Lesson
         $this->category = $category;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Tool[]
+     */
+    public function getTool(): Collection
+    {
+        return $this->Tool;
     }
 }
