@@ -299,37 +299,6 @@ class User implements UserInterface
     /**
      * @return Collection|Lesson[]
      */
-    public function getPublicationDate(): Collection
-    {
-        return $this->publicationDate;
-    }
-
-    public function addPublicationDate(Lesson $publicationDate): self
-    {
-        if (!$this->publicationDate->contains($publicationDate)) {
-            $this->publicationDate[] = $publicationDate;
-            $publicationDate->setAuthor($this);
-        }
-
-        return $this;
-    }
-
-    public function removePublicationDate(Lesson $publicationDate): self
-    {
-        if ($this->publicationDate->contains($publicationDate)) {
-            $this->publicationDate->removeElement($publicationDate);
-            // set the owning side to null (unless already changed)
-            if ($publicationDate->getAuthor() === $this) {
-                $publicationDate->setAuthor(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Lesson[]
-     */
     public function getLessons(): Collection
     {
         return $this->lessons;
