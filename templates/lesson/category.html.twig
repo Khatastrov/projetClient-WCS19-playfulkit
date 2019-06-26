@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les leçons{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Les leçons: {{ category.name }}</h1>
+        <p>Tu es prêt à apprendre de nouvelles choses ? Tu es au bon endroit !<br>
+            Voici la liste des leçons, tu vas y découvrir des tas de choses passionantes !</p>
+        <p>N'hésites pas à choisir la catégorie qui t'intéresse.</p>
+
+        <div class="row d-flex justify-content-around w-75 mx-auto">
+            {# faire une boucle sur les catégories #}
+            <a href="{{ path('lesson_category', {'name' : 'electronic'}) }}" class="btn btn-outline-info">Electronique</a>
+            <a href="{{ path('lesson_category', {'name' : 'robotic'}) }}" class="btn btn-outline-info">Robotique</a>
+            <a href="{{ path('lesson_category', {'name' : 'iot'}) }}" class="btn btn-outline-info">Internet des objets</a>
+            <a href="{{ path('lesson_category', {'name' : 'coding'}) }}" class="btn btn-outline-info">Code</a>
+            <a href="{{ path('lesson_category', {'name' : 'maker'}) }}" class="btn btn-outline-info">Construction</a>
+        </div>
+
+        {% if lessons %}
+
+            {% for lesson in lessons %}
+                <div class="card my-4">
+                    {% if lesson.illustration %}
+                        <img class="card-img-top" src="{{ lesson.illustration }}" alt="Card image cap">
+                    {% endif %}
+                    <div class="card-body">
+                        <div class="card-title text-center">
+                            {{ lesson.title }}<br>
+                            <small>
+                                {% if lesson.author  %}
+                                    Publé par {{ lesson.author.username }}
+                                {% endif %}
+                                {% if lesson.publicationDate %}
+                                    le {{ lesson.publicationDate|date('d-m-Y') }}
+                                {% endif %}
+                            </small>
+                        </div>
+                        {{ lesson.content|slice(0, 350) ~ '...' }}
+                    </div>
+
+
+                    <a href="{{ path('lesson_show', {'id': lesson.id}) }}" class="btn btn-warning">Lire la leçon &rarr;</a>
+                </div>
+            {% endfor %}
+
+        {% else %}
+
+            <p>Il n'y a pas de leçon pour cette catégorie actuellement... <br>
+                Reviens plus tard !</p>
+
+        {% endif %}
+    </div>
+{% endblock %}
