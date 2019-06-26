@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse navbar-nav navLinkBar" id="navbarSupportedContent">
             <div class="subLinkbar">
                 {#<a class="nav-link" href="#">Concours</a>#}
-                <a class="nav-link" href="#">Leçons</a>
+                <a class="nav-link" href="{{ path('lesson_index') }}">Leçons</a>
                 <a class="nav-link" href="{{ path('tutorial') }}">Tutos</a>
                 {#<a class="nav-link" href="#">Boutique</a>#}
                 {#<a class="nav-link" href="#">Educateurs</a>#}
@@ -57,7 +57,7 @@
             <span>Catégories</span>
             <ul>
                 <li>
-                    <a href="#">Leçons</a>
+                    <a href="{{ path('lesson_index') }}">Leçons</a>
                 </li>
                 <li>
                     <a href="{{ path('tutorial') }}">Tutos</a>
