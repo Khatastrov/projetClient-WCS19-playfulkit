@@ -20,9 +20,7 @@ Encore
     .addEntry('app', './assets/js/app.js')
     .addEntry('TutorialEditionForm', './assets/js/TutorialEditionForm.js')
     .addEntry('tutorial', './assets/js/tuto.js')
-    .addEntry('map', './assets/js/map.js')
     .addEntry('mapScss', './assets/scss/map.scss')
-    .addEntry('fablab', './assets/js/fablab.js')
     //.addEntry('page2', './assets/js/page2.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
