@@ -35,7 +35,7 @@ class IndexController extends AbstractController
 
         return $this->render('default.html.twig', [
             'user' => $registrationForm,
-            'registrationForm' => $form->createView()
+            'form' => $form->createView()
         ]);
     }
 }
