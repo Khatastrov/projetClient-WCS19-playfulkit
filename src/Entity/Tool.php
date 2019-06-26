@@ -38,6 +38,11 @@ class Tool
      */
     private $tutorials;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lesson", inversedBy="tool")
+     */
+    private $lesson;
+
     public function __construct()
     {
         $this->tutorials = new ArrayCollection();
@@ -108,6 +113,18 @@ class Tool
             $this->tutorials->removeElement($tutorial);
             $tutorial->removeTool($this);
         }
+
+        return $this;
+    }
+
+    public function getLesson(): ?Lesson
+    {
+        return $this->lesson;
+    }
+
+    public function setLesson(?Lesson $lesson): self
+    {
+        $this->lesson = $lesson;
 
         return $this;
     }

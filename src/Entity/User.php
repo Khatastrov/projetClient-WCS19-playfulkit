@@ -78,11 +78,16 @@ class User implements UserInterface
      */
     private $blogPosts;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Lesson", mappedBy="author")
+     */
+    private $lessons;
+
     public function __construct()
     {
-        $this->tutorials = new ArrayCollection();
-        $this->blogPosts = new ArrayCollection();
+        $this->lessons = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -285,6 +290,68 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($blogPost->getAuthor() === $this) {
                 $blogPost->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Lesson[]
+     */
+    public function getPublicationDate(): Collection
+    {
+        return $this->publicationDate;
+    }
+
+    public function addPublicationDate(Lesson $publicationDate): self
+    {
+        if (!$this->publicationDate->contains($publicationDate)) {
+            $this->publicationDate[] = $publicationDate;
+            $publicationDate->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removePublicationDate(Lesson $publicationDate): self
+    {
+        if ($this->publicationDate->contains($publicationDate)) {
+            $this->publicationDate->removeElement($publicationDate);
+            // set the owning side to null (unless already changed)
+            if ($publicationDate->getAuthor() === $this) {
+                $publicationDate->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Lesson[]
+     */
+    public function getLessons(): Collection
+    {
+        return $this->lessons;
+    }
+
+    public function addLesson(Lesson $lesson): self
+    {
+        if (!$this->lessons->contains($lesson)) {
+            $this->lessons[] = $lesson;
+            $lesson->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLesson(Lesson $lesson): self
+    {
+        if ($this->lessons->contains($lesson)) {
+            $this->lessons->removeElement($lesson);
+            // set the owning side to null (unless already changed)
+            if ($lesson->getAuthor() === $this) {
+                $lesson->setAuthor(null);
             }
         }
 
