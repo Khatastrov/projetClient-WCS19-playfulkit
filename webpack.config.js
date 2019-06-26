@@ -21,6 +21,7 @@ Encore
     .addEntry('TutorialEditionForm', './assets/js/TutorialEditionForm.js')
     .addEntry('tutorial', './assets/js/tuto.js')
     .addEntry('map', './assets/js/map.js')
+    .addEntry('mapScss', './assets/scss/map.scss')
     .addEntry('fablab', './assets/js/fablab.js')
     //.addEntry('page2', './assets/js/page2.js')
 
