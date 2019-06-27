@@ -7,26 +7,23 @@ body
 
 #edit
 {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.9);
   margin:auto;
-  margin-left: 30%;
-  margin-right: 30%;
-
 }
 
 h1
 {
-  font-size: 35px;
-  margin-left: 18%;
-  margin-top: 8%;
+  text-align: center;
+  padding-top:10px;
   margin-bottom: 20px;
   font-family: $font-primary;
 }
 
 .btnEdit
 {
-  margin-left: 38%;
-  background-color: rgb(3, 166, 166);
+  margin-top:10px;
+  color:$link-colorHover;
+  background-color: $customSkyblue;
   font-size: 20px;
 }
 
@@ -39,7 +36,7 @@ h1
 
 .return
 {
-  color: rgb(26,65,89);
+  color: $primary;
 }
 
 .opacity{
@@ -50,5 +47,51 @@ h1
   height:100%;
   width:100%;
   z-index:-1;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 767.98px){
+  #edit{
+    display:flex;
+    flex-direction: column;
+    margin:20px 4vw;
+    max-width:90vw;
+  }
+  form{
+    max-width:80%;
+    margin-left:10%;
+    margin-right:10%;
+    display:flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 768px){
+  #edit{
+    margin-top:5vh;
+    margin-bottom:5vh;
+    max-width:60%;
+  }
+  form{
+    display:flex;
+    flex-direction: column;
+    max-width:70%;
+    margin-left:15%;
+    margin-right:15%;
+  }
+}
+
+@media (min-width: 1199.98px){
+  #edit{
+    margin-top:5vh;
+    margin-bottom:5vh;
+    max-width:45%;
+  }
+  form{
+    display:flex;
+    flex-direction: column;
+    max-width:60%;
+    margin-left:20%;
+    margin-right:20%;
+  }
 }
