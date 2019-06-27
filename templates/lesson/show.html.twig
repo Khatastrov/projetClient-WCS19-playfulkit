@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ lesson.title }}{% endblock %}
+
+{% block body %}
+
+    <aside class="float-lg-right m-4">
+        <strong>Les articles les plus récents :</strong>
+        <ul>
+            {% for recent in latest %}
+                <li>
+                    <a href="{{ path('lesson_show', {'id': recent.id}) }}">{{ recent.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </aside>
+
+    <small class="m-4">
+        {% if lesson.author  %}
+            Publé par {{ lesson.author.username }}
+        {% endif %}
+        {% if lesson.publicationDate %}
+            le {{ lesson.publicationDate|date('d-m-Y') }}
+        {% endif %}
+    </small>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <h1 class="mx-auto">{{ lesson.title }}</h1>
+        </div>
+        {% if lesson.illustration %}
+            <div class="d-flex justify-content-center">
+                <img src="/images/lesson/{{ lesson.illustration }}" alt="illustration de la leçon">
+            </div>
+        {% endif %}
+        <article class="row single-post mt-5 no-gutters">
+            <div class="col-md-12">
+                {% if lesson.tool is not empty %}
+                    <div class="w-75 tool-box">
+                        <p>Pour réaliser ce qui est décrit dans cette leçon, nous avons utilisé :</p>
+                        <ul>
+                        {% for tool in handtools %}
+                            <li>Outils :</li>
+                            <ol>
+                                <li>
+                                    {{ tool.name }}
+                                </li>
+                            </ol>
+                        {% endfor %}
+                        {% for tool in hardwares %}
+                            <li>Matériaux :</li>
+                            <ol>
+                                <li>
+                                    {{ tool.name }}
+                                </li>
+                            </ol>
+                        {% endfor %}
+                        {% for tool in softwares %}
+                            <li>Logiciels :</li>
+                            <ol>
+                                <li>
+                                    {{ tool.name }}
+                                </li>
+                            </ol>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="">
+                    {{ lesson.content }}
+                </div>
+            </div>
+        </article>
+        <div class="d-flex justify-content-center">
+            <a href="{{ path('lesson_index') }}" class="btn btn-info mx-auto my-4">Retour à la liste des leçons &rarr;</a>
+        </div>
+    </div>
+
+{% endblock %}
