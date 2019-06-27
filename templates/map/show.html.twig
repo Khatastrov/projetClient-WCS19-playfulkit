@@ -67,7 +67,7 @@
                 let fablabMarkers = {
                     fablabName : fablab.properties.name,
                     fablabAdrress : fablab.properties.adress,
-                    fablabSite : fablab.properties.url_makery,
+                    fablabSite : fablab.properties.website,
                     fablabCordinate : {
                         lat : fablab.geometry.coordinates[1],
                         lng : fablab.geometry.coordinates[0]
@@ -80,6 +80,7 @@
                 let content = "<h2>" + marker.fablabName + "</h2>"
                     + "<p> l'adresse est :" + marker.fablabAdrress + "</p>"
                     + "<p> Le site de ce fablab est " + "<a href='"+ marker.fablabSite +"' target='_blank'>juste ici</a></p>";
+                console.log(marker.fablabSite)
                 let infowindow = new google.maps.InfoWindow({
                     content : content
                 });
