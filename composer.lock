@@ -2157,7 +2157,7 @@
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2017-03-31T12:40:41+00:00"
+            "time": "2017-03-31T12:40:41+00:00",
             "name": "knplabs/knp-markdown-bundle",
             "version": "1.7.1",
             "source": {
