@@ -67,11 +67,11 @@ class LessonController extends AbstractController
 
         foreach ($tools as $key => $tool) {
             if ($tool->getCategory() == 'handtool') {
-                $handtools[] .= $tool->getName();
+                array_push($handtools, $tool);
             } elseif ($tool->getCategory() == 'software') {
-                $softwares[] .= $tool->getName();
+                array_push($softwares, $tool);
             } elseif ($tool->getCategory() == 'hardware') {
-                $hardwares[] .= $tool->getName();
+                array_push($hardwares, $tool);
             }
         }
 
