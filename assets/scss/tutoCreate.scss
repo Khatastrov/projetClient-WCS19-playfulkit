@@ -39,7 +39,7 @@
       font-size:1rem;
     }
   }
-  ol{
+  .steps{
     list-style: none;
     counter-reset: step;
     li{
@@ -51,10 +51,10 @@
       }
     }
   }
-  ol li {
+  .steps li {
     counter-increment: step;
   }
-  ol li::before {
+  .steps li::before {
     content: counter(step) ") ";
     color: $secondary;
     font-family: $font-primary;
@@ -98,6 +98,71 @@
   }
 
   .btnAddStep:focus, .btnAddStep:active {
+    background:$link-color !important;
+    outline: $link-colorHover !important;
+    box-shadow: none !important;
+  }
+
+  .tools{
+    list-style: none;
+    counter-reset: tool;
+    li{
+      div{
+        margin-top:30px;
+        .form-group{
+          margin-top:-10px;
+        }
+      }
+    }
+  }
+  .tools li {
+    counter-increment: tool;
+  }
+  .tools li::before {
+    content: counter(tool) ") ";
+    color: $secondary;
+    font-family: $font-primary;
+    font-size:20px;
+    position:relative;
+    top:10px;
+    left:-25px;
+  }
+
+  .btnRemoveTool{
+    margin-bottom:10px;
+    background-color:$customRed;
+    color:$link-colorHover;
+    font-size:20px;
+    font-family:$font-secondary;
+  }
+  .btnRemoveTool:hover {
+    background-color: $link-colorHover;
+    color:$customRed;
+    transition:0.4s ease;
+  }
+
+  .btnRemoveTool:focus, .btnRemoveTool:active {
+    background:$customRed !important;
+    outline: $link-colorHover !important;
+    box-shadow: none !important;
+  }
+  .btnAddTool{
+    position:relative;
+    left:-40px;
+    margin-top:10px;
+    margin-bottom:20px;
+    background-color:$customSkyblue;
+    color:$link-colorHover;
+    font-size:20px;
+    font-family:$font-secondary;
+  }
+  .btnAddTool:hover {
+    background-color:$link-color!important;
+    color:$link-colorHover;
+    transition:0.4s ease;
+  }
+
+  .btnAddTool:focus, .btnAddTool:active {
     background:$link-color !important;
     outline: $link-colorHover !important;
     box-shadow: none !important;

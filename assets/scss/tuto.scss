@@ -17,14 +17,30 @@
   }
 }
 
-ol {
+.steps {
   list-style: none;
   counter-reset: step;
 }
-ol li {
+.steps li {
   counter-increment: step;
 }
-ol li::before {
+.steps li::before {
+  content: counter(step) ") ";
+  color: $secondary;
+  font-family: $font-primary;
+  font-size:20px;
+  position:relative;
+  top:15px;
+}
+
+.tools {
+  list-style: none;
+  counter-reset: step;
+}
+.tools li {
+  counter-increment: step;
+}
+.tools li::before {
   content: counter(step) ") ";
   color: $secondary;
   font-family: $font-primary;
