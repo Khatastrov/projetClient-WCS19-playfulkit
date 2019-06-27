@@ -9,51 +9,32 @@
 {% endblock %}
 
 {% block body %}
-     <main class="container-fluid">
         {% if not app.user %}
-            <div class="row mx-auto justify-content-around md-12">
-                <section class="w-50 text-center col-md-6 col-sm-12 col-12">
-                    <div class="border border-dark my-3  mx-3" id="Lessons">
-                        <h3 class="my-5">Lessons</h3>
+            <div id="mainHome" class="row col-12">
+                <div class="text-center col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div id="Lessons">
+                        <h3>Lessons</h3>
                     </div>
-                    <div class="border border-dark my-3 mx-3" id="Tutorial">
-                        <h3 class="my-5">Tutorials</h3>
+                    <div id="Tutorial">
+                        <h3>Tutorials</h3>
                     </div>
-                </section>
-                 <section class="w-50 formContainer col-md-6 col-sm-12 col-12">
-                         <div class="opacity"></div>
+                </div>
+
+                <div class="formContainer col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="opacity">
                         {{ form_start(form) }}
-
-                        <div class="form-group">
-                            <div class="form-group col-sm-12">
-                             {{ form_row(form.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
-                            <div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-group col-sm-12">
-                            {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
-                            </div>
-                        </div>
-                            <div class="form-group">
-                                <div class="form-group col-sm-12">
-                            {{ form_row(form.password.first, {'label': 'Mot de passe :', 'attr': {'placeholder':'Minimum de 6 caractères'}}) }}
-                                </div>
-
-                                <div class="form-group col-sm-12">
-                            {{ form_row(form.password.second, {'label': 'Confirmation :', 'attr': {'placeholder':'Confirme ton mot de passe'}}) }}
-                                </div>
-                                <div class="form-group col-sm-12" id="date">
-                            {{ form_row(form.birth_date, {'label': 'Date de naissance :'}) }}
-                                </div>
-                                <button type="submit" class="btn btn-primary" id="boutton" >{{ button_label|default('Je m\'inscris !') }}</button>
-                            </div>
-
-
-
+                        {{ form_row(form.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
+                        {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
+                        {{ form_row(form.password.first, {'label': 'Mot de passe :', 'attr': {'placeholder':'Minimum de 6 caractères'}}) }}
+                        {{ form_row(form.password.second, {'label': 'Confirmation :', 'attr': {'placeholder':'Confirme ton mot de passe'}}) }}
+                        {{ form_row(form.birth_date, {'label': 'Date de naissance :'}) }}
+                        <button type="submit" class="btn btn-primary" id="boutton" >{{ button_label|default('Je m\'inscris !') }}</button>
                         {{ form_end(form) }}
-                    </section>
+                    </div>
+                </div>
             </div>
         {% else %}
+
             <div class="row mx-auto justify-content-around mb-5 mt-5 col-12">
                 <section class="w-50 text-center">
                     <div class="border border-dark my-3 mx-3" id="lesson2">
@@ -67,11 +48,10 @@
 
         {% endif %}
 
-        <section>
-
+        <section class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             {# ########## better carousel : https://mdbootstrap.com/plugins/jquery/carousel-3d/ ########## #}
 
-            <div id="carouselExampleIndicators" class="mt-2 mb-5 mx-auto w-50 carousel slide" data-ride="carousel">
+            <div id="carouselExampleIndicators" class="mt-2 mb-5 mx-auto  carousel slide" data-ride="carousel">
                 <h4>Shop</h4>
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -100,7 +80,7 @@
             </div>
         </section>
 
-        <section>
+        <section class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
             <div id="carouselExampleIndicators" class="mt-2 mb-5 mx-auto w-50 carousel slide" data-ride="carousel">
                 <h4>Blog</h4>
                 <ol class="carousel-indicators">
@@ -127,9 +107,7 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
-            </div>
         </section>
-    </main>
 {% endblock %}
 {% block javascripts %}
     {{ parent () }}
