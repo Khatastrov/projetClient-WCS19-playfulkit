@@ -11,6 +11,17 @@
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #000000;
 }
+#lesson2{
+  margin-top: 1em;
+  background-image: url(../images/lesson.jpg);
+  background-size: cover;
+  width:96%;
+  height:46%;
+  background-repeat:no-repeat;
+  color : rgba(252, 255, 246, 0.67);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000000;
+}
 #Tutorial{
   margin-top: 1em;
   background-image: url(../images/tuto.jpg);
@@ -22,34 +33,43 @@
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #000000;
 }
-
+#tutorial2{
+  margin-top: 1em;
+  background-image: url(../images/tuto.jpg);
+  background-size: cover;
+  width:96%;
+  height:46%;
+  background-repeat:no-repeat;
+  color : rgba(252, 255, 246, 0.67);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000000;
+}
 #date{
   left: 33%;
 }
 #boutton{
   width: 100%;
-
 }
-
 .opacity{
   position: relative;
+  margin-top: 1em;
   height:100%;
   width:100%;
   background: rgba(0, 0, 0, 0.5);
 }
+form{
+  position:relative !important;
+  top:-500px !important;
+  color : rgba(252, 255, 246, 0.67);
+  -webkit-text-stroke-width: 0.3px;
+  -webkit-text-stroke-color: #000000;
+}
+
 .formContainer{
    margin-top: 1em;
    background-image: url(../images/form.jpg);
    background-size: cover;
  }
-
-form{
-  position:relative !important;
-  top:-472px !important;
-  color : rgba(252, 255, 246, 0.67);
-  -webkit-text-stroke-width: 0.3px;
-  -webkit-text-stroke-color: #000000;
-}
 
 
 

@@ -3,13 +3,13 @@
 {% block title %}Accueil{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('homePage') }}row mx-auto justify-content-around mb-5 mt-5"
+    {{ encore_entry_link_tags('homePage') }}
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.nerow mx-auto justify-content-around mb-5 mt-5"t/gh/kenwheeler/slick@1.9.0/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.9.0/slick/slick-theme.css"/>
 {% endblock %}
 
 {% block body %}
-    <main class="container-fluid">
+     <main class="container-fluid">
         {% if not app.user %}
             <div class="row mx-auto justify-content-around md-12">
                 <section class="w-50 text-center col-md-6 col-sm-12 col-12">
@@ -25,10 +25,14 @@
                         {{ form_start(form) }}
 
                         <div class="form-group">
+                            <div class="form-group col-sm-12">
                              {{ form_row(form.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
+                            <div>
                         </div>
                         <div class="form-group">
+                            <div class="form-group col-sm-12">
                             {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
+                            </div>
                         </div>
                             <div class="form-group">
                                 <div class="form-group col-sm-12">
@@ -52,13 +56,10 @@
         {% else %}
             <div class="row mx-auto justify-content-around mb-5 mt-5 col-12">
                 <section class="w-50 text-center">
-                    <div class="border border-dark my-3 mx-3">
-                        <h3 class="my-5">Ongoing Contest</h3>
-                    </div>
-                    <div class="border border-dark my-3 mx-3">
+                    <div class="border border-dark my-3 mx-3" id="lesson2">
                         <h3 class="my-5">Lessons</h3>
                     </div>
-                    <div class="border border-dark my-3 mx-3">
+                    <div class="border border-dark my-3 mx-3" id="tutorial2">
                         <h3 class="my-5">Tutorials</h3>
                     </div>
                 </section>
