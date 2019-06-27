@@ -59,7 +59,7 @@
             <span>Créé le
             {{ tuto.dateCreation | date('d/m/Y') }}
             par
-            {{ tuto.author.username ? tuto.author.username : 'Anonyme' }}
+            {{ tuto.author ? tuto.author.username : 'Anonyme' }}
             </span>
         </div>
     </div>
