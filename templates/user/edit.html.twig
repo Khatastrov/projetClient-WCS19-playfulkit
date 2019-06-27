@@ -1,14 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit User{% endblock %}
+{% block title %}Change tes infos{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('userEdit') }}
+{% endblock %}
 
 {% block body %}
-    <h1>Edit User</h1>
+    <div class="opacity"></div>
 
-    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('user_password_edit', {'id' : app.user.id }) }}">Pour modifier ton mot de passe, c'est par ici !</a>
-    <a href="{{ path('app_index') }}">Retour</a>
+    <div id="edit">
+        <h1>Change tes infos</h1>
 
-    {{ include('user/_delete_form.html.twig') }}
+        {{ include('user/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+        <a class="return" href="{{ path('user_password_edit', {'id' : app.user.id }) }}">Pour modifier ton mot de passe, c'est par ici !</a>
+        <br>
+        <a class="return" href="{{ path('user_show',{'id': app.user.id}) }}">Annuler</a>
+
+    </div>
+
 {% endblock %}
