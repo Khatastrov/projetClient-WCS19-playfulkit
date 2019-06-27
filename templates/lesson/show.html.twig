@@ -38,10 +38,29 @@
                     <div class="w-75 tool-box">
                         <p>Pour réaliser ce qui est décrit dans cette leçon, nous avons utilisé :</p>
                         <ul>
-                        {% for tool in lesson.tool %}
-                            <li>
-                                {{ tool.name }}, {{ tool.category }}
-                            </li>
+                        {% for tool in handtools %}
+                            <li>Outils :</li>
+                            <ol>
+                                <li>
+                                    {{ tool }}
+                                </li>
+                            </ol>
+                        {% endfor %}
+                        {% for tool in hardwares %}
+                            <li>Matériaux :</li>
+                            <ol>
+                                <li>
+                                    {{ tool }}
+                                </li>
+                            </ol>
+                        {% endfor %}
+                        {% for tool in softwares %}
+                            <li>Logiciels :</li>
+                            <ol>
+                                <li>
+                                    {{ tool }}
+                                </li>
+                            </ol>
                         {% endfor %}
                         </ul>
                     </div>

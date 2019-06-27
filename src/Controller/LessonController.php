@@ -52,7 +52,7 @@ class LessonController extends AbstractController
      * @param Lesson $lesson
      * @return Response
      */
-    public function show(LessonRepository $lessonRepository, Lesson $lesson, ToolRepository $tools): Response
+    public function show(LessonRepository $lessonRepository, Lesson $lesson): Response
     {
         $latest = $lessonRepository->findBy(
             [],
@@ -60,9 +60,27 @@ class LessonController extends AbstractController
             3
         );
 
+        $tools = $lesson->getTool()->getValues();
+        $handtools= array();
+        $hardwares= array();
+        $softwares= array();
+
+        foreach ($tools as $key => $tool) {
+            if ($tool->getCategory() == 'handtool') {
+                $handtools[] .= $tool->getName();
+            } elseif ($tool->getCategory() == 'software') {
+                $softwares[] .= $tool->getName();
+            } elseif ($tool->getCategory() == 'hardware') {
+                $hardwares[] .= $tool->getName();
+            }
+        }
+
         return $this->render('lesson/show.html.twig', [
             'lesson' => $lesson,
             'latest' => $latest,
+            'handtools' => $handtools,
+            'softwares' => $softwares,
+            'hardwares' => $hardwares,
         ]);
     }
 }
