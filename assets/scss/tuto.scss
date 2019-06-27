@@ -36,14 +36,13 @@ ol li::before {
 .customCollapse button {
   position: relative;
   top:-22px;
-  background-color:$secondary;
-  color:$link-colorHover;
+  color:$link-colorHover !important;
   font-size:20px;
   font-family:$font-secondary;;
 }
 
 .customCollapse button:hover {
-  background-color: $link-color;
+  background-color: $link-color !important;
 }
 
 .customCollapse button:focus, .customCollapse button:active {
@@ -87,6 +86,14 @@ ol li::before {
   text-align: center;
 }
 
+.tutorialIndexDescription{
+  margin-top:10px;
+  margin-bottom: 10px;
+  font-family: $font-secondary;
+  font-size:20px;
+  text-align: center;
+}
+
 .cardTutorial {
   max-width:300px;
   min-width:200px;
@@ -107,6 +114,10 @@ ol li::before {
     font-family:$font-secondary;
     font-size:15px;
     text-align: center;
+  }
+  .card-img-top{
+    max-height:300px;
+    max-width: 300px;
   }
 }
 #tutorialIndex{

@@ -44,53 +44,55 @@
             </nav>
         </header>
 
-        <main id="body">
-            {% block body %}{% endblock %}
-        </main>
+<main id="body">
+    {% block body %}{% endblock %}
+</main>
 
-        <footer id="mainFooter">
-            <div id="primMainFooter">
-                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
-                    <img class="logoMain" src="{{ asset('build/images/logo-officielR.png') }}" alt="playful_kit_logo_officiel_retouche">
-                </div>
-                <div class="mainFooterSection col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                    <span>Catégories</span>
-                    <ul>
-                        <li>
-                            <a href="#">Leçons</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('tutorial') }}">Tutos</a>
-                        </li>
-                        <li>
-                            <a href="#">Educateurs</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="mainFooterSection col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                    <a id="aboutUs" href="#">A propos</a>
-                </div>
-                <div class="mainFooterSection col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <span>Nous suivre</span>
-                    <div class="row justify-content-around">
-                        <a href="https://www.facebook.com/yourplayfulkit" target="_blank">
-                            <i class="fab fa-facebook-square"></i>
-                        </a>
-                        <a href="https://www.instagram.com/playful_kit/" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
+<footer id="mainFooter">
+    <div id="primMainFooter">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
+            <img class="logoMain" src="{{ asset('build/images/logo-officielR.png') }}" alt="playful_kit_logo_officiel_retouche">
+        </div>
+        <div class="mainFooterSection col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+            <span>Catégories</span>
+            <ul>
+                <li>
+                    <a href="#">Leçons</a>
+                </li>
+                <li>
+                    <a href="{{ path('tutorial') }}">Tutos</a>
+                </li>
+                <li>
+                    <a href="{{ path('blog_post') }}">Blog</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mainFooterSection col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+            <a id="aboutUs" href="#">A propos</a>
+        </div>
+        <div class="mainFooterSection col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <span>Nous suivre</span>
+            <div class="row justify-content-around">
+                <a href="https://www.facebook.com/yourplayfulkit" target="_blank">
+                    <i class="fab fa-facebook-square"></i>
+                </a>
+                <a href="https://www.instagram.com/playful_kit/" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
-            <div id="subMainFooter">
-                <br>
-                <span>2019 - Playfulkit</span>
-            </div>
-        </footer>
-        
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-        
-    </body>
+        </div>
+    </div>
+    <div id="subMainFooter">
+        <br>
+        <span>2019 - Playfulkit</span>
+        <br>
+        <a href="https://wildcodeschool.fr/" target="_blank">Made with 💕 by Wild Code School</a>
+    </div>
+</footer>
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+</body>
 </html>

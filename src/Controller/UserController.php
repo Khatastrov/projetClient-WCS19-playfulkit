@@ -25,6 +25,9 @@ class UserController extends AbstractController
             if ($this->getUser()->getId() == $user->getId()) {
                 return $this->render('user/show.html.twig', [
                     'user' => $user,
+                    'firstName' => $user->getFirstname(),
+                    'lastName' => $user->getLastname(),
+                    'address' => $user->getAddress(),
                 ]);
             } else {
                 return $this->render('/default.html.twig');

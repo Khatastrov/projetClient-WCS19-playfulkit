@@ -6,7 +6,9 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 final class UserAdmin extends AbstractAdmin
@@ -42,6 +44,16 @@ final class UserAdmin extends AbstractAdmin
             ->add('roles', ChoiceType::class, [
                     'choices'  => $rolesChoices,
                     'multiple' => true
+            ])
+            ->add('email', EmailType::class, [
+            ])
+            ->add('firstname', TextType::class, [
+            ])
+            ->add('lastname', TextType::class, [
+            ])
+            ->add('address', TextType::class, [
+            ])
+            ->add('birth_date', BirthdayType::class, [
             ]);
     }
 
