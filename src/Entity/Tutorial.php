@@ -42,10 +42,10 @@ class Tutorial
      * @Vich\UploadableField(mapping="tutorial_image", fileNameProperty="illustration")
      */
     private $imageFile;
+
     /**
      * @ORM\Column(type="string", length=500, nullable=true)
      */
-
     private $illustration;
 
     /**
@@ -221,7 +221,6 @@ class Tutorial
     {
         return $this->imageFile;
     }
-
 
     /**
      * @param File|null $imageFile
