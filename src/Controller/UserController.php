@@ -3,13 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserSignUpType;
-use App\Form\UserProfileType;
+use App\Form\UserType;
+use App\Form\EditPasswordType;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/user")
@@ -17,78 +17,94 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/new", name="user_new", methods={"GET","POST"})
-     * @param Request $request
-     * @return Response
+     * @Route("/{id}", name="user_show", methods={"GET"})
      */
-    public function new(Request $request, UserPasswordEncoderInterface $encoder) : Response
+    public function show(User $user): Response
     {
-        $userSignUp = new User();
-        $form = $this->createForm(UserSignUpType::class, $userSignUp);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $hash = $encoder->encodePassword($userSignUp, $userSignUp->getPassword());
-            $userSignUp->setPassword($hash);
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($userSignUp);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('user_login');
+        if ($this->getUser() != null) {
+            if ($this->getUser()->getId() == $user->getId()) {
+                return $this->render('user/show.html.twig', [
+                    'user' => $user,
+                    'firstName' => $user->getFirstname(),
+                    'lastName' => $user->getLastname(),
+                    'address' => $user->getAddress(),
+                ]);
+            } else {
+                return $this->render('/default.html.twig');
+            }
+        } else {
+            return $this->render('/default.html.twig');
         }
-
-        return $this->render('user/new.html.twig', [
-            'user' => $userSignUp,
-            'form' => $form->createView()
-        ]);
     }
 
-      /**
-       * @Route("/connexion", name="user_login")
-       */
-    public function login()
-    {
-        return $this->render('user/login.html.twig');
-    }
-
-      /**
-       * @route("/deconnexion", name="user_logout")
-       */
-    public function logout()
-    {
-    }
-
-
-      /**
-       * @Route("/{id}", name="user_show")
-       */
-    public function show(User $user)
-    {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
-        ]);
-    }
-
-      /**
-       * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
-       */
+    /**
+     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     */
     public function edit(Request $request, User $user): Response
     {
-        $form = $this->createForm(UserProfileType::class, $user);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_show', [
+            return $this->redirectToRoute('app_index', [
+                'id' => $user->getId(),
+            ]);
+        }
+        if ($this->getUser() != null) {
+            if ($this->getUser()->getId() == $user->getId()) {
+                return $this->render('user/edit.html.twig', [
+                    'user' => $user,
+                    'form' => $form->createView(),
+                ]);
+            } else {
+                return $this->render('/default.html.twig');
+            }
+        } else {
+            return $this->render('/default.html.twig');
+        }
+    }
+
+    /**
+     * @Route("/{id}/edit/password", name="user_password_edit", methods={"GET","POST"})
+     */
+    public function editPassword(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
+    {
+        $form = $this->createForm(EditPasswordType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('password')->getData()
+                )
+            );
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('app_index', [
                 'id' => $user->getId(),
             ]);
         }
 
-        return $this->render('user/edit.html.twig', [
+        return $this->render('user/editPassword.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}", name="user_delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, User $user): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($user);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('user_index');
     }
 }

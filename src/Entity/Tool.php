@@ -38,9 +38,15 @@ class Tool
      */
     private $tutorials;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Lesson", mappedBy="Tool")
+     */
+    private $lessons;
+
     public function __construct()
     {
         $this->tutorials = new ArrayCollection();
+        $this->lessons = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -110,5 +116,13 @@ class Tool
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Lesson[]
+     */
+    public function getLessons(): Collection
+    {
+        return $this->lessons;
     }
 }

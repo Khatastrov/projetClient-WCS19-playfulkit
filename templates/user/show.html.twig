@@ -1,41 +1,86 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ton profil{% endblock %}
+{% block title %}Mon espace{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('user') }}
+{% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
-    <h1>Salut {{ user.username }} ! ✅</h1>
+    <div class="container welcomeUser">
+        <h1>Salut {{ user.username }} !</h1>
+        <p>Bienvenue dans ton espace membre. Ici, tu peux voir et modifier tes informations mais aussi créer de nouveaux tutos ! 😉</p>
+    </div>
 
-    <p>Tu te trouves sur ta page profil.</p>
-    <p>Tu peux voir tes informations ici :</p>
-    <ul>
-        <li><strong>Ton pseudo :</strong> {{ user.username }}</li>
-        <li><strong>Ton adresse mail :</strong> {{ user.email }}</li>
-        <li><strong>Tes nom et prénom :</strong>
-            {% if user.lastname is not null and user.firstname is not null %}
-                {{ user.lastname }} {{ user.firstname }}</li>
-            {% else %}
-                Tu n'as pas renseigné ces informations. (Tu peux le faire en modifiant ton profil !)
-            {% endif %}
-        <li><strong>Ton adresse :</strong>
-            {% if user.address is not null %}
-                {{ user.address }}</li>
-            {% else %}
-            Tu n'as pas renseigné ton adresse. (Tu peux le faire en modifiant ton profil !)
-            {% endif %}
-        <li><strong>Ta date de naissance :</strong> {{ user.birthdate|date("d/m/Y") }}</li>
-        <li><strong>La liste des tutoriels que tu as publié :</strong>
-            <ul>
-                {% for tutorial in user.tutorials %}
-                    <li>{{ tutorial.title }}</li>
-                {% else %}
-                    <li>Tu n'as publié aucun tutoriel pour l'instant ! (tu peux le faire en cliquant <a href="{{ path('tutorial_create') }}">sur ce lien</a>) !</li>
-                {% endfor %}
-            </ul>
-        </li>
-    </ul>
+    <div class="userSection container">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 avatar">
+            <img class="avatarImg" src="{{ asset('build/images/036-robot-14.png') }}">
+            <p>{{ user.username }} ({{ date('now').diff((user.birthdate)).format('%y ans') }})</p>
+        </div>
 
+        <!-- Nav tabs -->
+        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 userTab">
+            <div class="nav nav-tabs" role="tablist">
+                <button id="btn1" class="btn btnTab" href="#userInfo" aria-controls="userInfo" role="tab" data-toggle="tab">Mes infos</button>
+                <button id="btn2" class="btn btnTab" href="#userTutoInfo" aria-controls="userTutoInfo" role="tab" data-toggle="tab">Mes tutos</button>
+                <button id="btn3" class="btn btnTab" href="#userLessonsInfo" aria-controls="userLessonsInfo" role="tab" data-toggle="tab">Mes Leçons</button>
+            </div>
 
-    <a href="{{ path('user_edit', {'id': user.id}) }}">Modifie ton profil</a>
-</div>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="userInfo">
+                    <article>
+                        <p>Nom d'utilisateur : {{ user.username }}</p>
+                        <p>Adresse  mail : {{ user.email }}</p>
+                        <p>Date d'anniversaire : {{ user.birthDate ? user.birthDate|date('d/m/Y') : '' }}</p>
+
+                        {% if firstName is null %}
+                            <p>Prénom : Tu n'as pas encore renseigner cette information</p>
+                        {% else %}
+                            <p>{{ user.firstname }}</p>
+                        {% endif %}
+
+                        {% if lastName is null %}
+                            <p>Nom : Tu n'as pas encore renseigner cette information</p>
+                        {% else %}
+                            <p>{{ user.lastname }}</p>
+                        {% endif %}
+
+                        {% if address is null %}
+                            <p>Adresse : Tu n'as pas encore renseigner cette information</p>
+                        {% else %}
+                            <p>{{ user.address }}</p>
+                        {% endif %}
+                    </article>
+                    <div class="btnGroupUser">
+                        {{ include('user/_delete_form.html.twig') }}
+                        <a class="btn btnUser" href="{{ path('user_edit', {'id': user.id}) }}">Modifier mes informations</a>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="userTutoInfo">
+                    <article>
+                        {% for tutorial in user.tutorials %}
+                            <p>{{ tutorial.title }}</p>
+                        {% else %}
+                            <p class="noPublication">Tu n'as rien publié pour l'instant ! 😜</p>
+                        {% endfor %}
+                        <div class="btnGroupUser">
+                            <a class="btn btnUser" href="{{ path('tutorial_create') }}">Créer un nouveau tutorial</a>
+                        </div>
+                    </article>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="userLessonsInfo">
+                    <article>
+                        <p class="noPublication">Tu ne suis aucune leçons pour l'instant ! 😜</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent () }}
+    {{ encore_entry_script_tags('user') }}
 {% endblock %}

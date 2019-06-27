@@ -1,10 +1,8 @@
-$teal-color: #008080;
-
 $customBlue:rgb(26, 65, 89);
 $customBeige:rgb(242, 186, 82);
 $customSkyblue:rgb(3, 166, 166);
 $customRed:rgb(217, 24, 24);
-$customWhite:rgb(255, 255 ,255);
+$customWhite: rgb(255, 255, 255);
 $customGreen:rgb(142, 191, 107);
 
 $primary: $customBlue;
@@ -14,4 +12,11 @@ $link-colorHover: $customWhite;
 $secondary: $customGreen;
 $secondary-link-color:$customWhite;
 
+$custom-file-text: (
+        en: "Browse",
+        fr: "Parcourir"
+);
+
 $font-primary:Jaapokki;
+$font-secondary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+;

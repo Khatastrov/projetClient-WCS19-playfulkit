@@ -23,12 +23,6 @@ class Tutorial
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tutorials")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $author;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $title;
@@ -48,10 +42,10 @@ class Tutorial
      * @Vich\UploadableField(mapping="tutorial_image", fileNameProperty="illustration")
      */
     private $imageFile;
+
     /**
      * @ORM\Column(type="string", length=500, nullable=true)
      */
-
     private $illustration;
 
     /**
@@ -72,6 +66,12 @@ class Tutorial
      * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tutorial")
      */
     private $tools;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tutorials")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $author;
 
 
     public function __construct()
@@ -221,7 +221,6 @@ class Tutorial
     {
         return $this->imageFile;
     }
-
 
     /**
      * @param File|null $imageFile

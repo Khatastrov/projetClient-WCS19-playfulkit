@@ -7,12 +7,27 @@
    font-size:35px;
    text-align: center;
   }
+  .tutoEmojiHelp{
+    margin-top:20px;
+    margin-bottom:40px;
+    font-size:20px;
+    font-family:$font-secondary;
+    text-align: center;
+    a{
+      color:$customRed;
+      text-decoration:none;
+    }
+    a:hover{
+      color:$link-color;
+    }
+  }
+
   .btnCreateEdit{
     margin-bottom:20px;
     background-color:$secondary;
     color:$link-colorHover;
     font-size:20px;
-    font:$font-primary;
+    font-family:$font-secondary;;
   }
   .btnCreateEdit:hover {
     background-color: $link-color;
@@ -25,11 +40,11 @@
   }
   label{
     font-size:20px;
-    font:$font-primary;
+    font-family:$font-secondary;
   }
   .tutoPresentation{
     font-size:20px;
-    font:$font-primary;
+    font-family:$font-secondary;;
   }
   textarea{
     min-height:150px;
@@ -42,6 +57,10 @@
   ol{
     list-style: none;
     counter-reset: step;
+    .custom-file{
+      position:relative;
+      top:-20px;
+    }
     li{
       div{
         margin-top:30px;
@@ -56,7 +75,7 @@
   }
   ol li::before {
     content: counter(step) ") ";
-    color: $secondary;
+    color: $customSkyblue;
     font-family: $font-primary;
     font-size:20px;
     position:relative;
@@ -68,7 +87,7 @@
     background-color:$customRed;
     color:$link-colorHover;
     font-size:20px;
-    font:$font-primary;
+    font-family:$font-secondary;
   }
   .btnRemoveStep:hover {
     background-color: $link-colorHover;
@@ -86,20 +105,25 @@
     left:-40px;
     margin-top:10px;
     margin-bottom:20px;
-    background-color:$primary;
+    background-color:$customSkyblue;
     color:$link-colorHover;
     font-size:20px;
-    font:$font-primary;
+    font-family:$font-secondary;
   }
   .btnAddStep:hover {
-    background-color:$secondary!important;
+    background-color:$link-color!important;
     color:$link-colorHover;
     transition:0.4s ease;
   }
 
   .btnAddStep:focus, .btnAddStep:active {
-    background:$secondary !important;
+    background:$link-color !important;
     outline: $link-colorHover !important;
     box-shadow: none !important;
   }
+}
+
+label.custom-file-label:after{
+  background:$secondary;
+  color:$link-colorHover;
 }

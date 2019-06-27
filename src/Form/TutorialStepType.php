@@ -14,9 +14,14 @@ class TutorialStepType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('content')
+            ->add('title', null, [
+                'label' => 'Donne un titre à ton étape'
+            ])
+            ->add('content', null, [
+                'label' => 'Ensuite, décris ton étape'
+            ])
             ->add('imageFile', FileType::class, [
+                'label' => 'Tu peux aussi ajouter une image (optionnel)',
                 'required' => false,
             ]);
     }
