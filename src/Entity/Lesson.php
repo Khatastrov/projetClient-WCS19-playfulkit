@@ -33,12 +33,6 @@ class Lesson
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="lessons")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $author;
-
-    /**
      * @ORM\Column(type="datetimetz", nullable=true)
      */
     private $publicationDate;
@@ -64,6 +58,11 @@ class Lesson
      * @ORM\JoinColumn(name="tool_id", referencedColumnName="id")
      */
     private $Tool;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="lessons")
+     */
+    private $author;
 
     public function __construct()
     {
