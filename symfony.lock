@@ -153,6 +153,9 @@
     "justinrainbow/json-schema": {
         "version": "5.2.8"
     },
+    "kenwheeler/slick": {
+        "version": "1.6.1"
+    },
     "knplabs/knp-markdown-bundle": {
         "version": "1.7.1"
     },

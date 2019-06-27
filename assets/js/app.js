@@ -31,3 +31,4 @@ require('../images/pfk-ico16.png');
 require('../images/pfk-ico32.png');
 require('../images/pfk-ico64.png');
 require('../images/pfk-ico96.png');
+require('slick-carousel');
