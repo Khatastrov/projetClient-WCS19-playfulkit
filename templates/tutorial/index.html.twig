@@ -29,7 +29,7 @@
                             <div class="metadata">Ecrit le {{ tutorial.dateCreation | date('d/m/Y') }} à {{ tutorial.dateCreation | date('H:i') }} </div>
                             <p class="card-text">{{ tutorial.content|slice(0, 50) ~ '...' }}</p>
                         </div>
-                        <a href="{{ path('tutorial_show', {'id': tutorial.id}) }}" class="btn btnCard">Lire la suite</a>
+                        <a href="{{ path('tutorial_show', {'id': tutorial.id}) }}" class="btn btnCard">Voir le tuto</a>
                     </div>
 
                 {% endfor %}

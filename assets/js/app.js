@@ -20,6 +20,12 @@ require('../images/robotDefault.png');
 require('../images/board.jpg');
 require('../images/electricity.jpg');
 
+//avatars
+function importAll(r){
+    r.keys().forEach(r);
+}
+importAll(require.context('../images/avatars', true,/\.png$/));
+
 //logos
 require('../images/pfk-ico16.png');
 require('../images/pfk-ico32.png');
