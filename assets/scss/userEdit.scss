@@ -9,6 +9,7 @@ body
 {
   background-color: rgba(255, 255, 255, 0.9);
   margin:auto;
+  padding-bottom:10px;
 }
 
 h1
@@ -22,6 +23,7 @@ h1
 .btnEdit
 {
   margin-top:10px;
+  margin-bottom:20px;
   color:$link-colorHover;
   background-color: $customSkyblue;
   font-size: 20px;
@@ -36,7 +38,22 @@ h1
 
 .return
 {
+  color: $customRed;
+  font-size:16px;
+  font-family: $font-secondary;
+}
+.return:hover{
+  text-decoration: none;
+}
+
+.password
+{
   color: $primary;
+  font-size:16px;
+  font-family: $font-secondary;
+}
+.password:hover{
+  text-decoration: none;
 }
 
 .opacity{
@@ -79,6 +96,9 @@ h1
     margin-left:15%;
     margin-right:15%;
   }
+  #main{
+    height:60vh;
+  }
 }
 
 @media (min-width: 1199.98px){
@@ -93,5 +113,8 @@ h1
     max-width:60%;
     margin-left:20%;
     margin-right:20%;
+  }
+  #main{
+    height:60vh;
   }
 }
