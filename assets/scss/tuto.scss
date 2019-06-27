@@ -116,8 +116,11 @@ ol li::before {
     text-align: center;
   }
   .card-img-top{
-    max-height:300px;
-    max-width: 300px;
+    margin-top:20px !important;
+    max-height:200px;
+    max-width: 200px;
+    margin-right:auto;
+    margin-left:auto;
   }
 }
 #tutorialIndex{
