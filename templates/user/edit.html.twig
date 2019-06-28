@@ -9,16 +9,19 @@
 
 {% block body %}
     <div class="opacity"></div>
-    <div id="edit">
-        <h1>Change tes infos</h1>
+      <div id="edit">
+          <h1>Change tes infos</h1>
 
-        {{ include('user/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+          {{ include('user/_form.html.twig', {'button_label': 'Enregistrer'}) }}
 
-        <div class="row justify-content-around">
-            <a class="return" href="{{ path('user_show',{'id': app.user.id}) }}">Annuler</a>
-            <a class="password" href="{{ path('user_password_edit', {'id' : app.user.id }) }}">Pour modifier ton mot de passe, c'est par ici !</a>
-        </div>
+          <div class="row justify-content-around">
+              <a class="return" href="{{ path('user_show',{'id': app.user.id}) }}">Annuler</a>
+              <a class="password" href="{{ path('user_password_edit', {'id' : app.user.id }) }}">Pour modifier ton mot de passe, c'est par ici !</a>
+          </div>
 
-    </div>
+      </div>
+    <a href="{{ path('user_password_edit', {'id' : app.user.id }) }}">Pour modifier ton mot de passe, c'est par ici !</a>
+    <a href="{{ path('user_show', {'id': app.user.id}) }}">Annuler</a>
+  </div>
 
 {% endblock %}

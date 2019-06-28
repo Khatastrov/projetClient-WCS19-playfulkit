@@ -5,9 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LessonRepository")
+ * @Vich\Uploadable()
  */
 class Lesson
 {
@@ -29,23 +33,18 @@ class Lesson
     private $content;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Tool", mappedBy="lesson")
-     */
-    private $tool;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="lessons")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $author;
-
-    /**
-     * @ORM\Column(type="datetimetz")
+     * @ORM\Column(type="datetimetz", nullable=true)
      */
     private $publicationDate;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var File|null
+     * @Vich\UploadableField(mapping="lesson_image", fileNameProperty="illustration")
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=500, nullable=true)
      */
     private $illustration;
 
@@ -54,9 +53,21 @@ class Lesson
      */
     private $category;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tool", inversedBy="lessons")
+     * @ORM\JoinColumn(name="tool_id", referencedColumnName="id")
+     */
+    private $Tool;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="lessons")
+     */
+    private $author;
+
     public function __construct()
     {
-        $this->tool = new ArrayCollection();
+        $this->publicationDate = new \DateTime();
+        $this->Tool = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -84,37 +95,6 @@ class Lesson
     public function setContent(string $content): self
     {
         $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Tool[]
-     */
-    public function getTool(): Collection
-    {
-        return $this->tool;
-    }
-
-    public function addTool(Tool $tool): self
-    {
-        if (!$this->tool->contains($tool)) {
-            $this->tool[] = $tool;
-            $tool->setLesson($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTool(Tool $tool): self
-    {
-        if ($this->tool->contains($tool)) {
-            $this->tool->removeElement($tool);
-            // set the owning side to null (unless already changed)
-            if ($tool->getLesson() === $this) {
-                $tool->setLesson(null);
-            }
-        }
 
         return $this;
     }
@@ -164,6 +144,37 @@ class Lesson
     {
         $this->category = $category;
 
+        return $this;
+    }
+
+    /**
+     * @return Collection|Tool[]
+     */
+    public function getTool(): Collection
+    {
+        return $this->Tool;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile() : ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File|null $imageFile
+     * @return $this
+     * @throws \Exception
+     */
+    public function setImageFile(?File $imageFile = null)
+    {
+        $this->imageFile = $imageFile;
+
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->publicationDate = new \DateTime('now');
+        }
         return $this;
     }
 }

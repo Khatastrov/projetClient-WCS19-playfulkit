@@ -32,13 +32,14 @@
         </button>
         <div class="collapse navbar-collapse navbar-nav navLinkBar" id="navbarSupportedContent">
             <div class="subLinkbar">
-                {#<a class="nav-link" href="#">Concours</a>#}
-                <a class="nav-link" href="#">Leçons</a>
+                <a class="nav-link" href="{{ path('lesson_index') }}">Leçons</a>
+                <a class="comingSoon nav-link" href="#">Concours</a>
                 <a class="nav-link" href="{{ path('tutorial') }}">Tutos</a>
-                {#<a class="nav-link" href="#">Boutique</a>#}
-                {#<a class="nav-link" href="#">Educateurs</a>#}
-                <a class="nav-link" href="#">Contact</a>
-                <a class="nav-link" href="#">Blog</a>
+                <a class="comingSoon nav-link" href="#">Boutique</a>
+                <a class="comingSoon nav-link" href="#">Educateurs</a>
+                <a class="comingSoon nav-link" href="#">Contact</a>
+                <a class="comingSoon nav-link" href="#">Blog</a>
+                <a class="nav-link" href="{{ path('map') }}">Les Fablabs</a>
             </div>
         </div>
     </nav>
@@ -57,7 +58,7 @@
             <span>Catégories</span>
             <ul>
                 <li>
-                    <a href="#">Leçons</a>
+                    <a href="{{ path('lesson_index') }}">Leçons</a>
                 </li>
                 <li>
                     <a href="{{ path('tutorial') }}">Tutos</a>
@@ -73,10 +74,10 @@
         <div class="mainFooterSection col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
             <span>Nous suivre</span>
             <div class="row justify-content-around">
-                <a href="https://www.facebook.com/yourplayfulkit" target="_blank">
+                <a class="media" href="https://www.facebook.com/yourplayfulkit" target="_blank">
                     <i class="fab fa-facebook-square"></i>
                 </a>
-                <a href="https://www.instagram.com/playful_kit/" target="_blank">
+                <a class="media" href="https://www.instagram.com/playful_kit/" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
             </div>
@@ -85,6 +86,8 @@
     <div id="subMainFooter">
         <br>
         <span>2019 - Playfulkit</span>
+        <br>
+        <a href="https://wildcodeschool.fr/" target="_blank">Made with 💕 by Wild Code School</a>
     </div>
 </footer>
 

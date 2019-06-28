@@ -24,8 +24,15 @@ require('../images/pass.jpg');
 
 
 
+//avatars
+function importAll(r){
+    r.keys().forEach(r);
+}
+importAll(require.context('../images/avatars', true,/\.png$/));
+
 //logos
 require('../images/pfk-ico16.png');
 require('../images/pfk-ico32.png');
 require('../images/pfk-ico64.png');
 require('../images/pfk-ico96.png');
+require('slick-carousel');

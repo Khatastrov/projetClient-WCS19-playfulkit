@@ -13,7 +13,8 @@
         {% if not app.user %}
             Tu te trouves actuellement sur l'espace tuto, c'est ici que tu peux découvrir les derniéres créations de la communauté, tu souhaites créer un tuto et le partager ? Inscrit toi ou connecte toi pour y avoir accès !
         {% else %}
-            Tu te trouves actuellement sur l'espace tuto, c'est ici que tu peux découvrir les derniéres créations de la communauté, tu peux également créer ton propre tuto en te rendant sur ton espace lorsque tu es connecté(e) !
+            Tu te trouves actuellement sur l'espace tuto, c'est ici que tu peux découvrir les derniéres créations de la communauté, tu peux également créer ton propre tuto en te rendant sur
+            <a href="{{ path('user_show', {'id': app.user.id}) }}">ton espace personnel</a> !
         {% endif %}
     </p>
     <section id="tutorialIndex">
@@ -28,7 +29,7 @@
                             <div class="metadata">Ecrit le {{ tutorial.dateCreation | date('d/m/Y') }} à {{ tutorial.dateCreation | date('H:i') }} </div>
                             <p class="card-text">{{ tutorial.content|slice(0, 50) ~ '...' }}</p>
                         </div>
-                        <a href="{{ path('tutorial_show', {'id': tutorial.id}) }}" class="btn btnCard">Lire la suite</a>
+                        <a href="{{ path('tutorial_show', {'id': tutorial.id}) }}" class="btn btnCard">Voir le tuto</a>
                     </div>
 
                 {% endfor %}
