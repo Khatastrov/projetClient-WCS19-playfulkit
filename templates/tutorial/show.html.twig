@@ -27,6 +27,40 @@
         </article>
     </div>
     <div class="container">
+
+        {% if tuto.tools is not empty %}
+            <div class="w-75 tool-box">
+                <p>Pour réaliser ce tutoriel, tu auras besoin de :</p>
+                <ul>
+                    {% for tool in handtools %}
+                        <li>Outils :</li>
+                        <ol>
+                            <li>
+                                {{ tool.name }}
+                            </li>
+                        </ol>
+                    {% endfor %}
+                    {% for tool in hardwares %}
+                        <li>Matériaux :</li>
+                        <ol>
+                            <li>
+                                {{ tool.name }}
+                            </li>
+                        </ol>
+                    {% endfor %}
+                    {% for tool in softwares %}
+                        <li>Logiciels :</li>
+                        <ol>
+                            <li>
+                                {{ tool.name }}
+                            </li>
+                        </ol>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+
         {% if tuto.steps is not empty %}
             <ol>
                 {% for step in tuto.steps %}
@@ -59,7 +93,7 @@
             <span>Créé le
             {{ tuto.dateCreation | date('d/m/Y') }}
             par
-            {{ tuto.author ? tuto.author : 'Anonyme' }}
+            {{ tuto.author ? tuto.author.username : 'Anonyme' }}
             </span>
         </div>
     </div>
