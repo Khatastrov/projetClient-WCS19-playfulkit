@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="container">
-        <h1>Les leçons</h1>
+        <h1>Te voici sur les leçons</h1>
         <p>Tu es prêt à apprendre de nouvelles choses ? Tu es au bon endroit !<br>
         Voici la liste des leçons, tu vas y découvrir des tas de choses passionantes !</p>
         <p>N'hésites pas à choisir la catégorie qui t'intéresse.</p>
@@ -30,7 +30,7 @@
                             {{ lesson.title }}<br>
                             <small>
                                 {% if lesson.author  %}
-                                    Publé par {{ lesson.author.username }}
+                                    Publié par {{ lesson.author.username }}
                                 {% endif %}
                                 {% if lesson.publicationDate %}
                                     le {{ lesson.publicationDate|date('d-m-Y') }}
@@ -46,10 +46,9 @@
             {% endfor %}
 
         {% else %}
-
             <p>Il n'y a pas de leçon pour cette catégorie actuellement... <br>
                 Reviens plus tard !</p>
-
         {% endif %}
+
     </div>
 {% endblock %}
