@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Entity\Lesson;
 use App\Entity\Tool;
 use App\Form\LessonType;
+use App\Repository\CategoryRepository;
 use App\Repository\LessonRepository;
 use App\Repository\ToolRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -37,13 +38,11 @@ class LessonController extends AbstractController
      * @param Category $category
      * @return Response
      */
-    public function categoryIndex(LessonRepository $lessonRepository, Category $category): Response
+    public function categoryIndex(Category $category): Response
     {
         return $this->render('lesson/category.html.twig', [
+            'lessons' => $category->getLessons(),
             'category' => $category,
-            'lessons' => $lessonRepository->findBy([
-                'category' => $category,
-            ]),
         ]);
     }
 
