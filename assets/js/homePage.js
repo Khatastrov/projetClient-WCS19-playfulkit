@@ -1,10 +1,11 @@
 require('../scss/homePage.scss');
 
 
-$('.carousel-inner').slick({
+$('.one-time').slick({
     dots: true,
     infinite: true,
     speed: 300,
     slidesToShow: 1,
-    adaptiveHeight: true
+    centerMode: true,
+    variableWidth: true
 });

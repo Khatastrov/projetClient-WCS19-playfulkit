@@ -78,6 +78,21 @@ form{
   filter: blur(px);
 }
 
+section{
+  margin: 45px auto !important;
+  overflow: hidden;
+}
+
+.one-time{
+  width: 50%;
+  margin: 0 auto;
+  height: 300px;
+  div img{
+    display: block;
+    width: 100%;
+  }
+}
+
 @media (max-width: 767.98px){
   .formContainer{
     margin-left:3%;
