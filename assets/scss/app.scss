@@ -2,6 +2,9 @@
 @import "~bootstrap/scss/bootstrap";
 @import "scss/fontawesome.scss";
 @import "scss/brands.scss";
+@import "~slick-carousel/slick/slick";
+@import "~slick-carousel/slick/slick-theme";
+
 
 @font-face {
   font-family: 'Jaapokki';
@@ -118,7 +121,6 @@
   }
 }
 .fa-facebook-square{
-  margin-top:20px;
   font-size:40px;
   color:$secondary-link-color;
 }
@@ -126,7 +128,6 @@
   color:$link-color;
 }
 .fa-instagram{
-  margin-top:20px;
   font-size:40px;
   color:$secondary-link-color;
 }
@@ -167,12 +168,6 @@
     margin-left:25%;
     margin-right:25%;
   }
-  .fa-facebook-square{
-    margin-left:170px;
-  }
-  .fa-instagram{
-    margin-right:170px;
-  }
   .navHeaderBar{
     a{
       font-size:20px;
@@ -196,12 +191,7 @@
     display:inline-flex;
     width:100%;
   }
-  .fa-facebook-square{
-    margin-left:70px;
-  }
-  .fa-instagram{
-    margin-right:70px;
-  }
+
   .navHeaderBar{
     a{
       font-size:25px;
@@ -211,4 +201,16 @@
   a.comingSoon{
     opacity: 0.5 !important;
   }
+}
+
+.media{
+  margin-top:20px;
+  width:40px;
+  height:40px;
+}
+.media:hover{
+  margin-top:20px;
+  width:40px;
+  height:40px;
+  color:transparent;
 }

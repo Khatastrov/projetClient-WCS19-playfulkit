@@ -22,8 +22,11 @@ Encore
     .addEntry('tutorial', './assets/js/tuto.js')
     .addEntry('mapScss', './assets/scss/map.scss')
     .addEntry('tutoCreate', './assets/js/tutoCreate.js')
+    .addEntry('homePage', './assets/js/homePage.js')
     .addEntry('signIn', './assets/js/signIn.js')
     .addEntry('logIn', './assets/js/logIn.js')
+    .addEntry('userEdit', './assets/js/userEdit.js')
+    .addEntry('passwordNew', './assets/js/passwordNew.js')
     .addEntry('user', './assets/js/user.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.

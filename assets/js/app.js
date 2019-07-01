@@ -19,6 +19,10 @@ require('../images/logo-officielR.png');
 require('../images/robotDefault.png');
 require('../images/board.jpg');
 require('../images/electricity.jpg');
+require('../images/profil.jpg');
+require('../images/pass.jpg');
+
+
 
 //avatars
 function importAll(r){
@@ -31,3 +35,4 @@ require('../images/pfk-ico16.png');
 require('../images/pfk-ico32.png');
 require('../images/pfk-ico64.png');
 require('../images/pfk-ico96.png');
+require('slick-carousel');

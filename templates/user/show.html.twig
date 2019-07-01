@@ -38,19 +38,19 @@
                         {% if firstName is null %}
                             <p>Prénom : Tu n'as pas encore renseigner cette information</p>
                         {% else %}
-                            <p>{{ user.firstname }}</p>
+                            <p>Prénom : {{ user.firstname }}</p>
                         {% endif %}
 
                         {% if lastName is null %}
                             <p>Nom : Tu n'as pas encore renseigner cette information</p>
                         {% else %}
-                            <p>{{ user.lastname }}</p>
+                            <p>Nom : {{ user.lastname }}</p>
                         {% endif %}
 
                         {% if address is null %}
                             <p>Adresse : Tu n'as pas encore renseigner cette information</p>
                         {% else %}
-                            <p>{{ user.address }}</p>
+                            <p>Adresse : {{ user.address }}</p>
                         {% endif %}
                     </article>
                     <div class="btnGroupUser">
