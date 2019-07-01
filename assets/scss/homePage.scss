@@ -1,3 +1,4 @@
+
 @import "vars";
 
 .Lessons{
@@ -32,18 +33,34 @@
 }
 
 
-form{
-  width:80%;
-  margin:0 10%;
-  color : rgba(0, 0, 0, 0.67);
-}
-
 .formContainer{
+  position : relative;
   margin-top:40px;
   margin-bottom:40px;
   padding-bottom: 10px;
   background-size: cover;
   filter: blur(px);
+  overflow: hidden;
+
+  form {
+    width: 80%;
+    margin: 0 10%;
+    color: rgba(0, 0, 0, 0.67);
+
+
+    .image {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .opacity{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.35);
+  }
 }
 
 section{
