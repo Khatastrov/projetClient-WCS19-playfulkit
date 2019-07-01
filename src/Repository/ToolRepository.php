@@ -19,13 +19,13 @@ class ToolRepository extends ServiceEntityRepository
         parent::__construct($registry, Tool::class);
     }
 
-    public function getNameByCategory($myTitle)
+    public function getNameByCategory($toolCategory)
     {
-        $name = $this->createQueryBuilder('t')
-                ->select('t.name')
-                ->where("t.category = $myTitle");
-
-        return $name;
+        $em = $this->getEntityManager()->getConnection();
+        $sql = "SELECT name FROM tool WHERE tool.category = '$toolCategory'";
+        $stmt = $em->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 
     // /**
