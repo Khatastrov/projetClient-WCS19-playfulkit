@@ -1,0 +1,100 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %}
+    carte des fablabs
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('mapScss') }}
+{% endblock %}
+
+{% block body %}
+    <div id="map"></div>
+    <div id="fablab"></div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        let map, infoWindow;
+        function initMap()
+        {
+            let myLocation = {lat: 50.6307, lng:3.0709};
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: myLocation,
+                zoom: 14
+            });
+            infoWindow = new google.maps.InfoWindow;
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    let pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent('Vous êtes ici !');
+                    infoWindow.open(map);
+                    map.setCenter(pos);
+                }, function() {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ?
+                'Error: Le service géocalisation à échoué.' :
+                'Error: Votre navigateur ne supporte pas la géocalisation.');
+            infoWindow.open(map);
+        }
+
+        const request = new XMLHttpRequest();
+        request.open('GET', 'http://www.makery.info/api/labs/');
+        request.responseType = 'json';
+        request.send();
+        request.onload = function() {
+            const fablabs = request.response.features.filter((feature)=>{
+                return feature.properties.type_lab === 'fablab';
+            });
+            const markers = fablabs.map((fablab)=>{
+                let fablabMarkers = {
+                    fablabName : fablab.properties.name,
+                    fablabAdrress : fablab.properties.adress,
+                    fablabSite : fablab.properties.website,
+                    fablabCordinate : {
+                        lat : fablab.geometry.coordinates[1],
+                        lng : fablab.geometry.coordinates[0]
+                    }
+                };
+                return fablabMarkers;
+            });
+
+            markers.forEach(function (marker) {
+                let content = "<h2>" + marker.fablabName + "</h2>"
+                    + "<p> l'adresse est :" + marker.fablabAdrress + "</p>"
+                    + "<p> Le site de ce fablab est " + "<a href='"+ marker.fablabSite +"' target='_blank'>juste ici</a></p>";
+                console.log(marker.fablabSite)
+                let infowindow = new google.maps.InfoWindow({
+                    content : content
+                });
+                marker = new google.maps.Marker({
+                    position : marker.fablabCordinate,
+                    map : map,
+                    title : marker.fablabName
+                });
+                marker.addListener('click', function () {
+                    infowindow.open(map,marker);
+                });
+            })
+        };
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg_4m9qwgn596ZR6xJsTUVbAe_jg5i67M&callback=initMap" async defer></script>
+{% endblock %}

@@ -75,12 +75,12 @@ $('input.form-check-input').click(function () {
         $img.css('display', 'none');
         $img.val('');
         $vid.css('display', 'block');
-    } else if ($(this).val() == 2) {
+    } else if ($(this).val() == 0) {
         console.log('tu as coché "photo" !');
         $vid.css('display', 'none');
         $vid.val('');
         $img.css('display', 'block');
-    } else if ($(this).val() == 0) {
+    } else if ($(this).val() == 2) {
         console.log('tu as coché "aucune illustration" !');
         $vid.css('display', 'none');
         $img.css('display', 'none');
