@@ -9,12 +9,14 @@
     {% if not app.user %}
         <div id="mainHome" class="row col-12">
             <div class="text-center col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <div id="Lessons">
+                <div class="Lessons">
+                    <img class="image" src = "{{ asset('../build/images/lesson.jpg') }}" alt="lesson.jpg"/>
                     <div class="opacity d-flex align-items-center justify-content-center">
                         <h3>Lessons</h3>
                     </div>
                 </div>
-                <div id="Tutorial">
+                <div class="Lessons">
+                    <img class= "image" src = "{{ asset('../build/images/tuto.jpg') }}" alt="tuto.jpg"/>
                     <div class="opacity d-flex align-items-center justify-content-center">
                         <h3>Tutorials</h3>
                     </div>
@@ -27,7 +29,9 @@
                     {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
                     {{ form_row(form.password.first, {'label': 'Mot de passe :', 'attr': {'placeholder':'Minimum de 6 caractères'}}) }}
                     {{ form_row(form.password.second, {'label': 'Confirmation :', 'attr': {'placeholder':'Confirme ton mot de passe'}}) }}
-                    {{ form_row(form.birth_date, {'label': 'Date de naissance :'}) }}
+                    <div id="registration_form_birth_date">
+                        {{ form_row(form.birth_date, {'label': 'Date de naissance :'}) }}
+                    </div>
                     <button type="submit" class="btn btn-primary" id="boutton" >{{ button_label|default('Je m\'inscris !') }}</button>
                     {{ form_end(form) }}
                 </div>
@@ -37,19 +41,26 @@
         <div class="row mx-auto justify-content-around mb-5 mt-5 col-12">
             <section class="w-50 text-center">
                 <div class="border border-dark my-3 mx-3" id="lesson2">
-                    <div class="opacity d-flex align-items-center justify-content-center">
-                        <h3 class="my-5">Lessons</h3>
+                    <div class="Lessons">
+                        <img class="image" src = "{{ asset('../build/images/lesson.jpg') }}" alt="lesson.jpg"/>
+                        <div class="opacity d-flex align-items-center justify-content-center">
+                             <h3 class="my-5">Lessons</h3>
+                        </div>
                     </div>
                 </div>
                 <div class="border border-dark my-3 mx-3" id="tutorial2">
-                    <div class="opacity d-flex align-items-center justify-content-center">
-                        <h3 class="my-5">Tutorials</h3>
+                    <div class="Lessons">
+                        <img class="image" src = "{{ asset('../build/images/tuto.jpg') }}" alt="tuto.jpg"/>
+                        <div class="opacity d-flex align-items-center justify-content-center">
+                            <h3 class="my-5">Tutorials</h3>
+                        </div>
                     </div>
                 </div>
             </section>
         </div>
     {% endif %}
     <section class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
+        <h4 style="text-align:center;">Shop</h4>
         <div class="one-time">
             <div><img src="{{ asset('build/images/001-robot-49.1392b1ee.png') }}" alt="image 1"></div>
             <div><img src="https://cdn.pixabay.com/photo/2019/06/25/04/40/light-4297386_960_720.jpg" alt="image 2"></div>
@@ -57,6 +68,7 @@
         </div>
     </section>
     <section class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h4 style="text-align:center;">Blog</h4>
         <div class="one-time">
             <div><img src="https://cdn.pixabay.com/photo/2019/06/25/04/40/light-4297386_960_720.jpg" alt="image 1"></div>
             <div><img src="https://cdn.pixabay.com/photo/2019/06/27/03/42/beach-4301479_960_720.jpg"></div>

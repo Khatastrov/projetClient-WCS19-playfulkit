@@ -8,4 +8,5 @@ $('.one-time').slick({
     slidesToShow: 1,
     centerMode: true,
     variableWidth: true
+
 });
