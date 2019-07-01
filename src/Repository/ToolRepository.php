@@ -22,9 +22,9 @@ class ToolRepository extends ServiceEntityRepository
     public function getNameByCategory($toolCategory)
     {
         $em = $this->getEntityManager()->getConnection();
-        $sql = "SELECT name FROM tool WHERE tool.category = '$toolCategory'";
+        $sql = "SELECT name FROM tool WHERE tool.category = :category";
         $stmt = $em->prepare($sql);
-        $stmt->execute();
+        $stmt->execute(['category' => $toolCategory]);
         return $stmt->fetchAll();
     }
 
