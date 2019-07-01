@@ -19,22 +19,19 @@ class TutorialRepository extends ServiceEntityRepository
         parent::__construct($registry, Tutorial::class);
     }
 
-    // /**
-    //  * @return Tutorial[] Returns an array of Tutorial objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Tutorial[] Returns an array of Published Tutorial objects
+     */
+    public function findPublished()
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('t.isPublished = true')
+            ->orderBy('t.date_creation', 'DESC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Tutorial

@@ -19,7 +19,7 @@ class TutorialController extends AbstractController
      */
     public function index(TutorialRepository $repo) : Response
     {
-        $tuto = $repo->findAll();
+        $tuto = $repo->findPublished();
 
         return $this->render('tutorial/index.html.twig', [
             'tutorials' => $tuto
