@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Tutorial;
+use App\Entity\TutorialStep;
 use App\Form\TutorialType;
 use App\Repository\TutorialRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -80,7 +81,7 @@ class TutorialController extends AbstractController
     public function show(Tutorial $tuto) : Response
     {
         return $this->render('tutorial/show.html.twig', [
-            'tuto' => $tuto
+            'tuto' => $tuto,
         ]);
     }
 }
