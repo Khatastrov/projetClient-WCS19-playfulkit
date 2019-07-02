@@ -1,3 +1,4 @@
+
 {% extends 'base.html.twig' %}
 
 {% block title %}Accueil{% endblock %}
@@ -9,21 +10,21 @@
     {% if not app.user %}
         <div id="mainHome" class="row col-12">
             <div class="text-center col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <div class="Lessons">
+                <a href="{{ path('lesson_index') }}"><div class="Lessons">
                     <img class="image" src = "{{ asset('../build/images/lesson.jpg') }}" alt="lesson.jpg"/>
                     <div class="opacity d-flex align-items-center justify-content-center">
-                        <h3>Lessons</h3>
+                       <h3>Lessons</h3>
                     </div>
-                </div>
-                <div class="Lessons">
+                    </div></a>
+                <a href="{{ path('tutorial') }}"><div class="Lessons">
                     <img class= "image" src = "{{ asset('../build/images/tuto.jpg') }}" alt="tuto.jpg"/>
                     <div class="opacity d-flex align-items-center justify-content-center">
                         <h3>Tutorials</h3>
                     </div>
-                </div>
+                    </div></a>
             </div>
             <div class="formContainer col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 opacity">
-                <img class="image" src = "{{ asset('../build/images/form.JPG') }}" alt="lesson.jpg"/>
+                <img id="imgform" src = "{{ asset('../build/images/form.JPG') }}" alt="lesson.jpg"/>
                 <div class="opacity d-flex align-items-center justify-content-center">
                     {{ form_start(form) }}
                     {{ form_row(form.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
@@ -42,20 +43,20 @@
         <div class="row mx-auto justify-content-around mb-5 mt-5 col-12">
             <section class="w-50 text-center">
                 <div class="border border-dark my-3 mx-3" id="lesson2">
-                    <div class="Lessons">
+                    <a href="{{ path('lesson_index') }}"> <div class="Lessons">
                         <img class="image" src = "{{ asset('../build/images/lesson.jpg') }}" alt="lesson.jpg"/>
                         <div class="opacity d-flex align-items-center justify-content-center">
                             <h3 class="my-5">Lessons</h3>
                         </div>
-                    </div>
+                        </div></a>
                 </div>
                 <div class="border border-dark my-3 mx-3" id="tutorial2">
-                    <div class="Lessons">
-                        <img class="image" src = "{{ asset('../build/images/tuto.jpg') }}" alt="tuto.jpg"/>
+                    <a href="{{ path('tutorial') }}"><div class="Lessons">
+                        ><img class="image" src = "{{ asset('../build/images/tuto.jpg') }}" alt="tuto.jpg"/>
                         <div class="opacity d-flex align-items-center justify-content-center">
                             <h3 class="my-5">Tutorials</h3>
                         </div>
-                    </div>
+                        </div></a>
                 </div>
             </section>
         </div>
