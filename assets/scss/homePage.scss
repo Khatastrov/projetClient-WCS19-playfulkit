@@ -71,12 +71,10 @@ section{
     width: 100%;
   }
 }
-
-
 #registration_form_birth_date{
   justify-content: space-around;
-  display :flex;
 }
+
 
 @media screen and (max-width: 1024px) {
   .formContainer {
@@ -86,6 +84,14 @@ section{
 
     #imgform {
       visibility: hidden;
+    }
+    .opacity{
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(255, 255, 255, 0);
     }
   }
 }

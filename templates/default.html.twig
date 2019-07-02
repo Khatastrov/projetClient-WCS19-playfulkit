@@ -1,4 +1,3 @@
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Accueil{% endblock %}
@@ -11,27 +10,27 @@
         <div id="mainHome" class="row col-12">
             <div class="text-center col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                 <a href="{{ path('lesson_index') }}"><div class="Lessons">
-                    <img class="image" src = "{{ asset('../build/images/lesson.jpg') }}" alt="lesson.jpg"/>
-                    <div class="opacity d-flex align-items-center justify-content-center">
-                       <h3>Lessons</h3>
-                    </div>
+                        <img class="image" src = "{{ asset('build/images/lesson.png') }}" alt="lesson.jpg"/>
+                        <div class="opacity d-flex align-items-center justify-content-center">
+                            <h3>Lessons</h3>
+                        </div>
                     </div></a>
                 <a href="{{ path('tutorial') }}"><div class="Lessons">
-                    <img class= "image" src = "{{ asset('../build/images/tuto.jpg') }}" alt="tuto.jpg"/>
-                    <div class="opacity d-flex align-items-center justify-content-center">
-                        <h3>Tutorials</h3>
-                    </div>
+                        <img class= "image" src = "{{ asset('build/images/tuto.png') }}" alt="tuto.jpg"/>
+                        <div class="opacity d-flex align-items-center justify-content-center">
+                            <h3>Tutorials</h3>
+                        </div>
                     </div></a>
             </div>
             <div class="formContainer col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 opacity">
-                <img id="imgform" src = "{{ asset('../build/images/form.JPG') }}" alt="lesson.jpg"/>
+                <img id="imgform" src = "{{ asset('build/images/form.png') }}" alt="lesson.jpg"/>
                 <div class="opacity d-flex align-items-center justify-content-center">
                     {{ form_start(form) }}
                     {{ form_row(form.username, {'label': 'Nom d\'utilisateur :', 'attr': {'placeholder':'Pseudo'}}) }}
                     {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
                     {{ form_row(form.password.first, {'label': 'Mot de passe :', 'attr': {'placeholder':'Minimum de 6 caractères'}}) }}
                     {{ form_row(form.password.second, {'label': 'Confirmation :', 'attr': {'placeholder':'Confirme ton mot de passe'}}) }}
-                    <div id="registration_form_birth_date">
+                    <div id="registration_form_birth_date" >
                         {{ form_row(form.birth_date, {'label': 'Date de naissance :'}) }}
                     </div>
                     <button type="submit" class="btn btn-primary" id="boutton" >{{ button_label|default('Je m\'inscris !') }}</button>
@@ -44,18 +43,18 @@
             <section class="w-50 text-center">
                 <div class="border border-dark my-3 mx-3" id="lesson2">
                     <a href="{{ path('lesson_index') }}"> <div class="Lessons">
-                        <img class="image" src = "{{ asset('../build/images/lesson.jpg') }}" alt="lesson.jpg"/>
-                        <div class="opacity d-flex align-items-center justify-content-center">
-                            <h3 class="my-5">Lessons</h3>
-                        </div>
+                            <img class="image" src = "{{ asset('build/images/lesson.png') }}" alt="lesson.jpg"/>
+                            <div class="opacity d-flex align-items-center justify-content-center">
+                                <h3 class="my-5">Lessons</h3>
+                            </div>
                         </div></a>
                 </div>
                 <div class="border border-dark my-3 mx-3" id="tutorial2">
                     <a href="{{ path('tutorial') }}"><div class="Lessons">
-                        ><img class="image" src = "{{ asset('../build/images/tuto.jpg') }}" alt="tuto.jpg"/>
-                        <div class="opacity d-flex align-items-center justify-content-center">
-                            <h3 class="my-5">Tutorials</h3>
-                        </div>
+                            ><img class="image" src = "{{ asset('build/images/tuto.png') }}" alt="tuto.jpg"/>
+                            <div class="opacity d-flex align-items-center justify-content-center">
+                                <h3 class="my-5">Tutorials</h3>
+                            </div>
                         </div></a>
                 </div>
             </section>
