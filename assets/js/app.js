@@ -28,6 +28,7 @@ function importAll(r){
     r.keys().forEach(r);
 }
 importAll(require.context('../images/avatars', true,/\.png$/));
+importAll(require.context('../images/shop', true,/\.png$/));
 
 //logos
 require('../images/pfk-ico16.png');
