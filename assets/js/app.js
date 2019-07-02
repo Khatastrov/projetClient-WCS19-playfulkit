@@ -19,6 +19,10 @@ require('../images/logo-officielR.png');
 require('../images/robotDefault.png');
 require('../images/board.jpg');
 require('../images/electricity.jpg');
+require('../images/profil.jpg');
+require('../images/pass.jpg');
+
+
 
 //avatars
 function importAll(r){
