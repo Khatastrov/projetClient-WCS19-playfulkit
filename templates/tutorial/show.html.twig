@@ -36,7 +36,7 @@
                         <li>Outils :</li>
                         <ol>
                             <li>
-                                {{ tool.name }}
+                                {{ tool.tool.name }}   x{{ tool.quantity }}
                             </li>
                         </ol>
                     {% endfor %}
@@ -44,7 +44,7 @@
                         <li>Matériaux :</li>
                         <ol>
                             <li>
-                                {{ tool.name }}
+                                {{ tool.tool.name }}   x{{ tool.quantity }}
                             </li>
                         </ol>
                     {% endfor %}
@@ -52,7 +52,7 @@
                         <li>Logiciels :</li>
                         <ol>
                             <li>
-                                {{ tool.name }}
+                                {{ tool.tool.name }}   x{{ tool.quantity }}
                             </li>
                         </ol>
                     {% endfor %}

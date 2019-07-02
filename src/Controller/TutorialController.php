@@ -79,8 +79,31 @@ class TutorialController extends AbstractController
      */
     public function show(Tutorial $tuto) : Response
     {
+        $tools = $tuto->getTools()->getValues();
+        $handtools = [];
+        $softwares = [];
+        $hardwares = [];
+
+        foreach ($tools as $key => $tool) {
+            $category = $tool->getTool()->getCategory();
+            switch ($category) {
+                case 'handtool':
+                    array_push($handtools, $tool);
+                    break;
+                case 'software':
+                    array_push($softwares, $tool);
+                    break;
+                case 'hardware':
+                    array_push($hardwares, $tool);
+                    break;
+            }
+        }
+
         return $this->render('tutorial/show.html.twig', [
-            'tuto' => $tuto
+            'tuto' => $tuto,
+            'handtools' => $handtools,
+            'softwares' => $softwares,
+            'hardwares' => $hardwares,
         ]);
     }
 }
