@@ -20,8 +20,8 @@
             {% for tool in formTutorial.tools %}
                 <hr>
                 <li>
-                    {{ form_row(tool.name, {'label': 'Le nom de tom outil'}) }}
-                    {{ form_row(step.quantity, {'label': 'La quantité'}) }}
+                    {{ form_row(tool.name, {'label': 'Le nom de ton outil'}) }}
+                    {{ form_row(tool.quantity, {'label': 'La quantité'}) }}
                     <button class="remove-existing-tool btn btnRemoveTool">supprimer cette étape</button>
                 </li>
             {% endfor %}
