@@ -21,7 +21,8 @@ class TutorialToolType extends AbstractType
                 'class' => Tool::class,
                 'query_builder' => function (ToolRepository $toolRepository) {
                     return $toolRepository->getNameByCategory("handtool");
-                }
+                },
+                'choice_label' => 'category',
             ]);
     }
 
