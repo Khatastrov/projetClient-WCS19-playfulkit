@@ -43,6 +43,11 @@ class BlogPost
      */
     private $modificationDate;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $illustration;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -110,6 +115,18 @@ class BlogPost
     public function setModificationDate(): self
     {
         $this->modificationDate = new \DateTime();
+
+        return $this;
+    }
+
+    public function getIllustration(): ?string
+    {
+        return $this->illustration;
+    }
+
+    public function setIllustration(?string $illustration): self
+    {
+        $this->illustration = $illustration;
 
         return $this;
     }
