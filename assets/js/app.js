@@ -19,8 +19,8 @@ require('../images/logo-officielR.png');
 require('../images/robotDefault.png');
 require('../images/board.jpg');
 require('../images/electricity.jpg');
-require('../images/lesson.png');
-require('../images/tuto.png');
+require('../images/lesson.jpg');
+require('../images/tuto.jpg');
 require('../images/form.png');
 
 //avatars
