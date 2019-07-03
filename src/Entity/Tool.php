@@ -34,7 +34,10 @@ class Tool
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tool")
+     * @ORM\OneToMany(
+     *     targetEntity="App\Entity\TutorialTool",
+     *     mappedBy="tool",
+     *     cascade={"persist"})
      */
     private $tutorials;
 

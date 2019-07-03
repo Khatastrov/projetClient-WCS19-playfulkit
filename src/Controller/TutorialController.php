@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Tutorial;
+use App\Entity\TutorialTool;
+use App\Form\TutorialToolType;
 use App\Form\TutorialType;
+use App\Repository\ToolRepository;
 use App\Repository\TutorialRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,7 +38,7 @@ class TutorialController extends AbstractController
      * @return Response
      * @throws \Exception
      */
-    public function form(Tutorial $tuto = null, Request $request) : Response
+    public function form(Tutorial $tuto = null, Request $request, ToolRepository $repo) : Response
     {
         $user = $this->getUser();
         if (!$tuto) {
@@ -43,7 +46,11 @@ class TutorialController extends AbstractController
             $tuto->setAuthor($user);
         }
 
+        //dd($tuto->getTools());
+
         $form = $this->createForm(TutorialType::class, $tuto);
+        $tutorial = $request->request->get('tutorial');
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -59,6 +66,18 @@ class TutorialController extends AbstractController
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($tuto);
             $manager->flush();
+
+            if ($tutorial['tools'] != null) {
+                $tutoTool = new TutorialTool();
+                foreach ($tutorial['tools'] as $key => $value) {
+                    $tool = $repo->find($value['tool']);
+                    $tutoTool->setTool($tool);
+                    $tutoTool->setQuantity($value['quantity']);
+                    $tutoTool->setTutorial($tuto);
+                    $manager->persist($tutoTool);
+                }
+                $manager->flush();
+            }
 
             return $this->redirectToRoute('tutorial_show', [
                 'id' => $tuto->getId()
