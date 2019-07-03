@@ -11,7 +11,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class CGUController extends AbstractController
 {
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/CGU", name="cgu")
      */
     public function cgu()
