@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+    <aside class="float-lg-right m-4">
+        <strong>Les posts les plus récents :</strong>
+        <ul>
+            {% for recent in latest %}
+                <li>
+                    <a href="{{ path('blog_show', {'id': recent.id}) }}">{{ recent.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </aside>
+
+    <small class="m-4">
+        {% if post.author  %}
+            Publié par {{ post.author.username }}
+        {% endif %}
+        {% if post.creationDate %}
+            le {{ post.creationDate|date('d-m-Y') }}
+        {% endif %}
+    </small>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <h1>{{ post.title }}</h1>
+        </div>
+        <article class="row single-post mt-5 no-gutters">
+            <div class="col">
+                {% if post.illustration %}
+                    <div class="image-wrapper float-left pr-3">
+                        <img src="/images/lesson/{{ post.illustration }}" alt="illustration de la leçon">
+                    </div>
+                {% endif %}
+                <div class="single-post-content-wrapper p-3">
+                    {{ post.content }}
+                </div>
+            </div>
+        </article>
+        <div class="d-flex justify-content-center">
+            <a href="{{ path('blog_index') }}" class="btn btn-info mx-auto my-4">Retour à l'index du blog &rarr;</a>
+        </div>
+    </div>
+{% endblock %}

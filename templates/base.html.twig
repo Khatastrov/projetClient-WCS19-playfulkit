@@ -32,13 +32,13 @@
         </button>
         <div class="collapse navbar-collapse navbar-nav navLinkBar" id="navbarSupportedContent">
             <div class="subLinkbar">
-                <a class="nav-link" href="{{ path('lesson_index') }}">Leçons</a>
                 <a class="comingSoon nav-link" href="#">Concours</a>
                 <a class="nav-link" href="{{ path('tutorial') }}">Tutos</a>
+                <a class="nav-link" href="{{ path('lesson_index') }}">Leçons</a>
                 <a class="comingSoon nav-link" href="#">Boutique</a>
                 <a class="comingSoon nav-link" href="#">Educateurs</a>
                 <a class="comingSoon nav-link" href="#">Contact</a>
-                <a class="comingSoon nav-link" href="#">retirer opacityBlog</a>
+                <a class="nav-link" href="{{ path('blog_index') }}">Blog</a>
                 <a class="nav-link" href="{{ path('map') }}">Les Fablabs</a>
             </div>
         </div>
@@ -64,7 +64,7 @@
                     <a href="{{ path('tutorial') }}">Tutos</a>
                 </li>
                 <li>
-                    <a href="#">Blog</a>
+                    <a href="{{ path('blog_index') }}">Blog</a>
                 </li>
             </ul>
         </div>

@@ -22,6 +22,8 @@ require('../images/electricity.jpg');
 require('../images/lesson.jpg');
 require('../images/tuto.jpg');
 require('../images/form.png');
+require('../images/profil.jpg');
+require('../images/pass.jpg');
 
 //avatars
 function importAll(r){
