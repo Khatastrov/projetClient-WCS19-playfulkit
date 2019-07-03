@@ -113,11 +113,16 @@ body{
   font-family: $font-secondary;
   font-size:20px;
   text-align: center;
+  a{
+    text-decoration: none;
+  }
+  a:hover{
+    color: $primary;
+  }
 }
 
 .cardTutorial {
-  max-width:300px;
-  min-width:200px;
+  width:300px;
   margin:20px auto;
   border:1px solid $primary;
   border-radius:0px;
@@ -180,4 +185,16 @@ body{
   background:$link-color !important;
   outline: none !important;
   box-shadow: none !important;
+}
+
+@media (max-width: 767.98px){
+  .cardTutorial {
+    min-width:100px;
+  }
+}
+
+@media (min-width: 768px){
+  .cardTutorial {
+    width:300px;
+  }
 }

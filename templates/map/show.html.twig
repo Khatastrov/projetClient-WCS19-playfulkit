@@ -78,8 +78,8 @@
 
             markers.forEach(function (marker) {
                 let content = "<h2>" + marker.fablabName + "</h2>"
-                    + "<p> l'adresse est :" + marker.fablabAdrress + "</p>"
-                    + "<p> Le site de ce fablab est " + "<a href='"+ marker.fablabSite +"' target='_blank'>juste ici</a></p>";
+                    + "<p> l'adresse est : " + marker.fablabAdrress + "</p>"
+                    + "<p> Le site de ce fablab est " + "<a class='justHere' href='"+ marker.fablabSite +"' target='_blank'>juste ici !</a></p>";
                 console.log(marker.fablabSite)
                 let infowindow = new google.maps.InfoWindow({
                     content : content

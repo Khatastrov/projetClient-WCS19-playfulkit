@@ -84,11 +84,16 @@
                             </div>
                             <article class="contentCollapse">
                                 <div class="row">
-                                    <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        {{ step.content }}
-                                    </p>
-                                     {#uncomment img when we can set a condition with if img not empty then #}
-                                     {#<img src="{{ step.image ? step.image : 'https://via.placeholder.com/150' }}" class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">#}
+                                    {% if step.image is not null %}
+                                     <p class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-10">
+                                         {{ step.content }}
+                                     </p>
+                                     <img src="{{ asset('images/step/' ~ step.image) }}" alt="step_image" class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
+                                    {% else %}
+                                        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            {{ step.content }}
+                                        </p>
+                                    {% endif %}
                                 </div>
                             </article>
                         </div>

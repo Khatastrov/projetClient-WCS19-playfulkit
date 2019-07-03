@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Tutorial;
 use App\Entity\TutorialTool;
 use App\Form\TutorialToolType;
+use App\Entity\TutorialStep;
 use App\Form\TutorialType;
 use App\Repository\ToolRepository;
 use App\Repository\TutorialRepository;

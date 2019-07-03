@@ -197,10 +197,6 @@
       font-size:25px;
     }
   }
-
-  a.comingSoon{
-    opacity: 0.5 !important;
-  }
 }
 
 .media{
@@ -213,4 +209,13 @@
   width:40px;
   height:40px;
   color:transparent;
+}
+
+a.comingSoon{
+  text-decoration: none;
+  opacity: 0.5 !important;
+}
+a.comingSoon:hover{
+  color:white !important;
+  cursor:default !important;
 }
