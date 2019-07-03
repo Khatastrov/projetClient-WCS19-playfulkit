@@ -28,6 +28,8 @@ Encore
     .addEntry('userEdit', './assets/js/userEdit.js')
     .addEntry('passwordNew', './assets/js/passwordNew.js')
     .addEntry('user', './assets/js/user.js')
+    .addEntry('blog', './assets/js/blog.js')
+    .addEntry('blogShow', './assets/js/blogShow.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
