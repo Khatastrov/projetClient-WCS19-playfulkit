@@ -32,30 +32,37 @@
             <div class="w-75 tool-box">
                 <p>Pour réaliser ce tutoriel, tu auras besoin de :</p>
                 <ul>
-                    {% for tool in handtools %}
-                        <li>Outils :</li>
-                        <ol>
-                            <li>
-                                {{ tool.tool.name }}   x{{ tool.quantity }}
-                            </li>
-                        </ol>
-                    {% endfor %}
-                    {% for tool in hardwares %}
-                        <li>Matériaux :</li>
-                        <ol>
-                            <li>
-                                {{ tool.tool.name }}   x{{ tool.quantity }}
-                            </li>
-                        </ol>
-                    {% endfor %}
-                    {% for tool in softwares %}
-                        <li>Logiciels :</li>
-                        <ol>
-                            <li>
-                                {{ tool.tool.name }}   x{{ tool.quantity }}
-                            </li>
-                        </ol>
-                    {% endfor %}
+                    {% if handtools %}
+                    <li>Outils :</li>
+                    <ol>
+                        {% for tool in handtools %}
+                                <li>
+                                    {{ tool.tool.name }}   x{{ tool.quantity }}
+                                </li>
+                        {% endfor %}
+                    </ol>
+                    {% endif %}
+                    {% if hardwares %}
+                    <li>Matériaux :</li>
+                    <ol>
+                        {% for tool in hardwares %}
+
+                                <li>
+                                    {{ tool.tool.name }}   x{{ tool.quantity }}
+                                </li>
+                        {% endfor %}
+                    </ol>
+                    {% endif %}
+                    {% if softwares %}
+                    <li>Logiciels :</li>
+                    <ol>
+                        {% for tool in softwares %}
+                                <li>
+                                    {{ tool.tool.name }}   x{{ tool.quantity }}
+                                </li>
+                        {% endfor %}
+                    </ol>
+                    {% endif %}
                 </ul>
             </div>
         {% endif %}
