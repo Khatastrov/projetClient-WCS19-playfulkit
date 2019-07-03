@@ -4,9 +4,10 @@ namespace App\Form;
 
 use App\Entity\Tool;
 use App\Entity\TutorialTool;
-use App\Repository\ToolRepository;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,10 +20,11 @@ class TutorialToolType extends AbstractType
             ->add('quantity', null)
             ->add('name', EntityType::class, [
                 'class' => Tool::class,
-                'query_builder' => function (ToolRepository $toolRepository) {
-                    return $toolRepository->getNameByCategory("handtool");
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('t')
+                        ->orderBy('t.name', 'ASC');
                 },
-                'choice_label' => 'category',
+                'choice_label' => 'name',
             ]);
     }
 
@@ -32,4 +34,10 @@ class TutorialToolType extends AbstractType
             'data_class' => TutorialTool::class,
         ]);
     }
+/*
+    public function getParent()
+    {
+        return ToolType::class;
+    }
+*/
 }
