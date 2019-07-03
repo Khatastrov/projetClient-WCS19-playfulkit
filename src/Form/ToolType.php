@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Tool;
-use App\Repository\ToolRepository;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,7 +16,11 @@ class ToolType extends AbstractType
         $builder
             ->add('name', EntityType::class, [
                 'class' => Tool::class,
-                //'query_builder' => $tool->getNameByCategory(),
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('t')
+                        ->orderBy('t.name', 'ASC');
+                },
+                'choice_label' => 'name',
             ]);
     }
 
