@@ -9,20 +9,21 @@ body
 {
   background-color: rgba(255, 255, 255, 0.9);
   margin:auto;
-  padding-bottom:10px;
+  padding-top:15px;
+  padding-bottom:15px;
 }
 
 h1
 {
   text-align: center;
   padding-top:10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-family: $font-primary;
 }
 
 .btnEdit
 {
-  margin-top:10px;
+  margin-top:20px;
   margin-bottom:20px;
   color:$link-colorHover;
   background-color: $customSkyblue;
@@ -39,7 +40,7 @@ h1
 .return
 {
   color: $customRed;
-  font-size:16px;
+  font-size:18px;
   font-family: $font-secondary;
 }
 .return:hover{
@@ -49,7 +50,7 @@ h1
 .password
 {
   color: $primary;
-  font-size:16px;
+  font-size:18px;
   font-family: $font-secondary;
 }
 .password:hover{
@@ -73,6 +74,12 @@ h1
     flex-direction: column;
     margin:20px 4vw;
     max-width:90vw;
+  }
+  .password{
+    font-size:16px;
+  }
+  .return{
+    font-size:16px;
   }
   form{
     max-width:80%;
