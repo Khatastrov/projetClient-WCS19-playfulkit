@@ -7,13 +7,12 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class CGUController
  * @package App\Controller
- * @Route("/CGU", name="condition_")
  */
 class CGUController extends AbstractController
 {
     /**
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/", name="utilisation_generale")
+     * @Route("/CGU", name="cgu")
      */
     public function cgu()
     {
