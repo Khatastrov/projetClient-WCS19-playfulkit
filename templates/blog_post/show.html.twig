@@ -2,44 +2,62 @@
 
 {% block title %}{{ post.title }}{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('blogShow') }}
+{% endblock %}
+
 {% block body %}
-    <aside class="float-lg-right m-4">
-        <strong>Les posts les plus récents :</strong>
-        <ul>
-            {% for recent in latest %}
-                <li>
-                    <a href="{{ path('blog_show', {'id': recent.id}) }}">{{ recent.title }}</a>
-                </li>
-            {% endfor %}
-        </ul>
+    <aside class="float-md-left asideDesktop">
+        <div class="container">
+            <strong>Les posts les plus récents :</strong>
+            <ul>
+                {% for recent in latest %}
+                    <li>
+                        <a href="{{ path('blog_show', {'id': recent.id}) }}">- {{ recent.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </aside>
 
-    <small class="m-4">
-        {% if post.author  %}
-            Publié par {{ post.author.username }}
-        {% endif %}
-        {% if post.creationDate %}
-            le {{ post.creationDate|date('d-m-Y') }}
-        {% endif %}
-    </small>
     <div class="container">
-        <div class="d-flex justify-content-center">
+        <div id="blogPresentation">
             <h1>{{ post.title }}</h1>
         </div>
         <article class="row single-post mt-5 no-gutters">
             <div class="col">
                 {% if post.illustration %}
-                    <div class="image-wrapper float-left pr-3">
-                        <img src="/images/lesson/{{ post.illustration }}" alt="illustration de la leçon">
+                    <div class="image-wrapper float-right pr-3">
+                        <img src="{{ asset('/images/blog/' ~ post.illustration) }}" alt="illustration de la leçon">
                     </div>
                 {% endif %}
                 <div class="single-post-content-wrapper p-3">
-                    {{ post.content }}
+                    <p>{{ post.content }}</p>
                 </div>
             </div>
         </article>
-        <div class="d-flex justify-content-center">
-            <a href="{{ path('blog_index') }}" class="btn btn-info mx-auto my-4">Retour à l'index du blog &rarr;</a>
+        <p class="by">
+                Publié par Mathieu
+            {% if post.creationDate %}
+                le {{ post.creationDate|date('d/m/Y') }}
+            {% endif %}
+        </p>
+        <div class="d-flex">
+            <a href="{{ path('blog_index') }}" class="return">Retour</a>
         </div>
     </div>
+
+    <aside class="float-md-left asideMobile">
+        <div class="container">
+            <strong>Les posts les plus récents :</strong>
+            <ul>
+                {% for recent in latest %}
+                    <li>
+                        <a href="{{ path('blog_show', {'id': recent.id}) }}">- {{ recent.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </aside>
 {% endblock %}
