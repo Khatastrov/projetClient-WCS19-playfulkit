@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ tutorial.title }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('tutorial') }}
+{% endblock %}
+
+{% block body %}
+    <div class="tutoPresentation container">
+        <h1 class="titleShow">{{ tutorial.title }}</h1>
+        <article class="tutoContent">
+            {% if tutorial.illustration is not null %}
+                {% set ext = tutorial.illustration|split('.') %}
+                {% if ext[1] is defined %}
+                    <img src="/images/tutorial/{{ tutorial.illustration }}" >
+                {% else %}
+                    <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tutorial.illustration }}"></iframe>
+                {% endif %}
+            {% endif %}
+            <p class="tutoText">
+                {{ tutorial.content | raw }}
+            </p>
+        </article>
+    </div>
+    <div class="container">
+
+        {% if tutorial.tools is not empty %}
+            <div class="w-75 tool-box">
+                <p>Pour réaliser ce tutoriel, tu auras besoin de :</p>
+                <ul>
+                    {% if handtools %}
+                        <li>Outils :</li>
+                        <ol>
+                            {% for tool in handtools %}
+                                <li>
+                                    {{ tool.tool.name }}   x{{ tool.quantity }}
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
+                    {% if hardwares %}
+                        <li>Matériaux :</li>
+                        <ol>
+                            {% for tool in hardwares %}
+
+                                <li>
+                                    {{ tool.tool.name }}   x{{ tool.quantity }}
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
+                    {% if softwares %}
+                        <li>Logiciels :</li>
+                        <ol>
+                            {% for tool in softwares %}
+                                <li>
+                                    {{ tool.tool.name }}   x{{ tool.quantity }}
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+
+
+        {% if tutorial.steps is not empty %}
+            <ol>
+                {% for step in tutorial.steps %}
+                    <li>
+                        <div class="customCollapse">
+                            <div class="row">
+                                <div class="col-6">
+                                    <span>
+                                        {{ step.title }}
+                                    </span>
+                                </div>
+                                <div class="empty btn BtnCollapse col-4 col-sm-4 col-md-4 col-lg-5 col-xl-5"></div>
+                                <button class="btn BtnCollapse col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1" type="button">+</button>
+                            </div>
+                            <article class="contentCollapse">
+                                <div class="row">
+                                    {% if step.image is not null %}
+                                        <p class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-10">
+                                            {{ step.content }}
+                                        </p>
+                                        <img src="{{ asset('images/step/' ~ step.image) }}" alt="step_image" class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
+                                    {% else %}
+                                        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            {{ step.content }}
+                                        </p>
+                                    {% endif %}
+                                </div>
+                            </article>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+        <div class="metadata">
+            <span>Créé le
+            {{ tutorial.dateCreation | date('d/m/Y') }}
+            par
+            {{ tutorial.author ? tutorial.author.username : 'Anonyme' }}
+            </span>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('tutorial') }}
+{% endblock %}
