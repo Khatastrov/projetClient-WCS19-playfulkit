@@ -154,6 +154,7 @@ body{
 }
 
 .btnCard{
+  border-top:1px solid $primary;
   border-radius:0px !important;
   background-color:$customSkyblue;
   color:$link-colorHover;

@@ -1,34 +1,20 @@
-{% extends 'base.html.twig' %}
+        {% extends 'base.html.twig' %}
 
 {% block title %}{{ lesson.title }}{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('lessonsShow') }}
+{% endblock %}
+
 {% block body %}
 
-    <aside class="float-lg-right m-4">
-        <strong>Les leçons les plus récentes :</strong>
-        <ul>
-            {% for recent in latest %}
-                <li>
-                    <a href="{{ path('lesson_show', {'id': recent.id}) }}">{{ recent.title }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-    </aside>
-
-    <small class="m-4">
-        {% if lesson.author  %}
-            Publé par {{ lesson.author.username }}
-        {% endif %}
-        {% if lesson.publicationDate %}
-            le {{ lesson.publicationDate|date('d-m-Y') }}
-        {% endif %}
-    </small>
-    <div class="container">
+    <div id="LessonsPresentation" class="container">
         <div class="d-flex justify-content-center">
             <h1 class="mx-auto">{{ lesson.title }}</h1>
         </div>
         {% if lesson.illustration %}
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center ImgContainer">
                 <img src="/images/lesson/{{ lesson.illustration }}" alt="illustration de la leçon">
             </div>
         {% endif %}
@@ -65,14 +51,54 @@
                         </ul>
                     </div>
                 {% endif %}
-                <div class="">
+                <div class="single-post-content-wrapper p-3">
                     {{ lesson.content }}
                 </div>
             </div>
         </article>
-        <div class="d-flex justify-content-center">
-            <a href="{{ path('lesson_index') }}" class="btn btn-info mx-auto my-4">Retour à la liste des leçons &rarr;</a>
+
+        <p class="by">
+            Publié par Mathieu
+
+            {#
+            Uncomment when this function work.. Till then ...
+            {% if lesson.author  %}
+                Publié par {{ lesson.author.username }}
+            {% endif %}#}
+
+            {% if lesson.publicationDate %}
+                le {{ lesson.publicationDate|date('d-m-Y') }}
+            {% endif %}
+        </p>
+        <div class="d-flex">
+            <a href="{{ path('lesson_index') }}" class="return">Retour</a>
         </div>
     </div>
+
+    <div class="container">
+        <div class="asideDesktop container">
+            <strong>Les leçons les plus récentes :</strong>
+            <ul>
+                {% for recent in latest %}
+                    <li>
+                        <a href="{{ path('lesson_show', {'id': recent.id}) }}">- {{ recent.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <aside class="float-md-left asideMobile">
+        <div class="container">
+            <strong>Les leçons les plus récentes :</strong>
+            <ul>
+                {% for recent in latest %}
+                    <li>
+                        <a href="{{ path('lesson_show', {'id': recent.id}) }}">{{ recent.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </aside>
 
 {% endblock %}
