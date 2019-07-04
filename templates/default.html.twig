@@ -42,7 +42,9 @@
                 </div>
                 <div class="border border-dark my-3 mx-3" id="tutorial2">
                     <a href="{{ path('tutorial') }}"><div class="Lessons">
+
                             <img class="image" src = "{{ asset('build/images/homepage-tutoriels.png') }}" alt="tuto.jpg"/>
+                            ><img class="image" src = "{{ asset('build/images/homepage-tutoriels.png') }}" alt="tuto.jpg"/>
                         </div></a>
                 </div>
             </section>
@@ -60,9 +62,14 @@
     <section class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <h4 style="text-align:center;">Blog</h4>
         <div class="one-time">
-            <div><img src="https://cdn.pixabay.com/photo/2019/06/25/04/40/light-4297386_960_720.jpg" alt="image 1"></div>
-            <div><img src="https://cdn.pixabay.com/photo/2019/06/27/03/42/beach-4301479_960_720.jpg"></div>
-            <div><img src="https://cdn.pixabay.com/photo/2019/06/25/04/40/light-4297386_960_720.jpg" alt="image 3"></div>
+            {% for latest in latest %}
+            <div>
+                <a href="{{ path('blog_show', {'id': latest.id}) }}">
+                <img class="img-responsive" src="{{ asset('images/blog/' ~ latest.illustration) }}" alt="blog">
+                </a>
+                <h3 style="text-align: center">{{ latest.title }}</h3>
+            </div>
+            {% endfor %}
         </div>
     </section>
 {% endblock %}

@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('cgu') }}
+{% endblock %}
 {% block body %}
     <section class="container">
-       <p>
-           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, fuga, ipsum! Aliquid asperiores atque distinctio earum,
-           enim, expedita id ipsam labore, magnam modi nobis non nulla quo quod reiciendis rerum tempora unde veniam vero vitae.
-           Adipisci beatae cupiditate dolorum exercitationem inventore minima nesciunt odit provident sed! Aut blanditiis consectetur
-           corporis fuga magni nemo officiis ullam!
-       </p>
-
         <h1>Conditions Générales d'utilisation</h1>
-
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, fuga, ipsum! Aliquid asperiores atque distinctio earum,
+            enim, expedita id ipsam labore, magnam modi nobis non nulla quo quod reiciendis rerum tempora unde veniam vero vitae.
+            Adipisci beatae cupiditate dolorum exercitationem inventore minima nesciunt odit provident sed! Aut blanditiis consectetur
+            corporis fuga magni nemo officiis ullam!
+        </p>
         <div>
-        <h4>Présentation du site</h4>
-        <br>
+        <h2>Présentation du site</h2>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur dolore esse eum expedita illo incidunt nisi odit officiis perferendis.
             Corporis ipsam iure labore tenetur voluptas.
@@ -38,7 +38,7 @@
 
 
 
-            <h4>Description des services fournis</h4><br>
+            <h2>Description des services fournis</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci, aliquam aspernatur atque, consequuntur culpa
                 deserunt est exercitationem maiores officia quas qui quisquam reprehenderit sed vitae. Alias animi blanditiis consectetur
@@ -53,7 +53,7 @@
                 ea et eveniet excepturi facilis harum illo illum inventore libero minima minus nobis perspiciatis possimus quasi quia ratione, sed sit
                 ullam veniam voluptatem! Corporis dolorum incidunt tempore voluptatem!
             </p>
-            <h4>Déclaration des droits et responsabilités</h4>
+            <h2>Déclaration des droits et responsabilités</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem blanditiis consequuntur cum fugiat fugit ipsam, ipsum modi neque,
                 nulla omnis pariatur possimus quasi ratione sequi tempore vero voluptatem. Consectetur consequatur cupiditate eos eum ex incidunt
@@ -71,7 +71,7 @@
                 optio quaerat quibusdam quos repellendus reprehenderit repudiandae sed sequi tempore totam veniam vero. Debitis et facilis in maxime
                 nemo odit porro unde veritatis? Dolor, ut.
             </p>
-            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+            <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure quod, velit! Ab, adipisci animi asperiores cumque dolore doloribus
                 ea enim, error illum nemo nulla quisquam quos sequi vel veritatis? Accusantium cum cumque debitis itaque laudantium magnam
@@ -88,8 +88,6 @@
                 ipsam iure, labore libero nam natus necessitatibus vero voluptas, voluptatum. Debitis esse in quisquam saepe. Aliquam aperiam assumenda
                 doloremque eaque inventore maxime optio, quidem quis, quod repellendus velit veniam?
             </p>
-
-
         </div>
     </section>
 {% endblock %}

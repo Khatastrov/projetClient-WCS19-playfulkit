@@ -19,8 +19,6 @@ require('../images/logo-officielR.png');
 require('../images/robotDefault.png');
 require('../images/board.jpg');
 require('../images/electricity.jpg');
-require('../images/lesson.jpg');
-require('../images/tuto.jpg');
 require('../images/form.png');
 require('../images/profil.jpg');
 require('../images/pass.jpg');
@@ -32,7 +30,6 @@ function importAll(r){
 importAll(require.context('../images/avatars', true,/\.png$/));
 importAll(require.context('../images/shop', true,/\.png$/));
 importAll(require.context('../images/visuels home', true,/\.png$/));
-
 //logos
 require('../images/pfk-ico16.png');
 require('../images/pfk-ico32.png');

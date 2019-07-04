@@ -153,7 +153,26 @@ body{
   display: none !important;
 }
 
+.btnDel{
+  margin:20px 20px 10px 10px;
+  background-color:$customRed;
+  color:$link-colorHover;
+  font-family:$font-secondary;
+}
+.btnDel:hover {
+  background-color: $link-colorHover;
+  color:$customRed;
+  transition:0.4s ease;
+}
+
+.btnDel:focus, .btnDel:active {
+  background:$link-colorHover !important;
+  color: $customRed !important;
+  box-shadow: none !important;
+}
+
 .btnCard{
+  border-top:1px solid $primary;
   border-radius:0px !important;
   background-color:$customSkyblue;
   color:$link-colorHover;

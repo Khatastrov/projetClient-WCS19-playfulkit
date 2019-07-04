@@ -1,6 +1,6 @@
 @import "vars";
 
-#blogPresentation{
+#LessonsPresentation{
   h1{
     margin-top:20px;
     text-align: center;
@@ -80,12 +80,6 @@ aside{
   .asideMobile{
     margin-bottom: 20px;
   }
-  .image-wrapper{
-    img{
-      max-width:100%;
-      height:auto;
-    }
-  }
 }
 
 @media (min-width: 768px){
@@ -95,17 +89,8 @@ aside{
   .asideMobile{
     display:none;
   }
-
   .container{
     margin-bottom: 20px;
-  }
-  .image-wrapper{
-    img{
-      position:relative;
-      top:17px;
-      max-width:30vw;
-      height:auto;
-    }
   }
 }
 
@@ -116,22 +101,13 @@ aside{
   .asideMobile{
     display:none;
   }
-
   .container{
     margin-bottom: 20px;
   }
-  .image-wrapper{
-    img{
-      position:relative;
-      top:17px;
-      max-width:20vw;
-      height:auto;
-    }
-  }
 }
 
-.image-wrapper{
+.ImgContainer{
   img{
-    margin:10px;
+    max-width:60%;
   }
 }
