@@ -9,6 +9,7 @@ h1{
 }
 
 p{
+  text-align: center;
   font-size:20px;
   font-family: $secondary;
 }
@@ -32,13 +33,29 @@ p{
   box-shadow: none !important;
 }
 
+.btnInfo{
+  border:1px solid $customSkyblue;
+  background-color:transparent;
+  color:$customSkyblue;
+  font-family:$font-secondary;;
+}
+
+.btnInfo:hover {
+  background-color: $customSkyblue;
+  color:$link-colorHover;
+}
+
+.btnInfo:focus, .btnInfo:active {
+  background: rgba(1, 100, 100, 0.9);
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 .card {
   margin:20px auto;
   border:1px solid $primary;
   border-radius:0px;
   h2{
-    margin-top:5px;
-    margin-bottom:10px;
     font-family:$font-primary;
     font-size:20px;
     text-align: center;
@@ -50,8 +67,31 @@ p{
   }
 }
 
+@media (max-width: 767.98px){
+  .card {
+    max-height: 100%;
+    max-width:80%;
+  }
+  #desktop{
+    display:none !important;
+  }
+}
+
 @media (min-width: 768px) {
+  .card {
+    max-height: 100%;
+    max-width:60%;
+  }
   #body {
     min-height: 60vh;
+  }
+  #desktop{
+    max-width: 85%;
+  }
+}
+
+@media (min-width: 1199.98px){
+  #categoryPicker{
+    max-width: 70%;
   }
 }

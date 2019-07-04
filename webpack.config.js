@@ -30,6 +30,7 @@ Encore
     .addEntry('user', './assets/js/user.js')
     .addEntry('blog', './assets/js/blog.js')
     .addEntry('blogShow', './assets/js/blogShow.js')
+    .addEntry('lessons', './assets/js/lessons.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
