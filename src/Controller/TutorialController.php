@@ -56,15 +56,17 @@ class TutorialController extends AbstractController
             $entityManager->persist($tutorial);
             $entityManager->flush();
 
-            $tutoTool = new TutorialTool();
-            foreach ($tuto['tools'] as $key => $value) {
-                $tool = $toolRepository->find([$value['tool']]);
-                $tutoTool->setTool($tool);
-                $tutoTool->setTutorial($tutorial);
-                $tutoTool->setQuantity($value['quantity']);
+            if (isset($tuto['tools']) != null) {
+                $tutoTool = new TutorialTool();
+                foreach ($tuto['tools'] as $key => $value) {
+                    $tool = $toolRepository->find($value['tool']);
+                    $tutoTool->setTool($tool);
+                    $tutoTool->setTutorial($tutorial);
+                    $tutoTool->setQuantity($value['quantity']);
+                }
+                $entityManager->persist($tutoTool);
+                $entityManager->flush();
             }
-            $entityManager->persist($tutoTool);
-            $entityManager->flush();
 
             return $this->redirectToRoute('tutorial_show', [
                 'id' => $tutorial->getId(),
@@ -116,9 +118,10 @@ class TutorialController extends AbstractController
      * @param Tutorial $tutorial
      * @return Response
      */
-    public function edit(Request $request, Tutorial $tutorial): Response
+    public function edit(Request $request, Tutorial $tutorial, ToolRepository $toolRepository): Response
     {
         $form = $this->createForm(TutorialType::class, $tutorial);
+        $tuto = $request->request->get('tutorial');
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -129,6 +132,20 @@ class TutorialController extends AbstractController
                 }
             }
             $this->getDoctrine()->getManager()->flush();
+
+            if (isset($tuto['tools']) != null) {
+                $tutoTool = new TutorialTool();
+                foreach ($tuto['tools'] as $key => $value) {
+                    $tool = $toolRepository->find($value['tool']);
+                    $tutoTool->setTool($tool);
+                    $tutoTool->setTutorial($tutorial);
+                    $tutoTool->setQuantity($value['quantity']);
+                }
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($tutoTool);
+                $entityManager->flush();
+            }
 
             return $this->redirectToRoute('tutorial_show', [
                 'id' => $tutorial->getId(),
