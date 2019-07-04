@@ -3,8 +3,10 @@
 
 namespace App\Controller;
 
+use App\Entity\BlogPost;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\BlogPostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +18,7 @@ class IndexController extends AbstractController
     /**
      * @Route("/", name="app_index")
      */
-    public function index(Request $request, UserPasswordEncoderInterface $encoder) : Response
+    public function index(Request $request, UserPasswordEncoderInterface $encoder, BlogPostRepository $repo) : Response
     {
         $registrationForm = new User();
         $form = $this->createForm(RegistrationFormType::class, $registrationForm);
@@ -32,10 +34,17 @@ class IndexController extends AbstractController
 
             return $this->redirectToRoute('app_index');
         }
+        $latest = $repo->findBy(
+            [],
+            ['creationDate' => 'DESC',],
+            3
+        );
+
 
         return $this->render('default.html.twig', [
             'user' => $registrationForm,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'latest' => $latest,
         ]);
     }
 }
