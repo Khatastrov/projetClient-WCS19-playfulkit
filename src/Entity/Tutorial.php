@@ -63,7 +63,11 @@ class Tutorial
     private $steps;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tutorial")
+     * @ORM\OneToMany(
+     *     targetEntity="App\Entity\TutorialTool",
+     *     mappedBy="tutorial",
+     *     cascade={"persist", "remove"},
+     *     orphanRemoval=true)
      */
     private $tools;
 

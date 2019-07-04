@@ -10,6 +10,17 @@
 {% endblock %}
 
 {% block body %}
+
+    {% if app.user != null and tuto.author.id is defined %}
+        {% if app.user.id == tuto.author.id %}
+            <form method="post" action="{{ path('tuto_delete', {'id': tuto.id}) }}" onsubmit="return confirm('Tu es sûr de vouloir supprimer ton tutoriel ?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tuto.id) }}">
+                <button class="btn btnDel btnDel">Supprimer mon tutoriel</button>
+            </form>
+        {% endif %}
+    {% endif %}
+
     <div class="tutoPresentation container">
         <h1 class="titleShow">{{ tuto.title }}</h1>
         <article class="tutoContent">

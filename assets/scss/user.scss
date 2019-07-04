@@ -74,6 +74,17 @@
   justify-content: center;
 }
 
+.tutoGroup {
+  display: flex;
+  justify-content: center;
+}
+
+.trashBtn{
+  position: relative;
+  top: -25px;
+  left: 5px;
+}
+
 .btnTab{
   position:relative;
   top:11px;
