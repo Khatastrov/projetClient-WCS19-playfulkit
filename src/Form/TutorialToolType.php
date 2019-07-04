@@ -17,14 +17,13 @@ class TutorialToolType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('quantity', null)
-            ->add('name', EntityType::class, [
+            ->add('quantity')
+            ->add('tool', EntityType::class, [
                 'class' => Tool::class,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('t')
-                        ->orderBy('t.name', 'ASC');
-                },
                 'choice_label' => 'name',
+                'by_reference' => false,
+                'multiple' => false,
+                'expanded' => false,
             ]);
     }
 
@@ -34,10 +33,4 @@ class TutorialToolType extends AbstractType
             'data_class' => TutorialTool::class,
         ]);
     }
-/*
-    public function getParent()
-    {
-        return ToolType::class;
-    }
-*/
 }
