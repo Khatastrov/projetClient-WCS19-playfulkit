@@ -8,18 +8,6 @@
 {% endblock %}
 
 {% block body %}
-    <aside class="float-md-left asideDesktop">
-        <div class="container">
-            <strong>Les posts les plus récents :</strong>
-            <ul>
-                {% for recent in latest %}
-                    <li>
-                        <a href="{{ path('blog_show', {'id': recent.id}) }}">- {{ recent.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </aside>
 
     <div class="container">
         <div id="blogPresentation">
@@ -45,6 +33,19 @@
         </p>
         <div class="d-flex">
             <a href="{{ path('blog_index') }}" class="return">Retour</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="asideDesktop container">
+            <strong>Les posts les plus récents :</strong>
+            <ul>
+                {% for recent in latest %}
+                    <li>
+                        <a href="{{ path('blog_show', {'id': recent.id}) }}">- {{ recent.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 

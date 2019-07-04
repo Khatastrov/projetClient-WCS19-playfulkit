@@ -54,11 +54,29 @@ aside{
   }
 }
 
+.asideDesktop{
+  position:relative;
+  top:10px;
+  margin-bottom: 10px;
+  border:1px solid $primary;
+  border-radius:0px;
+  display:flex;
+  justify-content: center;
+  ul{
+    margin-top:10px;
+    list-style: none;
+    counter-reset: step;
+    a:hover{
+      color:$primary;
+      text-decoration: none;
+    }
+  }
+}
+
 @media (max-width:767.98px){
   .asideDesktop{
     display:none;
   }
-
   .asideMobile{
     margin-bottom: 20px;
   }
@@ -73,10 +91,6 @@ aside{
 @media (min-width: 768px){
   #body{
     min-height:60vh;
-  }
-  aside{
-    margin-left:1%;
-    width:21%;
   }
   .asideMobile{
     display:none;
@@ -98,10 +112,6 @@ aside{
 @media (min-width: 1199.98px){
   #body{
     min-height:60vh;
-  }
-  aside{
-    margin-left:1%;
-    width:21%;
   }
   .asideMobile{
     display:none;
