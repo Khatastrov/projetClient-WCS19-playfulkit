@@ -61,7 +61,12 @@
                 <div role="tabpanel" class="tab-pane" id="userTutoInfo">
                     <article>
                         {% for tutorial in user.tutorials %}
-                            <p>{{ tutorial.title }}</p>
+                                <form method="post" class="tutoGroup"action="{{ path('tuto_delete', {'id': tutorial.id}) }}" onsubmit="return confirm('Tu es sûr de vouloir supprimer ton tutoriel ?');">
+                                    <p>{{ tutorial.title }}</p>
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tutorial.id) }}">
+                                    <button class="btn btnDel trashBtn"><i class="fas fa-trash-alt"></i></button>
+                                </form>
                         {% else %}
                             <p class="noPublication">Tu n'as rien publié pour l'instant ! 😜</p>
                         {% endfor %}

@@ -30,7 +30,7 @@
             <div class="col">
                 {% if post.illustration %}
                     <div class="image-wrapper float-left pr-3">
-                        <img src="/images/lesson/{{ post.illustration }}" alt="illustration de la leçon">
+                        <img src="{{ asset('/image/blog/' ~ post.illustration) }}" alt="illustration de la leçon">
                     </div>
                 {% endif %}
                 <div class="single-post-content-wrapper p-3">
