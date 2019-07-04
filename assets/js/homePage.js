@@ -9,4 +9,5 @@ $('.one-time').slick({
     cssEase: 'linear',
     autoplay: true,
     autoplaySpeed: 3000,
+    
 });
