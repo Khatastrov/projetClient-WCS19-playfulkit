@@ -1,7 +1,9 @@
 <?php
 namespace App\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ContactRepository")
  */
@@ -38,6 +40,7 @@ class Contact
      * @Assert\NotBlank()
      */
     private $message;
+
     public function getId(): ?int
     {
         return $this->id;
