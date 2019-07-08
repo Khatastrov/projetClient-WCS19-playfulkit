@@ -36,19 +36,19 @@
                         <p>Date d'anniversaire : {{ user.birthDate ? user.birthDate|date('d/m/Y') : '' }}</p>
 
                         {% if firstName is null %}
-                            <p>Prénom : Tu n'as pas encore renseigner cette information</p>
+                            <p>Prénom : Tu n'as pas encore renseigné cette information</p>
                         {% else %}
                             <p>Prénom : {{ user.firstname }}</p>
                         {% endif %}
 
                         {% if lastName is null %}
-                            <p>Nom : Tu n'as pas encore renseigner cette information</p>
+                            <p>Nom : Tu n'as pas encore renseigné cette information</p>
                         {% else %}
                             <p>Nom : {{ user.lastname }}</p>
                         {% endif %}
 
                         {% if address is null %}
-                            <p>Adresse : Tu n'as pas encore renseigner cette information</p>
+                            <p>Adresse : Tu n'as pas encore renseigné cette information</p>
                         {% else %}
                             <p>Adresse : {{ user.address }}</p>
                         {% endif %}
