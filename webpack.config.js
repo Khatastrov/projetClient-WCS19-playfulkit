@@ -33,6 +33,7 @@ Encore
     .addEntry('lessons', './assets/js/lessons.js')
     .addEntry('lessonsShow', './assets/js/lessonsShow.js')
     .addEntry('cgu', './assets/js/cgu.js')
+    .addEntry('error', './assets/js/error.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

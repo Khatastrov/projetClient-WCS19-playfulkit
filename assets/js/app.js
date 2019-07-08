@@ -22,7 +22,7 @@ require('../images/electricity.jpg');
 require('../images/form.png');
 require('../images/profil.jpg');
 require('../images/pass.jpg');
-
+require('../images/funny.jpg');
 //avatars
 function importAll(r){
     r.keys().forEach(r);

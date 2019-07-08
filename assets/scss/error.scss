@@ -1,0 +1,54 @@
+@import "vars";
+
+.funny
+{
+  background: no-repeat;
+  width :100% ;
+  float :left ;
+}
+
+h1, h2
+{
+  font-family: $font-primary;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+h1
+{
+  font-size: 35px;
+}
+
+li
+{
+  list-style: none;
+  width: auto;
+  margin-top: 20px;
+  padding-top: 50px;
+}
+
+.lesson
+{
+  font-family: $font-primary;
+  font-size: 30px;
+  color: #03a6a6;
+  margin-left: 25%;
+}
+.tutos
+{
+  font-family: $font-primary;
+  font-size: 30px;
+  color: #D91818;
+  margin-left: 25%;
+
+}
+
+.blog
+{
+  font-family: $font-primary;
+  font-size: 30px;
+  color: #8ebf6b;
+  margin-left: 25%;
+
+}
