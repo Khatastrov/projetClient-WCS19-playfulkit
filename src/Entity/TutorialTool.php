@@ -17,15 +17,16 @@ class TutorialTool
      * @ORM\Column(type="integer")
      */
     private $id;
+
     /**
-     * @ORM\ManyToOne(targetEntity="Tool", inversedBy="tutorials")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="Tool", cascade={"persist"}, fetch="LAZY")
+     * @ORM\JoinColumn(nullable=false, name="tool_id", referencedColumnName="id")
      */
     private $tool;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Tutorial", inversedBy="tools")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="Tutorial", inversedBy="tools", cascade={"persist", "remove"}, fetch="LAZY")
+     * @ORM\JoinColumn(nullable=false, name="tutorial_id", referencedColumnName="id")
      */
     private $tutorial;
 
@@ -44,7 +45,7 @@ class TutorialTool
         return $this->tool;
     }
 
-    public function setTool($tool)
+    public function setTool(Tool $tool)
     {
         $this->tool = $tool;
     }
@@ -54,7 +55,7 @@ class TutorialTool
         return $this->tutorial;
     }
 
-    public function setTutorial($tutorial)
+    public function setTutorial(Tutorial $tutorial)
     {
         $this->tutorial = $tutorial;
     }

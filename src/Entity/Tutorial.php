@@ -63,7 +63,7 @@ class Tutorial
     private $steps;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tutorial")
+     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tutorial", cascade={"persist","remove"})
      */
     private $tools;
 
@@ -201,7 +201,6 @@ class Tutorial
         if (!$this->tools->contains($tool)) {
             $this->tools[] = $tool;
         }
-
         return $this;
     }
 
@@ -210,7 +209,6 @@ class Tutorial
         if ($this->tools->contains($tool)) {
             $this->tools->removeElement($tool);
         }
-
         return $this;
     }
 

@@ -39,12 +39,13 @@ class TutorialController extends AbstractController
     public function new(Request $request, ToolRepository $toolRepository): Response
     {
         $tutorial = new Tutorial();
+        $tutorial->setAuthor($this->getUser());
         $form = $this->createForm(TutorialType::class, $tutorial);
-        $tuto = $request->request->get('tutorial');
+        //$tuto = $request->request->get('tutorial');
+        //dd($request);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $tutorial->setAuthor($this->getUser());
             $tutorial->setDateCreation(new \DateTime());
             if ($tutorial->getIllustration() != null) {
                 parse_str(parse_url($tutorial->getIllustration(), PHP_URL_QUERY), $link);
@@ -55,6 +56,7 @@ class TutorialController extends AbstractController
             $entityManager->persist($tutorial);
             $entityManager->flush();
 
+            /*
             if (isset($tuto['tools']) != null) {
                 $tutoTool = new TutorialTool();
                 foreach ($tuto['tools'] as $key => $value) {
@@ -66,6 +68,7 @@ class TutorialController extends AbstractController
                 $entityManager->persist($tutoTool);
                 $entityManager->flush();
             }
+             */
 
             return $this->redirectToRoute('tutorial_show', [
                 'id' => $tutorial->getId(),
@@ -115,6 +118,7 @@ class TutorialController extends AbstractController
      * @Route("/{id}/edit", name="tutorial_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Tutorial $tutorial
+     * @param ToolRepository $toolRepository
      * @return Response
      */
     public function edit(Request $request, Tutorial $tutorial, ToolRepository $toolRepository): Response

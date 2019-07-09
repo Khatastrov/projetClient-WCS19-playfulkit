@@ -17,11 +17,12 @@
         {{ form_row(form.title, {'attr': {'placeholder': "Titre du Tutoriel"}}) }}
         {{ form_row(form.content, {'attr': {'placeholder': "Présentation"}}) }}
         <ol class="tools" data-prototype="{{ form_widget(form.tools.vars.prototype)|e('html_attr') }}">
-            {% for tool in form.tools %}
+            {% for relation in tutorial.tools %}
+                {{ dump(relation) }}
                 <hr>
                 <li>
-                    {{ form_row(tool.name, {'label': 'Le nom de ton outil'}) }}
-                    {{ form_row(tool.quantity, {'label': 'La quantité'}) }}
+                    {{ form_row(form.tools, {'label': 'Le nom de ton outil'}, {'data': tutorial.tools.tool.name}) }}
+                    {{ form_row(form.tools, {'label': 'La quantité'}, {'data': tutorial.tools.quantity}) }}
                     <button class="remove-existing-tool btn btnRemoveTool">supprimer cette étape</button>
                 </li>
             {% endfor %}

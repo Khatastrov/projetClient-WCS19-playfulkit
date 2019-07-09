@@ -34,7 +34,7 @@ class Tool
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tool")
+     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tool", cascade={"persist", "remove"})
      */
     private $tutorials;
 
@@ -98,7 +98,6 @@ class Tool
             $this->tutorials[] = $tutorial;
             $tutorial->addTool($this);
         }
-
         return $this;
     }
 
@@ -108,7 +107,6 @@ class Tool
             $this->tutorials->removeElement($tutorial);
             $tutorial->removeTool($this);
         }
-
         return $this;
     }
 }

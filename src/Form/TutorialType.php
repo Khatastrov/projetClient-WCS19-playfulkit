@@ -81,7 +81,7 @@ class TutorialType extends AbstractType
                 'by_reference' => false,
                 'allow_add' => true,
                 'allow_delete' => true,
-                'mapped' => false,
+                //'mapped' => false,
             ]);
     }
 
