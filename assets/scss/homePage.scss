@@ -1,36 +1,31 @@
 @import "vars";
 
+h1{
+  margin-top:20px;
+  text-align: center;
+  text-anchor: middle;
+  font-size:40px;
+  font-family: $font-primary;
+}
+
+.customRow{
+  margin:0px !important;
+  padding:0px !important;
+  display:flex;
+  flex-direction: row-reverse;
+  width:100%;
+  min-height: 40vh;
+}
+
 .Lessons{
   position : relative;
   width: 100%;
-  height: 50%;
-  margin-top:20px;
+  height: auto;
+  margin-top:10px;
+  margin-bottom:10px;
   .image{
-
     width: 100%;
     height: auto;
-  }
-}
-
-#boutton{
-  width: 100%;
-}
-
-#mainHome{
-  margin-top:20px;
-  margin-bottom: 40px;
-}
-
-
-.formContainer{
-  position : relative;
-  overflow: hidden;
-
-  form {
-    width: 80%;
-    margin: 0 10%;
-    color: rgba(0, 0, 0, 0.67);
-
   }
   .opacity{
     position: absolute;
@@ -38,12 +33,114 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background: rgba(255, 255, 255, 0.35);
+    background: transparent;
   }
-
 }
 
-section{
+.Lessons:hover{
+  .opacity{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition:0.4s ease;
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+
+#spaceLessons{
+  display:flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.formContainer{
+  margin-top:10px;
+  margin-bottom:10px;
+  display:flex;
+  justify-content: center;
+  padding:0px !important;
+  background: url(../images/form.png) no-repeat;
+
+  form {
+    margin:30px;
+    padding:30px;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    color: $primary;
+    z-index: 1;
+    font-family: $font-secondary;
+    background: rgba(255, 255, 255, 0.9);
+    h2{
+      margin-top:10px;
+      margin-bottom:20px;
+      text-align: center;
+      text-anchor: middle;
+      font-size:30px;
+      font-family: $font-primary;
+    }
+  }
+  .opacity{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.4);
+  }
+  img{
+    width:100%;
+  }
+  #registration_form_birth_date{
+   select{
+     margin-right:5px;
+     margin-bottom:5px;
+   }
+  }
+  .btnSend{
+    margin-top:10px;
+    margin-bottom:20px;
+    background-color:$primary;
+    color:$link-colorHover;
+    font-size:20px;
+    font-family:$font-secondary;
+  }
+  .btnSend:hover {
+    background-color:$link-color!important;
+    color:$link-colorHover;
+    transition:0.2s ease;
+  }
+
+  .btnSend:focus, .btnSend:active {
+    background:$link-color !important;
+    outline: $link-colorHover !important;
+    box-shadow: none !important;
+  }
+}
+
+@media (max-width: 767.98px){
+  .centerIt{
+    width:100%;
+  }
+}
+
+@media (min-width: 768px){
+  .centerIt{
+    width:95%;
+  }
+}
+
+@media (min-width: 1199.98px){
+  .centerIt{
+    width:85%;
+  }
+}
+
+/* Caroussel*/
+/*section{
   margin: 45px auto !important;
   overflow: hidden;
 }
@@ -93,13 +190,10 @@ section{
     width: 100%;
   }
 }
-
-#registration_form_birth_date{
-  justify-content: space-around;
-}
+*/
 
 
-@media screen and (max-width: 1024px) {
+/*@media screen and (max-width: 1024px) {
   .formContainer {
     position: relative;
     margin-top: -50px;
@@ -122,4 +216,4 @@ section{
 .img-responsive{
   margin-left: 3%;
   margin-right: 3%;
-}
+}*/
