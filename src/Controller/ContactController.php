@@ -26,8 +26,10 @@ class ContactController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($contact);
             $entityManager->flush();
-            $message = (new \Swift_Message('Bienvenue jeune pousse.
-Nous avons bien recus ton message, nous te répondrons dans les plus bref délais.'))
+            $message = (new \Swift_Message(
+                'Merci à toi jeune pousse.',
+                'Nous avons bien recus ton message, nous te répondrons dans les plus bref délais.'
+            ))
                 ->setFrom('adresse@gmail.com')
                 ->setTo('adresse@gmail.com');
             $mailer->send($message);
