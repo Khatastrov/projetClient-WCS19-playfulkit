@@ -59,11 +59,15 @@
     </section>
     <section class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <h4 style="text-align:center;">Blog</h4>
-        <div class="one-time">
+        <div class="one-time carouselBlog">
             {% for latest in latest %}
             <div>
                 <a href="{{ path('blog_show', {'id': latest.id}) }}">
-                <img class="img-responsive" src="{{ asset('images/blog/' ~ latest.illustration) }}" alt="blog">
+                    {% if latest.illustration == null %}
+                        <img class="img-responsive" src="{{ asset('images/blog/5d1cac5857e14648816538.png') }}" alt="blog">
+                    {% else %}
+                        <img class="img-responsive" src="{{ asset('images/blog/' ~ latest.illustration) }}" alt="blog">
+                    {% endif %}
                 </a>
                 <h3 style="text-align: center">{{ latest.title }}</h3>
             </div>
