@@ -14,7 +14,7 @@ $('.one-time').slick({
 import Typed from 'typed.js';
 
 var typed = new Typed(".type", {
-    strings: ["easy !","fantastic !", "amazing !", "fun !"],
+    strings: ["facile !","amusant !","fantastique !"],
     typeSpeed: 100,
     backSpeed: 100,
     loop: true,
