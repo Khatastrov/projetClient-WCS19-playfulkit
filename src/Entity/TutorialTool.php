@@ -3,6 +3,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,14 +21,14 @@ class TutorialTool
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Tool", cascade={"persist"}, fetch="LAZY")
-     * @ORM\JoinColumn(nullable=false, name="tool_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="Tool", mappedBy="tutorials" ,cascade={"persist"}, fetch="LAZY")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $tool;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Tutorial", inversedBy="tools", cascade={"persist", "remove"}, fetch="LAZY")
-     * @ORM\JoinColumn(nullable=false, name="tutorial_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="Tutorial", mappedBy="tools", cascade={"persist", "remove"}, fetch="LAZY")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $tutorial;
 
@@ -35,35 +37,66 @@ class TutorialTool
      */
     private $quantity;
 
+    public function __construct()
+    {
+        $this->tool = new  ArrayCollection();
+        $this->tutorial = new ArrayCollection();
+    }
+
     public function getId()
     {
         return $this->id;
     }
 
-    public function getTool()
+    public function getTool() : Collection
     {
         return $this->tool;
     }
 
-    public function setTool(Tool $tool)
+    public function addTool(TutorialTool $tool): self
     {
-        $this->tool = $tool;
+        if (!$this->tool->contains($tool)) {
+            $this->tool[] = $tool;
+        }
+        return $this;
     }
 
-    public function getTutorial()
+    public function removeTool(TutorialTool $tool): self
+    {
+        if ($this->tool->contains($tool)) {
+            $this->tool->removeElement($tool);
+        }
+        return $this;
+    }
+
+    public function getTutorial() : Collection
     {
         return $this->tutorial;
     }
 
-    public function setTutorial(Tutorial $tutorial)
+    public function addTutorial(TutorialTool $tutorial): self
     {
-        $this->tutorial = $tutorial;
+        if (!$this->tutorial->contains($tutorial)) {
+            $this->tutorial[] = $tutorial;
+            $tutorial->addTool($this);
+        }
+        return $this;
+    }
+
+    public function removeTutorial(TutorialTool $tutorial): self
+    {
+        if ($this->tutorial->contains($tutorial)) {
+            $this->tutorial->removeElement($tutorial);
+            $tutorial->removeTool($this);
+        }
+        return $this;
     }
 
     public function getQuantity()
     {
         return $this->quantity;
     }
+
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;

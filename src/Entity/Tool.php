@@ -34,14 +34,9 @@ class Tool
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tool", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\TutorialTool", inversedBy="tool", cascade={"persist", "remove"})
      */
     private $tutorials;
-
-    public function __construct()
-    {
-        $this->tutorials = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -84,29 +79,13 @@ class Tool
         return $this;
     }
 
-    /**
-     * @return Collection|Tutorial[]
-     */
-    public function getTutorials(): Collection
+    public function getTutorials()
     {
         return $this->tutorials;
     }
 
-    public function addTutorial(Tutorial $tutorial): self
+    public function setTutorials(TutorialTool $tutorial)
     {
-        if (!$this->tutorials->contains($tutorial)) {
-            $this->tutorials[] = $tutorial;
-            $tutorial->addTool($this);
-        }
-        return $this;
-    }
-
-    public function removeTutorial(Tutorial $tutorial): self
-    {
-        if ($this->tutorials->contains($tutorial)) {
-            $this->tutorials->removeElement($tutorial);
-            $tutorial->removeTool($this);
-        }
-        return $this;
+        $this->tutorials = $tutorial;
     }
 }

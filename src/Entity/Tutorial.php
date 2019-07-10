@@ -63,7 +63,7 @@ class Tutorial
     private $steps;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tutorial", cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\TutorialTool", inversedBy="tutorial", cascade={"persist","remove"})
      */
     private $tools;
 
@@ -77,7 +77,6 @@ class Tutorial
     public function __construct()
     {
         $this->steps = new ArrayCollection();
-        $this->tools = new ArrayCollection();
     }
     
     public function getId(): ?int
@@ -189,27 +188,19 @@ class Tutorial
     }
 
     /**
-     * @return Collection|Tool[]
+     * @return mixed
      */
-    public function getTools(): Collection
+    public function getTools()
     {
         return $this->tools;
     }
 
-    public function addTool(Tool $tool): self
+    /**
+     * @param Tool $tools
+     */
+    public function setTools(Tool $tools): void
     {
-        if (!$this->tools->contains($tool)) {
-            $this->tools[] = $tool;
-        }
-        return $this;
-    }
-
-    public function removeTool(Tool $tool): self
-    {
-        if ($this->tools->contains($tool)) {
-            $this->tools->removeElement($tool);
-        }
-        return $this;
+        $this->tools = $tools;
     }
 
     /**
