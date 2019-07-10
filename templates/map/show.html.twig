@@ -60,9 +60,7 @@
         request.responseType = 'json';
         request.send();
         request.onload = function() {
-            const fablabs = request.response.features.filter((feature)=>{
-                return feature.properties.type_lab === 'fablab';
-            });
+            const fablabs = request.response.features;
             const markers = fablabs.map((fablab)=>{
                 let fablabMarkers = {
                     fablabName : fablab.properties.name,
