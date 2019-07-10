@@ -27,8 +27,8 @@ class ContactController extends AbstractController
             $entityManager->persist($contact);
             $entityManager->flush();
             $message = (new \Swift_Message(
-                'Merci à toi jeune pousse.',
-                'Nous avons bien recus ton message, nous te répondrons dans les plus bref délais.'
+                'Message',
+                'Tu viens de recevoir un nouveau message sur PLayfulkit.'
             ))
                 ->setFrom('adresse@gmail.com')
                 ->setTo('adresse@gmail.com');

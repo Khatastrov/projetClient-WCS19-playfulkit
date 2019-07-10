@@ -23,6 +23,7 @@ require('../images/form.png');
 require('../images/profil.jpg');
 require('../images/pass.jpg');
 require('../images/funny.jpg');
+require('../images/contact.jpg');
 //avatars
 function importAll(r){
     r.keys().forEach(r);
