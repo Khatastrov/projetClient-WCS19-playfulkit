@@ -10,3 +10,13 @@ $('.one-time').slick({
     autoplay: true,
     autoplaySpeed: 3000,
 });
+
+import Typed from 'typed.js';
+
+var typed = new Typed(".type", {
+    strings: ["easy !","fantastic !", "amazing !", "fun !"],
+    typeSpeed: 100,
+    backSpeed: 100,
+    loop: true,
+    smartBackspace: true // Default value
+});
