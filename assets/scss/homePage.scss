@@ -28,12 +28,24 @@ h1{
     height: auto;
   }
   .opacity{
+    display:flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    background: transparent;
+    transition: 0.4s ease;
+    background: rgba(255, 255, 255, 0.4);
+    span{
+      text-align: center;
+      text-anchor: middle;
+      font-size:40px;
+      font-family: $font-primary;
+      color:$primary;
+      transition: 0.4s ease;
+    }
   }
 }
 
@@ -46,6 +58,14 @@ h1{
     width: 100%;
     transition:0.4s ease;
     background: rgba(0, 0, 0, 0.4);
+    span{
+      text-align: center;
+      text-anchor: middle;
+      font-size:60px;
+      transition: 0.4s ease;
+      font-family: $font-primary;
+      color:$link-colorHover;
+    }
   }
 }
 
@@ -61,7 +81,7 @@ h1{
   display:flex;
   justify-content: center;
   padding:0px !important;
-  background: url(../images/form.png) no-repeat;
+  background: url(../images/form.jpg) no-repeat center;
 
   form {
     margin:30px;
@@ -149,10 +169,11 @@ h3{
   }
   .card-img-top{
     margin-top:20px !important;
-    height:auto;
+    height:300px;
     width: 300px;
     margin-right:auto;
     margin-left:auto;
+    object-fit: contain;
   }
   .card-body{
     flex:none;
