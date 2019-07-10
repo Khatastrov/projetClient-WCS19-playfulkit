@@ -1,0 +1,84 @@
+@import "vars";
+
+body{
+  background: url(../images/contact.jpg) no-repeat center;
+}
+
+
+.opacity{
+  position: absolute;
+  left:30%;
+  top: 35%;
+  height: 75%;
+  width:40%;
+  z-index:-1;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+@media (min-width: 768px){
+  h1 {
+    margin-top: 20px;
+    margin-bottom:20px;
+    font-family: $font-primary;
+    font-size: 35px;
+    text-align: center;
+  }
+  .contactDiv{
+    margin-top:20vh;
+    margin-bottom:10vh;
+    max-width:60%;
+  }
+  form{
+    display:flex;
+    flex-direction: column;
+    max-width:70%;
+    margin-left:15%;
+    margin-right:15%;
+  }
+  #body{
+    min-height:40vh;
+  }
+}
+
+@media (min-width: 1199.98px) {
+  .contactDiv {
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    max-width: 45%;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  #body {
+    min-height: 35vh;
+  }
+
+  .btnContact{
+    margin-top:10px;
+    margin-bottom:20px;
+    background-color:$customSkyblue;
+    color:$link-colorHover;
+    font-size:20px;
+    font-family:$font-secondary;
+  }
+  .btnContact:hover {
+    background-color:$link-color!important;
+    color:$link-colorHover;
+    transition:0.4s ease;
+  }
+
+  .btnContact:focus, .btnContact:active {
+    background:$link-color !important;
+    outline: $link-colorHover !important;
+    box-shadow: none !important;
+  }
+}
+
+
+
+
+
