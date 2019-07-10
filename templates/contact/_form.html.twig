@@ -18,4 +18,13 @@
     {% block javascripts %}
         {{ encore_entry_script_tags('contact') }}
     {% endblock %}
+{% block title %}New Contact{% endblock %}
+
+{% block body %}
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
 {% endblock %}
