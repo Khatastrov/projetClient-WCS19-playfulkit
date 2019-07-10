@@ -49,7 +49,7 @@
     {% for label, messages in app.flashes %}
         <div class="container">
             {% for message in messages %}
-                <div class="alert alert-{{ label }}">
+                <div class="alert alert-{{ label }} mt-3">
                     {{ message }}
                 </div>
             {% endfor %}
