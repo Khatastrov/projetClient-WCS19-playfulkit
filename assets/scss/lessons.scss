@@ -95,6 +95,10 @@ p{
   }
   #desktop{
     max-width: 85%;
+    a{
+      margin-top:5px;
+      margin-bottom:5px;
+    }
   }
   #mobile{
     display:none !important;

@@ -50,7 +50,6 @@
     {% else %}
         <div id="LessonsPresentation" class="container-fluid">
             <div class="row customRow">
-
                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" id="lesson2">
                     <div class="Lessons">
                         <a href="{{ path('lesson_index') }}">
@@ -71,32 +70,34 @@
         </div>
     {% endif %}
 
-    {# <section class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
-        <h4 style="text-align:center;">Shop</h4>
-        <div class="one-time">
+     <section class="col-12">
+        <h3>Boutique</h3>
+        <div class="one-time col-12">
             <div><img class="img-responsive" src="{{ asset('build/images/kit-shop-1.png') }}" alt="image 1"></div>
             <div><img class="img-responsive" src="{{ asset('build/images/kit-shop-2.png') }}" alt="image 2"></div>
             <div><img class="img-responsive" src="{{ asset('build/images/kit-shop-3.png') }}" alt="image 4"></div>
             <div><img class="img-responsive" src="{{ asset('build/images/kit-shop-4.png') }}" alt="image 4"></div>
         </div>
     </section>
-    <section class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <h4 style="text-align:center;">Blog</h4>
-        <div class="one-time carouselBlog">
+
+    <h3>Blog</h3>
+    <section id="blogCards">
+        <div class="row container">
             {% for latest in latest %}
-            <div>
-                <a href="{{ path('blog_show', {'id': latest.id}) }}">
+                <div class="card cardBlog">
                     {% if latest.illustration == null %}
-                        <img class="img-responsive" src="{{ asset('images/blog/5d1cac5857e14648816538.png') }}" alt="blog">
+                        <img class="card-img-top" src="{{ asset('images/blog/5d1cac5857e14648816538.png') }}" alt="blog">
                     {% else %}
-                        <img class="img-responsive" src="{{ asset('images/blog/' ~ latest.illustration) }}" alt="blog">
+                        <img class="card-img-top" src="{{ asset('images/blog/' ~ latest.illustration) }}" alt="blog">
                     {% endif %}
-                </a>
-                <h3 style="text-align: center">{{ latest.title }}</h3>
-            </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ latest.title }}</h4>
+                    </div>
+                    <a href="{{ path('blog_show', {'id': latest.id}) }}" class="btn btnCard">Voir le post</a>
+                </div>
             {% endfor %}
         </div>
-    </section> #}
+    </section>
 {% endblock %}
 {% block javascripts %}
     {{ parent () }}
