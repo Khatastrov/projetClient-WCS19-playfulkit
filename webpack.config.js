@@ -34,6 +34,7 @@ Encore
     .addEntry('lessonsShow', './assets/js/lessonsShow.js')
     .addEntry('cgu', './assets/js/cgu.js')
     .addEntry('error', './assets/js/error.js')
+    .addEntry('shop', './assets/scss/shop.scss')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

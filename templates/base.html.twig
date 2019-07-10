@@ -46,6 +46,15 @@
 </header>
 
 <main id="body">
+    {% for label, messages in app.flashes %}
+        <div class="container">
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
     {% block body %}{% endblock %}
 </main>
 

@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InterestedPeopleRepository")
- * @UniqueEntity("email")
+ * @UniqueEntity("email", message="Tu t'es déjà enregistré avec l'adresse {{ value }} !")
  * @ORM\HasLifecycleCallbacks()
  */
 class InterestedPeople
