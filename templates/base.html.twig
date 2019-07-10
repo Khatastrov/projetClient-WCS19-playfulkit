@@ -6,6 +6,8 @@
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
+    {% block meta %}
+    {% endblock %}
     <link rel="icon" href="{{ asset('build/images/pfk-ico16.png') }}" type="image/png">
     <link rel="icon" sizes="32x32" href="{{ asset('build/images/pfk-ico32.png') }}" type="image/png">
     <link rel="icon" sizes="64x64" href="{{ asset('build/images/pfk-ico64.png') }}" type="image/png">
@@ -69,7 +71,6 @@
             </ul>
         </div>
         <div class="mainFooterSection col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-
             {% if not app.user %}
             <a class="aboutUs" href="{{ path('app_login') }}">Mon Espace</a>
             {% else %}
@@ -81,9 +82,7 @@
             <a class="aboutUs" href="#">Boutique</a>
             <br>
             <a class="aboutUs" href="{{ path('contact') }}">Contact</a>
-
         </div>
-
         <div class="mainFooterSection col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4" >
             <a class="aboutUs" href="#">A Propos</a>
             <br>
