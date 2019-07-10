@@ -54,7 +54,7 @@
         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
             <img class="logoMain" src="{{ asset('build/images/logo-officielR.png') }}" alt="playful_kit_logo_officiel_retouche">
         </div>
-        <div class="mainFooterSection col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+        <div id="categorySection" class="mainFooterSection col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
             <span>Catégories</span>
             <ul>
                 <li>
@@ -69,18 +69,36 @@
             </ul>
         </div>
         <div class="mainFooterSection col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-            <a id="aboutUs" href="{{ path('cgu') }}">Condition générale d'utilisation</a>
+
+            {% if not app.user %}
+            <a class="aboutUs" href="{{ path('app_login') }}">Mon Espace</a>
+            {% else %}
+            <a class="aboutUs" href="{{ path('user_show', {'id': app.user.id}) }}">Mon Espace</a>
+            {% endif %}
+            <br>
+            <a class="aboutUs" href="{{ path('cgu') }}">C.G.U</a>
+            <br>
+            <a class="aboutUs" href="#">Boutique</a>
+            <br>
+            <a class="aboutUs" href="{{ path('contact') }}">Contact</a>
+
         </div>
 
-        <div class="mainFooterSection col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="mainFooterSection col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4" >
+            <a class="aboutUs" href="#">A Propos</a>
+            <br>
             <span>Nous suivre</span>
-            <div class="row justify-content-around">
+            <div class="row justify-content-center">
                 <a class="media" href="https://www.facebook.com/yourplayfulkit" target="_blank">
                     <i class="fab fa-facebook-square"></i>
+                </a>
+                <a class="media" href="#" target="_blank">
+                    <i class="fab fa-twitter"></i>
                 </a>
                 <a class="media" href="https://www.instagram.com/playful_kit/" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
+
             </div>
         </div>
     </div>

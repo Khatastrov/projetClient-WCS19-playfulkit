@@ -35,6 +35,7 @@ Encore
     .addEntry('cgu', './assets/js/cgu.js')
     .addEntry('error', './assets/js/error.js')
     .addEntry('contact', './assets/js/contact.js')
+
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
 
