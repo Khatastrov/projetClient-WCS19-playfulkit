@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nous contacter{% endblock %}
+{% block title %}Contactez nous{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -10,14 +10,26 @@
 {% block body %}
     <div class="opacity"></div>
     <div class="container contactDiv">
-        <h1>Tu souhaites nous contacter ?</h1>
+        <h1>Tu souhaites me contacter ?</h1>
+        <p>Rien de plus simple, tu renseignes les champs ci-dessous et je me ferais un plaisir de répondre à ta demande !
+        <br>
+            (les champs marqués d'une * sont obligatoires)</p>
+
         {{ form_start(form) }}
-        {{ form_row(form.nom, {'label': 'Nom :', 'attr': {'placeholder':'Ton nom'}}) }}
-        {{ form_row(form.prenom, {'label': 'Prénom :', 'attr': {'placeholder':'Ton prénom'}}) }}
-        {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
-        {{ form_row(form.message, {'label': 'Message', 'attr': {'placeholder':'Ton message'}}) }}
-        <button class="btn btnContact">{{ button_label|default('Envoyer') }}</button>
-        {{ form_end(form) }}
+            {% if user is not null %}
+                {{ form_row(form.nom, {'value' : user.lastname}) }}
+                {{ form_row(form.prenom, {'value' : user.firstname}) }}
+                {{ form_row(form.email, {'value' : user.email}) }}
+                {{ form_row(form.message) }}
+            {% else %}
+                {{ form_widget(form) }}
+            {% endif %}
+            <button class="btn btnContact">{{ button_label|default('Envoyer le message') }}</button>
+        {{ form_end(form) }}#}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('contact') }}
+        {% endblock %}
     </div>
     {% block javascripts %}
         {{ encore_entry_script_tags('contact') }}
