@@ -8,6 +8,22 @@
 {% endblock %}
 
 {% block body %}
+    <h1 class="container text-center">Gagne ton Kit pour construire ton robot</h1>
+        <img class="mt-3 mb-3" src="{{ asset('build/images/challenge-robotics.jpg') }}" alt="contest">
+    <div class="challengeBlock">
+        <img class="mt-3 mb-3 bottleCapImg" src="{{ asset('build/images/bottle-caps.jpg') }}" alt="contest">
+        <h2>CHALLENGE</h2>
+        <p>
+            Récupère un maximum de bouchon de bouteille et construit ton robot!
+            <br>
+            Durée : du 28 septembre au 1er décembre 2019
+        </p>
+        <div class="countdown"></div>
+        <p class="mt-3">Je souhaite être informé du début du Challenge</p>
+        <form action="{{ path('contest') }}" method="post">
+            {{ form(form) }}
+        </form>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
