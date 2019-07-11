@@ -54,7 +54,7 @@ class Lesson
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\TutorialTool", inversedBy="lessons")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tool", inversedBy="lessons")
      * @ORM\JoinColumn(name="tool_id", referencedColumnName="id")
      */
     private $Tool;
