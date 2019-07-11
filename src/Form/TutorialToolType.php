@@ -14,9 +14,14 @@ class TutorialToolType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('quantity')
+            ->add('name', null, [
+                'label' => 'Le nom de ton outil',
+            ])
+            ->add('quantity', null, [
+                'label'=> 'La quantité',
+            ])
             ->add('category', ChoiceType::class, [
+                'label' => 'Choisie la catégorie de ton outil',
                 'choices' => [
                     'Logiciel' => 'software',
                     'Outil' => 'handtool',
