@@ -37,18 +37,18 @@
                         <ol>
                             {% for tool in handtools %}
                                 <li>
-                                    {{ tool.tool.name }}   x{{ tool.quantity }}
+                                    {{ tool.name }}   x{{ tool.quantity }}
                                 </li>
                             {% endfor %}
                         </ol>
                     {% endif %}
                     {% if hardwares %}
-                        <li>Matériaux :</li>
+                        <li>Composants :</li>
                         <ol>
                             {% for tool in hardwares %}
 
                                 <li>
-                                    {{ tool.tool.name }}   x{{ tool.quantity }}
+                                    {{ tool.name }}   x{{ tool.quantity }}
                                 </li>
                             {% endfor %}
                         </ol>
@@ -58,7 +58,7 @@
                         <ol>
                             {% for tool in softwares %}
                                 <li>
-                                    {{ tool.tool.name }}   x{{ tool.quantity }}
+                                    {{ tool.name }}   x{{ tool.quantity }}
                                 </li>
                             {% endfor %}
                         </ol>
