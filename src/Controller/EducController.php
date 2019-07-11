@@ -8,13 +8,13 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class CGUController
  * @package App\Controller
  */
-class AboutUsController extends AbstractController
+class EducController extends AbstractController
 {
     /**
-     * @Route("/AboutUs", name="aboutUs")
+     * @Route("/Educ", name="educ")
      */
-    public function AboutUs()
+    public function Educ()
     {
-        return $this->render('AboutUs/AboutUs.html.twig');
+        return $this->render('Educ/Educ.html.twig');
     }
 }

@@ -23,6 +23,7 @@ require('../images/profil.jpg');
 require('../images/pass.jpg');
 require('../images/funny.jpg');
 require('../images/contact.jpg');
+require('../images/educ/atelier-playfulkit.jpg');
 //avatars
 function importAll(r){
     r.keys().forEach(r);

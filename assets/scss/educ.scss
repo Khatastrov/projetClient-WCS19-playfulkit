@@ -1,0 +1,128 @@
+@import "vars";
+
+h1{
+  margin-top:20px;
+  margin-bottom: 10px;
+  text-align: center;
+  text-anchor: middle;
+  font-size:35px;
+  font-family: $font-primary;
+}
+
+h2{
+  margin-top:30px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size:25px;
+  font-family: $font-primary;
+}
+
+.flexSection{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: $font-secondary;
+  text-align: justify;
+}
+
+.flexImg{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#PrimaryImg{
+  margin:10px;
+}
+
+#how{
+  margin-top:20px;
+  h2{
+    margin-bottom: 10px;
+  }
+}
+
+#cardSection{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  .row{
+    max-width:100%;
+    display:flex;
+    justify-content: center;
+  }
+}
+
+.card{
+  border:1px solid $primary;
+  border-radius:0px;
+  margin:20px;
+  width:300px;
+  display:flex;
+  justify-content: flex-start;
+  img{
+    width:100%;
+    border-bottom:1px solid $primary;
+  }
+  .card-content{
+    margin:30px 10px 10px 10px;
+    text-align: center;
+  }
+  .card-action{
+    display:flex;
+    justify-content: center;
+    a{
+      text-align: center;
+      font-size:20px;
+      font-family: $font-primary;
+    }
+    a:hover{
+      text-decoration: none;
+      color:$primary;
+    }
+  }
+  .card-title{
+    color:$customRed;
+    text-align: center;
+    font-size:20px;
+    font-family: $font-primary;
+  }
+}
+
+.test{
+  padding-bottom: 200px !important;
+}
+
+@media (max-width: 767.98px){
+  #primarySection{
+    display:flex;
+    flex-direction: column;
+  }
+  .flexSection{
+    font-size: 20px;
+    margin:5px;
+  }
+}
+
+@media (min-width: 768px){
+  #primarySection{
+    display:flex;
+    flex-direction: row-reverse;
+  }
+  .flexSection{
+    font-size:20px;
+    margin:10px 10px 10px 40px;
+  }
+}
+
+@media (min-width: 1199.98px){
+  #primarySection{
+    display:flex;
+    flex-direction: row-reverse;
+  }
+  .flexSection{
+    font-size:25px;
+    margin:10px 20px 10px 100px;
+  }
+}
