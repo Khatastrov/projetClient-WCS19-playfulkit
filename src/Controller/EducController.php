@@ -13,8 +13,8 @@ class EducController extends AbstractController
     /**
      * @Route("/Educ", name="educ")
      */
-    public function Educ()
+    public function educ()
     {
-        return $this->render('Educ/Educ.html.twig');
+        return $this->render('Educ/educ.html.twig');
     }
 }
