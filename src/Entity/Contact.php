@@ -17,27 +17,23 @@ class Contact
     private $id;
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank()
      *
      */
     private $nom;
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank()
      *
      */
     private $prenom;
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Email(message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = true
-     *     )
+     * @Assert\NotBlank(message="Tu dois au moins renseigner ton adresse email !")
+     * @Assert\Email(message = "L'adresse email '{{ value }}' ne semble pas être une adresse valide.")
      */
     private $email;
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Tu ne peux pas m'envoyer un message vide...")
      */
     private $message;
 
