@@ -36,6 +36,7 @@ Encore
     .addEntry('error', './assets/js/error.js')
     .addEntry('shop', './assets/scss/shop.scss')
     .addEntry('contact', './assets/js/contact.js')
+    .addEntry('contest', './assets/js/contest.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

@@ -24,8 +24,11 @@ require('../images/profil.jpg');
 require('../images/pass.jpg');
 require('../images/funny.jpg');
 require('../images/contact.jpg');
+require('../images/challenge-robotics.jpg');
+require('../images/bottle-caps.jpg');
 //avatars
-function importAll(r){
+function importAll(r)
+{
     r.keys().forEach(r);
 }
 importAll(require.context('../images/avatars', true,/\.png$/));
