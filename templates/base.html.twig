@@ -37,7 +37,7 @@
                 <a class="comingSoon nav-link" href="#">Concours</a>
                 <a class="nav-link" href="{{ path('tutorial') }}">Tutos</a>
                 <a class="nav-link" href="{{ path('lesson_index') }}">Leçons</a>
-                <a class="comingSoon nav-link" href="#">Boutique</a>
+                <a class="nav-link" href="{{ path('shop') }}">Boutique</a>
                 <a class="comingSoon nav-link" href="#">Educateurs</a>
                 <a class="nav-link" href="{{ path('map') }}">Les Fablabs</a>
                 <a class="nav-link" href="{{ path('blog_index') }}">Blog</a>
@@ -48,6 +48,15 @@
 </header>
 
 <main id="body">
+    {% for label, messages in app.flashes %}
+        <div class="container">
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} mt-3">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
     {% block body %}{% endblock %}
 </main>
 
