@@ -3,92 +3,84 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="tutorial_tool")
+ * @ORM\Entity(repositoryClass="App\Repository\ToolRepository")
  */
 class TutorialTool
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Tool", mappedBy="tutorials" ,cascade={"persist"}, fetch="LAZY")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $tool;
+    private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Tutorial", mappedBy="tools", cascade={"persist", "remove"}, fetch="LAZY")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=500, nullable=true)
      */
-    private $tutorial;
+    private $icon;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $category;
 
     /**
      * @ORM\Column(type="integer")
      */
     private $quantity;
 
-    public function __construct()
-    {
-        $this->tool = new  ArrayCollection();
-        $this->tutorial = new ArrayCollection();
-    }
+    /**
+     * @ORM\ManyToOne(targetEntity="Tutorial", inversedBy="tools")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $tutorials;
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function getTool() : Collection
+    public function getName(): ?string
     {
-        return $this->tool;
+        return $this->name;
     }
 
-    public function addTool(TutorialTool $tool): self
+    public function setName(string $name): self
     {
-        if (!$this->tool->contains($tool)) {
-            $this->tool[] = $tool;
-        }
+        $this->name = $name;
+
         return $this;
     }
 
-    public function removeTool(TutorialTool $tool): self
+    public function getIcon(): ?string
     {
-        if ($this->tool->contains($tool)) {
-            $this->tool->removeElement($tool);
-        }
+        return $this->icon;
+    }
+
+    public function setIcon(?string $icon): self
+    {
+        $this->icon = $icon;
+
         return $this;
     }
 
-    public function getTutorial() : Collection
+    public function getCategory(): ?string
     {
-        return $this->tutorial;
+        return $this->category;
     }
 
-    public function addTutorial(TutorialTool $tutorial): self
+    public function setCategory(string $category): self
     {
-        if (!$this->tutorial->contains($tutorial)) {
-            $this->tutorial[] = $tutorial;
-            $tutorial->addTool($this);
-        }
-        return $this;
-    }
+        $this->category = $category;
 
-    public function removeTutorial(TutorialTool $tutorial): self
-    {
-        if ($this->tutorial->contains($tutorial)) {
-            $this->tutorial->removeElement($tutorial);
-            $tutorial->removeTool($this);
-        }
         return $this;
     }
 
@@ -100,5 +92,17 @@ class TutorialTool
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+    }
+
+    public function getTutorials(): ?Tutorial
+    {
+        return $this->tutorials;
+    }
+
+    public function setTutorials(?Tutorial $tutorial): self
+    {
+        $this->tutorials = $tutorial;
+
+        return $this;
     }
 }
