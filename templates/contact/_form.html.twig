@@ -10,12 +10,12 @@
 {% block body %}
     <div class="opacity"></div>
     <div class="container contactDiv">
-        <h1>Tu souhaites me contacter ?</h1>
+        <h1>Tu souhaites nous contacter ?</h1>
         {{ form_start(form) }}
         {{ form_row(form.nom, {'label': 'Nom :', 'attr': {'placeholder':'Ton nom'}}) }}
         {{ form_row(form.prenom, {'label': 'Prénom :', 'attr': {'placeholder':'Ton prénom'}}) }}
         {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
-        {{ form_row(form.message, {'label': 'Que veux tu me dire ?', 'attr': {'placeholder':'Ton message'}}) }}
+        {{ form_row(form.message, {'label': 'Message', 'attr': {'placeholder':'Ton message'}}) }}
         <button class="btn btnContact">{{ button_label|default('Envoyer') }}</button>
         {{ form_end(form) }}
     </div>

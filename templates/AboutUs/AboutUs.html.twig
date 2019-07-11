@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A propos{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('about') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Accompagnez vos enfants dans le 21ème siècle</h1>
+        <article>
+            <div class="row">
+                <p>Ces dernières années l’engouement pour les activités périscolaires autour du coding et de la robotique est tel qu’il y a une vraie demande, de plus elle est maintenant intégrée au programme scolaire.</p>
+            </div>
+            <div class="row">
+                <p>Nous croyons chez playfulKit que chaque enfant, pendant son apprentissage qu’il soit à l’école ou pas, devrait avoir l'opportunité de découvrir et utiliser ces technologies qui feront vraisemblablement partie de leur quotidien lorsqu'ils seront adultes.</p>
+            </div>
+            <div class="row">
+                <p>PlayfulKit offre une solution clé en main pour l'apprentissage des STEAM* avec les Robots avec : </p>
+                <ul>
+                    <li>- un apprentissage de la robotique elle-même qui vise à ce que les élèves comprennent la construction et la programmation de robots.</li>
+                    <li>- un apprentissage avec la robotique basée sur l'acquisition de connaissances par le lien entre apprenant et robot. </li>
+                    <li>- un apprentissage par la robotique où l’objectif est d'inculquer la robotique, c’est-à-dire des connaissances issues de divers champs (mathématiques, sciences, technologies comme l'électronique.) et des compétences transversales comme par exemple améliorer l’estime de soi et la confiance en soi. Il s'agit de l'approche la plus citée quand on évoque la robotique à l'école.  </li>
+                </ul>
+            </div>
+        </article>
+    </div>
+
+        <section id="imgSection">
+                    <div class="icon-block">
+                        <img class="responsive-img" src="{{ asset('build/images/stem-logo.png') }}" alt="stem-logo">
+                        <div class="icon-body">
+                            <h2>Les S.T.E.M</h2>
+                            <p class="description ">L’approche STEAM (* Science, Technology, Engineering, the Arts and Mathematics) est une fenêtre sur la compréhension des éléments constitutifs de la vie, de l’univers et du reste. Elle nous donne des outils pour explorer, questionner, parcourir, voire inventer le monde dans lequel nous vivons.</p>
+                        </div>
+                    </div>
+                    <div class="icon-block">
+                        <img class="responsive-img" src="{{ asset('build/images/coding-logo.png') }}" alt="coding-logo">
+                        <div class="icon-body">
+                            <h2>Le Coding</h2>
+                            <p class="description ">Lorsque votre enfant apprend à coder avec son ordinateur, robot, tablette ou un autre support, il ne perd pas son temps derrière un écran. Il s’implique activement dans une activité de développement qui lui apprend certaines compétences.</p>
+                        </div>
+                    </div>
+                    <div class="icon-block">
+                        <img class="responsive-img" src="{{ asset('build/images/robot-logo.png') }}" alt="robot-logo">
+                        <div class="icon-body">
+                            <h2>La Robotique</h2>
+                            <p class="description ">Les enfants adorent jouer avec les robots, de les construire, de les faire bouger. Les robots sont munis de capteurs qui leur permettent de prendre en compte leur environnement.</p>
+                        </div>
+                    </div>
+        </section>
+
+        <div class="container adressContainer">
+            <div class="adress">
+                <p> Nous sommes situé à <a class="euralink" href="https://www.euratechnologies.com/a-propos-euratechnologies/" target="_blank">EuraTechnologies</a> à Lille.</p>
+                <p>PlayfulKit - 165 avenue de Bretagne - Lille - France</p>
+            </div>
+        </div>
+{% endblock %}
