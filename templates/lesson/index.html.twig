@@ -31,38 +31,39 @@
             <a href="{{ path('lesson_category', {'name' : 'coding'}) }}" class="btn btnInfo">Code</a>
             <a href="{{ path('lesson_category', {'name' : 'maker'}) }}" class="btn btnInfo">Construction</a>
         </div>
+    </div>
 
         {% if lessons %}
-
-            {% for lesson in lessons %}
-                <div class="card my-4">
-                    {% if lesson.illustration %}
-                        <img class="card-img-top" src="/images/lesson/{{ lesson.illustration }}" alt="Card image cap">
-                    {% endif %}
-                    <div class="card-body">
-                        <div class="card-title text-center">
-                            <h2>{{ lesson.title }}</h2>
-                            <small>
-                                {% if lesson.author  %}
-                                    Publié par {{ lesson.author.username }}
-                                {% endif %}
-                                {% if lesson.publicationDate %}
-                                    le {{ lesson.publicationDate|date('d/m/Y') }}
-                                {% endif %}
-                            </small>
+        <div id="lessonsContainer">
+            <div class="row container">
+                {% for lesson in lessons %}
+                    <div class="card my-4">
+                        {% if lesson.illustration %}
+                            <img class="card-img-top" src="/images/lesson/{{ lesson.illustration }}" alt="Card image cap">
+                        {% endif %}
+                        <div class="card-body">
+                            <div class="card-title text-center">
+                                <h2>{{ lesson.title }}</h2>
+                                <small>
+                                    {% if lesson.author  %}
+                                        Publié par {{ lesson.author.username }}
+                                    {% endif %}
+                                    {% if lesson.publicationDate %}
+                                        le {{ lesson.publicationDate|date('d/m/Y') }}
+                                    {% endif %}
+                                </small>
+                            </div>
+                            {{ lesson.content|slice(0, 350) ~ '...' }}
                         </div>
-                        {{ lesson.content|slice(0, 350) ~ '...' }}
+
+
+                        <a href="{{ path('lesson_show', {'id': lesson.id}) }}" class="btn btnRead">Lire la leçon 👀</a>
                     </div>
-
-
-                    <a href="{{ path('lesson_show', {'id': lesson.id}) }}" class="btn btnRead">Lire la leçon &rarr;</a>
-                </div>
-            {% endfor %}
-
+                {% endfor %}
+            </div>
+        </div>
         {% else %}
-            <p id="nop">Il n'y a pas de leçon pour cette catégorie actuellement... <br>
+            <p id="nop">Il n'y a pas de leçons pour cette catégorie actuellement... <br>
                 Reviens plus tard !</p>
         {% endif %}
-
-    </div>
 {% endblock %}

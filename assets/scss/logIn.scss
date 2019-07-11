@@ -49,7 +49,7 @@ body{
   height:100%;
   width:100%;
   z-index:-1;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 @media (max-width: 767.98px){
@@ -68,7 +68,7 @@ body{
 
 @media (min-width: 768px){
   .logInDiv{
-    margin-top:13vh;
+    margin-top:5vh;
     margin-bottom:5vh;
     max-width:60%;
   }
@@ -86,8 +86,8 @@ body{
 
 @media (min-width: 1199.98px){
   .logInDiv{
-    margin-top:15vh;
-    margin-bottom:15vh;
+    margin-top:10vh;
+    margin-bottom:10vh;
     max-width:45%;
   }
   form{
