@@ -41,8 +41,6 @@ class TutorialController extends AbstractController
         $tutorial = new Tutorial();
         $tutorial->setAuthor($this->getUser());
         $form = $this->createForm(TutorialType::class, $tutorial);
-        //$tuto = $request->request->get('tutorial');
-        //dd($request);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -55,20 +53,6 @@ class TutorialController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($tutorial);
             $entityManager->flush();
-
-            /*
-            if (isset($tuto['tools']) != null) {
-                $tutoTool = new TutorialTool();
-                foreach ($tuto['tools'] as $key => $value) {
-                    $tool = $toolRepository->find($value['tool']);
-                    $tutoTool->setTool($tool);
-                    $tutoTool->setTutorial($tutorial);
-                    $tutoTool->setQuantity($value['quantity']);
-                }
-                $entityManager->persist($tutoTool);
-                $entityManager->flush();
-            }
-             */
 
             return $this->redirectToRoute('tutorial_show', [
                 'id' => $tutorial->getId(),
@@ -88,12 +72,12 @@ class TutorialController extends AbstractController
      */
     public function show(Tutorial $tutorial): Response
     {
-        $tools = $tutorial->getTools()->getValues();
+        $tools = $tutorial->getTools();
         $handtools = [];
         $softwares = [];
         $hardwares = [];
         foreach ($tools as $key => $tool) {
-            $category = $tool->getTool()->getCategory();
+            $category = $tool->getCategory();
             switch ($category) {
                 case 'handtool':
                     array_push($handtools, $tool);
@@ -124,7 +108,6 @@ class TutorialController extends AbstractController
     public function edit(Request $request, Tutorial $tutorial, ToolRepository $toolRepository): Response
     {
         $form = $this->createForm(TutorialType::class, $tutorial);
-        $tuto = $request->request->get('tutorial');
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -135,20 +118,6 @@ class TutorialController extends AbstractController
                 }
             }
             $this->getDoctrine()->getManager()->flush();
-
-            if (isset($tuto['tools']) != null) {
-                $tutoTool = new TutorialTool();
-                foreach ($tuto['tools'] as $key => $value) {
-                    $tool = $toolRepository->find($value['tool']);
-                    $tutoTool->setTool($tool);
-                    $tutoTool->setTutorial($tutorial);
-                    $tutoTool->setQuantity($value['quantity']);
-                }
-
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($tutoTool);
-                $entityManager->flush();
-            }
 
             return $this->redirectToRoute('tutorial_show', [
                 'id' => $tutorial->getId(),
