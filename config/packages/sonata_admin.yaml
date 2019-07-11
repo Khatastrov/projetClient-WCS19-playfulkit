@@ -10,6 +10,8 @@ sonata_admin:
                 items:
                     - admin.user
                     - admin.blog
+                    - admin.customer
+                    - admin.message
                 roles: ['ROLE_SUPER_ADMIN']
 
             app.admin.group.admin:

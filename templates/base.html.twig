@@ -34,11 +34,11 @@
         </button>
         <div class="collapse navbar-collapse navbar-nav navLinkBar" id="navbarSupportedContent">
             <div class="subLinkbar">
-                <a class="comingSoon nav-link" href="#">Concours</a>
+                <a class="nav-link" href="{{ path('contest') }}">Concours</a>
                 <a class="nav-link" href="{{ path('tutorial') }}">Tutos</a>
                 <a class="nav-link" href="{{ path('lesson_index') }}">Leçons</a>
-                <a class="comingSoon nav-link" href="#">Boutique</a>
                 <a class="nav-link" href="{{ path('educ') }}">Educateurs</a>
+                <a class="nav-link" href="{{ path('shop') }}">Boutique</a>
                 <a class="nav-link" href="{{ path('map') }}">Les Fablabs</a>
                 <a class="nav-link" href="{{ path('blog_index') }}">Blog</a>
                 <a class="nav-link" href="{{ path('contact') }}">Contact</a>
@@ -48,6 +48,15 @@
 </header>
 
 <main id="body">
+    {% for label, messages in app.flashes %}
+        <div class="container">
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} mt-3">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
     {% block body %}{% endblock %}
 </main>
 
@@ -79,7 +88,7 @@
             <br>
             <a class="aboutUs" href="{{ path('cgu') }}">C.G.U</a>
             <br>
-            <a class="aboutUs" href="#">Boutique</a>
+            <a class="aboutUs" href="{{ path('shop') }}">Boutique</a>
             <br>
             <a class="aboutUs" href="{{ path('contact') }}">Contact</a>
         </div>
