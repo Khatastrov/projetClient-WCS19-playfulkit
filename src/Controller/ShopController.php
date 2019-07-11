@@ -28,7 +28,7 @@ class ShopController extends AbstractController
 
             $email = $form->getData()->getEmail();
 
-            $message = (new \Swift_Message('Tu es inscris à la newsletter !'))
+            $message = (new \Swift_Message('Playfulkit - Tu es inscris à la newsletter !'))
                 ->setFrom($this->getParameter('mailer_from'))
                 ->setTo($email)
                 ->setBody(
