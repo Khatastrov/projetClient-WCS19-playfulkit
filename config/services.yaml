@@ -63,3 +63,15 @@ services:
         arguments: [~, App\Entity\BlogPost, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Blog }
+
+    admin.customer:
+        class: App\Admin\CustomerAdmin
+        arguments: [~, App\Entity\InterestedPeople, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Customer }
+
+    admin.message:
+        class: App\Admin\MessageAdmin
+        arguments: [~, App\Entity\Contact, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Message }
