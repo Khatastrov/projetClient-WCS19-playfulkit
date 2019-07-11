@@ -1,36 +1,31 @@
 @import "vars";
 
+h1{
+  margin-top:20px;
+  text-align: center;
+  text-anchor: middle;
+  font-size:40px;
+  font-family: $font-primary;
+}
+
+.customRow{
+  margin:0px !important;
+  padding:0px !important;
+  display:flex;
+  flex-direction: row-reverse;
+  width:100%;
+  min-height: 40vh;
+}
+
 .Lessons{
   position : relative;
   width: 100%;
-  height: 50%;
-  margin-top:20px;
+  height: auto;
+  margin-top:10px;
+  margin-bottom:10px;
   .image{
-
     width: 100%;
     height: auto;
-  }
-}
-
-#boutton{
-  width: 100%;
-}
-
-#mainHome{
-  margin-top:20px;
-  margin-bottom: 40px;
-}
-
-
-.formContainer{
-  position : relative;
-  overflow: hidden;
-
-  form {
-    width: 80%;
-    margin: 0 10%;
-    color: rgba(0, 0, 0, 0.67);
-
   }
   .opacity{
     position: absolute;
@@ -38,88 +33,259 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background: rgba(255, 255, 255, 0.35);
+    background: transparent;
   }
-
 }
 
-section{
-  margin: 45px auto !important;
-  overflow: hidden;
+.Lessons:hover{
+  .opacity{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition:0.4s ease;
+    background: rgba(0, 0, 0, 0.4);
+  }
 }
 
-.one-time{
-  width: 65%;
-  margin: 0 auto;
-  height: 300px;
-  .slick-dots{
-    visibility: hidden;
-  }
-  @media (max-width: 640px) {
+#spaceLessons{
+  display:flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.formContainer{
+  margin-top:10px;
+  margin-bottom:10px;
+  display:flex;
+  justify-content: center;
+  padding:0px !important;
+  background: url(../images/form.png) no-repeat;
+
+  form {
+    margin:30px;
+    padding:30px;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
     width: 100%;
-    height: 100px;
+    color: $primary;
+    z-index: 1;
+    font-family: $font-secondary;
+    background: rgba(255, 255, 255, 0.9);
+    h2{
+      margin-top:10px;
+      margin-bottom:20px;
+      text-align: center;
+      text-anchor: middle;
+      font-size:30px;
+      font-family: $font-primary;
+    }
   }
-  .img-responsive {
+  .opacity{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
     width: 100%;
+    background: rgba(255, 255, 255, 0.4);
+  }
+  img{
+    width:100%;
+  }
+  #registration_form_birth_date{
+   select{
+     margin-right:5px;
+     margin-bottom:5px;
+   }
+  }
+  .btnSend{
+    margin-top:10px;
+    margin-bottom:20px;
+    background-color:$primary;
+    color:$link-colorHover;
+    font-size:20px;
+    font-family:$font-secondary;
+  }
+  .btnSend:hover {
+    background-color:$link-color!important;
+    color:$link-colorHover;
+    transition:0.2s ease;
+  }
+
+  .btnSend:focus, .btnSend:active {
+    background:$link-color !important;
+    outline: $link-colorHover !important;
+    box-shadow: none !important;
+  }
+}
+
+h3{
+  margin-top:30px;
+  margin-bottom:20px;
+  text-align: center;
+  text-anchor: middle;
+  font-size:30px;
+  font-family: $font-primary;
+}
+
+.type{
+  color:$customRed;
+}
+
+.cardBlog {
+  width:400px !important;
+  margin:0 auto 20px auto;
+  border:1px solid $primary;
+  border-radius:0px;
+  h4{
+    font-family:$font-primary;
+    font-size:20px;
+    text-align: center;
+  }
+  .card-img-top{
+    margin-top:20px !important;
+    height:auto;
+    width: 300px;
+    margin-right:auto;
+    margin-left:auto;
+  }
+}
+
+.btnCard{
+  border-top:1px solid $primary;
+  border-radius:0px !important;
+  background-color:$customSkyblue;
+  color:$link-colorHover;
+  font-size:20px;
+  font-family:$font-secondary;;
+}
+
+.btnCard:hover {
+  background-color: $link-color;
+}
+
+.btnCard:focus, .btnCard:active {
+  background:$link-color !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#blogCards{
+  .row{
+    max-width:100vw;
+  }
+  display:flex;
+  justify-content: center !important;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767.98px){
+  h1{
+    margin:20px 20px 0 20px;
+  }
+  .centerIt{
+    width:100%;
+  }
+  .slick-prev:before{
+    display:none;
+  }
+  .slick-next:before{
+    display:none;
+  }
+
+  .one-time{
+    width: 100%;
+    margin: 0 auto;
     height: auto;
-
+    .slick-dots{
+      display:none !important;
+    }
+    .img-responsive {
+      width: 150%;
+      height: auto;
+    }
+    .cardBlog {
+      min-width:100px;
+    }
   }
-
-  div img{
-    display: block;
-    width: 100%;
-  }
-}
-
-.carouselBlog{
-  width: 65%;
-  margin: 0 auto;
-  height: 300px;
-  .slick-dots{
-    visibility: hidden;
-  }
-  @media (max-width: 640px) {
-    width: 100%;
-    height: 300px;
-  }
-  .img-responsive {
-    width: 100%;
-    height: 290px;
-
-  }
-
-  div img{
-    display: block;
-    width: 100%;
+  body{
+    overflow-x: hidden;
   }
 }
 
-#registration_form_birth_date{
-  justify-content: space-around;
-}
-
-
-@media screen and (max-width: 1024px) {
-  .formContainer {
+@media (min-width: 768px){
+  .centerIt{
+    width:95%;
+  }
+  .slick-prev:before{
+    color:$primary;
+    font-size:30px;
     position: relative;
-    margin-top: -50px;
-    overflow: hidden;
+    right:20px !important;
+    top:-10px !important;
+  }
+  .slick-next:before{
+    color:$primary;
+    font-size:30px;
+    position: relative;
+    top:-10px !important;
+  }
 
-    #imgform {
-      visibility: hidden;
+  .one-time{
+    width: 80%;
+    margin: 0 auto;
+    height: auto;
+    .slick-dots{
+      position: relative;
+      top:5px;
+      padding-bottom: 20px !important;
     }
-    .opacity{
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
+    .img-responsive {
       width: 100%;
-      background: rgba(255, 255, 255, 0);
+      height: auto;
+
     }
+  }
+  .cardBlog {
+    width:300px;
   }
 }
 
-.img-responsive{
-  margin-left: 3%;
-  margin-right: 3%;
+@media (min-width: 1199.98px){
+  .centerIt{
+    width:85%;
+  }
+  .slick-prev:before{
+    color:$primary;
+    font-size:40px;
+    position: relative;
+    right:20px !important;
+  }
+  .slick-next:before{
+    color:$primary;
+    font-size:40px;
+  }
+
+  .one-time{
+    width: 80%;
+    margin: 0 auto;
+    height: auto;
+    .slick-dots{
+      position: relative;
+      top:5px;
+      padding-bottom: 20px !important;
+    }
+    .img-responsive {
+      width: 100%;
+      height: auto;
+
+    }
+  }
+  .cardBlog {
+    width:300px;
+  }
 }
