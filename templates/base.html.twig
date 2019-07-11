@@ -20,10 +20,10 @@
         <div class="row">
             {% if not app.user %}
                 <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
-                <a class="nav-link loginBtn" href="{{ path('app_login') }}">Connexion</a>
+                <a class="nav-link loginBtn" href="{{ path('app_login') }}">Connexion <i class="fas fa-sign-in-alt"></i></a>
             {% else %}
                 <a class="nav-link" href="{{ path('user_show', {'id': app.user.id}) }}">Mon espace</a>
-                <a class="nav-link logoutBtn" href="{{ path('app_logout') }}">Deconnexion</a>
+                <a class="nav-link logoutBtn" href="{{ path('app_logout') }}">Deconnexion <i class="fas fa-sign-out-alt"></i></a>
             {% endif %}
         </div>
     </nav>
@@ -37,8 +37,8 @@
                 <a class="nav-link" href="{{ path('contest') }}">Concours</a>
                 <a class="nav-link" href="{{ path('tutorial') }}">Tutos</a>
                 <a class="nav-link" href="{{ path('lesson_index') }}">Leçons</a>
+                <a class="nav-link" href="{{ path('educ') }}">Educateurs</a>
                 <a class="nav-link" href="{{ path('shop') }}">Boutique</a>
-                <a class="comingSoon nav-link" href="#">Educateurs</a>
                 <a class="nav-link" href="{{ path('map') }}">Les Fablabs</a>
                 <a class="nav-link" href="{{ path('blog_index') }}">Blog</a>
                 <a class="nav-link" href="{{ path('contact') }}">Contact</a>
@@ -93,20 +93,19 @@
             <a class="aboutUs" href="{{ path('contact') }}">Contact</a>
         </div>
         <div class="mainFooterSection col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4" >
-            <a class="aboutUs" href="#">A Propos</a>
+            <a class="aboutUs" href="{{ path('aboutUs') }}">A Propos</a>
             <br>
-            <span>Nous suivre</span>
+            <span>Nous suivre :</span>
             <div class="row justify-content-center">
                 <a class="media" href="https://www.facebook.com/yourplayfulkit" target="_blank">
                     <i class="fab fa-facebook-square"></i>
                 </a>
-                <a class="media" href="#" target="_blank">
+                <a class="media" href="https://twitter.com/Playful_kit?s=09" target="_blank">
                     <i class="fab fa-twitter"></i>
                 </a>
                 <a class="media" href="https://www.instagram.com/playful_kit/" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
-
             </div>
         </div>
     </div>

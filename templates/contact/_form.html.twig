@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Contact{% endblock %}
+{% block title %}Nous contacter{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -10,15 +10,16 @@
 {% block body %}
     <div class="opacity"></div>
     <div class="container contactDiv">
-        <h1>Pour me contacter</h1>
+        <h1>Tu souhaites nous contacter ?</h1>
         {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button class="btn btnContact">{{ button_label|default('Envoyé le messag') }}</button>
+        {{ form_row(form.nom, {'label': 'Nom :', 'attr': {'placeholder':'Ton nom'}}) }}
+        {{ form_row(form.prenom, {'label': 'Prénom :', 'attr': {'placeholder':'Ton prénom'}}) }}
+        {{ form_row(form.email, {'label': 'Adresse email :', 'attr': {'placeholder':'Adresse@email.fr'}}) }}
+        {{ form_row(form.message, {'label': 'Message', 'attr': {'placeholder':'Ton message'}}) }}
+        <button class="btn btnContact">{{ button_label|default('Envoyer') }}</button>
         {{ form_end(form) }}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('contact') }}
-        {% endblock %}
     </div>
-
+    {% block javascripts %}
+        {{ encore_entry_script_tags('contact') }}
+    {% endblock %}
 {% endblock %}
