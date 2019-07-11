@@ -22,6 +22,7 @@
                 <li>
                     {{ form_row(tool.name, {'label': 'Le nom de ton outil'}) }}
                     {{ form_row(tool.quantity, {'label': 'La quantité'}) }}
+                    {{ form_row(tool.category, {'label': 'Choisie la catégorie de ton outil'}) }}
                     <button class="remove-existing-tool btn btnRemoveTool">supprimer cette étape</button>
                 </li>
             {% endfor %}
