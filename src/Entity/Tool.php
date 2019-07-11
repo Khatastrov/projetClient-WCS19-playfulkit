@@ -1,17 +1,17 @@
 <?php
-
-
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ToolRepository")
  */
-class TutorialTool
+class Tool
 {
     /**
-     * @ORM\Id
+     * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
@@ -38,12 +38,21 @@ class TutorialTool
     private $quantity;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Tutorial", inversedBy="tools")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tutorial", inversedBy="tools")
      */
     private $tutorials;
 
-    public function getId()
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Lesson", mappedBy="Tool")
+     */
+    private $lessons;
+
+    public function __construct()
+    {
+        $this->lessons = new ArrayCollection();
+    }
+
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -56,7 +65,6 @@ class TutorialTool
     public function setName(string $name): self
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -68,7 +76,6 @@ class TutorialTool
     public function setIcon(?string $icon): self
     {
         $this->icon = $icon;
-
         return $this;
     }
 
@@ -80,7 +87,6 @@ class TutorialTool
     public function setCategory(string $category): self
     {
         $this->category = $category;
-
         return $this;
     }
 
@@ -94,6 +100,9 @@ class TutorialTool
         $this->quantity = $quantity;
     }
 
+    /**
+     * @return Tutorial|null
+     */
     public function getTutorials(): ?Tutorial
     {
         return $this->tutorials;
@@ -104,5 +113,13 @@ class TutorialTool
         $this->tutorials = $tutorial;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Lesson[]
+     */
+    public function getLessons(): Collection
+    {
+        return $this->lessons;
     }
 }

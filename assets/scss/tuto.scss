@@ -52,14 +52,13 @@
 .customCollapse button {
   position: relative;
   top:-22px;
-  background-color:$secondary;
-  color:$link-colorHover;
+  color:$link-colorHover !important;
   font-size:20px;
   font-family:$font-secondary;;
 }
 
 .customCollapse button:hover {
-  background-color: $link-color;
+  background-color: $link-color !important;
 }
 
 .customCollapse button:focus, .customCollapse button:active {
@@ -95,6 +94,11 @@
   margin-bottom:10px;
 }
 
+
+body{
+  overflow-x: hidden;
+}
+
 .tutorialIndexH1{
   margin-top:20px;
   margin-bottom: -5px;
@@ -103,9 +107,22 @@
   text-align: center;
 }
 
+.tutorialIndexDescription{
+  margin-top:10px;
+  margin-bottom: 10px;
+  font-family: $font-secondary;
+  font-size:20px;
+  text-align: center;
+  a{
+    text-decoration: none;
+  }
+  a:hover{
+    color: $primary;
+  }
+}
+
 .cardTutorial {
-  max-width:300px;
-  min-width:200px;
+  width:300px;
   margin:20px auto;
   border:1px solid $primary;
   border-radius:0px;
@@ -123,6 +140,13 @@
     font-family:$font-secondary;
     font-size:15px;
     text-align: center;
+  }
+  .card-img-top{
+    margin-top:20px !important;
+    max-height:200px;
+    max-width: 200px;
+    margin-right:auto;
+    margin-left:auto;
   }
 }
 #tutorialIndex{
@@ -145,7 +169,26 @@
   display: none !important;
 }
 
+.btnDel{
+  margin:20px 20px 10px 10px;
+  background-color:$customRed;
+  color:$link-colorHover;
+  font-family:$font-secondary;
+}
+.btnDel:hover {
+  background-color: $link-colorHover;
+  color:$customRed;
+  transition:0.4s ease;
+}
+
+.btnDel:focus, .btnDel:active {
+  background:$link-colorHover !important;
+  color: $customRed !important;
+  box-shadow: none !important;
+}
+
 .btnCard{
+  border-top:1px solid $primary;
   border-radius:0px !important;
   background-color:$customSkyblue;
   color:$link-colorHover;
@@ -161,4 +204,16 @@
   background:$link-color !important;
   outline: none !important;
   box-shadow: none !important;
+}
+
+@media (max-width: 767.98px){
+  .cardTutorial {
+    min-width:100px;
+  }
+}
+
+@media (min-width: 768px){
+  .cardTutorial {
+    width:300px;
+  }
 }

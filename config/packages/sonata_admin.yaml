@@ -1,8 +1,26 @@
 sonata_admin:
-    title: 'Sonata Admin'
+    title: 'Playfulkit'
     dashboard:
         blocks:
             - { type: sonata.admin.block.admin_list, position: left }
+
+        groups:
+            app.admin.group.superadmin:
+                label: Super admin
+                items:
+                    - admin.user
+                    - admin.blog
+                roles: ['ROLE_SUPER_ADMIN']
+
+            app.admin.group.admin:
+                label: Admin
+                items:
+                    - admin.tutorial
+                    - admin.category
+                    - admin.lesson
+                    - admin.tool
+                roles: ['ROLE_ADMIN']
+
 
 sonata_block:
     blocks:

@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Tutorial;
-use App\Entity\TutorialTool;
 use App\Form\TutorialType;
 use App\Repository\ToolRepository;
 use App\Repository\TutorialRepository;
@@ -143,7 +142,6 @@ class TutorialController extends AbstractController
             $entityManager->remove($tutorial);
             $entityManager->flush();
         }
-
         return $this->redirectToRoute('tutorial_index');
     }
 }

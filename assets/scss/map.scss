@@ -1,0 +1,41 @@
+@import "vars";
+
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 75vh;
+  max-width: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+div{
+  h2{
+    font-family: $font-primary;
+    font-size:25px;
+    text-align: center;
+  }
+  font-size:15px;
+  .justHere:hover{
+    color: $primary;
+    text-decoration: none;
+  }
+}
+
+.gm-ui-hover-effect{
+  top: -8px !important;
+  right:2px !important;
+  img{
+    height:22px !important;
+    width:22px !important;
+  }
+}
+
+.gm-style-iw-d{
+  padding-top:8px !important;
+  margin-top:3px;
+  padding-bottom:3px !important;
+}

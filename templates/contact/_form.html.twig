@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Contact{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('contact') }}
+{% endblock %}
+
+{% block body %}
+    <div class="opacity"></div>
+    <div class="container contactDiv">
+        <h1>Pour me contacter</h1>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btnContact">{{ button_label|default('Envoyé le messag') }}</button>
+        {{ form_end(form) }}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('contact') }}
+        {% endblock %}
+    </div>
+
+{% endblock %}

@@ -10,6 +10,17 @@
 {% endblock %}
 
 {% block body %}
+
+    {% if app.user != null and tuto.author.id is defined %}
+        {% if app.user.id == tuto.author.id %}
+            <form method="post" action="{{ path('tuto_delete', {'id': tuto.id}) }}" onsubmit="return confirm('Tu es sûr de vouloir supprimer ton tutoriel ?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tuto.id) }}">
+                <button class="btn btnDel btnDel">Supprimer mon tutoriel</button>
+            </form>
+        {% endif %}
+    {% endif %}
+
     <div class="tutoPresentation container">
         <h1 class="titleShow">{{ tutorial.title }}</h1>
         <article class="tutoContent">
@@ -27,7 +38,6 @@
         </article>
     </div>
     <div class="container">
-
         {% if tutorial.tools is not empty %}
             <div class="w-75 tool-box">
                 <p>Pour réaliser ce tutoriel, tu auras besoin de :</p>
@@ -46,7 +56,6 @@
                         <li>Composants :</li>
                         <ol>
                             {% for tool in hardwares %}
-
                                 <li>
                                     {{ tool.name }}   x{{ tool.quantity }}
                                 </li>
@@ -66,7 +75,6 @@
                 </ul>
             </div>
         {% endif %}
-
 
         {% if tutorial.steps is not empty %}
             <ol>

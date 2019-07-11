@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Le Blog{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('blog') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>Voici le blog !</h1>
+    <p>Tu te trouves actuellement sur le blog, c'est ici que sont réunis les articles concernant les nouveautés, évènements et actualités autour de Playfulkit...</p>
+    {% if blog_posts %}
+        {% for post in blog_posts %}
+            <div class="card my-4">
+                {% if post.illustration %}
+                    <img class="card-img-top float-left" src="{{ asset('/images/blog/' ~ post.illustration) }}" alt="Blog illustration">
+                {% endif %}
+                <div class="card-body">
+                    <div class="card-title text-center">
+                        <h2>{{ post.title }}</h2>
+                        <small>
+                                Publié par Mathieu
+                            {% if post.creationDate %}
+                                le {{ post.creationDate|date('d/m/Y') }}
+                            {% endif %}
+                        </small>
+                    </div>
+                    <p>{{ post.content|slice(0, 350) ~ '...' }}</p>
+                </div>
+
+
+                <a href="{{ path('blog_show', {'id': post.id}) }}" class="btn btnRead">Lire l'article &rarr;</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Oh... Il n'y a pas d'articles pour le moment... ¯\_(ツ)_/¯<br>
+        Reviens plus tard !</p>
+    {% endif %}
+    </div>
+{% endblock %}

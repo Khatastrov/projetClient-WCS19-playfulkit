@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les leçons{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('lessons') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Voici les leçons !</h1>
+        <p>Tu es prêt à apprendre de nouvelles choses ? Tu es au bon endroit ! 👍<br>
+        Voici la liste des leçons, tu vas y découvrir des tas de choses passionantes !</p>
+        <p id="pick">N'hésites pas à choisir la catégorie qui t'intéresse :</p>
+
+        <div id="desktop" class="row d-flex justify-content-around mx-auto">
+            {# faire une boucle sur les catégories #}
+            <a href="{{ path('lesson_category', {'name' : 'electronic'}) }}" class="btn btnInfo">Electronique</a>
+            <a href="{{ path('lesson_category', {'name' : 'robotic'}) }}" class="btn btnInfo">Robotique</a>
+            <a href="{{ path('lesson_category', {'name' : 'iot'}) }}" class="btn btnInfo">Internet des objets</a>
+            <a href="{{ path('lesson_category', {'name' : 'coding'}) }}" class="btn btnInfo">Programmation</a>
+            <a href="{{ path('lesson_category', {'name' : 'maker'}) }}" class="btn btnInfo">Construction</a>
+        </div>
+
+        <div id="mobile" class="mx-auto">
+            {# faire une boucle sur les catégories #}
+            <a href="{{ path('lesson_category', {'name' : 'electronic'}) }}" class="btn btnInfo">Electronique</a>
+            <a href="{{ path('lesson_category', {'name' : 'robotic'}) }}" class="btn btnInfo">Robotique</a>
+            <a href="{{ path('lesson_category', {'name' : 'iot'}) }}" class="btn btnInfo">Internet des objets</a>
+            <a href="{{ path('lesson_category', {'name' : 'coding'}) }}" class="btn btnInfo">Code</a>
+            <a href="{{ path('lesson_category', {'name' : 'maker'}) }}" class="btn btnInfo">Construction</a>
+        </div>
+
+        {% if lessons %}
+
+            {% for lesson in lessons %}
+                <div class="card my-4">
+                    {% if lesson.illustration %}
+                        <img class="card-img-top" src="/images/lesson/{{ lesson.illustration }}" alt="Card image cap">
+                    {% endif %}
+                    <div class="card-body">
+                        <div class="card-title text-center">
+                            <h2>{{ lesson.title }}</h2>
+                            <small>
+                                {% if lesson.author  %}
+                                    Publié par {{ lesson.author.username }}
+                                {% endif %}
+                                {% if lesson.publicationDate %}
+                                    le {{ lesson.publicationDate|date('d/m/Y') }}
+                                {% endif %}
+                            </small>
+                        </div>
+                        {{ lesson.content|slice(0, 350) ~ '...' }}
+                    </div>
+
+
+                    <a href="{{ path('lesson_show', {'id': lesson.id}) }}" class="btn btnRead">Lire la leçon &rarr;</a>
+                </div>
+            {% endfor %}
+
+        {% else %}
+            <p id="nop">Il n'y a pas de leçon pour cette catégorie actuellement... <br>
+                Reviens plus tard !</p>
+        {% endif %}
+
+    </div>
+{% endblock %}

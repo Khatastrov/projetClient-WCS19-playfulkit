@@ -1,0 +1,113 @@
+@import "vars";
+
+#LessonsPresentation{
+  h1{
+    margin-top:20px;
+    text-align: center;
+    text-anchor: middle;
+    font-size:35px;
+    font-family: $font-primary;
+  }
+}
+
+.by{
+  text-align: right;
+  text-anchor: middle;
+  font-family: $font-secondary;
+  font-size:14px;
+}
+
+article{
+  position:relative;
+  top:-25px;
+}
+
+.single-post-content-wrapper{
+  p{
+    text-align: justify;
+    font-family: $font-secondary;
+  }
+}
+
+.return
+{
+  color: $customRed;
+  font-size:18px;
+  font-family: $font-secondary;
+}
+.return:hover{
+  text-decoration: none;
+}
+
+aside{
+  margin:10px 10px;
+  border:1px solid $primary;
+  border-radius:0px;
+  ul{
+    margin-top:10px;
+    list-style: none;
+    counter-reset: step;
+    a:hover{
+      color:$primary;
+      text-decoration: none;
+    }
+  }
+}
+
+.asideDesktop{
+  position:relative;
+  top:10px;
+  margin-bottom: 10px;
+  border:1px solid $primary;
+  border-radius:0px;
+  display:flex;
+  justify-content: center;
+  ul{
+    margin-top:10px;
+    list-style: none;
+    counter-reset: step;
+    a:hover{
+      color:$primary;
+      text-decoration: none;
+    }
+  }
+}
+
+@media (max-width:767.98px){
+  .asideDesktop{
+    display:none;
+  }
+  .asideMobile{
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px){
+  #body{
+    min-height:60vh;
+  }
+  .asideMobile{
+    display:none;
+  }
+  .container{
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1199.98px){
+  #body{
+    min-height:60vh;
+  }
+  .asideMobile{
+    display:none;
+  }
+  .container{
+    margin-bottom: 20px;
+  }
+}
+
+.ImgContainer{
+  img{
+    max-width:60%;
+  }
+}

@@ -135,6 +135,9 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "friendsofsymfony/ckeditor-bundle": {
+        "version": "1.2.0"
+    },
     "gitonomy/gitlib": {
         "version": "v1.0.4"
     },
@@ -150,11 +153,20 @@
     "justinrainbow/json-schema": {
         "version": "5.2.8"
     },
+    "kenwheeler/slick": {
+        "version": "1.6.1"
+    },
+    "knplabs/knp-markdown-bundle": {
+        "version": "1.7.1"
+    },
     "knplabs/knp-menu": {
         "version": "2.3.0"
     },
     "knplabs/knp-menu-bundle": {
         "version": "2.2.2"
+    },
+    "michelf/php-markdown": {
+        "version": "1.8.0"
     },
     "monolog/monolog": {
         "version": "1.24.0"
@@ -283,6 +295,9 @@
     },
     "sonata-project/exporter": {
         "version": "2.0.1"
+    },
+    "sonata-project/formatter-bundle": {
+        "version": "4.1.3"
     },
     "squizlabs/php_codesniffer": {
         "version": "3.0",
@@ -540,6 +555,9 @@
     },
     "symfony/serializer-pack": {
         "version": "v1.0.2"
+    },
+    "symfony/service-contracts": {
+        "version": "v1.1.5"
     },
     "symfony/stopwatch": {
         "version": "v4.2.8"

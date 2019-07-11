@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\TutorialTool;
+use App\Entity\Tool;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -33,7 +33,7 @@ class TutorialToolType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => TutorialTool::class,
+            'data_class' => Tool::class,
         ]);
     }
 }

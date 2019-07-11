@@ -2,6 +2,10 @@
 @import "~bootstrap/scss/bootstrap";
 @import "scss/fontawesome.scss";
 @import "scss/brands.scss";
+@import "scss/solid.scss";
+@import "~slick-carousel/slick/slick";
+@import "~slick-carousel/slick/slick-theme";
+
 
 @font-face {
   font-family: 'Jaapokki';
@@ -105,9 +109,19 @@
     color:$secondary-link-color;
     font-family: $font-primary;
   }
+  a{
+    text-decoration: none;
+    font-size:20px;
+    font-family: $font-secondary;
+    color:$link-colorHover;
+    position:relative;
+    bottom:5px;
+  }
+  a:hover{
+    color:$primary;
+  }
 }
 .fa-facebook-square{
-  margin-top:20px;
   font-size:40px;
   color:$secondary-link-color;
 }
@@ -115,23 +129,34 @@
   color:$link-color;
 }
 .fa-instagram{
-  margin-top:20px;
   font-size:40px;
   color:$secondary-link-color;
 }
 .fa-instagram:hover{
   color:$link-color;
 }
-#aboutUs{
+.fa-twitter{
+  font-size:40px;
+  color:$secondary-link-color;
+}
+.fa-twitter:hover{
+  color:$link-color;
+}
+
+.aboutUs{
   color:$link-color;
   text-decoration:none;
   font-size:25px;
   font-family:$font-primary;
 }
-#aboutUs:hover{
+.aboutUs:hover{
   color:$secondary-link-color;
+  text-decoration: none !important;
 }
 @media (max-width: 767.98px) {
+  #categorySection{
+    text-align: center;
+  }
   .subLinkbar{
     display:block;
     margin-right: auto;
@@ -152,15 +177,9 @@
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(142, 191, 107)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
   }
   .logoMain{
-    max-width:80%;
-    margin-left:10%;
-    margin-right:10%;
-  }
-  .fa-facebook-square{
-    margin-left:170px;
-  }
-  .fa-instagram{
-    margin-right:170px;
+    max-width:50%;
+    margin-left:25%;
+    margin-right:25%;
   }
   .navHeaderBar{
     a{
@@ -169,13 +188,16 @@
   }
 }
 @media (min-width: 768px) {
+  #categorySection{
+    text-align: left !important;
+  }
   .subLinkbar{
     display:inline-flex;
     margin-right: auto;
     margin-left:auto;
   }
   #body{
-    min-height:60vh;
+    min-height:70vh;
   }
   .logoMain{
     max-width:275px;
@@ -185,15 +207,31 @@
     display:inline-flex;
     width:100%;
   }
-  .fa-facebook-square{
-    margin-left:70px;
-  }
-  .fa-instagram{
-    margin-right:70px;
-  }
+
   .navHeaderBar{
     a{
       font-size:25px;
     }
   }
+}
+
+.media{
+  margin:20px 10px 0 10px !important;
+  width:40px;
+  height:40px;
+}
+.media:hover{
+  margin-top:20px;
+  width:40px;
+  height:40px;
+  color:transparent;
+}
+
+a.comingSoon{
+  text-decoration: none;
+  opacity: 0.5 !important;
+}
+a.comingSoon:hover{
+  color:white !important;
+  cursor:default !important;
 }
