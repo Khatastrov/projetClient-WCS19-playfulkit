@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AboutUsController extends AbstractController
 {
     /**
-     * @Route("/AboutUs", name="aboutUs")
+     * @Route("/AboutUs", name="about_us")
      */
     public function AboutUs()
     {
