@@ -17,12 +17,72 @@ h1{
   min-height: 40vh;
 }
 
+.customRow2{
+  margin:0px !important;
+  padding:0px !important;
+  display:flex;
+  flex-direction: row;
+  width:100%;
+  min-height: 40vh;
+}
+
 .Lessons{
+  position : relative;
+  height: auto;
+  width: 70%;
+  margin:10px 15% 10px 15%;
+  .image{
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+  }
+  .opacity{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: 0.4s ease;
+    background: rgba(255, 255, 255, 0.4);
+    span{
+      text-align: center;
+      text-anchor: middle;
+      font-size:40px;
+      font-family: $font-primary;
+      color:$primary;
+      transition: 0.4s ease;
+    }
+  }
+}
+
+.Lessons:hover{
+  .opacity{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition:0.4s ease;
+    background: rgba(0, 0, 0, 0.4);
+    span{
+      text-align: center;
+      text-anchor: middle;
+      font-size:60px;
+      transition: 0.4s ease;
+      font-family: $font-primary;
+      color:$link-colorHover;
+    }
+  }
+}
+
+.Lessons2{
   position : relative;
   width: 100%;
   height: auto;
-  margin-top:10px;
-  margin-bottom:10px;
+  margin:50px 0 10px 0;
   .image{
     width: 100%;
     height: auto;
@@ -49,7 +109,7 @@ h1{
   }
 }
 
-.Lessons:hover{
+.Lessons2:hover{
   .opacity{
     position: absolute;
     top: 0;
@@ -241,6 +301,10 @@ h3{
   }
   body{
     overflow-x: hidden;
+  }
+  .Lessons{
+    width: 90%;
+    margin:10px 5% 10px 5%;
   }
 }
 
