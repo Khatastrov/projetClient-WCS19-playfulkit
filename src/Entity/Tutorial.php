@@ -64,10 +64,9 @@ class Tutorial
 
     /**
      * @ORM\OneToMany(
-     *     targetEntity="App\Entity\TutorialTool",
-     *     mappedBy="tutorial",
-     *     cascade={"persist", "remove"},
-     *     orphanRemoval=true)
+     *     targetEntity="App\Entity\Tool",
+     *     mappedBy="tutorials",
+     *     cascade={"persist", "remove"})
      */
     private $tools;
 
@@ -204,6 +203,7 @@ class Tutorial
     {
         if (!$this->tools->contains($tool)) {
             $this->tools[] = $tool;
+            $tool->setTutorials($this);
         }
 
         return $this;
