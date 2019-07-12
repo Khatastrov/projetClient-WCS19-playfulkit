@@ -12,7 +12,7 @@
 {% block body %}
 
     {% if app.user != null and tuto.author.id is defined %}
-        {% if app.user.id == tuto.author.id %}
+        {% if (app.user.id == tuto.author.id or is_granted('ROLE_ADMIN')) %}
             <form method="post" action="{{ path('tuto_delete', {'id': tuto.id}) }}" onsubmit="return confirm('Tu es sûr de vouloir supprimer ton tutoriel ?');">
                 <input type="hidden" name="_method" value="DELETE">
                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tuto.id) }}">

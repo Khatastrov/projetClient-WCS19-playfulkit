@@ -51,9 +51,28 @@
   color: $customRed !important;
   box-shadow: none !important;
 }
+
+.btnEdit{
+  margin:20px 20px 10px 10px;
+  background-color:$customSkyblue;
+  color:$link-colorHover;
+  font-family:$font-secondary;
+}
+.btnEdit:hover {
+  background-color: $link-colorHover;
+  color:$customSkyblue;
+  transition:0.4s ease;
+}
+
+.btnEdit:focus, .btnEdit:active {
+  background:$link-colorHover !important;
+  color: $customSkyblue !important;
+  box-shadow: none !important;
+}
+
 .btnUser{
   margin:20px 10px 10px 20px;
-  background-color:$customSkyblue;
+  background-color:$customGreen;
   color:$link-colorHover;
   font-family:$font-secondary;
 }

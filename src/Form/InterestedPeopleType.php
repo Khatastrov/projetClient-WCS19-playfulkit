@@ -15,7 +15,7 @@ class InterestedPeopleType extends AbstractType
     {
         $builder
             ->add('email', null, [
-                'label' => 'Je veux faire partie des premiers inscrits :',
+                'label' => false,
                 'constraints' => [
                     new NotBlank([
                         "message" => 'Tu dois entrer une adresse email'

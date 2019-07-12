@@ -30,10 +30,12 @@ class UserController extends AbstractController
                     'address' => $user->getAddress(),
                 ]);
             } else {
-                return $this->render('/default.html.twig');
+                $this->addFlash('danger', 'Tu ne peux pas accèder à cette page');
+                return $this->redirectToRoute('app_index');
             }
         } else {
-            return $this->render('/default.html.twig');
+            $this->addFlash('warning', 'Tu dois d\'abord te connecter avant d\'accèder à ton profil !');
+            return $this->redirectToRoute('app_login');
         }
     }
 

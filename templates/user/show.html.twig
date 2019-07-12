@@ -62,9 +62,10 @@
                     <article>
                         {% for tutorial in user.tutorials %}
                                 <form method="post" class="tutoGroup"action="{{ path('tuto_delete', {'id': tutorial.id}) }}" onsubmit="return confirm('Tu es sûr de vouloir supprimer ton tutoriel ?');">
-                                    <p>{{ tutorial.title }}</p>
+                                    <a href="{{ path('tutorial_show', {'id': tutorial.id}) }}">{{ tutorial.title }}</a>
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tutorial.id) }}">
+                                    <a href="{{ path('tutorial_edit', {'id': tutorial.id}) }}" class="btn btnEdit trashBtn"><i class="fas fa-edit"></i></a>
                                     <button class="btn btnDel trashBtn"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                         {% else %}
