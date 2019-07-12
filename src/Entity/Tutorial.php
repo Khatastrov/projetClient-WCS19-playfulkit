@@ -213,6 +213,10 @@ class Tutorial
     {
         if ($this->tools->contains($tool)) {
             $this->tools->removeElement($tool);
+
+            if ($tool->getTutorial() == $this) {
+                $tool->setTutorial(null);
+            }
         }
 
         return $this;

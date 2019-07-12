@@ -35,7 +35,7 @@ class Tool
     /**
      * @ORM\Column(type="integer")
      */
-    private $quantity = 1;
+    private $quantity;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Tutorial", inversedBy="tools")
@@ -116,20 +116,10 @@ class Tool
 
     /**
      * @param Tutorial $tutorial
-     * @return Tool
      */
-    public function setTutorial(Tutorial $tutorial)
+    public function setTutorial(?Tutorial $tutorial)
     {
         $this->tutorial = $tutorial;
-    }
-
-    public function removeTutorial(Tutorial $tutorial)
-    {
-        if ($this->tutorial == $tutorial) {
-            $this->tutorial = null;
-        }
-
-        return $this;
     }
 
     /**
