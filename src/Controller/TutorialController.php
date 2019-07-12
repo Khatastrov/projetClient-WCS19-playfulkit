@@ -125,7 +125,7 @@ class TutorialController extends AbstractController
                 $form->handleRequest($request);
 
                 if ($form->isSubmitted() && $form->isValid()) {
-                    if ($tutorial->getIllustration() != null) {
+                    if ($form->getData()->getIllustration() != null) {
                         parse_str(parse_url($tutorial->getIllustration(), PHP_URL_QUERY), $link);
                         if ($link['v']) {
                             $tutorial->setIllustration($link['v']);
