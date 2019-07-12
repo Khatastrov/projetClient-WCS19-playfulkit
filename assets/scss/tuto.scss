@@ -157,12 +157,41 @@ body{
 #invisible {
   display: none !important;
 }
+.bouton{
+  display: flex;
+  justify-content: space-around;
+}
+
+.btnEdit{
+  margin:20px 20px 10px 10px;
+  background-color:$customBlue;
+  color:$link-colorHover;
+  font-family:$font-secondary;
+
+}
+.btnEdit:hover {
+  background-color: $link-colorHover;
+  color:$customBlue;
+  transition:0.4s ease;
+}
+
+.btnEdit:focus, .btnEdit:active {
+  background:$link-colorHover !important;
+  color: $customBlue !important;
+  box-shadow: none !important;
+}
+
+.del{
+  justify-content : right;
+}
 
 .btnDel{
   margin:20px 20px 10px 10px;
   background-color:$customRed;
   color:$link-colorHover;
   font-family:$font-secondary;
+  position: relative;
+  float: right;
 }
 .btnDel:hover {
   background-color: $link-colorHover;

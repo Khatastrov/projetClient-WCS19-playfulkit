@@ -13,11 +13,16 @@
 
     {% if app.user != null and tuto.author.id is defined %}
         {% if app.user.id == tuto.author.id %}
-            <form method="post" action="{{ path('tuto_delete', {'id': tuto.id}) }}" onsubmit="return confirm('Tu es sûr de vouloir supprimer ton tutoriel ?');">
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tuto.id) }}">
-                <button class="btn btnDel btnDel">Supprimer mon tutoriel</button>
-            </form>
+            <div class="row bouton">
+            <button class="btn btnEdit"><a href="{{ path('tutorial_edit', {'id': tuto.id})  }}">Modifier mon tuto</a></button>
+                <div class = "del">
+                    <form method="post" action="{{ path('tuto_delete', {'id': tuto.id}) }}" onsubmit="return confirm('Tu es sûr de vouloir supprimer ton tutoriel ?');">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tuto.id) }}">
+                        <button class="btn btnDel btnDel">Supprimer mon tutoriel</button>
+                    </form>
+                </div>
+            </div>
         {% endif %}
     {% endif %}
 
