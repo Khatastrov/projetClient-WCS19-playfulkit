@@ -15,8 +15,11 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
-    {
+    public function register(
+        Request $request,
+        UserPasswordEncoderInterface $passwordEncoder,
+        \Swift_Mailer $mailer
+    ): Response {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -37,8 +40,20 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // do anything else you need here, like send an email
+            $email = $form->getData()->getEmail();
+            $message = (new \Swift_Message('Bienvenue sur Playfulkit !'))
+                ->setFrom($this->getParameter('mailer_from'))
+                ->setTo($email)
+                ->setBody(
+                    $this->renderView(
+                        'email/profileConfirmation.html.twig',
+                        ['people' => $form->getData()]
+                    ),
+                    'text/html'
+                );
+            $mailer->send($message);
 
+            $this->addFlash('success', 'Ton compte a bien été créé !');
             return $this->redirectToRoute('app_login');
         }
 

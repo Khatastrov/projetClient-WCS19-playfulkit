@@ -16,7 +16,7 @@ class ContestController extends AbstractController
     /**
      * @Route("/contest", name="contest")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, \Swift_Mailer $mailer): Response
     {
         $client = new InterestedPeople();
 
@@ -28,7 +28,21 @@ class ContestController extends AbstractController
             $entityManager->persist($client);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Ton adresse est enregistrée ! Bien joué l\'ami !');
+            $email = $form->getData()->getEmail();
+
+            $message = (new \Swift_Message('Playfulkit - Tu t\'es inscris au concours !'))
+                ->setFrom($this->getParameter('mailer_from'))
+                ->setTo($email)
+                ->setBody(
+                    $this->renderView(
+                        'email/contestConfirmation.html.twig',
+                        ['people' => $form->getData()]
+                    ),
+                    'text/html'
+                );
+            $mailer->send($message);
+
+            $this->addFlash('success', 'Ton insciption a été prise en compte ! En route pour l\'aventure !');
             return $this->redirectToRoute('app_index');
         }
 

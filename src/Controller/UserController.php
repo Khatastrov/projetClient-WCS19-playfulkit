@@ -48,7 +48,8 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('app_index', [
+            $this->addFlash('success', 'Ton profil a bien été modifié !');
+            return $this->redirectToRoute('user_show', [
                 'id' => $user->getId(),
             ]);
         }
@@ -83,7 +84,8 @@ class UserController extends AbstractController
             );
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('app_index', [
+            $this->addFlash('success', 'Ton mot de passe a bien été modifié !');
+            return $this->redirectToRoute('user_show', [
                 'id' => $user->getId(),
             ]);
         }

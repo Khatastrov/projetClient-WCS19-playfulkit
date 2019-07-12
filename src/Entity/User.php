@@ -10,8 +10,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"username"}, message="le nom '{{ value }}' est déjà utilisé sur un autre compte !")
+ * @UniqueEntity(fields={"email"}, message="l'email '{{ value }}' est déjà utilisé sur un autre compte !")
  */
 class User implements UserInterface
 {
@@ -98,7 +98,6 @@ class User implements UserInterface
 
     /**
      * A visual identifier that represents this user.
-     *
      * @see UserInterface
      */
     public function getUsername(): string
