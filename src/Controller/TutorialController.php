@@ -115,29 +115,43 @@ class TutorialController extends AbstractController
      * @param ToolRepository $toolRepository
      * @return Response
      */
-    public function edit(Request $request, Tutorial $tutorial, ToolRepository $toolRepository): Response
+    public function edit(Request $request, Tutorial $tutorial, ToolRepository $toolRepository)
     {
-        $form = $this->createForm(TutorialType::class, $tutorial);
-        $form->handleRequest($request);
+        $user = $this->getUser();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            if ($tutorial->getIllustration() != null) {
-                parse_str(parse_url($tutorial->getIllustration(), PHP_URL_QUERY), $link);
-                if ($link['v']) {
-                    $tutorial->setIllustration($link['v']);
+        if ($user) {
+            if ($user->getId() == $tutorial->getAuthor()->getId()) {
+                $form = $this->createForm(TutorialType::class, $tutorial);
+                $form->handleRequest($request);
+
+                if ($form->isSubmitted() && $form->isValid()) {
+                    if ($tutorial->getIllustration() != null) {
+                        parse_str(parse_url($tutorial->getIllustration(), PHP_URL_QUERY), $link);
+                        if ($link['v']) {
+                            $tutorial->setIllustration($link['v']);
+                        }
+                    }
+                    $this->getDoctrine()->getManager()->flush();
+
+                    return $this->redirectToRoute('tutorial_show', [
+                        'id' => $tutorial->getId(),
+                    ]);
                 }
+
+                return $this->render('tutorial/edit.html.twig', [
+                    'tutorial' => $tutorial,
+                    'form' => $form->createView(),
+                ]);
+            } else {
+                $this->addFlash('danger', 'Tu ne peux pas accèder à cette page.');
+                return $this->redirectToRoute('tutorial_show', [
+                    'id' => $tutorial->getId(),
+                ]);
             }
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('tutorial_show', [
-                'id' => $tutorial->getId(),
-            ]);
+        } else {
+            $this->addFlash('warning', 'Tu dois être connecté pour modifier un tutoriel !');
+            return $this->redirectToRoute('app_login');
         }
-
-        return $this->render('tutorial/edit.html.twig', [
-            'tutorial' => $tutorial,
-            'form' => $form->createView(),
-        ]);
     }
 
     /**
