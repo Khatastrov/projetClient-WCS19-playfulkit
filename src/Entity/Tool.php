@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -66,7 +65,6 @@ class Tool
     public function setName(string $name): self
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -78,7 +76,6 @@ class Tool
     public function setIcon(?string $icon): self
     {
         $this->icon = $icon;
-
         return $this;
     }
 
@@ -90,7 +87,6 @@ class Tool
     public function setCategory(string $category): self
     {
         $this->category = $category;
-
         return $this;
     }
 
