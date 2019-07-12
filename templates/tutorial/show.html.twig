@@ -27,7 +27,7 @@
             {% if tutorial.illustration is not null %}
                 {% set ext = tutorial.illustration|split('.') %}
                 {% if ext[1] is defined %}
-                    <img src="/images/tutorial/{{ tutorial.illustration }}" >
+                    <img class="imgTuto" src="/images/tutorial/{{ tutorial.illustration }}" >
                 {% else %}
                     <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tutorial.illustration }}"></iframe>
                 {% endif %}

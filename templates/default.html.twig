@@ -34,14 +34,18 @@
                 <div id="spaceLessons" class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                     <div class="Lessons">
                         <a href="{{ path('lesson_index') }}">
-                            <img class="image" src = "{{ asset('build/images/homepage-lessons.png') }}" alt="lesson.jpg"/>
-                            <div class="opacity"></div>
+                            <img class="image" src = "{{ asset('build/images/homepage-lessonsR.jpg') }}" alt="lesson.jpg"/>
+                            <div class="opacity">
+                                <span>Leçons</span>
+                            </div>
                         </a>
                     </div>
                     <div class="Lessons">
                         <a href="{{ path('tutorial_index') }}">
-                            <img class= "image" src = "{{ asset('build/images/homepage-tutoriels.png') }}" alt="tuto.jpg"/>
-                            <div class="opacity"></div>
+                            <img class= "image" src = "{{ asset('build/images/homepage-tutorielsR.jpg') }}" alt="tuto.jpg"/>
+                            <div class="opacity">
+                                <span>Tutoriels</span>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -53,16 +57,20 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" id="lesson2">
                     <div class="Lessons">
                         <a href="{{ path('lesson_index') }}">
-                            <img class="image" src = "{{ asset('build/images/homepage-lessons.png') }}" alt="lesson.jpg"/>
-                            <div class="opacity"></div>
+                            <img class="image" src = "{{ asset('build/images/homepage-lessonsR.jpg') }}" alt="lesson.jpg"/>
+                            <div class="opacity">
+                                <span>Leçons</span>
+                            </div>
                         </a>
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" id="tutorial2">
                     <div class="Lessons">
                         <a href="{{ path('tutorial') }}">
-                            <img class= "image" src = "{{ asset('build/images/homepage-tutoriels.png') }}" alt="tuto.jpg"/>
-                            <div class="opacity"></div>
+                            <img class= "image" src = "{{ asset('build/images/homepage-tutorielsR.jpg') }}" alt="tuto.jpg"/>
+                            <div class="opacity">
+                                <span>Tutoriels</span>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -93,7 +101,7 @@
                     <div class="card-body">
                         <h4 class="card-title">{{ latest.title }}</h4>
                     </div>
-                    <a href="{{ path('blog_show', {'id': latest.id}) }}" class="btn btnCard">Voir le post</a>
+                    <a href="{{ path('blog_show', {'id': latest.id}) }}" class="btn btnCard">Voir le post 👀</a>
                 </div>
             {% endfor %}
         </div>

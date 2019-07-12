@@ -1,0 +1,85 @@
+@import "vars";
+
+img {
+    display: block;
+    margin: auto;
+}
+
+h1{
+    font-family: $font-primary;
+    margin-top: 5px;
+}
+
+.challengeBlock{
+    background: $primary;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+form{
+    width: 20%;
+    margin: 0 auto;
+}
+
+.btnLogin{
+    color: white;
+    border-style: 5px solid;
+    border-color: white;
+    border-radius: 0;
+}
+
+.countdown {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+}
+
+.countdown div {
+    padding: 20px;
+    background: #000;
+    opacity: 0.7;
+    margin: 5px;
+}
+
+.countdown div {
+    background:rgba(255,255,255,0.7);
+}
+
+.countdown span {
+    display: block;
+    font-size: 25px;
+}
+
+@media (max-width: 767.98px) {
+    img{
+        height: auto;
+        width: 100%
+    }
+    .bottleCapImg{
+        display: none;
+    }
+    .countdown{
+        width: 100%
+    }
+    form{
+        width: 90%
+    }
+    .countdown{
+        display: block;
+    }
+}
+
+@media (min-width: 768px) {
+    .bottleCapImg{
+        height: auto;
+        width: 100%
+    }
+}
