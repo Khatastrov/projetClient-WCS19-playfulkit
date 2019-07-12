@@ -66,7 +66,7 @@ class Tutorial
      * @ORM\OneToMany(
      *     targetEntity="App\Entity\Tool",
      *     mappedBy="tutorials",
-     *     cascade={"persist","remove"})
+     *     cascade={"persist", "remove"})
      */
     private $tools;
 

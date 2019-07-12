@@ -90,12 +90,18 @@ class Tool
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getQuantity()
     {
-        return $this->quantity;
+        return $this->getQuantity();
     }
 
-    public function setQuantity($quantity)
+    /**
+     * @param mixed $quantity
+     */
+    public function setQuantity($quantity): void
     {
         $this->quantity = $quantity;
     }
@@ -108,11 +114,13 @@ class Tool
         return $this->tutorials;
     }
 
-    public function setTutorials(?Tutorial $tutorial): self
+    /**
+     * @param Tutorial $tutorials
+     * @return Tool
+     */
+    public function setTutorials(Tutorial $tutorials): self
     {
-        $this->tutorials = $tutorial;
-
-        return $this;
+        $this->tutorials = $tutorials;
     }
 
     /**
