@@ -34,7 +34,12 @@ class Tool
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tool")
+     * @ORM\Column(type="integer")
+     */
+    private $quantity;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tutorial", inversedBy="tools")
      */
     private $tutorials;
 
@@ -45,7 +50,6 @@ class Tool
 
     public function __construct()
     {
-        $this->tutorials = new ArrayCollection();
         $this->lessons = new ArrayCollection();
     }
 
@@ -91,31 +95,36 @@ class Tool
     }
 
     /**
-     * @return Collection|Tutorial[]
+     * @return mixed
      */
-    public function getTutorials(): Collection
+    public function getQuantity()
+    {
+        return $this->getQuantity();
+    }
+
+    /**
+     * @param mixed $quantity
+     */
+    public function setQuantity($quantity): void
+    {
+        $this->quantity = $quantity;
+    }
+
+    /**
+     * @return Tutorial|null
+     */
+    public function getTutorials(): ?Tutorial
     {
         return $this->tutorials;
     }
 
-    public function addTutorial(Tutorial $tutorial): self
+    /**
+     * @param Tutorial $tutorials
+     * @return Tool
+     */
+    public function setTutorials(Tutorial $tutorials): self
     {
-        if (!$this->tutorials->contains($tutorial)) {
-            $this->tutorials[] = $tutorial;
-            $tutorial->addTool($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTutorial(Tutorial $tutorial): self
-    {
-        if ($this->tutorials->contains($tutorial)) {
-            $this->tutorials->removeElement($tutorial);
-            $tutorial->removeTool($this);
-        }
-
-        return $this;
+        $this->tutorials = $tutorials;
     }
 
     /**
