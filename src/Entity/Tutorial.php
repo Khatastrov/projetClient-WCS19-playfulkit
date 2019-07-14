@@ -71,7 +71,9 @@ class Tutorial
     private $tools;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tutorials")
+     * @ORM\ManyToOne(
+     *     targetEntity="App\Entity\User",
+     *     inversedBy="tutorials")
      * @ORM\JoinColumn(nullable=true)
      */
     private $author;

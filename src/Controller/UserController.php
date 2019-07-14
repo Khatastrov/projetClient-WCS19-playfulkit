@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * @Route("/user")
@@ -101,14 +102,50 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}", name="user_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, User $user): Response
+    public function delete(Request $request, User $user, \Swift_Mailer $mailer): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+            $email = $user->getEmail();
+            $message = (new \Swift_Message('Playfulkit - Ton compte a été supprimé'))
+                ->setFrom($this->getParameter('mailer_from'))
+                ->setTo($email)
+                ->setBody(
+                    $this->renderView(
+                        'email/desertionConfirmation.html.twig',
+                        ['people' => $user]
+                    ),
+                    'text/html'
+                );
+            $mailer->send($message);
+
+            $message2 = (new \Swift_Message('Playfulkit Admin - Un utilisateur a supprimé son compte !'))
+                ->setFrom($this->getParameter('mailer_from'))
+                ->setTo($this->getParameter('mailer_from'))
+                ->setBody(
+                    $this->renderView(
+                        'email/desertionNotification.html.twig',
+                        ['people' => $user]
+                    ),
+                    'text/html'
+                );
+            $mailer->send($message2);
+
+            $currentUserId = $this->getUser()->getId();
+            if ($currentUserId == $user->getId()) {
+                $session = $request->getSession();
+                $session = new Session();
+                $session->invalidate();
+            }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
+
+            $this->addFlash('warning', 'Ton compte a bien été supprimé... Tu vas nous manquer ! ಥ_ಥ');
+            return $this->redirectToRoute('app_index');
         }
 
-        return $this->redirectToRoute('user_index');
+        $this->addFlash('warning', 'Une erreur est survenue... {•̃_•̃}');
+        return $this->redirectToRoute('app_index');
     }
 }

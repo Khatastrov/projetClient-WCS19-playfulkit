@@ -18,12 +18,12 @@
     <nav class="navHeaderBar navbar">
         <a href="{{ path('app_index') }}"><img class="logoHeader" src="{{ asset('build/images/logo-header.png') }}" alt="playful_kit_logo_header"></a>
         <div class="row">
-            {% if not app.user %}
-                <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
-                <a class="nav-link loginBtn" href="{{ path('app_login') }}">Connexion <i class="fas fa-sign-in-alt"></i></a>
-            {% else %}
+            {% if app.user %}
                 <a class="nav-link" href="{{ path('user_show', {'id': app.user.id}) }}">Mon espace</a>
                 <a class="nav-link logoutBtn" href="{{ path('app_logout') }}">Deconnexion <i class="fas fa-sign-out-alt"></i></a>
+            {% else %}
+                <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                <a class="nav-link loginBtn" href="{{ path('app_login') }}">Connexion <i class="fas fa-sign-in-alt"></i></a>
             {% endif %}
         </div>
     </nav>

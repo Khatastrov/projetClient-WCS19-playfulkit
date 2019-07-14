@@ -69,7 +69,10 @@ class User implements UserInterface
     private $address;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Tutorial", mappedBy="author")
+     * @ORM\OneToMany(
+     *     targetEntity="App\Entity\Tutorial",
+     *     mappedBy="author",
+     *     orphanRemoval=false,)
      */
     private $tutorials;
 
