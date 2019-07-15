@@ -11,10 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class AboutUsController extends AbstractController
 {
     /**
-     * @Route("/AboutUs", name="aboutUs")
+     * @Route("/AboutUs", name="about_us")
      */
     public function AboutUs()
     {
-        return $this->render('AboutUs/AboutUs.html.twig');
+        return $this->render('aboutUs/aboutUs.html.twig');
     }
 }

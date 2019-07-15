@@ -1,0 +1,20 @@
+<h1>Bonjour Mathieu !</h1>
+
+<p>J'ai une mauvaise nouvelle à t'annoncer.... Playfulkit vient de perdre un de ses membres aujourd'hui.</p>
+
+<p>Les infos du compte en question :</p>
+<ul>
+    <li>Pseudo: {{ people.username }}</li>
+    <li>Email: {{ people.email }}</li>
+    <li>Identité (si renseignée): {{ people.lastname }} {{ people.firstname }}</li>
+    <li>role : {% for role in people.roles %}
+            {{ role }},
+    {% endfor %}</li>
+    <li>Son compte avait été créé le: {{ people.createdAt|date('d / m / Y') }}</li>
+</ul>
+
+<p>Accède à ton <a href="{{ path('sonata_admin_redirect') }}">espace administrateur</a> sur playfulkit.</p>
+
+<p>Garde la forme
+    <br>
+    Bonne journée !</p>

@@ -15,6 +15,6 @@ class EducController extends AbstractController
      */
     public function Educ()
     {
-        return $this->render('Educ/Educ.html.twig');
+        return $this->render('educ/educ.html.twig');
     }
 }

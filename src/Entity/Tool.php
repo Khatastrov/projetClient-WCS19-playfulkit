@@ -40,7 +40,7 @@ class Tool
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Tutorial", inversedBy="tools")
      */
-    private $tutorials;
+    private $tutorial;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Lesson", mappedBy="Tool")
@@ -95,7 +95,7 @@ class Tool
      */
     public function getQuantity()
     {
-        return $this->getQuantity();
+        return $this->quantity;
     }
 
     /**
@@ -109,18 +109,17 @@ class Tool
     /**
      * @return Tutorial|null
      */
-    public function getTutorials(): ?Tutorial
+    public function getTutorial(): ?Tutorial
     {
-        return $this->tutorials;
+        return $this->tutorial;
     }
 
     /**
-     * @param Tutorial $tutorials
-     * @return Tool
+     * @param Tutorial $tutorial
      */
-    public function setTutorials(Tutorial $tutorials): self
+    public function setTutorial(?Tutorial $tutorial)
     {
-        $this->tutorials = $tutorials;
+        $this->tutorial = $tutorial;
     }
 
     /**

@@ -23,8 +23,12 @@ class TutorialController extends AbstractController
      */
     public function index(TutorialRepository $tutorialRepository): Response
     {
+        $tuto = $tutorialRepository->findBy([
+            'isPublished' => true,
+        ]);
+
         return $this->render('tutorial/index.html.twig', [
-            'tutorials' => $tutorialRepository->findAll(),
+            'tutorials' => $tuto,
         ]);
     }
 
@@ -37,31 +41,38 @@ class TutorialController extends AbstractController
      */
     public function new(Request $request, ToolRepository $toolRepository): Response
     {
-        $tutorial = new Tutorial();
-        $tutorial->setAuthor($this->getUser());
-        $form = $this->createForm(TutorialType::class, $tutorial);
-        $form->handleRequest($request);
+        $user = $this->getUser();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $tutorial->setDateCreation(new \DateTime());
-            if ($tutorial->getIllustration() != null) {
-                parse_str(parse_url($tutorial->getIllustration(), PHP_URL_QUERY), $link);
-                $tutorial->setIllustration($link['v']);
+        if ($user) {
+            $tutorial = new Tutorial();
+            $tutorial->setAuthor($user);
+            $form = $this->createForm(TutorialType::class, $tutorial);
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $tutorial->setDateCreation(new \DateTime());
+                if ($tutorial->getIllustration() != null) {
+                    parse_str(parse_url($tutorial->getIllustration(), PHP_URL_QUERY), $link);
+                    $tutorial->setIllustration($link['v']);
+                }
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($tutorial);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('tutorial_show', [
+                    'id' => $tutorial->getId(),
+                ]);
+            } else {
+                return $this->render('tutorial/new.html.twig', [
+                    'tutorial' => $tutorial,
+                    'form' => $form->createView(),
+                ]);
             }
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($tutorial);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('tutorial_show', [
-                'id' => $tutorial->getId(),
-            ]);
+        } else {
+            $this->addFlash('danger', 'Tu dois être connecté pour déposer un tutoriel !');
+            return $this->redirectToRoute('app_login');
         }
-
-        return $this->render('tutorial/new.html.twig', [
-            'tutorial' => $tutorial,
-            'form' => $form->createView(),
-        ]);
     }
 
     /**
@@ -104,29 +115,43 @@ class TutorialController extends AbstractController
      * @param ToolRepository $toolRepository
      * @return Response
      */
-    public function edit(Request $request, Tutorial $tutorial, ToolRepository $toolRepository): Response
+    public function edit(Request $request, Tutorial $tutorial, ToolRepository $toolRepository)
     {
-        $form = $this->createForm(TutorialType::class, $tutorial);
-        $form->handleRequest($request);
+        $user = $this->getUser();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            if ($tutorial->getIllustration() != null) {
-                parse_str(parse_url($tutorial->getIllustration(), PHP_URL_QUERY), $link);
-                if ($link['v']) {
-                    $tutorial->setIllustration($link['v']);
+        if ($user) {
+            if ($user->getId() == $tutorial->getAuthor()->getId()) {
+                $form = $this->createForm(TutorialType::class, $tutorial);
+                $form->handleRequest($request);
+
+                if ($form->isSubmitted() && $form->isValid()) {
+                    /*if ($form->getData()->getIllustration() != null) {
+                        parse_str(parse_url($tutorial->getIllustration(), PHP_URL_QUERY), $link);
+                        if ($link['v']) {
+                            $tutorial->setIllustration($link['v']);
+                        }
+                    } */
+                    $this->getDoctrine()->getManager()->flush();
+
+                    return $this->redirectToRoute('tutorial_show', [
+                        'id' => $tutorial->getId(),
+                    ]);
                 }
+
+                return $this->render('tutorial/edit.html.twig', [
+                    'tutorial' => $tutorial,
+                    'form' => $form->createView(),
+                ]);
+            } else {
+                $this->addFlash('danger', 'Tu ne peux pas accèder à cette page.');
+                return $this->redirectToRoute('tutorial_show', [
+                    'id' => $tutorial->getId(),
+                ]);
             }
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('tutorial_show', [
-                'id' => $tutorial->getId(),
-            ]);
+        } else {
+            $this->addFlash('warning', 'Tu dois être connecté pour modifier un tutoriel !');
+            return $this->redirectToRoute('app_login');
         }
-
-        return $this->render('tutorial/edit.html.twig', [
-            'tutorial' => $tutorial,
-            'form' => $form->createView(),
-        ]);
     }
 
     /**

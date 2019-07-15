@@ -65,13 +65,15 @@ class Tutorial
     /**
      * @ORM\OneToMany(
      *     targetEntity="App\Entity\Tool",
-     *     mappedBy="tutorials",
+     *     mappedBy="tutorial",
      *     cascade={"persist", "remove"})
      */
     private $tools;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tutorials")
+     * @ORM\ManyToOne(
+     *     targetEntity="App\Entity\User",
+     *     inversedBy="tutorials")
      * @ORM\JoinColumn(nullable=true)
      */
     private $author;
@@ -203,7 +205,7 @@ class Tutorial
     {
         if (!$this->tools->contains($tool)) {
             $this->tools[] = $tool;
-            $tool->setTutorials($this);
+            $tool->setTutorial($this);
         }
 
         return $this;
@@ -213,6 +215,10 @@ class Tutorial
     {
         if ($this->tools->contains($tool)) {
             $this->tools->removeElement($tool);
+
+            if ($tool->getTutorial() == $this) {
+                $tool->setTutorial(null);
+            }
         }
 
         return $this;

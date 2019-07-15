@@ -60,17 +60,18 @@
                 <div role="tabpanel" class="tab-pane" id="userTutoInfo">
                     <article>
                         {% for tutorial in user.tutorials %}
-                                <form method="post" class="tutoGroup"action="{{ path('tuto_delete', {'id': tutorial.id}) }}" onsubmit="return confirm('Tu es sûr de vouloir supprimer ton tutoriel ?');">
-                                    <p>{{ tutorial.title }}</p>
+                                <form method="post" class="tutoGroup"action="{{ path('tutorial_delete', {'id': tutorial.id}) }}" onsubmit="return confirm('Tu es sûr de vouloir supprimer ton tutoriel ?');">
+                                    <a href="{{ path('tutorial_show', {'id': tutorial.id}) }}">{{ tutorial.title }}</a>
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tutorial.id) }}">
+                                    <a href="{{ path('tutorial_edit', {'id': tutorial.id}) }}" class="btn btnEdit trashBtn"><i class="fas fa-edit"></i></a>
                                     <button class="btn btnDel trashBtn"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                         {% else %}
                             <p class="noPublication">Tu n'as rien publié pour l'instant ! 😜</p>
                         {% endfor %}
                         <div class="btnGroupUser">
-                            <a class="btn btnUser" href="{{ path('tutorial_create') }}">Créer un nouveau tutoriel</a>
+                            <a class="btn btnUser" href="{{ path('tutorial_new') }}">Créer un nouveau tutoriel</a>
                         </div>
                     </article>
                 </div>
