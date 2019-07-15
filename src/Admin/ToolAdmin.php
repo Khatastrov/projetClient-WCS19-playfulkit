@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 final class ToolAdmin extends AbstractAdmin
@@ -14,6 +15,7 @@ final class ToolAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name', TextType::class);
+        $formMapper->add('quantity', IntegerType::class);
         $formMapper->add('category', ChoiceType::class, [
             'choices' => [
             'Handtool' => 'handtool',
