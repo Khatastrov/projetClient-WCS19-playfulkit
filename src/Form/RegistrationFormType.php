@@ -47,7 +47,8 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('birth_date', BirthdayType::class, [
                 'format' => 'dd MM yyyy',
-                'placeholder' => ['year' => 'année', 'month' => 'mois','day' => 'jour',]
+                'placeholder' => ['year' => 'année', 'month' => 'mois','day' => 'jour',],
+                'years' => range(date('Y') -7, date('Y') -100),
             ]);
     }
 
