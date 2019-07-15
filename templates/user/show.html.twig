@@ -34,7 +34,6 @@
                         <p>Nom d'utilisateur : {{ user.username }}</p>
                         <p>Adresse  mail : {{ user.email }}</p>
                         <p>Date d'anniversaire : {{ user.birthDate ? user.birthDate|date('d/m/Y') : '' }}</p>
-
                         {% if firstName is null %}
                             <p>Prénom : Tu n'as pas encore renseigné cette information</p>
                         {% else %}
