@@ -52,7 +52,12 @@
                         <ol>
                             {% for tool in handtools %}
                                 <li>
-                                    {{ tool.name }}   x{{ tool.quantity }}
+                                    {{ tool.name }}
+                                    {% if tool.quantity %}
+                                        x{{ tool.quantity }}
+                                    {% else %}
+                                        x1
+                                    {% endif %}
                                 </li>
                             {% endfor %}
                         </ol>
@@ -62,7 +67,12 @@
                         <ol>
                             {% for tool in hardwares %}
                                 <li>
-                                    {{ tool.name }}   x{{ tool.quantity }}
+                                    {{ tool.name }}
+                                    {% if tool.quantity %}
+                                        x{{ tool.quantity }}
+                                    {% else %}
+                                        x1
+                                    {% endif %}
                                 </li>
                             {% endfor %}
                         </ol>
@@ -72,7 +82,12 @@
                         <ol>
                             {% for tool in softwares %}
                                 <li>
-                                    {{ tool.name }}   x{{ tool.quantity }}
+                                    {{ tool.name }}
+                                    {% if tool.quantity %}
+                                        x{{ tool.quantity }}
+                                    {% else %}
+                                        x1
+                                    {% endif %}
                                 </li>
                             {% endfor %}
                         </ol>
