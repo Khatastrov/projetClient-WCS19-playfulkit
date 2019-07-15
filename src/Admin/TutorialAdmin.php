@@ -24,5 +24,6 @@ final class TutorialAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('title');
+        $listMapper->addIdentifier('content');
     }
 }
