@@ -1,0 +1,16 @@
+<h1>Bonjour Mathieu !</h1>
+
+<p>Tu as reçu un nouveau message via le formulaire de contact de Playfulkit.</p>
+<ul>
+    <li>Envoyé via: {{ people.email }}</li>
+    <li>Par: {{ people.nom }} {{ people.prenom }}</li>
+    <li>message :
+        <pre>
+            {{ people.message }}
+        </pre>
+    </li>
+</ul>
+
+<p>Tu peux y répondre directement, ou te rendre dans ton <a href="{{ path('sonata_admin_redirect') }}">espace administrateur</a> sur playfulkit</p>
+
+<p>Bonne journée !</p>

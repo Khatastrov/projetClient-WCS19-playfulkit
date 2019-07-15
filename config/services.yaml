@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    mailer_from: '%env(resolve:MAILER_FROM_ADDRESS)%'
 
 services:
     # default configuration for services in *this* file
@@ -44,3 +45,33 @@ services:
         arguments: [~, App\Entity\Tutorial, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Tutorial }
+
+    admin.lesson:
+        class: App\Admin\LessonAdmin
+        arguments: [~, App\Entity\Lesson, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Lesson }
+
+    admin.category:
+        class: App\Admin\CategoryAdmin
+        arguments: [~, App\Entity\Category, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Category }
+
+    admin.blog:
+        class: App\Admin\BlogAdmin
+        arguments: [~, App\Entity\BlogPost, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Blog }
+
+    admin.customer:
+        class: App\Admin\CustomerAdmin
+        arguments: [~, App\Entity\InterestedPeople, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Customer }
+
+    admin.message:
+        class: App\Admin\MessageAdmin
+        arguments: [~, App\Entity\Contact, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Message }

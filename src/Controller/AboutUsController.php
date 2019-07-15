@@ -1,0 +1,20 @@
+<?php
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+
+/**
+ * Class CGUController
+ * @package App\Controller
+ */
+class AboutUsController extends AbstractController
+{
+    /**
+     * @Route("/AboutUs", name="about_us")
+     */
+    public function AboutUs()
+    {
+        return $this->render('aboutUs/aboutUs.html.twig');
+    }
+}

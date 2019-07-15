@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -16,11 +17,24 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
-            ->add('email')
-            ->add('firstname')
-            ->add('lastname')
-            ->add('address')
+            ->add('username', TextType::class, [
+                'label' => 'Ton pseudo :',
+            ])
+            ->add('email', TextType::class, [
+                'label' => 'Ton adresse email :'
+            ])
+            ->add('firstname', TextType::class, [
+                'label' => 'Ton prénom :',
+                'required' => false,
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Ton nom :',
+                'required' => false,
+            ])
+            ->add('address', TextType::class, [
+                'label' => 'Ton adresse :',
+                'required' => false,
+            ])
         ;
     }
 

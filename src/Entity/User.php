@@ -10,8 +10,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"username"}, message="le nom '{{ value }}' est déjà utilisé sur un autre compte !")
+ * @UniqueEntity(fields={"email"}, message="l'email '{{ value }}' est déjà utilisé sur un autre compte !")
  */
 class User implements UserInterface
 {
@@ -69,7 +69,10 @@ class User implements UserInterface
     private $address;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Tutorial", mappedBy="author")
+     * @ORM\OneToMany(
+     *     targetEntity="App\Entity\Tutorial",
+     *     mappedBy="author",
+     *     orphanRemoval=false,)
      */
     private $tutorials;
 
@@ -78,11 +81,18 @@ class User implements UserInterface
      */
     private $blogPosts;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Lesson", mappedBy="author")
+     */
+    private $lessons;
+
     public function __construct()
     {
         $this->tutorials = new ArrayCollection();
         $this->blogPosts = new ArrayCollection();
+        $this->lessons = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -91,7 +101,6 @@ class User implements UserInterface
 
     /**
      * A visual identifier that represents this user.
-     *
      * @see UserInterface
      */
     public function getUsername(): string
@@ -285,6 +294,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($blogPost->getAuthor() === $this) {
                 $blogPost->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Lesson[]
+     */
+    public function getLessons(): Collection
+    {
+        return $this->lessons;
+    }
+
+    public function addLesson(Lesson $lesson): self
+    {
+        if (!$this->lessons->contains($lesson)) {
+            $this->lessons[] = $lesson;
+            $lesson->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLesson(Lesson $lesson): self
+    {
+        if ($this->lessons->contains($lesson)) {
+            $this->lessons->removeElement($lesson);
+            // set the owning side to null (unless already changed)
+            if ($lesson->getAuthor() === $this) {
+                $lesson->setAuthor(null);
             }
         }
 

@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace educateurs{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('educ') }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>La seule manière d’apprendre la robotique est de commencer par construire des robots.</h1>
+
+        <div id="primarySection">
+            <div class="flexSection">
+                <p>Vous êtes éducateur, animateur, professeur ou encore parent et vous souhaitez organiser un atelier "Construction de robot", PlayfulKit vous propose une solution clé en main.</p>
+                <p>Avec ses kits ludiques et ses cours en ligne vous avez tout pour mener à bien votre atelier.</p>
+            </div>
+            <div class="flexImg">
+                <img id="PrimaryImg" width="350" height="auto"src="{{ asset('build/images/atelier-playfulkit.jpg') }}" alt="atelier construire un robot">
+            </div>
+        </div>
+
+        <div id="how">
+            <h2> Comment faire ?</h2>
+            <ol>
+                <li><p> Procurez-vous le kit de votre choix</p></li>
+                <li><p> Inscrivez-vous gratuitement sur le site internet</p></li>
+                <li><p> Télécharger le dérouler de l'atelier concernant l'atelier choisi </p></li>
+                <li><p> Préparer et animer votre atelier </p></li>
+                <li><p> Partager vos réalisations sur nos réseaux sociaux (optionnel)  </p></li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2> Nos Packs </h2>
+    </div>
+
+    <section id="cardSection">
+        <div class="row container">
+
+            <div class="card">
+                <div class="card-image">
+                    <img class="responsive-img" src="http://playfulkit.com/fr/img/slide2.jpg">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">KIT DEMO</h3>
+                    <br/>
+                    <p>10 Kits de construction de robots pour l'éducation STEAM (sciences, technologies, ingénierie, art et mathématiques) - qui apprend aux enfants et débutants (à partir de 6 ans) la conception et construction de robot. </p>
+                    <p>Kit pour construire la base d'un robot sans programmation et sans électronique</p>
+                </div>
+                <div class="card-action">
+                    <a href="{{ path('shop') }}">ACHETER LE PACK</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img class="responsive-img" src="http://playfulkit.com/fr/img/slide4.jpg">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">STARTER KIT</h3>
+                    <br>
+                    <p>10 Kits de construction de robots pour l'éducation STEAM (sciences, technologies, ingénierie, art et mathématiques) - qui apprend aux enfants et débutants (à partir de 6 ans) la conception et construction de robot. </p>
+                    <p>Kit pour construire sans programmation un robot suiveur de ligne ou un robot qui évite les obstacles. </p>
+                </div>
+                <div class="card-action">
+                    <a href="{{ path('shop') }}">ACHETER LE PACK</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img class="responsive-img" src="http://playfulkit.com/fr/img/slide1.jpg">
+
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">AVOID KIT</h3>
+                    <br>
+                    <p>10 Kits de construction de robots pour l'éducation STEAM (sciences, technologies, ingénierie, art et mathématiques) - qui apprend aux enfants et débutants (à partir de 6 ans) la conception et construction de robot. </p>
+                    <p>Kit pour construire et programmer un robot arduino qui évite les obstacles avec un module à ultrasons.</p>
+                </div>
+                <div class="card-action">
+                    <a href="{{ path('shop') }}">ACHETER LE PACK</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img class="responsive-img" src="http://playfulkit.com/fr/img/slide3.jpg">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">TRACER KIT</h3>
+                    <br>
+                    <p>10 Kits de construction de robots pour l'éducation STEAM (sciences, technologies, ingénierie, art et mathématiques) - qui apprend aux enfants et débutants (à partir de 6 ans) la conception et construction de robot. </p>
+                    <p>Kit pour construire et programmer un robot arduino suiveur de ligne à l'aide de capteurs infrarouge. </p>
+                </div>
+                <div class="card-action">
+                    <a href="{{ path('shop') }}">ACHETER LE PACK</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    {#
+    <div class="row">
+        <h5 class="center-align">Il vous faut un certains nombre de kits? A partir de 3 kits tout est possible. Contactez-nous</h5>
+    </div>
+#}
+{% endblock %}

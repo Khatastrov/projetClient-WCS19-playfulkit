@@ -1,0 +1,180 @@
+@import "vars";
+.welcomeUser{
+  text-align: center;
+  h1{
+    margin-top: 20px;
+    font-family: $font-primary;
+    font-size: 35px;
+  }
+  p{
+    font-size:20px;
+    font-family:$font-secondary;
+  }
+}
+
+.userTab{
+  .nav-tabs{
+    border:none;
+    margin-bottom: 10px;
+    display:flex;
+    justify-content: center;
+  }
+  .tab-content{
+    border:solid 1px $primary;
+    height: 300px !important;
+    article{
+      margin-top:30px;
+      p{
+        margin-bottom:5px;
+        text-align: center;
+        font-size:15px;
+        font-family:$font-secondary;
+      }
+    }
+  }
+}
+
+.btnDel{
+  margin:20px 20px 10px 10px;
+  background-color:$customRed;
+  color:$link-colorHover;
+  font-family:$font-secondary;
+}
+.btnDel:hover {
+  background-color: $link-colorHover;
+  color:$customRed;
+  transition:0.4s ease;
+}
+
+.btnDel:focus, .btnDel:active {
+  background:$link-colorHover !important;
+  color: $customRed !important;
+  box-shadow: none !important;
+}
+
+.btnEdit{
+  margin:20px 20px 10px 10px;
+  background-color:$customSkyblue;
+  color:$link-colorHover;
+  font-family:$font-secondary;
+}
+.btnEdit:hover {
+  background-color: $link-colorHover;
+  color:$customSkyblue;
+  transition:0.4s ease;
+}
+
+.btnEdit:focus, .btnEdit:active {
+  background:$link-colorHover !important;
+  color: $customSkyblue !important;
+  box-shadow: none !important;
+}
+
+.btnUser{
+  margin:20px 10px 10px 20px;
+  background-color:$customGreen;
+  color:$link-colorHover;
+  font-family:$font-secondary;
+}
+.btnUser:hover {
+  background-color:$link-color!important;
+  color:$link-colorHover;
+  transition:0.4s ease;
+}
+
+.btnUser:focus, .btnUser:active {
+  background:$link-color !important;
+  outline: $link-colorHover !important;
+  box-shadow: none !important;
+}
+
+.btnGroupUser{
+  display:flex;
+  justify-content: center;
+}
+
+.tutoGroup {
+  display: flex;
+  justify-content: center;
+}
+
+.trashBtn{
+  position: relative;
+  top: -25px;
+  left: 5px;
+}
+
+.btnTab{
+  position:relative;
+  top:11px;
+  margin-left:10px;
+  margin-right:10px;
+  border-radius:0px;
+  border:solid 1px;
+}
+.btnTab:hover {
+  color: $secondary;
+  border-color:$primary;
+  transition:0.4s ease;
+}
+
+.noPublication{
+  font-size:30px !important;
+}
+
+.btnTab:focus, .btnTab:active {
+  border-color:$primary $primary white $primary;
+  outline: none !important;
+  color:$secondary;
+  box-shadow: none !important;
+}
+
+.color{
+  border-color:$primary $primary white $primary !important;
+}
+
+@media (max-width: 767.98px){
+  .userSection{
+    margin-bottom:20px;
+  }
+  .avatar{
+    img{
+      max-width:50%;
+      margin:5% 25%;
+    }
+    p{
+      text-align: center;
+      font-size:20px;
+      font-family:$font-secondary;
+    }
+    .welcomeUser{
+      margin-top:20px;
+      margin-bottom:20px;
+    }
+  }
+}
+@media (min-width: 768px){
+  .userSection{
+    margin-top:40px;
+    margin-bottom:40px;
+    display:flex;
+  }
+  .avatar{
+    img{
+      max-width:80%;
+      margin:5% 10%;
+    }
+    p{
+      text-align: center;
+      font-size:20px;
+      font-family:$font-secondary;
+    }
+  }
+  .welcomeUser{
+    margin-top:60px;
+    margin-bottom:60px;
+  }
+  #body{
+    min-height:60vh;
+  }
+}

@@ -42,10 +42,10 @@ class Tutorial
      * @Vich\UploadableField(mapping="tutorial_image", fileNameProperty="illustration")
      */
     private $imageFile;
+
     /**
      * @ORM\Column(type="string", length=500, nullable=true)
      */
-
     private $illustration;
 
     /**
@@ -63,12 +63,17 @@ class Tutorial
     private $steps;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tutorial")
+     * @ORM\OneToMany(
+     *     targetEntity="App\Entity\Tool",
+     *     mappedBy="tutorial",
+     *     cascade={"persist", "remove"})
      */
     private $tools;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tutorials")
+     * @ORM\ManyToOne(
+     *     targetEntity="App\Entity\User",
+     *     inversedBy="tutorials")
      * @ORM\JoinColumn(nullable=true)
      */
     private $author;
@@ -200,6 +205,7 @@ class Tutorial
     {
         if (!$this->tools->contains($tool)) {
             $this->tools[] = $tool;
+            $tool->setTutorial($this);
         }
 
         return $this;
@@ -209,6 +215,10 @@ class Tutorial
     {
         if ($this->tools->contains($tool)) {
             $this->tools->removeElement($tool);
+
+            if ($tool->getTutorial() == $this) {
+                $tool->setTutorial(null);
+            }
         }
 
         return $this;
@@ -221,7 +231,6 @@ class Tutorial
     {
         return $this->imageFile;
     }
-
 
     /**
      * @param File|null $imageFile

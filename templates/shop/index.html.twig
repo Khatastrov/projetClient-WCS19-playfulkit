@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La boutique{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('shop') }}
+{% endblock %}
+
+{% block body %}
+    <div class="opacity"></div>
+        <div class="container">
+            <h1>Bienvenue sur la boutique !</h1>
+            <p>Pour le moment, les kits ne sont pas encore proposés à la vente... 🥺</p>
+            <p>Mais attends ! On ne va pas se quitter comme ça, pas vrai ?<br>
+            Si tu es intéressé, renseigne ton adresse dans le champ ci-dessous, et tu seras averti dès que les ventes seront ouvertes !</p>
+            <p>S'inscrire dès aujourd'hui, c'est l'assurance de faire partie de la grande aventure Playfulkit ! 🥰</p>
+
+            <form action="{{ path('shop') }}" method="post">
+                <p>Je veux faire partie des premiers inscrits :</p>
+                {{ form(form) }}
+                <div class="alert alert-info text-center">
+                    Il sont déjà {{ compte }} petits malins à s'être enregistrés avant toi !
+                </div>
+            </form>
+        </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{# templates/bundles/TwigBundle/Exception/error.html.twig #}
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('error') }}
+{% endblock %}
+
+{% block body %}
+    <h1>Ooops! Tu ne devrais pas être là!</h1>
+    <h2>Mais tu peux te diriger en cliquant sur les liens ci dessous pour atteindre ton objectif.</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <img class= "funny" src = "{{ asset('build/images/funny.jpg') }}" alt="funny.jpg"/>
+            </div>
+            <div class="col-sm">
+                <ul>
+                    <li><a href="{{ path('lesson_index') }}" class="lesson">Tes leçons</a></li>
+                    <li><a href="{{ path('tutorial_index') }}" class="tutos">Les tutos</a></li>
+                    <li> <a href="{{ path('blog_index') }}"  class="blog">Le blog</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent () }}
+    {{ encore_entry_script_tags('error') }}
+{% endblock %}

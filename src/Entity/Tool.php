@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -34,13 +33,23 @@ class Tool
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\TutorialTool", mappedBy="tool")
+     * @ORM\Column(type="integer")
      */
-    private $tutorials;
+    private $quantity;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tutorial", inversedBy="tools")
+     */
+    private $tutorial;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Lesson", mappedBy="Tool")
+     */
+    private $lessons;
 
     public function __construct()
     {
-        $this->tutorials = new ArrayCollection();
+        $this->lessons = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -56,7 +65,6 @@ class Tool
     public function setName(string $name): self
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -68,7 +76,6 @@ class Tool
     public function setIcon(?string $icon): self
     {
         $this->icon = $icon;
-
         return $this;
     }
 
@@ -80,35 +87,46 @@ class Tool
     public function setCategory(string $category): self
     {
         $this->category = $category;
-
         return $this;
     }
 
     /**
-     * @return Collection|Tutorial[]
+     * @return mixed
      */
-    public function getTutorials(): Collection
+    public function getQuantity()
     {
-        return $this->tutorials;
+        return $this->quantity;
     }
 
-    public function addTutorial(Tutorial $tutorial): self
+    /**
+     * @param mixed $quantity
+     */
+    public function setQuantity($quantity): void
     {
-        if (!$this->tutorials->contains($tutorial)) {
-            $this->tutorials[] = $tutorial;
-            $tutorial->addTool($this);
-        }
-
-        return $this;
+        $this->quantity = $quantity;
     }
 
-    public function removeTutorial(Tutorial $tutorial): self
+    /**
+     * @return Tutorial|null
+     */
+    public function getTutorial(): ?Tutorial
     {
-        if ($this->tutorials->contains($tutorial)) {
-            $this->tutorials->removeElement($tutorial);
-            $tutorial->removeTool($this);
-        }
+        return $this->tutorial;
+    }
 
-        return $this;
+    /**
+     * @param Tutorial $tutorial
+     */
+    public function setTutorial(?Tutorial $tutorial)
+    {
+        $this->tutorial = $tutorial;
+    }
+
+    /**
+     * @return Collection|Lesson[]
+     */
+    public function getLessons(): Collection
+    {
+        return $this->lessons;
     }
 }

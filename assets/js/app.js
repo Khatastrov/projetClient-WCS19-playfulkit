@@ -19,9 +19,26 @@ require('../images/logo-officielR.png');
 require('../images/robotDefault.png');
 require('../images/board.jpg');
 require('../images/electricity.jpg');
+require('../images/profil.jpg');
+require('../images/pass.jpg');
+require('../images/funny.jpg');
+require('../images/contact.jpg');
+require('../images/educ/atelier-playfulkit.jpg');
+require('../images/challenge-robotics.jpg');
+require('../images/bottle-caps.jpg');
+//avatars
+function importAll(r)
+{
+    r.keys().forEach(r);
+}
+importAll(require.context('../images/avatars', true,/\.png$/));
+importAll(require.context('../images/shop', true,/\.png$/));
+importAll(require.context('../images/visuels home', true,/\.jpg$/));
+importAll(require.context('../images/about', true,/\.png$/));
 
 //logos
 require('../images/pfk-ico16.png');
 require('../images/pfk-ico32.png');
 require('../images/pfk-ico64.png');
 require('../images/pfk-ico96.png');
+require('slick-carousel');

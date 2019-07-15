@@ -2,6 +2,10 @@
 @import "~bootstrap/scss/bootstrap";
 @import "scss/fontawesome.scss";
 @import "scss/brands.scss";
+@import "scss/solid.scss";
+@import "~slick-carousel/slick/slick";
+@import "~slick-carousel/slick/slick-theme";
+
 
 @font-face {
   font-family: 'Jaapokki';
@@ -52,8 +56,15 @@
     color:$link-color !important;
   }
 }
-.logoHeader{
-  max-width:180px;
+.fa-sign-out-alt{
+  margin-left:5px;
+  position:relative;
+  top:3px;
+}
+.fa-sign-in-alt{
+  margin-left:5px;
+  position:relative;
+  top:3px;
 }
 #mainFooter{
   background-color:$primary;
@@ -105,9 +116,19 @@
     color:$secondary-link-color;
     font-family: $font-primary;
   }
+  a{
+    text-decoration: none;
+    font-size:20px;
+    font-family: $font-secondary;
+    color:$link-colorHover;
+    position:relative;
+    bottom:5px;
+  }
+  a:hover{
+    color:$primary;
+  }
 }
 .fa-facebook-square{
-  margin-top:20px;
   font-size:40px;
   color:$secondary-link-color;
 }
@@ -115,23 +136,35 @@
   color:$link-color;
 }
 .fa-instagram{
-  margin-top:20px;
   font-size:40px;
   color:$secondary-link-color;
 }
 .fa-instagram:hover{
   color:$link-color;
 }
-#aboutUs{
+.fa-twitter{
+  font-size:40px;
+  color:$secondary-link-color;
+}
+.fa-twitter:hover{
+  color:$link-color;
+}
+
+.aboutUs{
   color:$link-color;
   text-decoration:none;
+  margin-bottom:20px;
   font-size:25px;
   font-family:$font-primary;
 }
-#aboutUs:hover{
+.aboutUs:hover{
   color:$secondary-link-color;
+  text-decoration: none !important;
 }
 @media (max-width: 767.98px) {
+  #categorySection{
+    text-align: center;
+  }
   .subLinkbar{
     display:block;
     margin-right: auto;
@@ -156,19 +189,19 @@
     margin-left:25%;
     margin-right:25%;
   }
-  .fa-facebook-square{
-    margin-left:170px;
-  }
-  .fa-instagram{
-    margin-right:170px;
-  }
   .navHeaderBar{
     a{
       font-size:20px;
     }
   }
+  .logoHeader{
+    max-width:150px;
+  }
 }
 @media (min-width: 768px) {
+  #categorySection{
+    text-align: left !important;
+  }
   .subLinkbar{
     display:inline-flex;
     margin-right: auto;
@@ -183,17 +216,37 @@
   }
   #primMainFooter{
     display:inline-flex;
+    align-items: center;
     width:100%;
   }
-  .fa-facebook-square{
-    margin-left:70px;
-  }
-  .fa-instagram{
-    margin-right:70px;
-  }
+
   .navHeaderBar{
     a{
       font-size:25px;
     }
   }
+  .logoHeader{
+    max-width:180px;
+  }
+}
+
+.media{
+  margin:20px 20px 0 20px !important;
+  width:40px;
+  height:40px;
+}
+.media:hover{
+  margin-top:20px;
+  width:40px;
+  height:40px;
+  color:transparent;
+}
+
+a.comingSoon{
+  text-decoration: none;
+  opacity: 0.5 !important;
+}
+a.comingSoon:hover{
+  color:white !important;
+  cursor:default !important;
 }

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ tuto.title }}
+    {{ tutorial.title }}
 {% endblock %}
 
 {% block stylesheets %}
@@ -10,28 +10,97 @@
 {% endblock %}
 
 {% block body %}
+
+    {% if app.user != null and tuto.author.id is defined %}
+        {% if app.user.id == tuto.author.id %}
+            <div class="row bouton">
+            <button class="btn btnEdit"><a href="{{ path('tutorial_edit', {'id': tuto.id})  }}">Modifier mon tuto</a></button>
+                <div class = "del">
+                    <form method="post" action="{{ path('tuto_delete', {'id': tuto.id}) }}" onsubmit="return confirm('Tu es sûr de vouloir supprimer ton tutoriel ?');">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tuto.id) }}">
+                        <button class="btn btnDel btnDel">Supprimer mon tutoriel</button>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
     <div class="tutoPresentation container">
-        <h1 class="titleShow">{{ tuto.title }}</h1>
+        <h1 class="titleShow">{{ tutorial.title }}</h1>
         <article class="tutoContent">
-            {% if tuto.illustration is not null %}
-                {% set ext = tuto.illustration|split('.') %}
+            {% if tutorial.illustration is not null %}
+                {% set ext = tutorial.illustration|split('.') %}
                 {% if ext[1] is defined %}
-                    <img src="/images/tutorial/{{ tuto.illustration }}" >
+                    <img class="imgTuto" src="/images/tutorial/{{ tutorial.illustration }}" >
                 {% else %}
-                    <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tuto.illustration }}"></iframe>
+                    <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ tutorial.illustration }}"></iframe>
                 {% endif %}
             {% endif %}
             <p class="tutoText">
-                {{ tuto.content | raw }}
+                {{ tutorial.content | raw }}
             </p>
         </article>
     </div>
     <div class="container">
-        {% if tuto.steps is not empty %}
+        {% if tutorial.tools is not empty %}
+            <div class="w-75 tool-box">
+                <p>Pour réaliser ce tutoriel, tu auras besoin de :</p>
+                <ul>
+                    {% if handtools %}
+                        <li>Outils :</li>
+                        <ol>
+                            {% for tool in handtools %}
+                                <li>
+                                    {{ tool.name }}
+                                    {% if tool.quantity %}
+                                        x{{ tool.quantity }}
+                                    {% else %}
+                                        x1
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
+                    {% if hardwares %}
+                        <li>Composants :</li>
+                        <ol>
+                            {% for tool in hardwares %}
+                                <li>
+                                    {{ tool.name }}
+                                    {% if tool.quantity %}
+                                        x{{ tool.quantity }}
+                                    {% else %}
+                                        x1
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
+                    {% if softwares %}
+                        <li>Logiciels :</li>
+                        <ol>
+                            {% for tool in softwares %}
+                                <li>
+                                    {{ tool.name }}
+                                    {% if tool.quantity %}
+                                        x{{ tool.quantity }}
+                                    {% else %}
+                                        x1
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+
+        {% if tutorial.steps is not empty %}
             <ol>
-                {% for step in tuto.steps %}
+                {% for step in tutorial.steps %}
                     <li>
-                        <div class="customCollapse">
+                        <div class="customCollapse mt-4">
                             <div class="row">
                                 <div class="col-6">
                                     <span>
@@ -43,11 +112,16 @@
                             </div>
                             <article class="contentCollapse">
                                 <div class="row">
-                                    <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        {{ step.content }}
-                                    </p>
-                                     {#uncomment img when we can set a condition with if img not empty then #}
-                                     {#<img src="{{ step.image ? step.image : 'https://via.placeholder.com/150' }}" class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">#}
+                                    {% if step.image is not null %}
+                                        <p class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-10">
+                                            {{ step.content }}
+                                        </p>
+                                        <img src="{{ asset('images/step/' ~ step.image) }}" alt="step_image" class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
+                                    {% else %}
+                                        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            {{ step.content }}
+                                        </p>
+                                    {% endif %}
                                 </div>
                             </article>
                         </div>
@@ -57,9 +131,9 @@
         {% endif %}
         <div class="metadata">
             <span>Créé le
-            {{ tuto.dateCreation | date('d/m/Y') }}
+            {{ tutorial.dateCreation | date('d/m/Y') }}
             par
-            {{ tuto.author ? tuto.author : 'Anonyme' }}
+            {{ tutorial.author ? tutorial.author.username : 'Anonyme' }}
             </span>
         </div>
     </div>

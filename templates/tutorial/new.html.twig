@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Nouveau Tuto !
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('tutoCreate') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Création d'un Tuto !</h1>
+
+        {{ form_start(form) }}
+        {{ form_row(form.title, {'attr': {'placeholder': "Titre du Tutoriel"}}) }}
+        {{ form_row(form.content, {'attr': {'placeholder': "Présentation"}}) }}
+        <ol class="tools" data-prototype="{{ form_widget(form.tools.vars.prototype)|e('html_attr') }}">
+            {% for tool in form.tools %}
+                <hr>
+                <li>
+                    {{ form_row(tool.name, {'label': 'Le nom de ton outil'}) }}
+                    {{ form_row(tool.quantity, {'label': 'La quantité'}) }}
+                    {{ form_row(tool.category, {'label': 'Choisie la catégorie de ton outil'}) }}
+                    <button class="remove-existing-tool btn btnRemoveTool">supprimer cette étape</button>
+                </li>
+            {% endfor %}
+        </ol>
+        <div class="tutoPresentation">{{ form_row(form.choix, {'attr': {'placeholder': "Choisis ton illustration :"}}) }}</div>
+        {{ form_row(form.illustration) }}
+        <div id="invisible">{{ form_row(form.imageFile, {'attr':{'data-browse':"Titre"}}) }}</div>
+        <ol class="steps" data-prototype="{{ form_widget(form.steps.vars.prototype)|e('html_attr') }}">
+            {% for step in form.steps %}
+                <hr>
+                <li>
+                    {{ form_row(step.title, {'label': 'Titre de l\'étape'}) }}
+                    {{ form_row(step.content, {'label': 'Description'}) }}
+                    {{ form_row(step.imageFile, {'label': 'Ajoute une image'}) }}
+                    <button class="remove-existing-step btn btnRemoveStep">supprimer cette étape</button>
+                </li>
+            {% endfor %}
+        </ol>
+
+        {{ form_row(form.is_published, {'label': 'Souhaites tu publier ton tuto ?'} ) }}
+
+        <button class="btn btnCreateEdit" type="submit">
+                Ajouter un nouveau tutoriel
+        </button>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent () }}
+    {{ encore_entry_script_tags('TutorialEditionForm') }}
+    {{ encore_entry_script_tags('tool') }}
+{% endblock %}
