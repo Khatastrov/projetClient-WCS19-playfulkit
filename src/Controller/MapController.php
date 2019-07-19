@@ -12,6 +12,7 @@ class MapController extends AbstractController
      */
     public function index()
     {
-        return $this->render('map/show.html.twig');
+        return $this->redirect('http://www.makery.info/labs-map/');
+        //return $this->render('map/show.html.twig');
     }
 }
