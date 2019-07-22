@@ -240,13 +240,13 @@ body{
   box-shadow: none !important;
 }
 
-@media (max-width: 767.98px){
+@media screen and (max-width: 767.98px){
   .cardTutorial {
     min-width:100px;
   }
 }
 
-@media (min-width: 768px){
+@media screen and (min-width: 768px){
   .cardTutorial {
     width:300px;
   }
