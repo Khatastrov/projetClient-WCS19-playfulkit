@@ -47,12 +47,9 @@ final class UserAdmin extends AbstractAdmin
             ])
             ->add('email', EmailType::class, [
             ])
-            ->add('firstname', TextType::class, [
-            ])
-            ->add('lastname', TextType::class, [
-            ])
-            ->add('address', TextType::class, [
-            ])
+            ->add('firstname', null, ['required' => false])
+            ->add('lastname', null, ['required' => false])
+            ->add('address', null, ['required' => false])
             ->add('birth_date', BirthdayType::class, [
             ]);
     }
