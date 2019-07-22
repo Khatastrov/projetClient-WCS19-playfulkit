@@ -30,6 +30,11 @@
         font-size:15px;
         font-family:$font-secondary;
       }
+      @media(max-width:767px) {
+          p {
+            font-size: 10px;
+          }
+      }
     }
   }
 }
@@ -39,6 +44,9 @@
   background-color:$customRed;
   color:$link-colorHover;
   font-family:$font-secondary;
+  @media(max-width:767px) {
+        font-size: 10px;
+      }
 }
 .btnDel:hover {
   background-color: $link-colorHover;
@@ -91,6 +99,11 @@
 .btnGroupUser{
   display:flex;
   justify-content: center;
+  @media(max-width:767px) {
+      a {
+        font-size: 10px;
+      }
+  }
 }
 
 .tutoGroup {
@@ -111,6 +124,7 @@
   margin-right:10px;
   border-radius:0px;
   border:solid 1px;
+
 }
 .btnTab:hover {
   color: $secondary;
@@ -133,7 +147,7 @@
   border-color:$primary $primary white $primary !important;
 }
 
-@media (max-width: 767.98px){
+@media screen and (max-width: 767.98px){
   .userSection{
     margin-bottom:20px;
   }
@@ -153,7 +167,7 @@
     }
   }
 }
-@media (min-width: 768px){
+@media screen and (min-width: 768px){
   .userSection{
     margin-top:40px;
     margin-bottom:40px;
