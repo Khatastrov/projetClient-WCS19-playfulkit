@@ -60,7 +60,7 @@ body{
   background: rgba(255, 255, 255, 0.4);
 }
 
-@media (max-width: 767.98px){
+@media screen and (max-width: 767.98px){
   .customSignBlock{
     margin:20px 4vw;
     max-width:90vw;
@@ -74,7 +74,7 @@ body{
   }
 }
 
-@media (min-width: 768px){
+@media screen and (min-width: 768px){
   .customSignBlock{
     margin-top:5vh;
     margin-bottom:5vh;
@@ -89,7 +89,7 @@ body{
   }
 }
 
-@media (min-width: 1199.98px){
+@media screen and (min-width: 1199.98px){
   .customSignBlock{
     margin-top:5vh;
     margin-bottom:5vh;

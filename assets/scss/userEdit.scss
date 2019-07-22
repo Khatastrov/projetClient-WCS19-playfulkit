@@ -68,7 +68,7 @@ h1
   background: rgba(255, 255, 255, 0.4);
 }
 
-@media (max-width: 767.98px){
+@media screen and (max-width: 767.98px){
   #edit{
     display:flex;
     flex-direction: column;
@@ -90,7 +90,7 @@ h1
   }
 }
 
-@media (min-width: 768px){
+@media screen and (min-width: 768px){
   #edit{
     margin-top:5vh;
     margin-bottom:5vh;
@@ -108,7 +108,7 @@ h1
   }
 }
 
-@media (min-width: 1199.98px){
+@media screen and (min-width: 1199.98px){
   #edit{
     margin-top:5vh;
     margin-bottom:5vh;

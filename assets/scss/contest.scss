@@ -17,8 +17,7 @@ h1{
     padding-top: 20px;
     padding-bottom: 20px;
     width: 70%;
-    margin: 0 auto;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
 }
 
 form{
@@ -58,7 +57,7 @@ form{
     font-size: 25px;
 }
 
-@media (max-width: 767.98px) {
+@media screen and (max-width: 767.98px) {
     img{
         height: auto;
         width: 100%
@@ -77,7 +76,7 @@ form{
     }
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
     .bottleCapImg{
         height: auto;
         width: 100%
