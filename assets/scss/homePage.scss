@@ -306,6 +306,15 @@ h3{
     width: 90%;
     margin:10px 5% 10px 5%;
   }
+  .h1Desktop{
+    display:none;
+  }
+
+  .h1Mobile{
+    span{
+      color:$customRed;
+    }
+  }
 }
 
 @media screen and (min-width: 768px){
@@ -344,6 +353,9 @@ h3{
   .cardBlog {
     width:300px;
   }
+  .h1Mobile{
+    display:none;
+  }
 }
 
 @media screen and (min-width: 1199.98px){
@@ -378,5 +390,8 @@ h3{
   }
   .cardBlog {
     width:300px;
+  }
+  .h1Mobile{
+    display:none;
   }
 }
