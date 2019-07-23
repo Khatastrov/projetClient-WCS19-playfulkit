@@ -45,7 +45,7 @@ class SecurityController extends AbstractController
         TokenGeneratorInterface $tokenGenerator,
         UserRepository $repo
     ) {
-        // création d'un formulaire "à la volée", afin que l'internaute puisse renseigner son mail
+        // création d'un formulaire "à la volée", afin que l'on puisse renseigner son mail
         $form = $this->createFormBuilder()
             ->add('email', EmailType::class, [
                 'constraints' => [
@@ -69,7 +69,7 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            // voir l'épisode 2 de cette série pour retrouver la méthode loadUserByUsername:
+            // vérifier que l'utilisateur existe via son email
             $email = $form->getData()['email'];
             $user = $repo->findBy(['email' => $email]);
 
@@ -80,12 +80,12 @@ class SecurityController extends AbstractController
             }
 
             // création du token
-            //dd($user);
             $user[0]->setToken($tokenGenerator->generateToken());
             // enregistrement de la date de création du token
             $user[0]->setTokenCreatedAt(new \DateTime());
             $em->flush();
 
+            //envoi du mail de réinitialisation du mot de passe
             $message = (new \Swift_Message('Playfulkit - Mot de passe oublié'))
                 ->setFrom($this->getParameter('mailer_from'))
                 ->setTo($email)
@@ -109,14 +109,13 @@ class SecurityController extends AbstractController
 
 
     /**
-     * @Route("/{id}/{token}", name="resetting")
+     * @Route("/reset/{token}/{id}", name="resetting")
      */
     public function resetting(User $user, $token, Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         // interdit l'accès à la page si:
         // le token associé au membre est null
-        // le token enregistré en base et le token présent dans l'url ne sont pas égaux
-        // le token date de plus de 10 minutes
+        // le token enregistré en base et le token présent dans l'url ne sont pas les mêmes
         if ($user->getToken() === null || $token !== $user->getToken()) {
             throw new AccessDeniedHttpException();
         }
@@ -124,14 +123,13 @@ class SecurityController extends AbstractController
         $form = $this->createForm(ResettingType::class, $user);
         $form->handleRequest($request);
 
-        //dd($form->getData()->get('plainPassword'));
-
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
 
             // réinitialisation du token à null pour qu'il ne soit plus réutilisable
             $user->setToken(null);
+            //reset de la date également
             $user->setTokenCreatedAt(null);
 
             $em = $this->getDoctrine()->getManager();
