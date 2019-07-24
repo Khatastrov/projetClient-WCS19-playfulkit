@@ -86,6 +86,16 @@ class User implements UserInterface
      */
     private $lessons;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $token;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $tokenCreatedAt;
+
     public function __construct()
     {
         $this->tutorials = new ArrayCollection();
@@ -327,6 +337,30 @@ class User implements UserInterface
                 $lesson->setAuthor(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    public function getTokenCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->tokenCreatedAt;
+    }
+
+    public function setTokenCreatedAt(?\DateTimeInterface $tokenCreatedAt): self
+    {
+        $this->tokenCreatedAt = $tokenCreatedAt;
 
         return $this;
     }

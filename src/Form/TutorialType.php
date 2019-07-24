@@ -61,7 +61,7 @@ class TutorialType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'class' => 'champImg',
-                    'placeholder' => 'Ajoute ta photo !',
+                    'placeholder' => 'Ajoute ta photo ! (elle ne doit pas dépasser 2Mo)',
                 ],
                 'constraints' => [
                     new File([
