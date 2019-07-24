@@ -35,6 +35,7 @@ importAll(require.context('../images/avatars', true,/\.png$/));
 importAll(require.context('../images/shop', true,/\.png$/));
 importAll(require.context('../images/visuels home', true,/\.jpg$/));
 importAll(require.context('../images/about', true,/\.png$/));
+importAll(require.context('../images/educ', true,/\.jpg$/));
 
 //logos
 require('../images/pfk-ico16.png');
