@@ -13,7 +13,7 @@
     <li>Son compte avait été créé le: {{ people.createdAt|date('d / m / Y') }}</li>
 </ul>
 
-<p>Accède à ton <a href="{{ path('sonata_admin_redirect') }}">espace administrateur</a> sur playfulkit.</p>
+<p>Accède à ton <a href="{{ absolute_url(path('sonata_admin_redirect')) }}">espace administrateur</a> sur playfulkit.</p>
 
 <p>Garde la forme
     <br>
