@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no"/>
     <title>{% block title %}{% endblock %}</title>
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
@@ -44,7 +45,7 @@
                 <a class="nav-link" href="{{ path('lesson_index') }}">Leçons</a>
                 <a class="nav-link" href="{{ path('educ') }}">Educateurs</a>
                 <a class="nav-link" href="{{ path('shop') }}">Boutique</a>
-                <a class="nav-link" href="{{ path('map') }}">Les Fablabs</a>
+                <a class="nav-link" target="_blank" href="{{ path('map') }}">Les Fablabs</a>
                 <a class="nav-link" href="{{ path('blog_index') }}">Blog</a>
                 <a class="nav-link" href="{{ path('contact') }}">Contact</a>
             </div>
