@@ -33,7 +33,7 @@ class Tool
     private $category;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $quantity;
 

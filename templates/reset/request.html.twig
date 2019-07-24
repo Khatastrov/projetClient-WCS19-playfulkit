@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Réinitialise ton mot de passe
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('logIn') }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="opacity"></div>
+    <div class="container logInDiv">
+        <h1>Réinitialiser mon mot de passe</h1>
+        <p>
+            Tu as oublié ton mot de passe et tu n'arrives plus à te connecter ? <br>
+            ne t'inquiètes pas, entre ton adresse email ci-dessous, et tu vas recevoir un mail qui va te permettre d'en créer un nouveau !
+        </p>
+
+        <form action="{{ path('reset_password') }}" method="post">
+
+            <div class="form-group">
+                <label for="inputUsername">Ton adresse email :</label>
+                {{ form(form) }}
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

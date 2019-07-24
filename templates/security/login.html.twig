@@ -27,6 +27,7 @@
                 <label for="inputPassword">Mot de passe :</label>
                 <input placeholder="Ton mot de passe" id="inputPassword" required name="password" type="password" class="form-control"></input>
             </div>
+            <a href="{{ path('reset_password') }}">J'ai oublié mon mot de passe</a>
             <input type="hidden" name="_csrf_token"
                    value="{{ csrf_token('authenticate') }}"
             >
